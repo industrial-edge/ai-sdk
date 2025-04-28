@@ -1,0 +1,1244 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.5.0">
+    
+    
+      
+        <title>Run Gpuruntime Component - AI Software Development Kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-simaticaitestingrun_gpuruntime_component" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-header__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Software Development Kit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Run Gpuruntime Component
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-nav__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    AI Software Development Kit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user_manual.html" class="md-nav__link">
+        User Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Log Module
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Log Module" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Log Module
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/mock_logger.html" class="md-nav__link">
+        Mock Logger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Simaticai
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Simaticai" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Simaticai
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment.html" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_config_pb2.html" class="md-nav__link">
+        Model Config Pb2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/schemas.html" class="md-nav__link">
+        Schemas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          Helpers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Helpers" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Helpers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/model_config.html" class="md-nav__link">
+        Model Config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/pep508.html" class="md-nav__link">
+        Pep508
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/tempfiles.html" class="md-nav__link">
+        Tempfiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/yaml_helper.html" class="md-nav__link">
+        Yaml Helper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          Packaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Packaging" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Packaging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/constants.html" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/python_dependencies.html" class="md-nav__link">
+        Python Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/wheelhouse.html" class="md-nav__link">
+        Wheelhouse
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pipeline_runner.html" class="md-nav__link">
+        Pipeline Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pipeline_validator.html" class="md-nav__link">
+        Pipeline Validator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="run_component.html" class="md-nav__link">
+        Run Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Run Gpuruntime Component
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="run_gpuruntime_component.html" class="md-nav__link md-nav__link--active">
+        Run Gpuruntime Component
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    main
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="module-simaticaitestingrun_gpuruntime_component">Module simaticai.testing.run_gpuruntime_component</h1>
+<p>Utility script for running an ONNX model in a given virtual Python environment.</p>
+<p>It is designed to be executed from <code>simaticai.testing.PipelineRunner</code> class.
+It consumes input data from a joblib file and produces output data into a joblib file.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Copyright (C) Siemens AG 2021. All Rights Reserved. Confidential.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">Utility script for running an ONNX model in a given virtual Python environment.</span>
+
+<span class="sd">It is designed to be executed from `simaticai.testing.PipelineRunner` class.</span>
+
+<span class="sd">It consumes input data from a joblib file and produces output data into a joblib file.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">onnxruntime</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">InferenceSession</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.protobuf</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">text_format</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.protobuf</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">json_format</span>
+
+<span class="k">try</span><span class="p">:</span>
+
+<span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">model_config_pb2</span>
+
+<span class="k">except</span><span class="w"> </span><span class="n">BaseException</span><span class="p">:</span>
+
+<span class="w">    </span><span class="k">pass</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
+
+<span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">simaticai.testing.pipeline_runner:run_gpuruntime_component.py&quot;</span><span class="p">)</span>
+
+<span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_proto_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;Reads model configuration from config.pbtxt into dictionary</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        config_path (os.Pathlike): path to `config.pbtxt` file, generallz model_path.parents[1] / &quot;config.pbtxt&quot;</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">file</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">config_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span><span class="w"> </span><span class="n">model_config_pb2</span><span class="o">.</span><span class="n">ModelConfig</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">config_dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json_format</span><span class="o">.</span><span class="n">MessageToDict</span><span class="p">(</span><span class="n">config_msg</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">config_dict</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_new_shape</span><span class="p">(</span><span class="n">config_input</span><span class="p">,</span><span class="w"> </span><span class="n">model_input</span><span class="p">,</span><span class="w"> </span><span class="n">input_name</span><span class="p">):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;Calculates the input shape if it is a batch of data.</span>
+
+<span class="s2">    In case of batched input, the number of input arrays must be max_batch_size or less.</span>
+
+<span class="s2">    The input shape is a flat array and must be reshaped based on one input shape, and the size of batch can be calculated.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        config_input (dict): dictionary with information of the input type and shape from configuration file</span>
+
+<span class="s2">        model_input (dict): standard input format for GPU Runtime, the input tensor is flattened into numpy array</span>
+
+<span class="s2">        input_name (str): name of the actual model_input to search in config_input</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">config_shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;dims&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">config_input</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">input_name</span><span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">img_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config_shape</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">input_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numpy</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">model_input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">batch_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_size</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">img_size</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="n">batch_size</span><span class="p">],</span><span class="w"> </span><span class="n">config_shape</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span><span class="w"> </span><span class="n">config_path</span><span class="p">,</span><span class="w"> </span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="n">output_file</span><span class="p">):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;Feeds input to the ML Model saved in ONNX format and captures output.</span>
+
+<span class="s2">    Reads the given model and creates an onnxruntime Session to</span>
+
+<span class="s2">    The input file must be a joblib dump, and the joblib must be a dictionary or list of dictionaries.</span>
+
+<span class="s2">    The output file is a dumped joblib result list containing the input dictionary extended with the generated predictions.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        model_path (str): File path for the stored ML Model in ONNX format</span>
+
+<span class="s2">        input_file (os.Pathlike): Path of the joblib file containing the input payloads</span>
+
+<span class="s2">        output_file (os.Pathlike): Path of the joblib file where the outputs will be stored</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">input_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">input_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_list</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">type</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="nb">list</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">input_list</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_list</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">model_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_get_proto_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">max_batch_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;maxBatchSize&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">input</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">session</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()]</span>
+
+<span class="w">    </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">output</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">session</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()]</span>
+
+<span class="w">    </span><span class="n">predictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">output</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">outputs</span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">_output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">output_list</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">_input_tensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">_input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">inputs</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">max_batch_size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">input_shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_get_new_shape</span><span class="p">(</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">_output</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">],</span><span class="w"> </span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max_batch_size</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received input batch size (</span><span class="si">{</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) is greater than max_batch_size (</span><span class="si">{</span><span class="n">max_batch_size</span><span class="si">}</span><span class="s2">)!&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">_input_tensor</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_output</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">_input_tensor</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_output</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">_input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_predictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">_input_tensor</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_predictions</span><span class="p">)):</span>
+
+<span class="w">            </span><span class="n">_output</span><span class="p">[</span><span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">output_list</span><span class="p">,</span><span class="w"> </span><span class="n">output_file</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="k">if</span><span class="w"> </span><span class="vm">__name__</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+<span class="w">    </span><span class="n">_parser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--model-path&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;The path of ONNX file.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--config-path&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;The path of config.pbtxt&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--input-file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;The file which contains input data to test with component.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--output-file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;The file which contains calculated output data.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-ll&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--log-level&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Log Level using `logging` class&#39; enum values.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="n">_args</span><span class="o">.</span><span class="n">log_level</span><span class="p">))</span>
+
+<span class="w">    </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;arguments: </span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">_args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;workdir: </span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">_args</span><span class="o">.</span><span class="n">model_path</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="o">.</span><span class="n">config_path</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="o">.</span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="o">.</span><span class="n">output_file</span><span class="p">))</span>
+</code></pre></div>
+
+</details>
+<h2 id="functions">Functions</h2>
+<h3 id="main">main</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span>
+    <span class="n">model_path</span><span class="p">,</span>
+    <span class="n">config_path</span><span class="p">,</span>
+    <span class="n">input_file</span><span class="p">,</span>
+    <span class="n">output_file</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Feeds input to the ML Model saved in ONNX format and captures output.</p>
+<p>Reads the given model and creates an onnxruntime Session to
+The input file must be a joblib dump, and the joblib must be a dictionary or list of dictionaries.
+The output file is a dumped joblib result list containing the input dictionary extended with the generated predictions.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model_path</td>
+<td>str</td>
+<td>File path for the stored ML Model in ONNX format</td>
+<td>None</td>
+</tr>
+<tr>
+<td>input_file</td>
+<td>os.Pathlike</td>
+<td>Path of the joblib file containing the input payloads</td>
+<td>None</td>
+</tr>
+<tr>
+<td>output_file</td>
+<td>os.Pathlike</td>
+<td>Path of the joblib file where the outputs will be stored</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span><span class="w"> </span><span class="n">config_path</span><span class="p">,</span><span class="w"> </span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="n">output_file</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">    </span><span class="ss">&quot;&quot;&quot;Feeds input to the ML Model saved in ONNX format and captures output.</span>
+
+<span class="ss">    Reads the given model and creates an onnxruntime Session to</span>
+
+<span class="ss">    The input file must be a joblib dump, and the joblib must be a dictionary or list of dictionaries.</span>
+
+<span class="ss">    The output file is a dumped joblib result list containing the input dictionary extended with the generated predictions.</span>
+
+<span class="ss">    Args:</span>
+
+<span class="ss">        model_path (str): File path for the stored ML Model in ONNX format</span>
+
+<span class="ss">        input_file (os.Pathlike): Path of the joblib file containing the input payloads</span>
+
+<span class="ss">        output_file (os.Pathlike): Path of the joblib file where the outputs will be stored</span>
+
+<span class="ss">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">input_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">joblib</span><span class="p">.</span><span class="k">load</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">input_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_list</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">type</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">[</span><span class="n">input_list</span><span class="o">]</span>
+
+<span class="w">    </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_list</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">model_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_get_proto_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">max_batch_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_config</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="ss">&quot;maxBatchSize&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">input for input in session.get_inputs()</span><span class="o">]</span>
+
+<span class="w">    </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">output for output in session.get_outputs()</span><span class="o">]</span>
+
+<span class="w">    </span><span class="n">predictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">output.name for output in outputs</span><span class="o">]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">_output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">output_list</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">_input_tensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">_input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">inputs</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">max_batch_size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="err">:</span>
+
+<span class="w">                </span><span class="n">input_shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_get_new_shape</span><span class="p">(</span><span class="n">model_config</span><span class="o">[</span><span class="n">&quot;input&quot;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">_output</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">_input</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">input_shape</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nl">max_batch_size</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Received input batch size ({input_shape[0]}) is greater than max_batch_size ({max_batch_size})!&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">_input_tensor</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_output</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">else</span><span class="err">:</span>
+
+<span class="w">                </span><span class="n">_input_tensor</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_output</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">_input</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_predictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">_input_tensor</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">_predictions</span><span class="p">))</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">_output</span><span class="o">[</span><span class="n">predictions[i</span><span class="o">]</span><span class="err">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_predictions</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+
+<span class="w">    </span><span class="n">joblib</span><span class="p">.</span><span class="k">dump</span><span class="p">(</span><span class="n">output_list</span><span class="p">,</span><span class="w"> </span><span class="n">output_file</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="run_component.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Run Component" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Run Component
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (C) Siemens AG 2021. All Rights Reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      
+    
+  </body>
+</html>

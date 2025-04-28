@@ -1,0 +1,1261 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.5.0">
+    
+    
+      
+        <title>Changelog - AI Software Development Kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="styles.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#version-history" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="AI Software Development Kit" class="md-header__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="Sie_logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Software Development Kit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="AI Software Development Kit" class="md-nav__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="Sie_logo_white.svg" alt="logo">
+
+    </a>
+    AI Software Development Kit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Changelog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="CHANGELOG.html" class="md-nav__link md-nav__link--active">
+        Changelog
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#230" class="md-nav__link">
+    2.3.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#220" class="md-nav__link">
+    2.2.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210" class="md-nav__link">
+    2.1.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#200" class="md-nav__link">
+    2.0.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#160" class="md-nav__link">
+    1.6.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#150" class="md-nav__link">
+    1.5.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    1.4.1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#130" class="md-nav__link">
+    1.3.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#120" class="md-nav__link">
+    1.2.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110" class="md-nav__link">
+    1.1.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100" class="md-nav__link">
+    1.0.0
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user_manual.html" class="md-nav__link">
+        User Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Log Module
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Log Module" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Log Module
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/log_module/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/log_module/mock_logger.html" class="md-nav__link">
+        Mock Logger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Simaticai
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Simaticai" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Simaticai
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/deployment.html" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/model_config_pb2.html" class="md-nav__link">
+        Model Config Pb2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/data/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/data/schemas.html" class="md-nav__link">
+        Schemas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          Helpers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Helpers" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Helpers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/helpers/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/helpers/model_config.html" class="md-nav__link">
+        Model Config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/helpers/pep508.html" class="md-nav__link">
+        Pep508
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/helpers/tempfiles.html" class="md-nav__link">
+        Tempfiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/helpers/yaml_helper.html" class="md-nav__link">
+        Yaml Helper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          Packaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Packaging" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Packaging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/packaging/constants.html" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/packaging/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/packaging/python_dependencies.html" class="md-nav__link">
+        Python Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/packaging/wheelhouse.html" class="md-nav__link">
+        Wheelhouse
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/testing/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/testing/pipeline_runner.html" class="md-nav__link">
+        Pipeline Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/testing/pipeline_validator.html" class="md-nav__link">
+        Pipeline Validator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/testing/run_component.html" class="md-nav__link">
+        Run Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/testing/run_gpuruntime_component.html" class="md-nav__link">
+        Run Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#230" class="md-nav__link">
+    2.3.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#220" class="md-nav__link">
+    2.2.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210" class="md-nav__link">
+    2.1.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#200" class="md-nav__link">
+    2.0.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#160" class="md-nav__link">
+    1.6.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#150" class="md-nav__link">
+    1.5.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    1.4.1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#130" class="md-nav__link">
+    1.3.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#120" class="md-nav__link">
+    1.2.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110" class="md-nav__link">
+    1.1.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100" class="md-nav__link">
+    1.0.0
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="version-history">Version History</h1>
+<p>AI Software Development Kit</p>
+<p>Known issues:</p>
+<ul>
+<li>Python 3.8.10 is the final regular bugfix release of Python 3.8 with binary installers. We recommend you to use the most recent bugfix release of Python 3.8 for productive use. For non-productive use, you can attempt using AI SDK with Python 3.8.10.</li>
+<li>AI SDK has only been tested on 64-bit platforms. We do not recommend using AI SDK on 32-bit platforms.</li>
+<li>The local pipeline runner might exceed the maximum path length allowed on Windows by default. To resolve this, please see the following article: https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry</li>
+<li>As no TensorFlow Lite 2.7.0 installer was published for Windows systems, you cannot use the local pipeline runner on Windows to execute the TensorFlow Lite based pipeline packages, like the one provided in the Image Classification project template.</li>
+<li>Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.</li>
+<li>Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected</li>
+</ul>
+<h2 id="230">2.3.0</h2>
+<p>New features:</p>
+<ul>
+<li>Optimizing dependency list to reduce package size</li>
+<li><code>Pipeline.export(...)</code> checks the size of the final generated zip package, throws error if it exceeds the limit of 2.2 GB</li>
+<li><code>PythonComponent</code> gives warning when TensorFlow dependency is detected</li>
+<li>Warning about unused dependencies during LocalPipelineRunner execution</li>
+<li>Incomplete input payload, output or metric does not throw AssertionError anymore; instead, a warning message will be issued about the missing variables</li>
+</ul>
+<p>Deprecated features:</p>
+<p>Fixed issues:
+-   Python 3.10.x ≤ 3.10.14 - Multiple Vulnerabilities - 3.10.15
+-   Python 3.11.x ≤ 3.11.9 - Multiple Vulnerabilities - 3.11.10</p>
+<h2 id="220">2.2.0</h2>
+<p>New features:</p>
+<ul>
+<li>Adding new property of 'batch' to class 'Component'</li>
+<li>LocalPipelineRunner can be used to run pipeline components with batch input or output</li>
+<li>Enabled Python versions for using AI SDK is <strong>'&gt;=3.10.0'</strong>. With Python 3.8, <code>simaticai &gt;=2.2.0</code> cannot be installed.</li>
+<li>Enabled Python versions for a <code>PythonComponent</code> is <strong>3.10</strong> and <strong>3.11</strong>.</li>
+<li>Telemetry data is saved in the edge package</li>
+</ul>
+<p>Deprecated features:</p>
+<ul>
+<li>Python <strong>3.8</strong> is removed from supported Python versions.</li>
+</ul>
+<p>Fixed issues:</p>
+<ul>
+<li>Typo in <code>Boolean</code> type name</li>
+</ul>
+<h2 id="210">2.1.0</h2>
+<p>New Features:</p>
+<ul>
+<li><code>TensorRTOptimization</code> class is introduced</li>
+<li><code>ModelConfig</code> class is updated to include <code>TensorRTOptimization</code> instance as <code>optimization</code> and to add the config.pbtxt of <code>GPURuntimeComponent</code> pipeline step</li>
+<li>LocalPipelineRunner is able to execute both pipeline configuration and edge packages</li>
+<li>LocalPipelineRunner gives warnings about output variables so mismatching variable names can be detected</li>
+<li><code>Pipeline.export(...)</code> method, for directly generating an edge runtime package</li>
+</ul>
+<p>Deprecated features:</p>
+<ul>
+<li><code>Pipeline.save(...)</code> and <code>deployment.convert_package(...)</code> should not be used separately, instead <code>Pipeline.export(...)</code> should be used.</li>
+</ul>
+<p>Fixed issues:</p>
+<ul>
+<li>Python 3.8.x ≤ 3.8.18 - Multiple Vulnerabilities - 3.8.19</li>
+<li>Python 3.10.x ≤ 3.10.13 - Multiple Vulnerabilities - 3.10.14</li>
+<li>Python Package: pip ≤ 23.2.1 - Local Security Bypass Vulnerability - 24.0</li>
+<li>Python Package: idna &lt; 3.7 - Local Denial of Service Vulnerability - GHSA-jjg7-2v4v-x38h</li>
+<li>Python Package: onnx ≤ 1.15.0 - Remote Path Traversal Vulnerability - CVE-2024-27318</li>
+<li>Input variable 'timestamp' is not allowed for Components (Pipeline Steps) as the AI Inference Server always put the message creation timestamp into the payload with the reserved name 'timestamp. Same AssertionError is raised when the user tries to add an input variable with this name.</li>
+<li>GPURuntime.use_model(..) is able to handle onnx models with different name than 'model.onnx'. The model will be copied into the package with name 'model.onnx'.</li>
+</ul>
+<h2 id="200">2.0.0</h2>
+<p>New features:</p>
+<ul>
+<li>New GPURuntimeComponent introduced for supporting ONNX models running on GPU enabled AI Inference Server<ul>
+<li>GPURuntimeComponent can be created with name and version</li>
+<li>ONNX model can be added via GPURuntimeComponent.use_model(..)</li>
+<li>Default config.pbtxt is created</li>
+<li>Specific config.pbtxt can be added via GPURuntimeComponent.use_config(..)</li>
+<li>LocalPipelineRunner is able to execute GPURuntimeComponent with<ul>
+<li>run_component(..), and</li>
+<li>run_pipeline(..)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The edge package's SHA256 hash is saved in a text file</li>
+<li>Warning message in case pipeline components use different Python versions</li>
+<li>Warning message in case no dependencies are added to the pipeline package</li>
+</ul>
+<p>Updated features:</p>
+<ul>
+<li>Component.add_metrics(..) is moved to PythonComponent.add_metrics(..), as GPURuntimeComponent is not able to produce a formatted output.</li>
+<li>Supported AI Inference Server variable Types are extended with<ul>
+<li>"UInt8Array", "UInt16Array", "UInt32Array", "UInt64Array",</li>
+<li>"Int8Array", "Int16Array", "Int32Array", "Int64Array",</li>
+<li>"Float16Array", "Float32Array", "Float64Array",</li>
+<li>"ImageSet"</li>
+</ul>
+</li>
+</ul>
+<p>Removed features:</p>
+<ul>
+<li>Removed function: simaticai.deployment.from_saved_model().</li>
+<li>Removed module: simaticai.pipeline</li>
+<li>Removed module: progress.py</li>
+</ul>
+<p>Fixed issues:</p>
+<ul>
+<li>GPU runtime configuration option <code>max_batch_size</code> should behave the same for values 0 or 1.</li>
+</ul>
+<h2 id="160">1.6.0</h2>
+<p>New features:</p>
+<ul>
+<li>Mathilda packages pipeline with image input and output</li>
+<li>Support source only packages</li>
+<li>Security fixes</li>
+<li>Documentation Revamp</li>
+</ul>
+<h2 id="150">1.5.0</h2>
+<p>New features:</p>
+<ul>
+<li>Version pipeline packages with UUID</li>
+<li>Binary data type</li>
+</ul>
+<h2 id="141">1.4.1</h2>
+<p>New features:</p>
+<ul>
+<li>Define custom metrics for a pipeline.</li>
+<li>Enable adding a description for a pipeline and its elements.</li>
+<li>Support for binary output from a pipeline or pipeline component.</li>
+<li>Improved guideline for creating pipeline components.</li>
+</ul>
+<p>Deprecated features:</p>
+<ul>
+<li>Using function simaticai.deployment.from_saved_model() is deprecated. The file format is proprietary and will not be supported in future major versions of AI SDK. Please use explicit calls to add inputs, outputs and the model to the pipeline.</li>
+</ul>
+<p>Fixed issues:</p>
+<ul>
+<li>Unexpected scheme validation error during edge package creation</li>
+<li>convert_package() includes wheel not supported on AI Inference Server</li>
+<li>Python 3.8.x ≤ 3.8.15 - Remote Denial of Service Vulnerability - CVE-2022-45061</li>
+<li>Python Package: certifi 2017.11.05 ≤ 2022.9.24 - Remote Improper Input Validation Vulnerability - GHSA-43fp-rhv2-5gv8</li>
+</ul>
+<h2 id="130">1.3.0</h2>
+<p>New features:</p>
+<ul>
+<li>Full PEP 508 support in requirements.txt</li>
+<li>Configure pipeline components to be executed in parallel in multiple instances.</li>
+</ul>
+<p>Deprecated features:</p>
+<ul>
+<li>Using module simaticai.pipeline is deprecated. Please use the source module pipeline provided as part of project template State Identifier.</li>
+<li>Using AI Model Deployer to convert pipeline configuration packages to edge configuration packages is deprecated.</li>
+</ul>
+<p>Fixed issues:</p>
+<ul>
+<li>Python 3.8.x ≤ 3.8.13 - Open Redirect Vulnerability</li>
+<li>Python 3.8.x ≤ 3.8.14 - Multiple Vulnerabilities</li>
+<li>Python Package: joblib ≤ 1.1.0 - Remote Code Execution Vulnerability</li>
+</ul>
+<h2 id="120">1.2.0</h2>
+<p>New features:</p>
+<ul>
+<li>Define and use pipeline parameters to adapt the behavior of a pipeline at runtime without redeployment.</li>
+<li>Create Delta Configuration Packages to reduce the upload time for small changes in the Pipeline Package.</li>
+<li>Streamline the entrypoint of the pipeline with the new entrypoint interface signature.</li>
+<li>Use input type Object to receive Vision Connector payload via high-performance ZMQ connection.</li>
+</ul>
+<p>Fixed issues:</p>
+<ul>
+<li><code>deployment.Component.add_dependencies()</code> does not duplicate packages in requirements.txt with different letter cases.</li>
+<li><code>deployment.convert_package()</code> method returns with <code>pathlib.Path</code> instead of string representation of the generated zip path.</li>
+<li><code>testing.pipeline_runner.LocalPipelineRunner</code> and <code>testing.pipeline_validator.validate_pipeline_dependencies()</code> can correctly handle components without requirements.txt.</li>
+</ul>
+<h2 id="110">1.1.0</h2>
+<p>New features:</p>
+<ul>
+<li>Create Edge Configuration Package from a Pipeline Configuration Package.</li>
+<li>Added generated reference manual.</li>
+</ul>
+<p>Fixed issues:</p>
+<ul>
+<li>Error stack trace is now complete under Windows when using LocalPipelineRunner.</li>
+<li>deployment.find_dependencies() is not restricted anymore to versioning scheme X.Y.Z</li>
+<li>LocalPipelineRunner updates pip to required version in the test venv</li>
+</ul>
+<h2 id="100">1.0.0</h2>
+<p>Initial released version.</p>
+<p>Main features include:</p>
+<ul>
+<li>Basic scikit-learn pipeline elements for building machine learning models that process time series of aligned signals.</li>
+<li>Python API for packaging trained models into pipeline configuration packages to be executed on AI Inference Server.<ul>
+<li>Supports pipeline configurations with multiple components running in isolated Python environments.</li>
+<li>Supports PEP 440 public version identifiers to specify required inference serving environment.</li>
+<li>Supports providing required Python packages as wheels.</li>
+</ul>
+</li>
+<li>Python API to check availability of required Python packages for AI Inference Server.</li>
+<li>Python API to drive pipeline configuration packages with test data.<ul>
+<li>Creates required inference serving environment automatically.</li>
+<li>Supports test driving the pipeline as a whole or component-by-component.</li>
+<li>Provides a local mock of the logging interface on AI Inference Server.</li>
+</ul>
+</li>
+<li>API reference manual.</li>
+<li>Tested on Linux and Windows.</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="user_manual.html" class="md-footer__link md-footer__link--next" aria-label="Next: User Manual" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              User Manual
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (C) Siemens AG 2021. All Rights Reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.48f2be22.min.js"></script>
+      
+    
+  </body>
+</html>

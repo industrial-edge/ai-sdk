@@ -1,0 +1,2454 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.5.0">
+    
+    
+      
+        <title>Wheelhouse - AI Software Development Kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-simaticaipackagingwheelhouse" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-header__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Software Development Kit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Wheelhouse
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-nav__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    AI Software Development Kit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user_manual.html" class="md-nav__link">
+        User Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Log Module
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Log Module" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Log Module
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/mock_logger.html" class="md-nav__link">
+        Mock Logger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Simaticai
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Simaticai" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Simaticai
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment.html" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_config_pb2.html" class="md-nav__link">
+        Model Config Pb2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/schemas.html" class="md-nav__link">
+        Schemas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          Helpers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Helpers" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Helpers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/model_config.html" class="md-nav__link">
+        Model Config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/pep508.html" class="md-nav__link">
+        Pep508
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/tempfiles.html" class="md-nav__link">
+        Tempfiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/yaml_helper.html" class="md-nav__link">
+        Yaml Helper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          Packaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Packaging" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Packaging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="constants.html" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="python_dependencies.html" class="md-nav__link">
+        Python Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Wheelhouse
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="wheelhouse.html" class="md-nav__link md-nav__link--active">
+        Wheelhouse
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check_directory_has_only_wheels_and_pure_sdist" class="md-nav__link">
+    check_directory_has_only_wheels_and_pure_sdist
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consistency_check" class="md-nav__link">
+    consistency_check
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_wheelhouse" class="md-nav__link">
+    create_wheelhouse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_sdist_name_version" class="md-nav__link">
+    get_sdist_name_version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_wheel_name_version" class="md-nav__link">
+    get_wheel_name_version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_pure_python_source" class="md-nav__link">
+    is_pure_python_source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_source_file" class="md-nav__link">
+    is_source_file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_wheel_file" class="md-nav__link">
+    is_wheel_file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove_setuptools" class="md-nav__link">
+    remove_setuptools
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/pipeline_runner.html" class="md-nav__link">
+        Pipeline Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/pipeline_validator.html" class="md-nav__link">
+        Pipeline Validator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/run_component.html" class="md-nav__link">
+        Run Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/run_gpuruntime_component.html" class="md-nav__link">
+        Run Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check_directory_has_only_wheels_and_pure_sdist" class="md-nav__link">
+    check_directory_has_only_wheels_and_pure_sdist
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consistency_check" class="md-nav__link">
+    consistency_check
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_wheelhouse" class="md-nav__link">
+    create_wheelhouse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_sdist_name_version" class="md-nav__link">
+    get_sdist_name_version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_wheel_name_version" class="md-nav__link">
+    get_wheel_name_version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_pure_python_source" class="md-nav__link">
+    is_pure_python_source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_source_file" class="md-nav__link">
+    is_source_file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_wheel_file" class="md-nav__link">
+    is_wheel_file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove_setuptools" class="md-nav__link">
+    remove_setuptools
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="module-simaticaipackagingwheelhouse">Module simaticai.packaging.wheelhouse</h1>
+<p>Methods for downloading and validating dependencies</p>
+<p>This module collects all the necessary methods for downloading
+wheel or source distributions, and validation methods for checking if
+the whole collection could be installed in the AI Inference Server's
+Python runtime environment.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Copyright (C) Siemens AG 2021. All Rights Reserved. Confidential.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">Methods for downloading and validating dependencies</span>
+
+<span class="sd">This module collects all the necessary methods for downloading</span>
+
+<span class="sd">wheel or source distributions, and validation methods for checking if</span>
+
+<span class="sd">the whole collection could be installed in the AI Inference Server&#39;s</span>
+
+<span class="sd">Python runtime environment.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">tarfile</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">chain</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">Union</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">textwrap</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">dedent</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">email.parser</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">Parser</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.helpers</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">pep508</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.constants</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">PLATFORMS</span><span class="p">,</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span><span class="o">.</span><span class="n">handlers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)]</span>
+
+<span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="n">_ERROR_LINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ERROR: No matching distribution found for &quot;</span>
+
+<span class="n">LIMITED_PACKAGES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="s2">&quot;tensorflow&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WARNING: TensorFlow is imported. For better performance with an already &quot;</span>
+
+<span class="w">                  </span><span class="s2">&quot;trained model, consider using TensorFlow Lite (tflite) instead.&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="s2">&quot;opencv_python&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WARNING: opencv-python is currently not supported by AI Inference Server, &quot;</span>
+
+<span class="w">                     </span><span class="s2">&quot;please use opencv-python-headless instead.&quot;</span><span class="p">,</span>
+
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_wheel_file</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb">bool</span><span class="p">:</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Checks whether the file on the given `path` is a wheel file.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        path (path-like): The relative or absolute path of the wheel file.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        bool: True if the zipfile contains a WHEEL text file, False otherwise.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">zipfile</span><span class="o">.</span><span class="n">is_zipfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">_wheel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;WHEEL&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">_wheel</span><span class="o">.</span><span class="n">namelist</span><span class="p">()]</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">False</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_source_file</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb">bool</span><span class="p">:</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Checks whether the file on the given `path` is a python source distribtion file.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        path (path-like): The relative or absolute path of the zip or tar.gz archive file.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        bool: True if the archive file contains a PKG-INFO text file, False otherwise.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">zipfile</span><span class="o">.</span><span class="n">is_zipfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">_archive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;PKG-INFO&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">_archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()]</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">tarfile</span><span class="o">.</span><span class="n">is_tarfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">_archive</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;PKG-INFO&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">_archive</span><span class="o">.</span><span class="n">getnames</span><span class="p">()]</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">False</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_extract_pkg_info</span><span class="p">(</span><span class="n">archive_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">tarfile</span><span class="o">.</span><span class="n">is_tarfile</span><span class="p">(</span><span class="n">archive_path</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">archive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">archive_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">archive</span><span class="o">.</span><span class="n">getnames</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">get_text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">lambda</span><span class="w"> </span><span class="n">filename</span><span class="p">:</span><span class="w"> </span><span class="n">archive</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="n">zipfile</span><span class="o">.</span><span class="n">is_zipfile</span><span class="p">(</span><span class="n">archive_path</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">archive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">archive_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">get_text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">lambda</span><span class="w"> </span><span class="n">filename</span><span class="p">:</span><span class="w"> </span><span class="n">archive</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="w">    </span><span class="n">PKG_INFO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">filepath</span><span class="p">:</span><span class="w"> </span><span class="n">filepath</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;PKG-INFO&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">files</span><span class="p">))</span>
+
+<span class="w">    </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">PKG_INFO</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">map</span><span class="p">(</span><span class="n">get_text</span><span class="p">,</span><span class="w"> </span><span class="n">PKG_INFO</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">txt</span><span class="p">:</span><span class="w"> </span><span class="n">Parser</span><span class="p">()</span><span class="o">.</span><span class="n">parsestr</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">txt</span><span class="p">,</span><span class="w"> </span><span class="n">headersonly</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span><span class="w"> </span><span class="n">headers</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">list</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">archive</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">headers</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_pure_python_source</span><span class="p">(</span><span class="n">archive_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Checks whether the given source distribution contains only Python sources.</span>
+
+<span class="s2">    This method handles source distributions in a unified way.</span>
+
+<span class="s2">    It searches for &#39;PKG-INFO&#39; files, collects the programming languages</span>
+
+<span class="s2">    used in the source, and returns True if only the Python language was used.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        archive_path (path-like): The relative or absolute path of the zip or tar.gz archive file.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        bool: True if the archive file contains only Python sources.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_extract_pkg_info</span><span class="p">(</span><span class="n">archive_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">headers</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">False</span>
+
+<span class="w">    </span><span class="n">classifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">header</span><span class="p">:</span><span class="w"> </span><span class="n">header</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">headers</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">classifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">classifier</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">classifier</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">classifier</span><span class="p">,</span><span class="w"> </span><span class="n">classifiers</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">classifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">classifiers</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">programming_languages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">line</span><span class="p">:</span><span class="w"> </span><span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Programming Language ::&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">classifiers</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">programming_languages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">line</span><span class="p">:</span><span class="w"> </span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;::&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span><span class="w"> </span><span class="n">programming_languages</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">all</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">txt</span><span class="p">:</span><span class="w"> </span><span class="n">txt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">programming_languages</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_wheel_name_version</span><span class="p">(</span><span class="n">archive_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Extracts the package name and version from a wheel file.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        archive_path (path-like): The relative or absolute path of the wheel archive file.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        (str, str): The name and version of the wheel if successful, (None,None) otherwise.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">archive_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">archive</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">METADATA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">filepath</span><span class="p">:</span><span class="w"> </span><span class="n">filepath</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;METADATA&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">files</span><span class="p">))</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">METADATA</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">map</span><span class="p">(</span>
+
+<span class="w">                </span><span class="k">lambda</span><span class="w"> </span><span class="n">filename</span><span class="p">:</span><span class="w"> </span><span class="n">archive</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span>
+
+<span class="w">                </span><span class="n">METADATA</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">txt</span><span class="p">:</span><span class="w"> </span><span class="n">Parser</span><span class="p">()</span><span class="o">.</span><span class="n">parsestr</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">txt</span><span class="p">,</span><span class="w"> </span><span class="n">headersonly</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span><span class="w"> </span><span class="n">headers</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">list</span><span class="p">(</span><span class="n">headers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;version&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_sdist_name_version</span><span class="p">(</span><span class="n">archive_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Extracts the package name and version from a source distribution file.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        archive_path (path-like): The relative or absolute path of the zip or tar.gz archive file.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        (str, str): The name and version of the source distribution if successful, (None,None) otherwise.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_extract_pkg_info</span><span class="p">(</span><span class="n">archive_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">headers</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;version&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_pip_download_platform_wheels</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="o">=</span><span class="p">[]):</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;requirements_file_path can not be empty.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_version</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_version can not be empty.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_packages_folder can not be empty.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">command_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">        </span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;download&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--no-color&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">requirements_file_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;-d&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--find-links&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--python-version&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--only-binary=:all:&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--no-binary=:none:&quot;</span>
+
+<span class="w">    </span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">platform</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">PLATFORMS</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">command_line</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--platform&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">platform</span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">extra_index</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">command_line</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">parts</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">command_line</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_pip_download_source_dist</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">):</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;requirements_file_path can not be empty.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_packages_folder can not be empty.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">command_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">        </span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;download&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--no-color&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">requirements_file_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;setuptools&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;-d&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--find-links&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--no-deps&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">extra_index</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">command_line</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">parts</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">command_line</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_pip_get_source_dependencies</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">):</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;requirements_file_path can not be empty.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_packages_folder can not be empty.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">assert</span><span class="w"> </span><span class="n">report_path</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="w">    </span><span class="n">command_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">        </span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">requirements_file_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--no-color&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--target&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--find-links&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--dry-run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--ignore-installed&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--force-reinstall&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--report&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">report_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">extra_index</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">command_line</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">parts</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">command_line</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_pip_dry_install_packages</span><span class="p">(</span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">):</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_version</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_version can not be empty.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_packages_folder can not be empty.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">command_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">        </span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--no-color&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--dry-run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--ignore-installed&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--force-reinstall&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--no-index&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--target&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--find-links&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--python-version&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--only-binary=:all:&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--no-binary=:none:&quot;</span><span class="p">,</span>
+
+<span class="w">        </span><span class="s2">&quot;--report&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">report_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">platform</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">PLATFORMS</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">command_line</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--platform&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">platform</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">command_line</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span><span class="w"> </span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">command_line</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_directory_has_only_wheels_and_pure_sdist</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Checks all files in a directory if they are wheel files or pure Python source distributions.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        python_packages_folder (path-like): The relative or absolute path of the directory to be checked.</span>
+
+<span class="s2">    Raises:</span>
+
+<span class="s2">        AssertionError: If the directory contains other files than wheels or pure Python source distributions.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">not_pure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">list</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="p">(</span><span class="n">is_wheel_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">is_pure_python_source</span><span class="p">(</span><span class="n">file</span><span class="p">)):</span>
+
+<span class="w">            </span><span class="n">not_pure</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">not_pure</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">not_pure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">not_pure</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">dedent</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">            One or more source dependencies are not pure Python sources.</span>
+
+<span class="s2">            You need to convert them to wheel files for the target platform manually.</span>
+
+<span class="s2">            List of not pure Python source distributions:</span>
+
+<span class="s2">            </span><span class="si">{</span><span class="n">not_pure</span><span class="si">}</span>
+
+<span class="s2">            &quot;&quot;&quot;</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">remove_setuptools</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;setuptools*&quot;</span><span class="p">)]</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">filename</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">consistency_check</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span>
+
+<span class="w">                      </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">report_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">check_pure</span><span class="p">:</span><span class="w"> </span><span class="nb">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">True</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_dry_install_packages</span><span class="p">(</span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_check_report_for_dependency_limitations</span><span class="p">(</span><span class="n">report_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">remove_setuptools</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dependency checking failed for file &#39;</span><span class="si">{</span><span class="n">requirements_file_path</span><span class="si">}</span><span class="s2">&#39;.</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">check_pure</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">check_directory_has_only_wheels_and_pure_sdist</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_extract_transitive_dependency_info</span><span class="p">(</span><span class="n">requirements</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">src_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">new_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="n">report_json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;report.json&quot;</span>
+
+<span class="w">    </span><span class="n">report_json</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_get_source_dependencies</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">report_json</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">report_json</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">dep</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;install&#39;</span><span class="p">]:</span>
+
+<span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dep</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+<span class="w">            </span><span class="n">vers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dep</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;version&#39;</span><span class="p">]</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">sources</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">requirements</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+
+<span class="w">                </span><span class="n">new_requirements</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pep508</span><span class="o">.</span><span class="n">parse_line</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">==</span><span class="si">{</span><span class="n">vers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">new_requirements</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_separate_wheels_and_sdists</span><span class="p">(</span><span class="n">requirements</span><span class="p">:</span><span class="w"> </span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">req_path</span><span class="p">,</span><span class="w"> </span><span class="n">src_path</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">has_src_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">requirements</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="w">    </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="n">has_src_dep</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">counter</span><span class="p">):</span>
+
+<span class="w">            </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;It looks like the specified requirements have caused an infinite download loop. Terminating.&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">counter</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="n">req_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">spec</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">requirements</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+
+<span class="w">                </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">spec</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">sources</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+
+<span class="w">                </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1"># Try to download requirements for the target platform, and see what fails</span>
+
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_download_platform_wheels</span><span class="p">(</span><span class="n">req_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">has_src_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">_ERROR_LINE</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">line</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">spec_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">_ERROR_LINE</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="w">                    </span><span class="n">spec_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spec_line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="w">                    </span><span class="n">spec</span><span class="p">:</span><span class="w"> </span><span class="n">pep508</span><span class="o">.</span><span class="n">Spec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pep508</span><span class="o">.</span><span class="n">parse_line</span><span class="p">(</span><span class="n">spec_line</span><span class="p">)</span>
+
+<span class="w">                    </span><span class="n">sources</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requirements</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">has_src_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">requirements</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="n">req_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">spec</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">requirements</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+
+<span class="w">            </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">spec</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">sources</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+
+<span class="w">            </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">requirements</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_compose_dependencies</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">check_pure</span><span class="p">:</span><span class="w"> </span><span class="nb">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">True</span><span class="p">):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Given a requirements.txt with some source distributions specified,</span>
+
+<span class="s2">    this method</span>
+
+<span class="s2">        - separates wheel and source dependencies</span>
+
+<span class="s2">        - downloads platform specific wheels</span>
+
+<span class="s2">        - downloads the source distributions without their dependencies</span>
+
+<span class="s2">        - runs a dry install on the requirements collected so far</span>
+
+<span class="s2">        - processes the report.json for further dependencies</span>
+
+<span class="s2">        - repeats the whole process until all source and platform specific wheels are downloaded</span>
+
+<span class="s2">        - runs a dry install on the package directory to check if it would install</span>
+
+<span class="s2">        - checks if all the source distributions are pure python sources</span>
+
+<span class="s2">        - raises an error if there are sources in other language</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
+
+<span class="w">    </span><span class="n">req_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span>
+
+<span class="w">    </span><span class="n">src_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;sources.txt&quot;</span>
+
+<span class="w">    </span><span class="n">report_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;report.json&quot;</span>
+
+<span class="w">    </span><span class="n">req_path</span><span class="o">.</span><span class="n">touch</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">src_path</span><span class="o">.</span><span class="n">touch</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">report_path</span><span class="o">.</span><span class="n">touch</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">try</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">requirements</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">,</span><span class="w"> </span><span class="n">index_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pep508</span><span class="o">.</span><span class="n">parse_requirements</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">index_url</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">extra_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index_url</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">        </span><span class="n">has_src_transitive_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">True</span>
+
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="n">has_src_transitive_dep</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">requirements</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_separate_wheels_and_sdists</span><span class="p">(</span><span class="n">requirements</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">req_path</span><span class="p">,</span><span class="w"> </span><span class="n">src_path</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+
+<span class="w">                </span><span class="n">has_src_transitive_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
+
+<span class="w">            </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_download_source_dist</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Requirements file &#39;</span><span class="si">{</span><span class="n">requirements_file_path</span><span class="si">}</span><span class="s2">&#39; contains invalid dependency specifications:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">new_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_extract_transitive_dependency_info</span><span class="p">(</span><span class="n">requirements</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">src_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">new_requirements</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+
+<span class="w">                    </span><span class="n">has_src_transitive_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
+
+<span class="w">                </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">spec</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">new_requirements</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+<span class="w">                        </span><span class="n">requirements</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spec</span>
+
+<span class="w">        </span><span class="n">consistency_check</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">,</span><span class="w"> </span><span class="n">check_pure</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">finally</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_download_only_wheels_if_possible</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    @Deprecated, reason: This method can be removed in SDK 2.0, since the `separate_wheels_and_sdists` method does the same thing, if there are no sdist dependencies. Kept only for preserving backward compatibility.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_download_platform_wheels</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">src_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">_ERROR_LINE</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">line</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">src_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">True</span>
+
+<span class="w">            </span><span class="k">break</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">src_dep</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading wheels failed, reason:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading wheels failed, reason:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_check_package_for_dependency_limitations</span><span class="p">(</span><span class="n">package_name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">):</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">package_name</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">return</span>
+
+<span class="w">    </span><span class="n">limited_package_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LIMITED_PACKAGES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">package_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">limited_package_message</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">limited_package_message</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_check_report_for_dependency_limitations</span><span class="p">(</span><span class="n">report_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">report_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+
+<span class="w">        </span><span class="k">return</span>
+
+<span class="w">    </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">report_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;install&#39;</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">report</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">return</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">dep</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;install&#39;</span><span class="p">]:</span>
+
+<span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dep</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">_check_package_for_dependency_limitations</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_wheelhouse</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="c1"># try the easy way</span>
+
+<span class="w">    </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_download_only_wheels_if_possible</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">success</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nb">any</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
+
+<span class="w">            </span><span class="k">return</span>
+
+<span class="w">        </span><span class="k">try</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
+
+<span class="w">            </span><span class="n">report_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;report.json&quot;</span>
+
+<span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_dry_install_packages</span><span class="p">(</span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dry install failed, reason:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">_check_report_for_dependency_limitations</span><span class="p">(</span><span class="n">report_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">finally</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">        </span><span class="c1"># let&#39;s do this the hard way</span>
+
+<span class="w">        </span><span class="k">try</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">_compose_dependencies</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">except</span><span class="w"> </span><span class="n">AssertionError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading wheels and source distributions failed, reason:</span><span class="se">\n</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h2 id="variables">Variables</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">LIMITED_PACKAGES</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">PLATFORMS</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">REQUIREMENTS_TXT</span>
+</code></pre></div>
+
+<h2 id="functions">Functions</h2>
+<h3 id="check_directory_has_only_wheels_and_pure_sdist">check_directory_has_only_wheels_and_pure_sdist</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">check_directory_has_only_wheels_and_pure_sdist</span><span class="p">(</span>
+    <span class="n">python_packages_folder</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Checks all files in a directory if they are wheel files or pure Python source distributions.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>python_packages_folder</td>
+<td>path-like</td>
+<td>The relative or absolute path of the directory to be checked.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raises:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AssertionError</td>
+<td>If the directory contains other files than wheels or pure Python source distributions.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="nx">def</span><span class="w"> </span><span class="nx">check_directory_has_only_wheels_and_pure_sdist</span><span class="p">(</span><span class="nx">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="nx">Union</span><span class="p">[</span><span class="nx">str</span><span class="p">,</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">    Checks all files in a directory if they are wheel files or pure Python source distributions.</span>
+
+<span class="s">    Args:</span>
+
+<span class="s">        python_packages_folder (path-like): The relative or absolute path of the directory to be checked.</span>
+
+<span class="s">    Raises:</span>
+
+<span class="s">        AssertionError: If the directory contains other files than wheels or pure Python source distributions.</span>
+
+<span class="s">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="nx">not_pure</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">list</span><span class="p">(</span><span class="nx">python_packages_folder</span><span class="p">.</span><span class="nx">iterdir</span><span class="p">()):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="p">(</span><span class="nx">is_wheel_file</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="nx">is_pure_python_source</span><span class="p">(</span><span class="nx">file</span><span class="p">)):</span>
+
+<span class="w">            </span><span class="nx">not_pure</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">len</span><span class="p">(</span><span class="nx">not_pure</span><span class="p">):</span>
+
+<span class="w">        </span><span class="nx">not_pure</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">not_pure</span><span class="p">)</span>
+
+<span class="w">        </span><span class="nx">raise</span><span class="w"> </span><span class="nx">AssertionError</span><span class="p">(</span><span class="nx">dedent</span><span class="p">(</span><span class="nx">f</span><span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">            One or more source dependencies are not pure Python sources.</span>
+
+<span class="s">            You need to convert them to wheel files for the target platform manually.</span>
+
+<span class="s">            List of not pure Python source distributions:</span>
+
+<span class="s">            {not_pure}</span>
+
+<span class="s">            &quot;&quot;&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+</details>
+<h3 id="consistency_check">consistency_check</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">consistency_check</span><span class="p">(</span>
+    <span class="n">requirements_file_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span>
+    <span class="n">python_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">python_packages_folder</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span>
+    <span class="n">report_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span>
+    <span class="n">check_pure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">consistency_check</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span>
+
+<span class="w">                      </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">report_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">check_pure</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_dry_install_packages</span><span class="p">(</span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">_check_report_for_dependency_limitations</span><span class="p">(</span><span class="n">report_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">remove_setuptools</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Dependency checking failed for file &#39;{requirements_file_path}&#39;.</span><span class="se">\n</span><span class="s2">{result.stderr}&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">check_pure</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">check_directory_has_only_wheels_and_pure_sdist</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h3 id="create_wheelhouse">create_wheelhouse</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_wheelhouse</span><span class="p">(</span>
+    <span class="n">requirements_file_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span>
+    <span class="n">python_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">python_packages_folder</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">create_wheelhouse</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="c1"># try the easy way</span>
+
+<span class="w">    </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_download_only_wheels_if_possible</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">success</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">any</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
+
+<span class="w">            </span><span class="k">return</span>
+
+<span class="w">        </span><span class="n">try</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
+
+<span class="w">            </span><span class="n">report_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;report.json&quot;</span>
+
+<span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_dry_install_packages</span><span class="p">(</span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Dry install failed, reason:</span><span class="se">\n</span><span class="s2">{result.stderr}&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">_check_report_for_dependency_limitations</span><span class="p">(</span><span class="n">report_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">finally</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_errors</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">        </span><span class="c1"># let&#39;s do this the hard way</span>
+
+<span class="w">        </span><span class="n">try</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">_compose_dependencies</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">AssertionError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Downloading wheels and source distributions failed, reason:</span><span class="se">\n</span><span class="s2">{str(error)}&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h3 id="get_sdist_name_version">get_sdist_name_version</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_sdist_name_version</span><span class="p">(</span>
+    <span class="n">archive_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Extracts the package name and version from a source distribution file.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>archive_path</td>
+<td>path-like</td>
+<td>The relative or absolute path of the zip or tar.gz archive file.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>(str, str): The name and version of the source distribution if successful, (None,None) otherwise.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="nx">def</span><span class="w"> </span><span class="nx">get_sdist_name_version</span><span class="p">(</span><span class="nx">archive_path</span><span class="p">:</span><span class="w"> </span><span class="nx">Union</span><span class="p">[</span><span class="nx">str</span><span class="p">,</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">    Extracts the package name and version from a source distribution file.</span>
+
+<span class="s">    Args:</span>
+
+<span class="s">        archive_path (path-like): The relative or absolute path of the zip or tar.gz archive file.</span>
+
+<span class="s">    Returns:</span>
+
+<span class="s">        (str, str): The name and version of the source distribution if successful, (None,None) otherwise.</span>
+
+<span class="s">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="nx">headers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">_extract_pkg_info</span><span class="p">(</span><span class="nx">archive_path</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">headers</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">None</span><span class="p">,</span><span class="w"> </span><span class="nx">None</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">headers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">headers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h3 id="get_wheel_name_version">get_wheel_name_version</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_wheel_name_version</span><span class="p">(</span>
+    <span class="n">archive_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Extracts the package name and version from a wheel file.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>archive_path</td>
+<td>path-like</td>
+<td>The relative or absolute path of the wheel archive file.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>(str, str): The name and version of the wheel if successful, (None,None) otherwise.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="nx">def</span><span class="w"> </span><span class="nx">get_wheel_name_version</span><span class="p">(</span><span class="nx">archive_path</span><span class="p">:</span><span class="w"> </span><span class="nx">Union</span><span class="p">[</span><span class="nx">str</span><span class="p">,</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">    Extracts the package name and version from a wheel file.</span>
+
+<span class="s">    Args:</span>
+
+<span class="s">        archive_path (path-like): The relative or absolute path of the wheel archive file.</span>
+
+<span class="s">    Returns:</span>
+
+<span class="s">        (str, str): The name and version of the wheel if successful, (None,None) otherwise.</span>
+
+<span class="s">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="nx">with</span><span class="w"> </span><span class="nx">zipfile</span><span class="p">.</span><span class="nx">ZipFile</span><span class="p">(</span><span class="nx">archive_path</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">archive</span><span class="p">:</span>
+
+<span class="w">        </span><span class="nx">files</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">archive</span><span class="p">.</span><span class="nx">namelist</span><span class="p">()</span>
+
+<span class="w">        </span><span class="nx">METADATA</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">list</span><span class="p">(</span><span class="nx">filter</span><span class="p">(</span><span class="nx">lambda</span><span class="w"> </span><span class="nx">filepath</span><span class="p">:</span><span class="w"> </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">endswith</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">METADATA</span><span class="err">&#39;</span><span class="p">),</span><span class="w"> </span><span class="nx">files</span><span class="p">))</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">len</span><span class="p">(</span><span class="nx">METADATA</span><span class="p">):</span>
+
+<span class="w">            </span><span class="nx">headers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">map</span><span class="p">(</span>
+
+<span class="w">                </span><span class="nx">lambda</span><span class="w"> </span><span class="nx">filename</span><span class="p">:</span><span class="w"> </span><span class="nx">archive</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">filename</span><span class="p">).</span><span class="nx">decode</span><span class="p">(</span><span class="s">&quot;utf-8&quot;</span><span class="p">),</span>
+
+<span class="w">                </span><span class="nx">METADATA</span><span class="p">)</span>
+
+<span class="w">            </span><span class="nx">headers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">map</span><span class="p">(</span><span class="nx">lambda</span><span class="w"> </span><span class="nx">txt</span><span class="p">:</span><span class="w"> </span><span class="nx">Parser</span><span class="p">().</span><span class="nx">parsestr</span><span class="p">(</span><span class="nx">text</span><span class="p">=</span><span class="nx">txt</span><span class="p">,</span><span class="w"> </span><span class="nx">headersonly</span><span class="p">=</span><span class="nx">True</span><span class="p">),</span><span class="w"> </span><span class="nx">headers</span><span class="p">)</span>
+
+<span class="w">            </span><span class="nx">headers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">list</span><span class="p">(</span><span class="nx">headers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="w">            </span><span class="nx">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="nx">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">headers</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;version&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">None</span><span class="p">,</span><span class="w"> </span><span class="nx">None</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h3 id="is_pure_python_source">is_pure_python_source</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_pure_python_source</span><span class="p">(</span>
+    <span class="n">archive_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Checks whether the given source distribution contains only Python sources.</p>
+<p>This method handles source distributions in a unified way.
+It searches for 'PKG-INFO' files, collects the programming languages
+used in the source, and returns True if only the Python language was used.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>archive_path</td>
+<td>path-like</td>
+<td>The relative or absolute path of the zip or tar.gz archive file.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>True if the archive file contains only Python sources.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>def is_pure_python_source(archive_path: Union[str, os.PathLike]):
+
+    &quot;&quot;&quot;
+
+    Checks whether the given source distribution contains only Python sources.
+
+    This method handles source distributions in a unified way.
+
+    It searches for &#39;PKG-INFO&#39; files, collects the programming languages
+
+    used in the source, and returns True if only the Python language was used.
+
+    Args:
+
+        archive_path (path-like): The relative or absolute path of the zip or tar.gz archive file.
+
+    Returns:
+
+        bool: True if the archive file contains only Python sources.
+
+    &quot;&quot;&quot;
+
+    headers = _extract_pkg_info(archive_path)
+
+    if headers is None:
+
+        return False
+
+    classifiers = map(lambda header: header.get_all(&quot;classifier&quot;), headers)
+
+    classifiers = map(lambda classifier: [] if classifier is None else classifier, classifiers)
+
+    classifiers = chain.from_iterable(classifiers)
+
+    programming_languages = filter(lambda line: line.startswith(&#39;Programming Language ::&#39;), classifiers)
+
+    programming_languages = map(lambda line: line.split(&quot;::&quot;)[1].strip().lower(), programming_languages)
+
+    return all(map(lambda txt: txt == &#39;python&#39;, programming_languages))
+</code></pre></div>
+
+</details>
+<h3 id="is_source_file">is_source_file</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_source_file</span><span class="p">(</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</code></pre></div>
+
+<p>Checks whether the file on the given <code>path</code> is a python source distribtion file.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>path-like</td>
+<td>The relative or absolute path of the zip or tar.gz archive file.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>True if the archive file contains a PKG-INFO text file, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">is_source_file</span><span class="p">(</span><span class="k">path</span><span class="o">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="o">:</span>
+
+<span class="w">    </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span>
+
+<span class="s2">    Checks whether the file on the given `path` is a python source distribtion file.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        path (path-like): The relative or absolute path of the zip or tar.gz archive file.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        bool: True if the archive file contains a PKG-INFO text file, False otherwise.</span>
+
+<span class="s2">    </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">zipfile</span><span class="p">.</span><span class="n">is_zipfile</span><span class="p">(</span><span class="k">path</span><span class="p">)</span><span class="o">:</span>
+
+<span class="w">        </span><span class="n">_archive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zipfile</span><span class="p">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="k">path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;PKG-INFO&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="err">[</span><span class="n">f</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="err">[</span><span class="o">-</span><span class="mi">1</span><span class="err">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">_archive</span><span class="p">.</span><span class="n">namelist</span><span class="p">()</span><span class="err">]</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">tarfile</span><span class="p">.</span><span class="n">is_tarfile</span><span class="p">(</span><span class="k">path</span><span class="p">)</span><span class="o">:</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="n">tarfile</span><span class="p">.</span><span class="k">open</span><span class="p">(</span><span class="k">path</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">_archive</span><span class="o">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;PKG-INFO&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="err">[</span><span class="n">f</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="err">[</span><span class="o">-</span><span class="mi">1</span><span class="err">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">_archive</span><span class="p">.</span><span class="n">getnames</span><span class="p">()</span><span class="err">]</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="no">False</span>
+</code></pre></div>
+
+</details>
+<h3 id="is_wheel_file">is_wheel_file</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">is_wheel_file</span><span class="p">(</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</code></pre></div>
+
+<p>Checks whether the file on the given <code>path</code> is a wheel file.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>path-like</td>
+<td>The relative or absolute path of the wheel file.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>True if the zipfile contains a WHEEL text file, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">is_wheel_file</span><span class="p">(</span><span class="k">path</span><span class="o">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="o">:</span>
+
+<span class="w">    </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span>
+
+<span class="s2">    Checks whether the file on the given `path` is a wheel file.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        path (path-like): The relative or absolute path of the wheel file.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        bool: True if the zipfile contains a WHEEL text file, False otherwise.</span>
+
+<span class="s2">    </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">zipfile</span><span class="p">.</span><span class="n">is_zipfile</span><span class="p">(</span><span class="k">path</span><span class="p">)</span><span class="o">:</span>
+
+<span class="w">        </span><span class="n">_wheel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zipfile</span><span class="p">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="k">path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;WHEEL&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="err">[</span><span class="n">f</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="err">[</span><span class="o">-</span><span class="mi">1</span><span class="err">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">_wheel</span><span class="p">.</span><span class="n">namelist</span><span class="p">()</span><span class="err">]</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="no">False</span>
+</code></pre></div>
+
+</details>
+<h3 id="remove_setuptools">remove_setuptools</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">remove_setuptools</span><span class="p">(</span>
+    <span class="n">python_packages_folder</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">remove_setuptools</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;setuptools*&quot;</span><span class="p">)]</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">filename</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="python_dependencies.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Python Dependencies" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Python Dependencies
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../testing/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: Index" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Index
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (C) Siemens AG 2021. All Rights Reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      
+    
+  </body>
+</html>

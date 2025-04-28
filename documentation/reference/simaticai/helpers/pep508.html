@@ -1,0 +1,2069 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.5.0">
+    
+    
+      
+        <title>Pep508 - AI Software Development Kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-simaticaihelperspep508" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-header__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Software Development Kit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pep508
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-nav__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    AI Software Development Kit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user_manual.html" class="md-nav__link">
+        User Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Log Module
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Log Module" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Log Module
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/mock_logger.html" class="md-nav__link">
+        Mock Logger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Simaticai
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Simaticai" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Simaticai
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment.html" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_config_pb2.html" class="md-nav__link">
+        Model Config Pb2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/schemas.html" class="md-nav__link">
+        Schemas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          Helpers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Helpers" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Helpers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="model_config.html" class="md-nav__link">
+        Model Config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pep508
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="pep508.html" class="md-nav__link md-nav__link--active">
+        Pep508
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse" class="md-nav__link">
+    Parse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_line" class="md-nav__link">
+    parse_line
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_lines" class="md-nav__link">
+    parse_lines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_requirements" class="md-nav__link">
+    parse_requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marker" class="md-nav__link">
+    Marker
+  </a>
+  
+    <nav class="md-nav" aria-label="Marker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-variables" class="md-nav__link">
+    Class variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    index
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spec" class="md-nav__link">
+    Spec
+  </a>
+  
+    <nav class="md-nav" aria-label="Spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro_1" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-variables_1" class="md-nav__link">
+    Class variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_1" class="md-nav__link">
+    count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index_1" class="md-nav__link">
+    index
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tempfiles.html" class="md-nav__link">
+        Tempfiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="yaml_helper.html" class="md-nav__link">
+        Yaml Helper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          Packaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Packaging" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Packaging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/constants.html" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/python_dependencies.html" class="md-nav__link">
+        Python Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/wheelhouse.html" class="md-nav__link">
+        Wheelhouse
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/pipeline_runner.html" class="md-nav__link">
+        Pipeline Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/pipeline_validator.html" class="md-nav__link">
+        Pipeline Validator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/run_component.html" class="md-nav__link">
+        Run Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/run_gpuruntime_component.html" class="md-nav__link">
+        Run Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse" class="md-nav__link">
+    Parse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_line" class="md-nav__link">
+    parse_line
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_lines" class="md-nav__link">
+    parse_lines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse_requirements" class="md-nav__link">
+    parse_requirements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marker" class="md-nav__link">
+    Marker
+  </a>
+  
+    <nav class="md-nav" aria-label="Marker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-variables" class="md-nav__link">
+    Class variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    index
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spec" class="md-nav__link">
+    Spec
+  </a>
+  
+    <nav class="md-nav" aria-label="Spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro_1" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-variables_1" class="md-nav__link">
+    Class variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count_1" class="md-nav__link">
+    count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index_1" class="md-nav__link">
+    index
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="module-simaticaihelperspep508">Module simaticai.helpers.pep508</h1>
+<p>None</p>
+<p>None</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Copyright (C) Siemens AG 2021. All Rights Reserved. Confidential.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">NamedTuple</span><span class="p">,</span><span class="w"> </span><span class="nb">Tuple</span><span class="p">,</span><span class="w"> </span><span class="n">Optional</span><span class="p">,</span><span class="w"> </span><span class="n">Union</span><span class="p">,</span><span class="w"> </span><span class="nb">List</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">parsley</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">makeGrammar</span>
+
+<span class="c1"># https://peps.python.org/pep-0508/#complete-grammar</span>
+
+<span class="n">GRAMMAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">wsp            = &#39; &#39; | &#39;</span><span class="se">\t</span><span class="s2">&#39;</span>
+
+<span class="s2">version_cmp    = wsp* &lt;&#39;&lt;=&#39; | &#39;&lt;&#39; | &#39;!=&#39; | &#39;==&#39; | &#39;&gt;=&#39; | &#39;&gt;&#39; | &#39;~=&#39; | &#39;===&#39;&gt;</span>
+
+<span class="s2">version        = wsp* &lt;( letterOrDigit | &#39;-&#39; | &#39;_&#39; | &#39;.&#39; | &#39;*&#39; | &#39;+&#39; | &#39;!&#39; )+&gt;</span>
+
+<span class="s2">version_one    = version_cmp:op version:v wsp* -&gt; (op, v)</span>
+
+<span class="s2">version_many   = version_one:v1 (wsp* &#39;,&#39; version_one)*:v2 -&gt; [v1] + v2</span>
+
+<span class="s2">versionspec    = (&#39;(&#39; version_many:v &#39;)&#39; -&gt;v) | version_many</span>
+
+<span class="s2">urlspec        = &#39;@&#39; wsp* &lt;URI_reference&gt;</span>
+
+<span class="s2">marker_op      = version_cmp | (wsp* &#39;in&#39;) | (wsp* &#39;not&#39; wsp+ &#39;in&#39;)</span>
+
+<span class="s2">python_str_c   = (wsp | letter | digit | &#39;(&#39; | &#39;)&#39; | &#39;.&#39; | &#39;{&#39; | &#39;}&#39; |</span>
+
+<span class="s2">                 &#39;-&#39; | &#39;_&#39; | &#39;*&#39; | &#39;#&#39; | &#39;:&#39; | &#39;;&#39; | &#39;,&#39; | &#39;/&#39; | &#39;?&#39; |</span>
+
+<span class="s2">                 &#39;[&#39; | &#39;]&#39; | &#39;!&#39; | &#39;~&#39; | &#39;`&#39; | &#39;@&#39; | &#39;$&#39; | &#39;%&#39; | &#39;^&#39; |</span>
+
+<span class="s2">                 &#39;&amp;&#39; | &#39;=&#39; | &#39;+&#39; | &#39;|&#39; | &#39;&lt;&#39; | &#39;&gt;&#39; )</span>
+
+<span class="s2">dquote         = &#39;&quot;&#39;</span>
+
+<span class="s2">squote         = &#39;</span><span class="se">\\</span><span class="s2">&#39;&#39;</span>
+
+<span class="s2">python_str     = (squote &lt;(python_str_c | dquote)*&gt;:s squote |</span>
+
+<span class="s2">                  dquote &lt;(python_str_c | squote)*&gt;:s dquote) -&gt; s</span>
+
+<span class="s2">env_var        = ( &#39;python_version&#39; | &#39;python_full_version&#39; | &#39;os_name&#39; | &#39;sys_platform&#39;</span>
+
+<span class="s2">                 | &#39;platform_release&#39; | &#39;platform_system&#39; | &#39;platform_version&#39; | &#39;platform_machine&#39; | &#39;platform_python_implementation&#39;</span>
+
+<span class="s2">                 | &#39;implementation_name&#39; | &#39;implementation_version&#39; | &#39;extra&#39; # ONLY when defined by a containing layer</span>
+
+<span class="s2">                 )</span>
+
+<span class="s2">marker_var     = wsp* (env_var | python_str)</span>
+
+<span class="s2">marker_expr    = marker_var:l marker_op:o marker_var:r -&gt; Marker(o, l, r)</span>
+
+<span class="s2">               | wsp* &#39;(&#39; marker:m wsp* &#39;)&#39; -&gt; m</span>
+
+<span class="s2">marker_and     = marker_expr:l wsp* &#39;and&#39; marker_expr:r -&gt; Marker(&#39;and&#39;, l, r)</span>
+
+<span class="s2">               | marker_expr:m -&gt; m</span>
+
+<span class="s2">marker_or      = marker_and:l wsp* &#39;or&#39; marker_and:r -&gt; Marker(&#39;or&#39;, l, r)</span>
+
+<span class="s2">               | marker_and:m -&gt; m</span>
+
+<span class="s2">marker         = marker_or</span>
+
+<span class="s2">quoted_marker  = &#39;;&#39; wsp* marker</span>
+
+<span class="s2">identifier_end = letterOrDigit | ((&#39;-&#39; | &#39;_&#39; | &#39;.&#39; )* letterOrDigit)</span>
+
+<span class="s2">identifier     = &lt; letterOrDigit identifier_end* &gt;</span>
+
+<span class="s2">name           = identifier</span>
+
+<span class="s2">extras_list    = identifier:i (wsp* &#39;,&#39; wsp* identifier)*:ids -&gt; [i] + ids</span>
+
+<span class="s2">extras         = &#39;[&#39; wsp* extras_list?:e wsp* &#39;]&#39; -&gt; e</span>
+
+<span class="s2">name_req       = (name:n wsp* extras?:e wsp* versionspec?:v wsp* quoted_marker?:m    -&gt; (n, e or [], v or [], m))</span>
+
+<span class="s2">url_req        = (name:n wsp* extras?:e wsp* urlspec:v (wsp+ | end) quoted_marker?:m -&gt; (n, e or [], v, m))</span>
+
+<span class="s2">specification  = wsp* ( url_req | name_req ):s wsp* -&gt; Spec(*s)</span>
+
+<span class="s2">URI_reference = &lt;URI | relative_ref&gt;</span>
+
+<span class="s2">URI           = scheme &#39;:&#39; hier_part (&#39;?&#39; query )? (&#39;#&#39; fragment)?</span>
+
+<span class="s2">hier_part     = (&#39;//&#39; authority path_abempty) | path_absolute | path_rootless | path_empty</span>
+
+<span class="s2">absolute_URI  = scheme &#39;:&#39; hier_part ( &#39;?&#39; query )?</span>
+
+<span class="s2">relative_ref  = relative_part ( &#39;?&#39; query )? (&#39;#&#39; fragment)?</span>
+
+<span class="s2">relative_part = &#39;//&#39; authority path_abempty | path_absolute | path_noscheme | path_empty</span>
+
+<span class="s2">scheme        = letter ( letter | digit | &#39;+&#39; | &#39;-&#39; | &#39;.&#39;)*</span>
+
+<span class="s2">authority     = ( userinfo &#39;@&#39; )? host ( &#39;:&#39; port )?</span>
+
+<span class="s2">userinfo      = ( unreserved | pct_encoded | sub_delims | &#39;:&#39;)*</span>
+
+<span class="s2">host          = IP_literal | IPv4address | reg_name</span>
+
+<span class="s2">port          = digit*</span>
+
+<span class="s2">IP_literal    = &#39;[&#39; ( IPv6address | IPvFuture) &#39;]&#39;</span>
+
+<span class="s2">IPvFuture     = &#39;v&#39; hexdig+ &#39;.&#39; ( unreserved | sub_delims | &#39;:&#39;)+</span>
+
+<span class="s2">IPv6address   = (</span>
+
+<span class="s2">                  ( h16 &#39;:&#39;)</span><span class="si">{6}</span><span class="s2"> ls32</span>
+
+<span class="s2">                  | &#39;::&#39; ( h16 &#39;:&#39;)</span><span class="si">{5}</span><span class="s2"> ls32</span>
+
+<span class="s2">                  | ( h16 )?  &#39;::&#39; ( h16 &#39;:&#39;)</span><span class="si">{4}</span><span class="s2"> ls32</span>
+
+<span class="s2">                  | ( ( h16 &#39;:&#39;)? h16 )? &#39;::&#39; ( h16 &#39;:&#39;)</span><span class="si">{3}</span><span class="s2"> ls32</span>
+
+<span class="s2">                  | ( ( h16 &#39;:&#39;){0,2} h16 )? &#39;::&#39; ( h16 &#39;:&#39;)</span><span class="si">{2}</span><span class="s2"> ls32</span>
+
+<span class="s2">                  | ( ( h16 &#39;:&#39;){0,3} h16 )? &#39;::&#39; h16 &#39;:&#39; ls32</span>
+
+<span class="s2">                  | ( ( h16 &#39;:&#39;){0,4} h16 )? &#39;::&#39; ls32</span>
+
+<span class="s2">                  | ( ( h16 &#39;:&#39;){0,5} h16 )? &#39;::&#39; h16</span>
+
+<span class="s2">                  | ( ( h16 &#39;:&#39;){0,6} h16 )? &#39;::&#39; )</span>
+
+<span class="s2">h16           = hexdig{1,4}</span>
+
+<span class="s2">ls32          = ( h16 &#39;:&#39; h16) | IPv4address</span>
+
+<span class="s2">IPv4address   = dec_octet &#39;.&#39; dec_octet &#39;.&#39; dec_octet &#39;.&#39; dec_octet</span>
+
+<span class="s2">nz            = ~&#39;0&#39; digit</span>
+
+<span class="s2">dec_octet     = (</span>
+
+<span class="s2">                  digit # 0-9</span>
+
+<span class="s2">                  | nz digit # 10-99</span>
+
+<span class="s2">                  | &#39;1&#39; digit</span><span class="si">{2}</span><span class="s2"> # 100-199</span>
+
+<span class="s2">                  | &#39;2&#39; (&#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39;) digit    # 200-249</span>
+
+<span class="s2">                  | &#39;25&#39; (&#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39;) ) # %250-255</span>
+
+<span class="s2">reg_name = (unreserved | pct_encoded | sub_delims)*</span>
+
+<span class="s2">path = ( path_abempty  # begins with &#39;/&#39; or is empty</span>
+
+<span class="s2">       | path_absolute # begins with &#39;/&#39; but not &#39;//&#39;</span>
+
+<span class="s2">       | path_noscheme # begins with a non-colon segment</span>
+
+<span class="s2">       | path_rootless # begins with a segment</span>
+
+<span class="s2">       | path_empty )  # zero characters</span>
+
+<span class="s2">path_abempty  = (&#39;/&#39; segment)*</span>
+
+<span class="s2">path_absolute = &#39;/&#39; (segment_nz (&#39;/&#39; segment)* )?</span>
+
+<span class="s2">path_noscheme = segment_nz_nc (&#39;/&#39; segment)*</span>
+
+<span class="s2">path_rootless = segment_nz (&#39;/&#39; segment)*</span>
+
+<span class="s2">path_empty    = pchar</span><span class="si">{0}</span>
+
+<span class="s2">segment       = pchar*</span>
+
+<span class="s2">segment_nz    = pchar+</span>
+
+<span class="s2">segment_nz_nc = ( unreserved | pct_encoded | sub_delims | &#39;@&#39;)+ # non-zero-length segment without any colon &#39;:&#39;</span>
+
+<span class="s2">pchar         = unreserved | pct_encoded | sub_delims | &#39;:&#39; | &#39;@&#39;</span>
+
+<span class="s2">query         = ( pchar | &#39;/&#39; | &#39;?&#39;)*</span>
+
+<span class="s2">fragment      = ( pchar | &#39;/&#39; | &#39;?&#39;)*</span>
+
+<span class="s2">pct_encoded   = &#39;%&#39; hexdig</span>
+
+<span class="s2">unreserved    = letter | digit | &#39;-&#39; | &#39;.&#39; | &#39;_&#39; | &#39;~&#39;</span>
+
+<span class="s2">reserved      = gen_delims | sub_delims</span>
+
+<span class="s2">gen_delims    = &#39;:&#39; | &#39;/&#39; | &#39;?&#39; | &#39;#&#39; | &#39;(&#39; | &#39;)?&#39; | &#39;@&#39;</span>
+
+<span class="s2">sub_delims    = &#39;!&#39; | &#39;$&#39; | &#39;&amp;&#39; | &#39;</span><span class="se">\\</span><span class="s2">&#39;&#39; | &#39;(&#39; | &#39;)&#39; | &#39;*&#39; | &#39;+&#39; | &#39;,&#39; | &#39;;&#39; | &#39;=&#39;</span>
+
+<span class="s2">hexdig        = digit | &#39;a&#39; | &#39;A&#39; | &#39;b&#39; | &#39;B&#39; | &#39;c&#39; | &#39;C&#39; | &#39;d&#39; | &#39;D&#39; | &#39;e&#39; | &#39;E&#39; | &#39;f&#39; | &#39;F&#39;</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Marker</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">op</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span>
+
+<span class="w">    </span><span class="n">v1</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Marker&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">v2</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Marker&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb">str</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb">str</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">Marker</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;( &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; )&quot;</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">v1</span>
+
+<span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">op</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">Marker</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;( &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; )&quot;</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s1">&#39;&quot;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">v2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&quot;&#39;</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">out</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Spec</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span>
+
+<span class="w">    </span><span class="n">extras</span><span class="p">:</span><span class="w"> </span><span class="nb">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="nb">List</span><span class="p">[</span><span class="nb">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">]]</span>
+
+<span class="w">    </span><span class="n">marker</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Marker</span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb">str</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb">str</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extras</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;[&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extras</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;]&quot;</span>
+
+<span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;@ &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">version</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">])</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot; ; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">marker</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">out</span>
+
+<span class="n">Parse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makeGrammar</span><span class="p">(</span><span class="n">GRAMMAR</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;Spec&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">Spec</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marker&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">Marker</span><span class="p">},</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;PEP508&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_line</span><span class="p">(</span><span class="n">line</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Spec</span><span class="p">:</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Parse</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">.</span><span class="n">specification</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;list[str]&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s2">&quot;(dict[str, Spec], list[str], str)&quot;</span><span class="p">:</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Processes dependency requirement lines.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        lines (list[str]): list of dependencies and (extra) index urls.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        (dict[str, Spec], list[str]): dictionary that contains the dependency specifcations and a list of (extra) index urls.</span>
+
+<span class="s2">    Raises:</span>
+
+<span class="s2">        AssertionError: if the lines contain invalid dependency specifications.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="n">invalid_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="w">    </span><span class="n">extra_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="w">    </span><span class="n">index_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">None</span>
+
+<span class="w">    </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">row</span><span class="p">:</span><span class="w"> </span><span class="n">row</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span><span class="w"> </span><span class="n">lines</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="n">row</span><span class="p">:</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">row</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">lines</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">lines</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;--index-url&#39;</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">index_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span>
+
+<span class="w">            </span><span class="k">continue</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;--extra-index-url&#39;</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">extra_index</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">continue</span>
+
+<span class="w">        </span><span class="k">try</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">spec</span><span class="p">:</span><span class="w"> </span><span class="n">Spec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">dependencies</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spec</span>
+
+<span class="w">        </span><span class="k">except</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">invalid_lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">invalid_lines</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">invalid_lines</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">dependencies</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">,</span><span class="w"> </span><span class="n">index_url</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_requirements</span><span class="p">(</span><span class="n">requirements_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s2">&quot;(dict[str, Spec], list[str], str)&quot;</span><span class="p">:</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Processes a requirements.txt file line-by-line.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        requirements_path: Union[str, os.PathLike]: path to the requirements.txt file.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        (dict[str, Spec], list[str]): dictionary that contains the dependency specifcations and a list of (extra) index urls.</span>
+
+<span class="s2">    Raises:</span>
+
+<span class="s2">        AssertionError: if the lines contain invalid dependency specifications.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="n">requirements_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="w">        </span><span class="k">try</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">parse_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">except</span><span class="w"> </span><span class="n">AssertionError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">err</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Requirements file &#39;</span><span class="si">{</span><span class="n">requirements_path</span><span class="si">}</span><span class="s2">&#39; contains invalid dependency specifications:</span><span class="se">\n</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h2 id="variables">Variables</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">GRAMMAR</span>
+</code></pre></div>
+
+<h2 id="functions">Functions</h2>
+<h3 id="parse">Parse</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">Parse</span><span class="p">(</span>
+    <span class="nb">input</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Creates a parser for the given input, with methods for</p>
+<p>invoking each rule.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>None</td>
+<td>The string you want to parse.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def makeParser(input):
+
+        &quot;&quot;&quot;
+
+        Creates a parser for the given input, with methods for
+
+        invoking each rule.
+
+        :param input: The string you want to parse.
+
+        &quot;&quot;&quot;
+
+        parser = g(input)
+
+        if tracefunc:
+
+            parser._trace = tracefunc
+
+        return _GrammarWrapper(parser, input)
+</code></pre></div>
+
+</details>
+<h3 id="parse_line">parse_line</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_line</span><span class="p">(</span>
+    <span class="n">line</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">pep508</span><span class="o">.</span><span class="n">Spec</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">parse_line</span><span class="p">(</span><span class="n">line</span><span class="o">:</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Spec</span><span class="o">:</span>
+
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nf">Parse</span><span class="p">(</span><span class="n">line</span><span class="p">).</span><span class="n">specification</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+<h3 id="parse_lines">parse_lines</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_lines</span><span class="p">(</span>
+    <span class="n">lines</span><span class="p">:</span> <span class="s1">&#39;list[str]&#39;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;(dict[str, Spec], list[str], str)&#39;</span>
+</code></pre></div>
+
+<p>Processes dependency requirement lines.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lines</td>
+<td>list[str]</td>
+<td>list of dependencies and (extra) index urls.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>(dict[str, Spec], list[str]): dictionary that contains the dependency specifcations and a list of (extra) index urls.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raises:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AssertionError</td>
+<td>if the lines contain invalid dependency specifications.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">parse_lines</span><span class="p">(</span><span class="nl">lines</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;list[str]&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="ss">&quot;(dict[str, Spec], list[str], str)&quot;</span><span class="err">:</span>
+
+<span class="w">    </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">    Processes dependency requirement lines.</span>
+
+<span class="ss">    Args:</span>
+
+<span class="ss">        lines (list[str]): list of dependencies and (extra) index urls.</span>
+
+<span class="ss">    Returns:</span>
+
+<span class="ss">        (dict[str, Spec], list[str]): dictionary that contains the dependency specifcations and a list of (extra) index urls.</span>
+
+<span class="ss">    Raises:</span>
+
+<span class="ss">        AssertionError: if the lines contain invalid dependency specifications.</span>
+
+<span class="ss">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
+
+<span class="w">    </span><span class="n">invalid_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
+
+<span class="w">    </span><span class="n">extra_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
+
+<span class="w">    </span><span class="n">index_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span>
+
+<span class="w">    </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="k">row</span><span class="err">:</span><span class="w"> </span><span class="k">row</span><span class="p">.</span><span class="n">strip</span><span class="p">(),</span><span class="w"> </span><span class="n">lines</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">filter</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="k">row</span><span class="err">:</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="ss">&quot;&quot;</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">row</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="ss">&quot;#&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">lines</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">lines</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;--index-url&#39;</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">index_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span>
+
+<span class="w">            </span><span class="k">continue</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;--extra-index-url&#39;</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">extra_index</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">continue</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="nl">spec</span><span class="p">:</span><span class="w"> </span><span class="n">Spec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">dependencies</span><span class="o">[</span><span class="n">spec.name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spec</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="k">Exception</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">e</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">invalid_lines</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;{line}\n{e}&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="n">invalid_lines</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">invalid_lines</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">dependencies</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">,</span><span class="w"> </span><span class="n">index_url</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h3 id="parse_requirements">parse_requirements</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_requirements</span><span class="p">(</span>
+    <span class="n">requirements_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;(dict[str, Spec], list[str], str)&#39;</span>
+</code></pre></div>
+
+<p>Processes a requirements.txt file line-by-line.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>requirements_path</td>
+<td>None</td>
+<td>Union[str, os.PathLike]: path to the requirements.txt file.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>(dict[str, Spec], list[str]): dictionary that contains the dependency specifcations and a list of (extra) index urls.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raises:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AssertionError</td>
+<td>if the lines contain invalid dependency specifications.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">parse_requirements</span><span class="p">(</span><span class="nl">requirements_path</span><span class="p">:</span><span class="w"> </span><span class="ow">Union</span><span class="o">[</span><span class="n">str, os.PathLike</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="ss">&quot;(dict[str, Spec], list[str], str)&quot;</span><span class="err">:</span>
+
+<span class="w">    </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">    Processes a requirements.txt file line-by-line.</span>
+
+<span class="ss">    Args:</span>
+
+<span class="ss">        requirements_path: Union[str, os.PathLike]: path to the requirements.txt file.</span>
+
+<span class="ss">    Returns:</span>
+
+<span class="ss">        (dict[str, Spec], list[str]): dictionary that contains the dependency specifcations and a list of (extra) index urls.</span>
+
+<span class="ss">    Raises:</span>
+
+<span class="ss">        AssertionError: if the lines contain invalid dependency specifications.</span>
+
+<span class="ss">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="k">open</span><span class="p">(</span><span class="n">requirements_path</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;r&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">f</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="w">        </span><span class="k">try</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">parse_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">AssertionError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">err</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Requirements file &#39;{requirements_path}&#39; contains invalid dependency specifications:\n{str(err)}&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h2 id="classes">Classes</h2>
+<h3 id="marker">Marker</h3>
+<p>Marker(op, v1, v2)</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Marker</span><span class="p">(</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">Marker</span>(<span class="n">NamedTuple</span>):
+
+    <span class="n">op:</span> <span class="n">str</span>
+
+    <span class="n">v1:</span> <span class="n">Union</span>[<span class="n">str</span>, <span class="s">&quot;Marker&quot;</span>]
+
+    <span class="n">v2:</span> <span class="n">Union</span>[<span class="n">str</span>, <span class="s">&quot;Marker&quot;</span>]
+
+    <span class="n">def</span> <span class="n">__str__</span>(<span class="nb">self</span>) -&gt; <span class="n">str:</span>
+
+        <span class="k">return</span> <span class="nb">self</span>.<span class="n">__repr__</span>()
+
+    <span class="n">def</span> <span class="n">__repr__</span>(<span class="nb">self</span>) -&gt; <span class="n">str:</span>
+
+        <span class="n">out</span> = <span class="s">&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">isinstance</span>(<span class="nb">self</span>.<span class="n">v1</span>, <span class="n">Marker</span>):
+
+            <span class="n">out</span> += <span class="s">&quot;( &quot;</span> + <span class="n">str</span>(<span class="nb">self</span>.<span class="n">v1</span>) + <span class="s">&quot; )&quot;</span>
+
+        <span class="n">else:</span>
+
+            <span class="n">out</span> += <span class="nb">self</span>.<span class="n">v1</span>
+
+        <span class="n">out</span> += <span class="s">&quot; &quot;</span> + <span class="nb">self</span>.<span class="n">op</span> + <span class="s">&quot; &quot;</span>
+
+        <span class="k">if</span> <span class="n">isinstance</span>(<span class="nb">self</span>.<span class="n">v2</span>, <span class="n">Marker</span>):
+
+            <span class="n">out</span> += <span class="s">&quot;( &quot;</span> + <span class="n">str</span>(<span class="nb">self</span>.<span class="n">v2</span>) + <span class="s">&quot; )&quot;</span>
+
+        <span class="n">else:</span>
+
+            <span class="n">out</span> += <span class="s">&#39;&quot;&#39;</span> + <span class="nb">self</span>.<span class="n">v2</span> + <span class="s">&#39;&quot;&#39;</span>
+
+        <span class="k">return</span> <span class="n">out</span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="ancestors-in-mro">Ancestors (in MRO)</h4>
+<ul>
+<li>builtins.tuple</li>
+</ul>
+<h4 id="class-variables">Class variables</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">op</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">v1</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">v2</span>
+</code></pre></div>
+
+<h4 id="methods">Methods</h4>
+<h4 id="count">count</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">value</span><span class="p">,</span>
+    <span class="o">/</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Return number of occurrences of value.</p>
+<h4 id="index">index</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">index</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">value</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">stop</span><span class="o">=</span><span class="mi">9223372036854775807</span><span class="p">,</span>
+    <span class="o">/</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Return first index of value.</p>
+<p>Raises ValueError if the value is not present.</p>
+<h3 id="spec">Spec</h3>
+<p>Spec(name, extras, version, marker)</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Spec</span><span class="p">(</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Spec</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span>
+
+<span class="w">    </span><span class="nl">extras</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">str</span><span class="o">]</span>
+
+<span class="w">    </span><span class="nl">version</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">[</span><span class="n">Tuple[str, str</span><span class="o">]</span><span class="err">]</span>
+
+<span class="w">    </span><span class="nl">marker</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">Marker</span><span class="o">]</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__str__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nf">str</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">__repr__</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__repr__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nf">str</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">name</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">extras</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot;[&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="ss">&quot;,&quot;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">extras</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="ss">&quot;]&quot;</span>
+
+<span class="w">        </span><span class="k">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot; &quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="nf">str</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot;@ &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span>
+
+<span class="w">        </span><span class="k">else</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot;,&quot;</span><span class="p">.</span><span class="k">join</span><span class="p">(</span><span class="o">[</span><span class="n">v[0</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="err">]</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">marker</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">out</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="ss">&quot; ; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">marker</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">out</span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="ancestors-in-mro_1">Ancestors (in MRO)</h4>
+<ul>
+<li>builtins.tuple</li>
+</ul>
+<h4 id="class-variables_1">Class variables</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">extras</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">marker</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">name</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">version</span>
+</code></pre></div>
+
+<h4 id="methods_1">Methods</h4>
+<h4 id="count_1">count</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">value</span><span class="p">,</span>
+    <span class="o">/</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Return number of occurrences of value.</p>
+<h4 id="index_1">index</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">index</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">value</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">stop</span><span class="o">=</span><span class="mi">9223372036854775807</span><span class="p">,</span>
+    <span class="o">/</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Return first index of value.</p>
+<p>Raises ValueError if the value is not present.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="model_config.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Model Config" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Model Config
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="tempfiles.html" class="md-footer__link md-footer__link--next" aria-label="Next: Tempfiles" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Tempfiles
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (C) Siemens AG 2021. All Rights Reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      
+    
+  </body>
+</html>
