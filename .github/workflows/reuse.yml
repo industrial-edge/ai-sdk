@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: Copyright 2024 Siemens AG
+#
+# SPDX-License-Identifier: MIT
+
+name: Reuse Check
+
+on: [push]
+
+jobs:
+  reuse-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Reuse
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y reuse
+
+      - name: Run Reuse lint
+        run: reuse lint
