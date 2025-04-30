@@ -2,6 +2,9 @@
 #
 # SPDX-License-Identifier: MIT
 
+# For adding missing license info for documentation files, use command below
+# reuse annotate --copyright "(C) 2025 Siemens AG" --license "MIT" --copyright-style "spdx" --merge-copyrights --recursive --skip-unrecognised ./documentation/
+
 name: Reuse Check
 
 on: [push]
