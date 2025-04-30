@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: Copyright (C) 2023 Siemens AG
+
+SPDX-License-Identifier: MIT
+-->
+
 # AI Software Development Kit
 
 AI Software Development Kit is a Python library that allows you to create, package, and test AI inference pipelines for the
