@@ -514,6 +514,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../helpers/reporter.html" class="md-nav__link">
+        Reporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/tempfiles.html" class="md-nav__link">
         Tempfiles
       </a>
@@ -666,6 +680,34 @@
   
   
     <li class="md-nav__item">
+      <a href="component_runner.html" class="md-nav__link">
+        Component Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_stream.html" class="md-nav__link">
+        Data Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="index.html" class="md-nav__link">
         Index
       </a>
@@ -791,6 +833,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="timeseries_stream.html" class="md-nav__link">
+        Timeseries Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vca_stream.html" class="md-nav__link">
+        Vca Stream
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -905,9 +975,9 @@ It consumes input data from a joblib file and produces output data into a joblib
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
@@ -947,7 +1017,7 @@ It consumes input data from a joblib file and produces output data into a joblib
 
 <span class="w">    </span><span class="n">packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">importlib</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">packages_distributions</span><span class="p">()</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">packages</span><span class="p">:</span>
 
@@ -966,8 +1036,6 @@ It consumes input data from a joblib file and produces output data into a joblib
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">diff</span><span class="p">):</span>
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING! The following dependencies were not used during execution: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span><span class="si">}</span><span class="s2">. Consider removing them from the pipeline package.&quot;</span><span class="p">)</span>
-
-<span class="w">        </span><span class="c1"># raise RuntimeError(&#39;UNUSED IMPORTS: &#39; + (&#39;, &#39;.join(diff)))</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;sqlite3&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
 
@@ -1003,7 +1071,7 @@ It consumes input data from a joblib file and produces output data into a joblib
 
 <span class="w">    </span><span class="n">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">module_name</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;none&quot;</span>
+<span class="w">    </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">None</span>
 
 <span class="w">    </span><span class="k">try</span><span class="p">:</span>
 
@@ -1023,7 +1091,7 @@ It consumes input data from a joblib file and produces output data into a joblib
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Method run not found&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;none&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">trigger_method</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
 
 <span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Neither &#39;run(data: str)&#39; nor &#39;process_input(data: dict)&#39; entrypoint method can be found.&quot;</span><span class="p">)</span>
 
@@ -1045,15 +1113,21 @@ It consumes input data from a joblib file and produces output data into a joblib
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Calling `process_input(..)`&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">process_input</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">input_data</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_list</span><span class="p">]</span>
-
 <span class="w">    </span><span class="k">else</span><span class="p">:</span>
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Calling `run(..)`&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">input_data</span><span class="p">))</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">input_data</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_list</span><span class="p">]</span>
+<span class="w">    </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
 
-<span class="w">        </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;run&quot;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">input_data</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_list</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;process_input&quot;</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">output_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">process_input</span><span class="p">(</span><span class="n">input_data</span><span class="p">))</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">output_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">input_data</span><span class="p">)))</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">requirements_file</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
 
@@ -1183,7 +1257,7 @@ The output file is a dumped joblib result which is a list containing outputs of 
 
 <span class="w">    </span><span class="n">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">module_name</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;none&quot;</span>
+<span class="w">    </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
 <span class="w">    </span><span class="n">try</span><span class="p">:</span>
 
@@ -1203,7 +1277,7 @@ The output file is a dumped joblib result which is a list containing outputs of 
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Method run not found&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;none&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">trigger_method</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
 <span class="w">        </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Neither &#39;run(data: str)&#39; nor &#39;process_input(data: dict)&#39; entrypoint method can be found.&quot;</span><span class="p">)</span>
 
@@ -1225,15 +1299,21 @@ The output file is a dumped joblib result which is a list containing outputs of 
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Calling `process_input(..)`&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">process_input</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">input_data</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_list</span><span class="p">]</span>
-
 <span class="w">    </span><span class="k">else</span><span class="p">:</span>
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Calling `run(..)`&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">input_data</span><span class="p">))</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">input_data</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_list</span><span class="p">]</span>
+<span class="w">    </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
 
-<span class="w">        </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;run&quot;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">input_data</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_list</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;process_input&quot;</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">output_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">process_input</span><span class="p">(</span><span class="n">input_data</span><span class="p">))</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">output_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">input_data</span><span class="p">)))</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">requirements_file</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
@@ -1291,7 +1371,7 @@ does not support it. A third party replacement library can be used instead.</p>
 
 <span class="w">    </span><span class="n">packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">importlib</span><span class="p">.</span><span class="n">metadata</span><span class="p">.</span><span class="n">packages_distributions</span><span class="p">()</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="k">value</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">modules</span><span class="p">.</span><span class="n">items</span><span class="p">()</span><span class="o">:</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">modules</span><span class="p">.</span><span class="n">items</span><span class="p">()</span><span class="o">:</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">packages</span><span class="o">:</span>
 
@@ -1310,8 +1390,6 @@ does not support it. A third party replacement library can be used instead.</p>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span><span class="o">:</span>
 
 <span class="w">        </span><span class="n">_logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! The following dependencies were not used during execution: {&#39;, &#39;.join(diff)}. Consider removing them from the pipeline package.&quot;</span><span class="p">)</span>
-
-<span class="w">        </span><span class="c1"># raise RuntimeError(&#39;UNUSED IMPORTS: &#39; + (&#39;, &#39;.join(diff)))</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;sqlite3&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">modules</span><span class="o">:</span>
 
