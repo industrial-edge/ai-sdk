@@ -235,6 +235,13 @@ SPDX-License-Identifier: MIT
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#240" class="md-nav__link">
+    2.4.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#230" class="md-nav__link">
     2.3.0
   </a>
@@ -626,6 +633,20 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="reference/simaticai/helpers/reporter.html" class="md-nav__link">
+        Reporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="reference/simaticai/helpers/tempfiles.html" class="md-nav__link">
         Tempfiles
       </a>
@@ -776,6 +797,34 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="reference/simaticai/testing/component_runner.html" class="md-nav__link">
+        Component Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/testing/data_stream.html" class="md-nav__link">
+        Data Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="reference/simaticai/testing/index.html" class="md-nav__link">
         Index
       </a>
@@ -840,6 +889,34 @@ SPDX-License-Identifier: MIT
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/testing/timeseries_stream.html" class="md-nav__link">
+        Timeseries Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/testing/vca_stream.html" class="md-nav__link">
+        Vca Stream
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -885,6 +962,13 @@ SPDX-License-Identifier: MIT
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#240" class="md-nav__link">
+    2.4.0
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#230" class="md-nav__link">
@@ -989,6 +1073,24 @@ SPDX-License-Identifier: MIT
 <li>Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.</li>
 <li>Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected</li>
 </ul>
+<h2 id="240">2.4.0</h2>
+<p>New features:</p>
+<ul>
+<li>New Class <code>ComponentRunner</code> introduced for testing Component object before packaging them.</li>
+<li><code>_package_component_dependencies</code> in <code>deployment.py</code> returns a set containing <code>(name,version)</code> tuples of all the dependencies.</li>
+<li><code>Pipeline.export(...)</code> generates a report md file with pipeline information, structure, direct and transitive dependencies, package vulnerabilities and warnings. The report file is placed next to the final generated zip package.</li>
+<li>LocalPipelineRunner generates a report md file with the execution information, zip folder structure, list of python packages installed, input/output payload counts, and warnings. The report file is placed next to the package.</li>
+<li>Error is raised when pipeline input variable names are present also in pipeline outputs.</li>
+<li>VCAStream class can convert a folder of images into ImageSet input for LocalPipelineRunner</li>
+<li>TimeSeriesStream class can feed a csv file as input into LocalPipelineRunner</li>
+<li>Dependencies with inline URLs in requirements.txt are downloaded and the URL is removed at package creation</li>
+</ul>
+<p>Deprecated features:
+-  PythonComponent.add_resources(..) method does NOT exclude hidden files or files in hidden folder when packaging the Pipeline.</p>
+<p>Fixed issues:
+-  Files from hidden folders can be added to PythonComponent resources, which were excluded in previous versions of AI SDK.
+-  Fixing pip report.json character encoding incompatibility on Windows.
+-  Python dependencies can be specified with URIs in the <code>requirements.txt</code> file and assigned to a Python Component.</p>
 <h2 id="230">2.3.0</h2>
 <p>New features:</p>
 <ul>

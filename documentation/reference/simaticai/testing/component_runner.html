@@ -1,0 +1,2155 @@
+
+<!doctype html>
+<!-- 
+  SPDX-FileCopyrightText: Copyright 2024 Siemens AG
+  SPDX-License-Identifier: MIT
+-->
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.5.0">
+    
+    
+      
+        <title>Component Runner - AI Software Development Kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-simaticaitestingcomponent_runner" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-header__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Software Development Kit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Component Runner
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-nav__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    AI Software Development Kit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user_manual.html" class="md-nav__link">
+        User Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Log Module
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Log Module" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Log Module
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/mock_logger.html" class="md-nav__link">
+        Mock Logger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Simaticai
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Simaticai" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Simaticai
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment.html" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_config_pb2.html" class="md-nav__link">
+        Model Config Pb2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/schemas.html" class="md-nav__link">
+        Schemas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          Helpers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Helpers" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Helpers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/model_config.html" class="md-nav__link">
+        Model Config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/pep508.html" class="md-nav__link">
+        Pep508
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/reporter.html" class="md-nav__link">
+        Reporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/tempfiles.html" class="md-nav__link">
+        Tempfiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/yaml_helper.html" class="md-nav__link">
+        Yaml Helper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          Packaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Packaging" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Packaging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/constants.html" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/python_dependencies.html" class="md-nav__link">
+        Python Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/wheelhouse.html" class="md-nav__link">
+        Wheelhouse
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Component Runner
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="component_runner.html" class="md-nav__link md-nav__link--active">
+        Component Runner
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentrunner" class="md-nav__link">
+    ComponentRunner
+  </a>
+  
+    <nav class="md-nav" aria-label="ComponentRunner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    run
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_parameters" class="md-nav__link">
+    set_parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_stream.html" class="md-nav__link">
+        Data Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pipeline_runner.html" class="md-nav__link">
+        Pipeline Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pipeline_validator.html" class="md-nav__link">
+        Pipeline Validator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="run_component.html" class="md-nav__link">
+        Run Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="run_gpuruntime_component.html" class="md-nav__link">
+        Run Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="timeseries_stream.html" class="md-nav__link">
+        Timeseries Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vca_stream.html" class="md-nav__link">
+        Vca Stream
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentrunner" class="md-nav__link">
+    ComponentRunner
+  </a>
+  
+    <nav class="md-nav" aria-label="ComponentRunner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    run
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_parameters" class="md-nav__link">
+    set_parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="module-simaticaitestingcomponent_runner">Module simaticai.testing.component_runner</h1>
+<p>None</p>
+<p>None</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Copyright (C) Siemens AG 2025. All Rights Reserved. Confidential.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">Optional</span><span class="p">,</span><span class="w"> </span><span class="n">Union</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">venv</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.deployment</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">,</span><span class="w"> </span><span class="n">GPURuntimeComponent</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.testing.data_stream</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">DataStream</span>
+
+<span class="n">PYTHON_RUNNER_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;run_component.py&#39;</span>
+
+<span class="n">GPU_RUNNER_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;run_gpuruntime_component.py&#39;</span>
+
+<span class="n">GPU_REQUIREMENTS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;gpuruntime_requirements.txt&#39;</span>
+
+<span class="n">GPU_CONFIG_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;model_config_pb2.py&#39;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ComponentRunner</span><span class="p">():</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Class to run a Pipeline Component in a virtual environment.</span>
+
+<span class="s2">    Supported Component Types:</span>
+
+<span class="s2">    - PythonComponent</span>
+
+<span class="s2">    - GPURuntimeComponent</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">    component: PythonComponent or GPURuntimeComponent</span>
+
+<span class="s2">    workdir: Path to the directory where the component should be run. If None, the current working directory is used.</span>
+
+<span class="s2">    cleanup: If True, the workdir is deleted after the context manager exits.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">workdir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="w"> </span><span class="n">cleanup</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">component</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cleanup</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_set_logger</span><span class="p">()</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_create_workdir</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">workdir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_copy_resources</span><span class="p">()</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_create_venv</span><span class="p">()</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_requirements</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">exception_type</span><span class="p">,</span><span class="w"> </span><span class="n">exception_value</span><span class="p">,</span><span class="w"> </span><span class="n">traceback</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">exception_type</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exception occurred: </span><span class="si">{</span><span class="n">exception_type</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exception_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">False</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_set_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Set the logger for the ComponentRunner.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">log_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;loglevel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">log_level</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">log_level</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">formatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">logger</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_create_workdir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">workdir</span><span class="p">):</span>
+
+<span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Create a workdir for the component.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">workdir</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">component</span><span class="o">.</span><span class="n">name</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">workdir</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">component</span><span class="o">.</span><span class="n">name</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Created workdir: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_copy_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Copy the required resources of the component to the workdir.</span>
+
+<span class="s2">        In case of a PythonComponent, also creates the dependencies into requirements.txt.</span>
+
+<span class="s2">        In case of a GPURuntimeComponent, also creates a requirements.txt with the required onnx and onnxruntime dependencies.</span>
+
+<span class="s2">        Also adds the runner script to the workdir.</span>
+
+<span class="s2">        In case of the source folder same as the workdir, the resources are not copied,</span>
+
+<span class="s2">        so any changes in source will affect the workdir.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">same_resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">from_path</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+<span class="w">                </span><span class="k">try</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">to_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">resources</span><span class="p">[</span><span class="n">from_path</span><span class="p">]</span>
+
+<span class="w">                    </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">from_path</span><span class="p">,</span><span class="w"> </span><span class="n">to_path</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">except</span><span class="w"> </span><span class="n">shutil</span><span class="o">.</span><span class="n">SameFileError</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">same_resources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">same_resources</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Resources are already in workdir, which are not copied:&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="n">resource</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">same_resources</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">resource</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">python_dependencies</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span><span class="w">  </span><span class="c1"># saves manually added Python packages and requirements.txt</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">PYTHON_RUNNER_PATH</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">model_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">model_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">model_path</span><span class="p">,</span><span class="w"> </span><span class="n">model_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;model.onnx&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">auto_config</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">GPU_RUNNER_PATH</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;run_component.py&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">GPU_REQUIREMENTS_PATH</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;requirements.txt&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">GPU_CONFIG_PATH</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Resources are copied into the workdir.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_create_venv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Create a Python virtual environment in the workdir.</span>
+
+<span class="s2">        The created virtual environment is stored in the context_dir and</span>
+
+<span class="s2">        has the same version as the current Python interpreter.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">context_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;.venv&quot;</span>
+
+<span class="w">        </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">venv</span><span class="o">.</span><span class="n">EnvBuilder</span><span class="p">(</span><span class="n">with_pip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">builder</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">context_dir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">context_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="o">.</span><span class="n">ensure_directories</span><span class="p">(</span><span class="n">context_dir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">bin_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context_dir</span><span class="o">.</span><span class="n">bin_path</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python virtualenv created in folder &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">bin_path</span><span class="o">.</span><span class="n">parent</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_install_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Installs the required Python dependencies.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="c1"># TODO: Add log_module install</span>
+
+<span class="w">        </span><span class="c1"># TODO: Add install from PythonPackages.zip</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bin_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;pip&#39;</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;install&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;joblib&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-r&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;requirements.txt&#39;</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">,</span><span class="w"> </span><span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">result_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">installed_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">line</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">result_lines</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;Successfully installed&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">line</span><span class="p">])</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">installed_message</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">set_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">parameter_name</span><span class="p">,</span><span class="w"> </span><span class="n">parameter_value</span><span class="p">):</span>
+
+<span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Set the parameters for the component.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">parameter_name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameter_value</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">]])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">]]:</span>
+
+<span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Run the component with the input payload.</span>
+
+<span class="s2">        Parameters:</span>
+
+<span class="s2">        input_payload: Input payload for the component.</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">        Output payload from the component.</span>
+
+<span class="s2">        Side Effects:</span>
+
+<span class="s2">        - The input payload is saved in the workdir.</span>
+
+<span class="s2">        - The output payload is loaded from the workdir.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">input_payload_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;input.joblib&quot;</span>
+
+<span class="w">        </span><span class="n">output_payload_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;output.joblib&quot;</span>
+
+<span class="w">        </span><span class="n">batch_input</span><span class="p">:</span><span class="w"> </span><span class="nb">bool</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">inputBatch</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">item</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_payload</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="nb">dict</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">input_payload</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">input_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="nb">input</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="nb">input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">input_variables</span><span class="p">,</span><span class="w"> </span><span class="n">batch_input</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_create_command</span><span class="p">(</span><span class="n">input_payload_path</span><span class="p">,</span><span class="w"> </span><span class="n">output_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running command: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">,</span><span class="w"> </span><span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">batch_output</span><span class="p">:</span><span class="w"> </span><span class="nb">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">outputBatch</span>
+
+<span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">output_payload</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">output_payload</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">output</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">output_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">output_variables</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">metrics</span><span class="p">]</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">output_payload</span><span class="p">,</span><span class="w"> </span><span class="n">output_variables</span><span class="p">,</span><span class="w"> </span><span class="n">batch_output</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_check_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">element_name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">instance</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">instance</span><span class="p">):</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">element_name</span><span class="si">}</span><span class="s2"> must be an instance of </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">element_name</span><span class="si">}</span><span class="s2"> must be an instance of </span><span class="si">{</span><span class="n">instance</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_check_variable_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">variable</span><span class="p">:</span><span class="w"> </span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;String&quot;</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;String value&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;StringArray&quot;</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;StringArray value&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">value</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;StringArray item&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Object&quot;</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Object value&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">dict</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Object value must have exactly 2 items&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="s2">&quot;Object value must have exactly 2 items&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nb">bytes</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="nb">bytes</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">ok</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Object value must have exactly one &#39;str&#39; and one &#39;bytes&#39; field&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="s2">&quot;Object value must have exactly one &#39;str&#39; and one &#39;bytes&#39; field&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_validate_payload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">,</span><span class="w"> </span><span class="n">batch</span><span class="p">:</span><span class="w"> </span><span class="nb">bool</span><span class="p">):</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Payload&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">payload_element</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">batch</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">payload_element</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Batch payload element&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">payload_element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">payload_element</span><span class="p">]</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">payload_element</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_validate_payload_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">:</span><span class="w"> </span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">):</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Payload item&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">dict</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+
+<span class="w">            </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kc">None</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING! Variable &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; is missing from input, output or metric&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">continue</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_variable_types</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">payload_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">set</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">variable_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">variable_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">extra_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payload_names</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">variable_names</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">extra_variables</span><span class="p">):</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: </span><span class="si">{</span><span class="n">extra_variables</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_create_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="p">,</span><span class="w"> </span><span class="n">output_payload_path</span><span class="p">):</span>
+
+<span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Create the command to run the component.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bin_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;run_component&#39;</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">cmd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">entrypoint</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="p">,</span>
+
+<span class="w">                </span><span class="s2">&quot;-p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+
+<span class="w">            </span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">GPURuntimeComponent</span><span class="p">):</span>
+
+<span class="w">            </span><span class="c1"># TODO: check relative path to run_component.py</span>
+
+<span class="w">            </span><span class="n">model_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;model.onnx&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+<span class="w">            </span><span class="n">config_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+<span class="w">            </span><span class="n">cmd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">model_path</span><span class="p">),</span>
+
+<span class="w">                </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">config_path</span><span class="p">),</span>
+
+<span class="w">            </span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">            </span><span class="s2">&quot;-i&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">output_payload_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;-ll&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">getEffectiveLevel</span><span class="p">())</span>
+
+<span class="w">        </span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cmd</span>
+</code></pre></div>
+
+</details>
+<h2 id="variables">Variables</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">GPU_CONFIG_PATH</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">GPU_REQUIREMENTS_PATH</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">GPU_RUNNER_PATH</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">PYTHON_RUNNER_PATH</span>
+</code></pre></div>
+
+<h2 id="classes">Classes</h2>
+<h3 id="componentrunner">ComponentRunner</h3>
+<p>Class to run a Pipeline Component in a virtual environment.</p>
+<p>Supported Component Types:
+- PythonComponent
+- GPURuntimeComponent</p>
+<p>Args:
+component: PythonComponent or GPURuntimeComponent
+workdir: Path to the directory where the component should be run. If None, the current working directory is used.
+cleanup: If True, the workdir is deleted after the context manager exits.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">ComponentRunner</span><span class="p">(</span>
+    <span class="n">component</span><span class="p">,</span>
+    <span class="n">workdir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">cleanup</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">ComponentRunner</span><span class="p">():</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Class to run a Pipeline Component in a virtual environment.</span>
+
+<span class="sd">    Supported Component Types:</span>
+
+<span class="sd">    - PythonComponent</span>
+
+<span class="sd">    - GPURuntimeComponent</span>
+
+<span class="sd">    Args:</span>
+
+<span class="sd">    component: PythonComponent or GPURuntimeComponent</span>
+
+<span class="sd">    workdir: Path to the directory where the component should be run. If None, the current working directory is used.</span>
+
+<span class="sd">    cleanup: If True, the workdir is deleted after the context manager exits.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">workdir</span><span class="o">=</span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">cleanup</span><span class="o">=</span><span class="n">False</span><span class="p">):</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">component</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cleanup</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_set_logger</span><span class="p">()</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_create_workdir</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">workdir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_copy_resources</span><span class="p">()</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_create_venv</span><span class="p">()</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_requirements</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">exception_type</span><span class="p">,</span><span class="w"> </span><span class="n">exception_value</span><span class="p">,</span><span class="w"> </span><span class="n">traceback</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">exception_type</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Exception occurred: {exception_type.__name__}: {exception_value}&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_set_logger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Set the logger for the ComponentRunner.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">log_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;loglevel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">log_level</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">log_level</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">formatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">logger</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_create_workdir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">workdir</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Create a workdir for the component.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">workdir</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">component</span><span class="o">.</span><span class="n">name</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">workdir</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">component</span><span class="o">.</span><span class="n">name</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Created workdir: {self.workdir}&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_copy_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Copy the required resources of the component to the workdir.</span>
+
+<span class="sd">        In case of a PythonComponent, also creates the dependencies into requirements.txt.</span>
+
+<span class="sd">        In case of a GPURuntimeComponent, also creates a requirements.txt with the required onnx and onnxruntime dependencies.</span>
+
+<span class="sd">        Also adds the runner script to the workdir.</span>
+
+<span class="sd">        In case of the source folder same as the workdir, the resources are not copied,</span>
+
+<span class="sd">        so any changes in source will affect the workdir.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">same_resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">from_path</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+<span class="w">                </span><span class="n">try</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">to_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">resources</span><span class="p">[</span><span class="n">from_path</span><span class="p">]</span>
+
+<span class="w">                    </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">from_path</span><span class="p">,</span><span class="w"> </span><span class="n">to_path</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">except</span><span class="w"> </span><span class="n">shutil</span><span class="o">.</span><span class="n">SameFileError</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">same_resources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">from_path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">same_resources</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Resources are already in workdir, which are not copied:&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="n">resource</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">same_resources</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;  - {resource}&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">python_dependencies</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span><span class="w">  </span><span class="c1"># saves manually added Python packages and requirements.txt</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">PYTHON_RUNNER_PATH</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">model_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">model_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">model_path</span><span class="p">,</span><span class="w"> </span><span class="n">model_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;model.onnx&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{self.component.auto_config}&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">GPU_RUNNER_PATH</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;run_component.py&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">GPU_REQUIREMENTS_PATH</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;requirements.txt&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">GPU_CONFIG_PATH</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Resources are copied into the workdir.&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_create_venv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Create a Python virtual environment in the workdir.</span>
+
+<span class="sd">        The created virtual environment is stored in the context_dir and</span>
+
+<span class="sd">        has the same version as the current Python interpreter.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">context_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;.venv&quot;</span>
+
+<span class="w">        </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">venv</span><span class="o">.</span><span class="n">EnvBuilder</span><span class="p">(</span><span class="n">with_pip</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">builder</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">context_dir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">context_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="o">.</span><span class="n">ensure_directories</span><span class="p">(</span><span class="n">context_dir</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">bin_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context_dir</span><span class="o">.</span><span class="n">bin_path</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Python virtualenv created in folder &#39;{self.bin_path.parent}&#39;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_install_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Installs the required Python dependencies.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="c1"># TODO: Add log_module install</span>
+
+<span class="w">        </span><span class="c1"># TODO: Add install from PythonPackages.zip</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bin_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;pip&#39;</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;install&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;joblib&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-r&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;requirements.txt&#39;</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">,</span><span class="w"> </span><span class="n">capture_output</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">result_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">installed_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">line</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">result_lines</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;Successfully installed&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">line</span><span class="p">])</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">installed_message</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">set_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">parameter_name</span><span class="p">,</span><span class="w"> </span><span class="n">parameter_value</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Set the parameters for the component.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">parameter_name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameter_value</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Run the component with the input payload.</span>
+
+<span class="sd">        Parameters:</span>
+
+<span class="sd">        input_payload: Input payload for the component.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        Output payload from the component.</span>
+
+<span class="sd">        Side Effects:</span>
+
+<span class="sd">        - The input payload is saved in the workdir.</span>
+
+<span class="sd">        - The output payload is loaded from the workdir.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">input_payload_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;input.joblib&quot;</span>
+
+<span class="w">        </span><span class="n">output_payload_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;output.joblib&quot;</span>
+
+<span class="w">        </span><span class="n">batch_input</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">inputBatch</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">item</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_payload</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">dict</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">input_payload</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">input_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">input_variables</span><span class="p">,</span><span class="w"> </span><span class="n">batch_input</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_create_command</span><span class="p">(</span><span class="n">input_payload_path</span><span class="p">,</span><span class="w"> </span><span class="n">output_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running command: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">,</span><span class="w"> </span><span class="n">capture_output</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">batch_output</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">outputBatch</span>
+
+<span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">output_payload</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">output_payload</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">output</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">output_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">output_variables</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">metrics</span><span class="p">]</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">output_payload</span><span class="p">,</span><span class="w"> </span><span class="n">output_variables</span><span class="p">,</span><span class="w"> </span><span class="n">batch_output</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_check_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">element_name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">instance</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">instance</span><span class="p">):</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{element_name} must be an instance of {instance.__name__}&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{element_name} must be an instance of {instance.__name__}&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_check_variable_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">variable</span><span class="p">:</span><span class="w"> </span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;String&quot;</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;String value&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;StringArray&quot;</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;StringArray value&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">value</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;StringArray item&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Object&quot;</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Object value&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dict</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Object value must have exactly 2 items&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="s2">&quot;Object value must have exactly 2 items&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">bytes</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">bytes</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">ok</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Object value must have exactly one &#39;str&#39; and one &#39;bytes&#39; field&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="s2">&quot;Object value must have exactly one &#39;str&#39; and one &#39;bytes&#39; field&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_validate_payload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">batch</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">):</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Payload&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">payload_element</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">batch</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">payload_element</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Batch payload element&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">payload_element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">payload_element</span><span class="p">]</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">payload_element</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload_item</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_validate_payload_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">:</span><span class="w"> </span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">):</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_instance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Payload item&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dict</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+
+<span class="w">            </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">None</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! Variable &#39;{name}&#39; is missing from input, output or metric&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">continue</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_variable_types</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">payload_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">variable_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">variable_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">extra_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payload_names</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">variable_names</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">extra_variables</span><span class="p">):</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: {extra_variables}&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_create_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="p">,</span><span class="w"> </span><span class="n">output_payload_path</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Create the command to run the component.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bin_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;run_component&#39;</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">cmd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">entrypoint</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span><span class="p">,</span>
+
+<span class="w">                </span><span class="s2">&quot;-p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+
+<span class="w">            </span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">GPURuntimeComponent</span><span class="p">):</span>
+
+<span class="w">            </span><span class="c1"># TODO: check relative path to run_component.py</span>
+
+<span class="w">            </span><span class="n">model_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;model.onnx&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+<span class="w">            </span><span class="n">config_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+<span class="w">            </span><span class="n">cmd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">model_path</span><span class="p">),</span>
+
+<span class="w">                </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">config_path</span><span class="p">),</span>
+
+<span class="w">            </span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">            </span><span class="s2">&quot;-i&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">output_payload_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;-ll&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">getEffectiveLevel</span><span class="p">())</span>
+
+<span class="w">        </span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cmd</span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="methods">Methods</h4>
+<h4 id="run">run</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">input_payload</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Run the component with the input payload.</p>
+<p>Parameters:
+input_payload: Input payload for the component.</p>
+<p>Returns:
+Output payload from the component.</p>
+<p>Side Effects:
+- The input payload is saved in the workdir.
+- The output payload is loaded from the workdir.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Run the component with the input payload.</span>
+
+<span class="sd">        Parameters:</span>
+
+<span class="sd">        input_payload: Input payload for the component.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        Output payload from the component.</span>
+
+<span class="sd">        Side Effects:</span>
+
+<span class="sd">        - The input payload is saved in the workdir.</span>
+
+<span class="sd">        - The output payload is loaded from the workdir.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">input_payload_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;input.joblib&quot;</span>
+
+<span class="w">        </span><span class="n">output_payload_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;output.joblib&quot;</span>
+
+<span class="w">        </span><span class="n">batch_input</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">inputBatch</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">item</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_payload</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">dict</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">input_payload</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">input_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">input</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">input_variables</span><span class="p">,</span><span class="w"> </span><span class="n">batch_input</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_create_command</span><span class="p">(</span><span class="n">input_payload_path</span><span class="p">,</span><span class="w"> </span><span class="n">output_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running command: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">,</span><span class="w"> </span><span class="n">capture_output</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+
+<span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">batch_output</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">outputBatch</span>
+
+<span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">output_payload</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">output_payload</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">output</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">output_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">output_variables</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">metrics</span><span class="p">]</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">output_payload</span><span class="p">,</span><span class="w"> </span><span class="n">output_variables</span><span class="p">,</span><span class="w"> </span><span class="n">batch_output</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span>
+</code></pre></div>
+
+</details>
+<h4 id="set_parameters">set_parameters</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">set_parameters</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">parameter_name</span><span class="p">,</span>
+    <span class="n">parameter_value</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Set the parameters for the component.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">set_parameters</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">parameter_name</span><span class="p">,</span><span class="w"> </span><span class="n">parameter_value</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">        Set the parameters for the component.</span>
+
+<span class="ss">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="k">parameters</span><span class="o">[</span><span class="n">parameter_name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parameter_value</span>
+</code></pre></div>
+
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../packaging/wheelhouse.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Wheelhouse" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Wheelhouse
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="data_stream.html" class="md-footer__link md-footer__link--next" aria-label="Next: Data Stream" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Data Stream
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (C) Siemens AG 2021. All Rights Reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      
+    
+  </body>
+</html>

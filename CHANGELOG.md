@@ -17,6 +17,27 @@ Known issues:
 -   Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.
 -   Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected
 
+## 2.4.0
+
+New features:
+
+-   New Class `ComponentRunner` introduced for testing Component object before packaging them.
+-   `_package_component_dependencies` in `deployment.py` returns a set containing `(name,version)` tuples of all the dependencies.
+-   `Pipeline.export(...)` generates a report md file with pipeline information, structure, direct and transitive dependencies, package vulnerabilities and warnings. The report file is placed next to the final generated zip package.
+-   LocalPipelineRunner generates a report md file with the execution information, zip folder structure, list of python packages installed, input/output payload counts, and warnings. The report file is placed next to the package.
+-   Error is raised when pipeline input variable names are present also in pipeline outputs.
+-   VCAStream class can convert a folder of images into ImageSet input for LocalPipelineRunner
+-   TimeSeriesStream class can feed a csv file as input into LocalPipelineRunner
+-   Dependencies with inline URLs in requirements.txt are downloaded and the URL is removed at package creation
+
+Deprecated features:
+-  PythonComponent.add_resources(..) method does NOT exclude hidden files or files in hidden folder when packaging the Pipeline.
+
+Fixed issues:
+-  Files from hidden folders can be added to PythonComponent resources, which were excluded in previous versions of AI SDK.
+-  Fixing pip report.json character encoding incompatibility on Windows.
+-  Python dependencies can be specified with URIs in the `requirements.txt` file and assigned to a Python Component.
+
 ## 2.3.0
 
 New features:

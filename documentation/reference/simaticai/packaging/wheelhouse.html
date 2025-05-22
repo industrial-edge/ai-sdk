@@ -519,6 +519,20 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="../helpers/reporter.html" class="md-nav__link">
+        Reporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/tempfiles.html" class="md-nav__link">
         Tempfiles
       </a>
@@ -673,6 +687,13 @@ SPDX-License-Identifier: MIT
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#assert_none_parameters" class="md-nav__link">
+    assert_none_parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#check_directory_has_only_wheels_and_pure_sdist" class="md-nav__link">
     check_directory_has_only_wheels_and_pure_sdist
   </a>
@@ -735,6 +756,13 @@ SPDX-License-Identifier: MIT
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#report_json_path" class="md-nav__link">
+    report_json_path
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -781,6 +809,34 @@ SPDX-License-Identifier: MIT
           Testing
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/component_runner.html" class="md-nav__link">
+        Component Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/data_stream.html" class="md-nav__link">
+        Data Stream
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -852,6 +908,34 @@ SPDX-License-Identifier: MIT
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/timeseries_stream.html" class="md-nav__link">
+        Timeseries Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/vca_stream.html" class="md-nav__link">
+        Vca Stream
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -914,6 +998,13 @@ SPDX-License-Identifier: MIT
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#assert_none_parameters" class="md-nav__link">
+    assert_none_parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#check_directory_has_only_wheels_and_pure_sdist" class="md-nav__link">
     check_directory_has_only_wheels_and_pure_sdist
   </a>
@@ -972,6 +1063,13 @@ SPDX-License-Identifier: MIT
           <li class="md-nav__item">
   <a href="#remove_setuptools" class="md-nav__link">
     remove_setuptools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report_json_path" class="md-nav__link">
+    report_json_path
   </a>
   
 </li>
@@ -1062,6 +1160,8 @@ Python runtime environment.</p>
 
 <span class="n">_ERROR_LINE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ERROR: No matching distribution found for &quot;</span>
 
+<span class="n">report_json_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">lambda</span><span class="w"> </span><span class="n">tmp_dir</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;report.json&quot;</span>
+
 <span class="n">LIMITED_PACKAGES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="s2">&quot;tensorflow&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WARNING: TensorFlow is imported. For better performance with an already &quot;</span>
@@ -1073,6 +1173,32 @@ Python runtime environment.</p>
 <span class="w">                     </span><span class="s2">&quot;please use opencv-python-headless instead.&quot;</span><span class="p">,</span>
 
 <span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">assert_none_parameters</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">    Checks if any of the given parameters are None.</span>
+
+<span class="s2">    Returns:</span>
+
+<span class="s2">        True if all parameters are not None,</span>
+
+<span class="s2">    Raises:</span>
+
+<span class="s2">        AssertionError: otherwise.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="n">none_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">k</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">]</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">none_values</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">none_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">none_values</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameters can not be None: </span><span class="si">{</span><span class="n">none_values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">True</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">is_wheel_file</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb">bool</span><span class="p">:</span>
 
@@ -1280,17 +1406,15 @@ Python runtime environment.</p>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_pip_download_platform_wheels</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="o">=</span><span class="p">[]):</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="n">assert_none_parameters</span><span class="p">(</span>
 
-<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;requirements_file_path can not be empty.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">requirements_file_path</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">requirements_file_path</span><span class="p">,</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_version</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="n">python_version</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span>
 
-<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_version can not be empty.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">python_packages_folder</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">python_packages_folder</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
-
-<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_packages_folder can not be empty.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">command_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
@@ -1324,13 +1448,13 @@ Python runtime environment.</p>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_pip_download_source_dist</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">):</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="n">assert_none_parameters</span><span class="p">(</span>
 
-<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;requirements_file_path can not be empty.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">requirements_file_path</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">requirements_file_path</span><span class="p">,</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="n">python_packages_folder</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">python_packages_folder</span>
 
-<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_packages_folder can not be empty.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">command_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
@@ -1358,15 +1482,15 @@ Python runtime environment.</p>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_pip_get_source_dependencies</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">extra_index</span><span class="p">):</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="n">assert_none_parameters</span><span class="p">(</span>
 
-<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;requirements_file_path can not be empty.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">requirements_file_path</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">requirements_file_path</span><span class="p">,</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="n">python_packages_folder</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span>
 
-<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_packages_folder can not be empty.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">report_path</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">report_path</span>
 
-<span class="w">    </span><span class="k">assert</span><span class="w"> </span><span class="n">report_path</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">command_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
@@ -1396,13 +1520,13 @@ Python runtime environment.</p>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_pip_dry_install_packages</span><span class="p">(</span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">):</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_version</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="n">assert_none_parameters</span><span class="p">(</span>
 
-<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_version can not be empty.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">python_version</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="n">python_packages_folder</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span>
 
-<span class="w">        </span><span class="k">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;python_packages_folder can not be empty.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">command_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
@@ -1502,7 +1626,7 @@ Python runtime environment.</p>
 
 <span class="w">    </span><span class="n">new_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="w">    </span><span class="n">report_json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;report.json&quot;</span>
+<span class="w">    </span><span class="n">report_json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report_json_path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">report_json</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1622,7 +1746,7 @@ Python runtime environment.</p>
 
 <span class="w">    </span><span class="n">src_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;sources.txt&quot;</span>
 
-<span class="w">    </span><span class="n">report_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;report.json&quot;</span>
+<span class="w">    </span><span class="n">report_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report_json_path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">req_path</span><span class="o">.</span><span class="n">touch</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1718,23 +1842,23 @@ Python runtime environment.</p>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_check_report_for_dependency_limitations</span><span class="p">(</span><span class="n">report_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">report_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
 
-<span class="w">        </span><span class="k">return</span>
+<span class="s2">    Checks the report.json file for dependency limitations.</span>
 
-<span class="w">    </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">report_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+<span class="s2">    &quot;&quot;&quot;</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;install&#39;</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">report</span><span class="p">:</span>
+<span class="w">    </span><span class="n">report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">report_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">return</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">dep</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;install&#39;</span><span class="p">]:</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">dep</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">report</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;install&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]):</span>
 
 <span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dep</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
 
 <span class="w">        </span><span class="n">_check_package_for_dependency_limitations</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">create_wheelhouse</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="n">dependency_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">set</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1"># try the easy way</span>
 
@@ -1744,13 +1868,13 @@ Python runtime environment.</p>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nb">any</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
 
-<span class="w">            </span><span class="k">return</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">dependency_set</span>
 
 <span class="w">        </span><span class="k">try</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
 
-<span class="w">            </span><span class="n">report_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;report.json&quot;</span>
+<span class="w">            </span><span class="n">report_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report_json_path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 
 <span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_dry_install_packages</span><span class="p">(</span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">)</span>
 
@@ -1775,6 +1899,24 @@ Python runtime environment.</p>
 <span class="w">        </span><span class="k">except</span><span class="w"> </span><span class="n">AssertionError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
 
 <span class="w">            </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading wheels and source distributions failed, reason:</span><span class="se">\n</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">is_source_file</span><span class="p">(</span><span class="n">package</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">dependency_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">get_sdist_name_version</span><span class="p">(</span><span class="n">package</span><span class="p">))</span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">is_wheel_file</span><span class="p">(</span><span class="n">package</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">dependency_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">get_wheel_name_version</span><span class="p">(</span><span class="n">package</span><span class="p">))</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="c1"># TODO what to do when there is a different kind of file in the packages folder?</span>
+
+<span class="w">            </span><span class="k">pass</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dependency_set</span>
 </code></pre></div>
 
 </details>
@@ -1789,6 +1931,73 @@ Python runtime environment.</p>
 </code></pre></div>
 
 <h2 id="functions">Functions</h2>
+<h3 id="assert_none_parameters">assert_none_parameters</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">assert_none_parameters</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Checks if any of the given parameters are None.</p>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>True if all parameters are not None,</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raises:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AssertionError</td>
+<td>otherwise.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>def assert_none_parameters(**kwargs):
+
+    &quot;&quot;&quot;
+
+    Checks if any of the given parameters are None.
+
+    Returns:
+
+        True if all parameters are not None,
+
+    Raises:
+
+        AssertionError: otherwise.
+
+    &quot;&quot;&quot;
+
+    none_values = [k for k, v in kwargs.items() if v is None]
+
+    if 0 &lt; len(none_values):
+
+        none_values = &quot;, &quot;.join(none_values)
+
+        raise AssertionError(f&quot;Parameters can not be None: {none_values}&quot;)
+
+    return True
+</code></pre></div>
+
+</details>
 <h3 id="check_directory_has_only_wheels_and_pure_sdist">check_directory_has_only_wheels_and_pure_sdist</h3>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">check_directory_has_only_wheels_and_pure_sdist</span><span class="p">(</span>
     <span class="n">python_packages_folder</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span>
@@ -1918,6 +2127,8 @@ Python runtime environment.</p>
 <summary>View Source</summary>
 <div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">create_wheelhouse</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
 
+<span class="w">    </span><span class="n">dependency_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set</span><span class="p">()</span>
+
 <span class="w">    </span><span class="c1"># try the easy way</span>
 
 <span class="w">    </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_download_only_wheels_if_possible</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">)</span>
@@ -1926,13 +2137,13 @@ Python runtime environment.</p>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">any</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
 
-<span class="w">            </span><span class="k">return</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">dependency_set</span>
 
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
 
-<span class="w">            </span><span class="n">report_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;report.json&quot;</span>
+<span class="w">            </span><span class="n">report_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report_json_path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
 
 <span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_pip_dry_install_packages</span><span class="p">(</span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">report_path</span><span class="p">)</span>
 
@@ -1957,6 +2168,24 @@ Python runtime environment.</p>
 <span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">AssertionError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">error</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Downloading wheels and source distributions failed, reason:</span><span class="se">\n</span><span class="s2">{str(error)}&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">is_source_file</span><span class="p">(</span><span class="n">package</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">dependency_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">get_sdist_name_version</span><span class="p">(</span><span class="n">package</span><span class="p">))</span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">is_wheel_file</span><span class="p">(</span><span class="n">package</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">dependency_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">get_wheel_name_version</span><span class="p">(</span><span class="n">package</span><span class="p">))</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="c1"># TODO what to do when there is a different kind of file in the packages folder?</span>
+
+<span class="w">            </span><span class="k">pass</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dependency_set</span>
 </code></pre></div>
 
 </details>
@@ -2372,6 +2601,18 @@ used in the source, and returns True if only the Python language was used.</p>
 </code></pre></div>
 
 </details>
+<h3 id="report_json_path">report_json_path</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">report_json_path</span><span class="p">(</span>
+    <span class="n">tmp_dir</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>report_json_path = lambda tmp_dir: Path(tmp_dir) / &quot;report.json&quot;
+</code></pre></div>
+
+</details>
 
 
 
@@ -2408,13 +2649,13 @@ used in the source, and returns True if only the Python language was used.</p>
       
       
         
-        <a href="../testing/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: Index" rel="next">
+        <a href="../testing/component_runner.html" class="md-footer__link md-footer__link--next" aria-label="Next: Component Runner" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Index
+              Component Runner
             </div>
           </div>
           <div class="md-footer__button md-icon">
