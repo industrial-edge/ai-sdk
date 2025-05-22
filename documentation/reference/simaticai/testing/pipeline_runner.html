@@ -519,6 +519,20 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="../helpers/reporter.html" class="md-nav__link">
+        Reporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/tempfiles.html" class="md-nav__link">
         Tempfiles
       </a>
@@ -664,6 +678,34 @@ SPDX-License-Identifier: MIT
           Testing
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component_runner.html" class="md-nav__link">
+        Component Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_stream.html" class="md-nav__link">
+        Data Stream
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -872,6 +914,34 @@ SPDX-License-Identifier: MIT
     <li class="md-nav__item">
       <a href="run_gpuruntime_component.html" class="md-nav__link">
         Run Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="timeseries_stream.html" class="md-nav__link">
+        Timeseries Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vca_stream.html" class="md-nav__link">
+        Vca Stream
       </a>
     </li>
   
@@ -1112,6 +1182,8 @@ single components with inputs and verify the output produced.</p>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.helpers.pep508</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">parse_requirements</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.helpers.reporter</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">PipelineRunnerReportWriter</span><span class="p">,</span><span class="w"> </span><span class="n">ReportWriterHandler</span>
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.packaging.constants</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 
 <span class="w">    </span><span class="n">REQUIREMENTS_TXT</span><span class="p">,</span><span class="w"> </span><span class="n">TELEMETRY_YAML</span><span class="p">,</span>
@@ -1121,6 +1193,8 @@ single components with inputs and verify the output produced.</p>
 <span class="p">)</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.testing.pipeline_validator</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">INVALID_PIPELINE_PACKAGE_MESSAGE</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.testing.data_stream</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">DataStream</span>
 
 <span class="n">RETURN_CODE_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0</span>
 
@@ -1145,6 +1219,14 @@ single components with inputs and verify the output produced.</p>
 <span class="w">    </span><span class="s1">&#39;str&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span>
 
 <span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_relative_to</span><span class="p">(</span><span class="n">path1</span><span class="p">,</span><span class="w"> </span><span class="n">path2</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">path1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">path1</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">path2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">path2</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">path1</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">path2</span><span class="p">)</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">LocalPipelineRunner</span><span class="p">:</span>
 
@@ -1220,7 +1302,15 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span>
 
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PipelineRunnerReportWriter</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">report_writer_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ReportWriterHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">report_writer_handler</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_package_zip_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_zip</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[-:]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">timespec</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">))</span>
 
@@ -1296,6 +1386,8 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">update_telemetry_data</span><span class="p">()</span>
 
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">write_report</span><span class="p">()</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Removing local pipeline runner environment...&quot;</span><span class="p">)</span>
@@ -1365,8 +1457,6 @@ single components with inputs and verify the output produced.</p>
 <span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;file_extensions&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">keys</span><span class="p">()]:</span>
-
-<span class="w">            </span><span class="c1"># pathlib is_relative_to is deprecated since version 3.12, will be removed in version 3.14</span>
 
 <span class="w">            </span><span class="n">excluded_dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">set</span><span class="p">([</span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;.venv&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;__pyache__&#39;</span><span class="p">])</span>
 
@@ -1466,19 +1556,27 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Installing requirements...&quot;</span><span class="p">)</span>
 
+<span class="w">        </span><span class="n">pip_report_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;pip_report.json&quot;</span>
+
+<span class="w">        </span><span class="n">executable_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
+<span class="w">        </span><span class="n">package_dir_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">package_dir</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
+<span class="w">        </span><span class="n">pip_report_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">pip_report_file</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
 <span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
-<span class="w">            </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">executable_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span>
 
-<span class="w">            </span><span class="s2">&quot;--no-python-version-warning&quot;</span><span class="p">,</span>
-
 <span class="w">            </span><span class="s2">&quot;--no-warn-script-location&quot;</span><span class="p">,</span>
 
-<span class="w">            </span><span class="s2">&quot;-f&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">package_dir</span><span class="o">.</span><span class="n">absolute</span><span class="p">()),</span>
+<span class="w">            </span><span class="s2">&quot;-f&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">package_dir_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
 
-<span class="w">            </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span><span class="w"> </span><span class="p">]</span>
+<span class="w">            </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;--report&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pip_report_file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">no_index</span><span class="p">:</span>
 
@@ -1486,11 +1584,17 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">pip_report_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">add_installed_packages</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">pip_report_file</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span>
 
 <span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_install_from_packages_zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">):</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_requirements</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">,</span><span class="w"> </span><span class="kc">True</span><span class="p">)</span>
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_requirements</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">,</span><span class="w"> </span><span class="kc">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span>
 
 <span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_install_from_pypi_org</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">):</span>
 
@@ -1524,7 +1628,9 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Upgrading pip...&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--upgrade&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">executable_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">executable_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--upgrade&quot;</span><span class="p">]</span>
 
 <span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
 
@@ -1600,13 +1706,13 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-<span class="w">            </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_from_pypi_org</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">)</span>
+<span class="w">            </span><span class="n">second_install_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_from_pypi_org</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">)</span>
 
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">success</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">second_install_result</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
 
 <span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
 
-<span class="w">                </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error installing requirements:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error installing requirements:</span><span class="se">\n</span><span class="si">{</span><span class="n">second_install_result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nd">@staticmethod</span>
 
@@ -1640,11 +1746,19 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">            </span><span class="n">logger_wheel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">p</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">paths</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;log_module&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
 
-<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bin_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;pip&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--no-python-version-warning&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--no-warn-script-location&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">logger_wheel</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;joblib&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">            </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bin_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;pip&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;install&quot;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;--no-warn-script-location&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">logger_wheel</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;joblib&quot;</span>
+
+<span class="w">        </span><span class="p">]</span>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">env_dir</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">run_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">]])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">]]:</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">run_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">]])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">]]:</span>
 
 <span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
 
@@ -1654,7 +1768,9 @@ single components with inputs and verify the output produced.</p>
 
 <span class="s2">        Additionally &#39;joblib&#39; and the mock `log_module` is automatically installed in this virtual environment.</span>
 
-<span class="s2">        The input data can be a single input record in a dictionary or a batch of input records in a list of dictionaries.</span>
+<span class="s2">        The input data can be a single input record in a dictionary or a batch of input records in a list of dictionaries,</span>
+
+<span class="s2">        or a DataStream object which will produce the appropriate input data.</span>
 
 <span class="s2">        The supplied input data is saved as `inputs.joblib` in the component runtime directory, and the output is saved as `output.joblib`.</span>
 
@@ -1690,11 +1806,27 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="k">assert</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;Can not run component &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; without input.&quot;</span>
 
-<span class="w">        </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">data</span><span class="p">]</span>
+<span class="w">        </span><span class="n">result_is_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">True</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">item</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">data</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">result_is_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">data</span><span class="p">]</span>
 
 <span class="w">        </span><span class="n">validate_payload</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;inputType&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">batch_input</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_input_payload_length</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">input_payload</span><span class="p">))</span>
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input payload saved as &#39;</span><span class="si">{</span><span class="n">input_payload_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 
@@ -1724,15 +1856,19 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">                </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">_runner_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;run_component.py&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
 
+<span class="w">            </span><span class="n">req_list_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;requirements.list&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
+<span class="w">            </span><span class="n">json_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span><span class="w"> </span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;defaultValue&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()})</span>
+
 <span class="w">            </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
 <span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;run_component&#39;</span><span class="p">,</span>
 
 <span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;entrypoint&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">stem</span><span class="p">,</span>
 
-<span class="w">                </span><span class="s2">&quot;-p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span><span class="w"> </span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;defaultValue&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()}),</span>
+<span class="w">                </span><span class="s2">&quot;-p&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">json_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
 
-<span class="w">                </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;requirements.list&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()),</span>
+<span class="w">                </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">req_list_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="p">]</span>
 
@@ -1752,15 +1888,13 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">                </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">_runner_path</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;model_config_pb2.py&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
 
-<span class="w">            </span><span class="n">model_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;entrypoint&quot;</span><span class="p">])</span>
-
 <span class="w">            </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
 <span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;run_gpuruntime_component&#39;</span><span class="p">,</span>
 
-<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">model_path</span><span class="p">),</span>
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;entrypoint&quot;</span><span class="p">],</span>
 
-<span class="w">                </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">model_path</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="p">]</span>
 
@@ -1776,9 +1910,11 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="c1"># Run the component in the created Python environment</span>
 
-<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">)]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span>
+<span class="w">        </span><span class="n">executable_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
 
-<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running command: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">executable_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running command: </span><span class="si">{</span><span class="n">subprocess</span><span class="o">.</span><span class="n">list2cmdline</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1814,6 +1950,8 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">output_payload</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">output_payload</span><span class="p">]</span>
 
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_output_payload_length</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">output_payload</span><span class="p">))</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">response_wrapped</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">])</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;ready&#39;</span><span class="p">]]</span>
@@ -1826,7 +1964,11 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="c1"># Only return the first item if the input was a single item, or None if there are no valid results.</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">output_payload</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">output_payload</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="kc">None</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">result_is_list</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">output_payload</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="kc">None</span>
 
 <span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">update_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">:</span><span class="w"> </span><span class="nb">dict</span><span class="p">):</span>
 
@@ -1864,7 +2006,7 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;defaultValue&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
 
-<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">run_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">]]:</span>
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">run_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="nb">list</span><span class="p">]]:</span>
 
 <span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
 
@@ -1892,7 +2034,7 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">payload</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">validate_payload</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">,</span><span class="w"> </span><span class="n">batch</span><span class="p">:</span><span class="w"> </span><span class="nb">bool</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_payload</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">,</span><span class="w"> </span><span class="n">batch</span><span class="p">:</span><span class="w"> </span><span class="nb">bool</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_logger</span><span class="p">):</span>
 
 <span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
 
@@ -1918,9 +2060,9 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">i</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">validate_payload_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">)</span>
+<span class="w">            </span><span class="n">validate_payload_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">validate_payload_item</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_payload_item</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="nb">dict</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="p">):</span>
 
 <span class="w">    </span><span class="s2">&quot;&quot;&quot;</span>
 
@@ -1942,7 +2084,7 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING! Variable &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; is missing from input, output or metric&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING! Variable &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; is missing from input, output or metric&quot;</span><span class="p">)</span>
 
 <span class="w">            </span><span class="k">continue</span>
 
@@ -1972,11 +2114,13 @@ single components with inputs and verify the output produced.</p>
 
 <span class="w">    </span><span class="n">variable_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="p">}</span>
 
+<span class="w">    </span><span class="n">variable_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span>
+
 <span class="w">    </span><span class="n">extra_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payload_names</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">variable_names</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">extra_variables</span><span class="p">):</span>
 
-<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: </span><span class="si">{</span><span class="n">extra_variables</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: </span><span class="si">{</span><span class="n">extra_variables</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
@@ -2013,7 +2157,8 @@ single components with inputs and verify the output produced.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">validate_payload</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
     <span class="n">variables</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
-    <span class="n">batch</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">batch</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="n">logger</span><span class="o">=&lt;</span><span class="n">Logger</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">pipeline_runner</span> <span class="p">(</span><span class="n">INFO</span><span class="p">)</span><span class="o">&gt;</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -2022,7 +2167,7 @@ single components with inputs and verify the output produced.</p>
 Batch indicates if the payload items are themselves batches of items or not.</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">validate_payload</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">batch</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">validate_payload</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">batch</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_logger</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -2048,14 +2193,15 @@ Batch indicates if the payload items are themselves batches of items or not.</p>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">i</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">validate_payload_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">)</span>
+<span class="w">            </span><span class="n">validate_payload_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
 <h3 id="validate_payload_item">validate_payload_item</h3>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">validate_payload_item</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">variables</span><span class="p">:</span> <span class="nb">list</span>
+    <span class="n">variables</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+    <span class="n">logger</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -2064,7 +2210,7 @@ Batch indicates if the payload items are themselves batches of items or not.</p>
 The types of the values must match their declared type.</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">validate_payload_item</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">validate_payload_item</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -2086,7 +2232,7 @@ The types of the values must match their declared type.</p>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! Variable &#39;{name}&#39; is missing from input, output or metric&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! Variable &#39;{name}&#39; is missing from input, output or metric&quot;</span><span class="p">)</span>
 
 <span class="w">            </span><span class="k">continue</span>
 
@@ -2116,11 +2262,13 @@ The types of the values must match their declared type.</p>
 
 <span class="w">    </span><span class="n">variable_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">variable</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="p">}</span>
 
+<span class="w">    </span><span class="n">variable_names</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span>
+
 <span class="w">    </span><span class="n">extra_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payload_names</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">variable_names</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">extra_variables</span><span class="p">):</span>
 
-<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: {extra_variables}&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: {extra_variables}&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
@@ -2251,7 +2399,15 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span>
 
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PipelineRunnerReportWriter</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">report_writer_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ReportWriterHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">report_writer_handler</span><span class="p">)</span>
+
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_package_zip_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_zip</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[-:]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">timespec</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">))</span>
 
@@ -2327,6 +2483,8 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">update_telemetry_data</span><span class="p">()</span>
 
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">write_report</span><span class="p">()</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Removing local pipeline runner environment...&quot;</span><span class="p">)</span>
@@ -2396,8 +2554,6 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 <span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;file_extensions&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workdir</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">keys</span><span class="p">()]:</span>
-
-<span class="w">            </span><span class="c1"># pathlib is_relative_to is deprecated since version 3.12, will be removed in version 3.14</span>
 
 <span class="w">            </span><span class="n">excluded_dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set</span><span class="p">([</span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;.venv&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;__pyache__&#39;</span><span class="p">])</span>
 
@@ -2497,19 +2653,27 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Installing requirements...&quot;</span><span class="p">)</span>
 
+<span class="w">        </span><span class="n">pip_report_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;pip_report.json&quot;</span>
+
+<span class="w">        </span><span class="n">executable_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
+<span class="w">        </span><span class="n">package_dir_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">package_dir</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
+<span class="w">        </span><span class="n">pip_report_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">pip_report_file</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
 <span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
-<span class="w">            </span><span class="n">f</span><span class="s2">&quot;{component[&#39;bin_path&#39;] / &#39;python&#39;}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">f</span><span class="s2">&quot;{executable_path}&quot;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span>
 
-<span class="w">            </span><span class="s2">&quot;--no-python-version-warning&quot;</span><span class="p">,</span>
-
 <span class="w">            </span><span class="s2">&quot;--no-warn-script-location&quot;</span><span class="p">,</span>
 
-<span class="w">            </span><span class="s2">&quot;-f&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">package_dir</span><span class="o">.</span><span class="n">absolute</span><span class="p">()),</span>
+<span class="w">            </span><span class="s2">&quot;-f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{package_dir_path}&quot;</span><span class="p">,</span>
 
-<span class="w">            </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span><span class="w"> </span><span class="p">]</span>
+<span class="w">            </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;--report&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{pip_report_file_path}&quot;</span><span class="p">]</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">no_index</span><span class="p">:</span>
 
@@ -2517,11 +2681,17 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">pip_report_file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">add_installed_packages</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">pip_report_file</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_install_from_packages_zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">):</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_requirements</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">,</span><span class="w"> </span><span class="n">True</span><span class="p">)</span>
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_requirements</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">,</span><span class="w"> </span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_install_from_pypi_org</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">):</span>
 
@@ -2555,7 +2725,9 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Upgrading pip...&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="s2">&quot;{component[&#39;bin_path&#39;] / &#39;python&#39;}&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--upgrade&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">executable_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="s2">&quot;{executable_path}&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--upgrade&quot;</span><span class="p">]</span>
 
 <span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
 
@@ -2631,13 +2803,13 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-<span class="w">            </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_from_pypi_org</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">)</span>
+<span class="w">            </span><span class="n">second_install_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_from_pypi_org</span><span class="p">(</span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">package_dir</span><span class="p">)</span>
 
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">success</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">second_install_result</span><span class="o">.</span><span class="n">returncode</span><span class="p">:</span>
 
 <span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
 
-<span class="w">                </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Error installing requirements:</span><span class="se">\n</span><span class="s2">{result.stderr}&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Error installing requirements:</span><span class="se">\n</span><span class="s2">{second_install_result.stderr}&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span>
 
@@ -2671,11 +2843,19 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">            </span><span class="n">logger_wheel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">p</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">paths</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;log_module&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
 
-<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="s2">&quot;{bin_path / &#39;pip&#39;}&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--no-python-version-warning&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--no-warn-script-location&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">logger_wheel</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;joblib&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+
+<span class="w">            </span><span class="n">f</span><span class="s2">&quot;{bin_path / &#39;pip&#39;}&quot;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;install&quot;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s2">&quot;--no-warn-script-location&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">logger_wheel</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;joblib&quot;</span>
+
+<span class="w">        </span><span class="p">]</span>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">env_dir</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">]])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -2685,7 +2865,9 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="sd">        Additionally &#39;joblib&#39; and the mock `log_module` is automatically installed in this virtual environment.</span>
 
-<span class="sd">        The input data can be a single input record in a dictionary or a batch of input records in a list of dictionaries.</span>
+<span class="sd">        The input data can be a single input record in a dictionary or a batch of input records in a list of dictionaries,</span>
+
+<span class="sd">        or a DataStream object which will produce the appropriate input data.</span>
 
 <span class="sd">        The supplied input data is saved as `inputs.joblib` in the component runtime directory, and the output is saved as `output.joblib`.</span>
 
@@ -2721,11 +2903,27 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="nb">assert</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;Can not run component &#39;{name}&#39; without input.&quot;</span>
 
-<span class="w">        </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">data</span><span class="p">]</span>
+<span class="w">        </span><span class="n">result_is_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">item</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">data</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">result_is_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">data</span><span class="p">]</span>
 
 <span class="w">        </span><span class="n">validate_payload</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;inputType&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">batch_input</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_input_payload_length</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">input_payload</span><span class="p">))</span>
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Input payload saved as &#39;{input_payload_path}&#39;&quot;</span><span class="p">)</span>
 
@@ -2755,15 +2953,19 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">                </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">_runner_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;run_component.py&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
 
+<span class="w">            </span><span class="n">req_list_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;requirements.list&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
+<span class="w">            </span><span class="n">json_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span><span class="w"> </span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;defaultValue&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()})</span>
+
 <span class="w">            </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
 <span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;run_component&#39;</span><span class="p">,</span>
 
 <span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;entrypoint&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">stem</span><span class="p">,</span>
 
-<span class="w">                </span><span class="s2">&quot;-p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span><span class="w"> </span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;defaultValue&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()}),</span>
+<span class="w">                </span><span class="s2">&quot;-p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{json_params}&quot;</span><span class="p">,</span>
 
-<span class="w">                </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;requirements.list&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()),</span>
+<span class="w">                </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{req_list_path}&quot;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="p">]</span>
 
@@ -2783,15 +2985,13 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">                </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">_runner_path</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;model_config_pb2.py&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
 
-<span class="w">            </span><span class="n">model_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;entrypoint&quot;</span><span class="p">])</span>
-
 <span class="w">            </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
 <span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;run_gpuruntime_component&#39;</span><span class="p">,</span>
 
-<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">model_path</span><span class="p">),</span>
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;entrypoint&quot;</span><span class="p">],</span>
 
-<span class="w">                </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">model_path</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="p">]</span>
 
@@ -2807,9 +3007,11 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="c1"># Run the component in the created Python environment</span>
 
-<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">)]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span>
+<span class="w">        </span><span class="n">executable_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
 
-<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running command: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="s2">&quot;{executable_path}&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Running command: {subprocess.list2cmdline(cmd)}&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
 
@@ -2845,6 +3047,8 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">output_payload</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">output_payload</span><span class="p">]</span>
 
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_output_payload_length</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">output_payload</span><span class="p">))</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">response_wrapped</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">])</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;ready&#39;</span><span class="p">]]</span>
@@ -2857,7 +3061,11 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="c1"># Only return the first item if the input was a single item, or None if there are no valid results.</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">output_payload</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">output_payload</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">None</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">result_is_list</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">output_payload</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">None</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">update_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">parameters</span><span class="p">:</span><span class="w"> </span><span class="n">dict</span><span class="p">):</span>
 
@@ -2895,7 +3103,7 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s2">&quot;defaultValue&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -3011,8 +3219,6 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">[</span><span class="n">Path(self.workdir) / c for c in Path(self.workdir).rglob(&quot;*&quot;) if c.name in self.components.keys()</span><span class="o">]</span><span class="err">:</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">pathlib</span><span class="w"> </span><span class="n">is_relative_to</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">deprecated</span><span class="w"> </span><span class="n">since</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="mf">3.12</span><span class="p">,</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">removed</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="mf">3.14</span>
-
 <span class="w">            </span><span class="n">excluded_dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">set</span><span class="p">(</span><span class="o">[</span><span class="n">component_dir / &#39;.venv&#39;, component_dir / &#39;__pyache__&#39;</span><span class="o">]</span><span class="p">)</span>
 
 <span class="w">            </span><span class="n">suffixes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="k">set</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">suffix</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">component_dir</span><span class="p">.</span><span class="n">rglob</span><span class="p">(</span><span class="ss">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="p">(</span><span class="ow">any</span><span class="p">(</span><span class="n">excluded_dirs</span><span class="p">.</span><span class="k">intersection</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">parents</span><span class="p">))</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">suffix</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;&quot;, &quot;.zip&quot;, &quot;.yml&quot;, &quot;.yaml&quot;, &quot;.html&quot;</span><span class="o">]</span><span class="p">)))</span>
@@ -3031,14 +3237,15 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">run_component</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">data_stream</span><span class="o">.</span><span class="n">DataStream</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>
 </code></pre></div>
 
 <p>Runs the component in its virtual environment with the given input.</p>
 <p>This environment is created according to <code>requirements.txt</code> in the package.
 Additionally 'joblib' and the mock <code>log_module</code> is automatically installed in this virtual environment.
-The input data can be a single input record in a dictionary or a batch of input records in a list of dictionaries.
+The input data can be a single input record in a dictionary or a batch of input records in a list of dictionaries,
+or a DataStream object which will produce the appropriate input data.
 The supplied input data is saved as <code>inputs.joblib</code> in the component runtime directory, and the output is saved as <code>output.joblib</code>.</p>
 <p><strong>Parameters:</strong></p>
 <table>
@@ -3082,7 +3289,7 @@ The supplied input data is saved as <code>inputs.joblib</code> in the component 
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">]])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -3092,7 +3299,9 @@ The supplied input data is saved as <code>inputs.joblib</code> in the component 
 
 <span class="sd">        Additionally &#39;joblib&#39; and the mock `log_module` is automatically installed in this virtual environment.</span>
 
-<span class="sd">        The input data can be a single input record in a dictionary or a batch of input records in a list of dictionaries.</span>
+<span class="sd">        The input data can be a single input record in a dictionary or a batch of input records in a list of dictionaries,</span>
+
+<span class="sd">        or a DataStream object which will produce the appropriate input data.</span>
 
 <span class="sd">        The supplied input data is saved as `inputs.joblib` in the component runtime directory, and the output is saved as `output.joblib`.</span>
 
@@ -3128,11 +3337,27 @@ The supplied input data is saved as <code>inputs.joblib</code> in the component 
 
 <span class="w">        </span><span class="nb">assert</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;Can not run component &#39;{name}&#39; without input.&quot;</span>
 
-<span class="w">        </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">data</span><span class="p">]</span>
+<span class="w">        </span><span class="n">result_is_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">item</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">data</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">result_is_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">            </span><span class="n">input_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">data</span><span class="p">]</span>
 
 <span class="w">        </span><span class="n">validate_payload</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;inputType&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">batch_input</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">input_payload</span><span class="p">,</span><span class="w"> </span><span class="n">input_payload_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_input_payload_length</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">input_payload</span><span class="p">))</span>
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Input payload saved as &#39;{input_payload_path}&#39;&quot;</span><span class="p">)</span>
 
@@ -3162,15 +3387,19 @@ The supplied input data is saved as <code>inputs.joblib</code> in the component 
 
 <span class="w">                </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">_runner_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;run_component.py&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
 
+<span class="w">            </span><span class="n">req_list_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;requirements.list&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
+
+<span class="w">            </span><span class="n">json_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span><span class="w"> </span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;defaultValue&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()})</span>
+
 <span class="w">            </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
 <span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;run_component&#39;</span><span class="p">,</span>
 
 <span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;entrypoint&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">stem</span><span class="p">,</span>
 
-<span class="w">                </span><span class="s2">&quot;-p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]:</span><span class="w"> </span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;defaultValue&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()}),</span>
+<span class="w">                </span><span class="s2">&quot;-p&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{json_params}&quot;</span><span class="p">,</span>
 
-<span class="w">                </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;requirements.list&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()),</span>
+<span class="w">                </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{req_list_path}&quot;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="p">]</span>
 
@@ -3190,15 +3419,13 @@ The supplied input data is saved as <code>inputs.joblib</code> in the component 
 
 <span class="w">                </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">_runner_path</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;model_config_pb2.py&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
 
-<span class="w">            </span><span class="n">model_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;entrypoint&quot;</span><span class="p">])</span>
-
 <span class="w">            </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 
 <span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;run_gpuruntime_component&#39;</span><span class="p">,</span>
 
-<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">model_path</span><span class="p">),</span>
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;entrypoint&quot;</span><span class="p">],</span>
 
-<span class="w">                </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">model_path</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="p">]</span>
 
@@ -3214,9 +3441,11 @@ The supplied input data is saved as <code>inputs.joblib</code> in the component 
 
 <span class="w">        </span><span class="c1"># Run the component in the created Python environment</span>
 
-<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">)]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span>
+<span class="w">        </span><span class="n">executable_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_relative_to</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;bin_path&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
 
-<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running command: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="s2">&quot;{executable_path}&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Running command: {subprocess.list2cmdline(cmd)}&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
 
@@ -3252,6 +3481,8 @@ The supplied input data is saved as <code>inputs.joblib</code> in the component 
 
 <span class="w">        </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">output_payload</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">output_payload</span><span class="p">]</span>
 
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_output_payload_length</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">output_payload</span><span class="p">))</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">response_wrapped</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">output_payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">])</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;ready&#39;</span><span class="p">]]</span>
@@ -3264,14 +3495,18 @@ The supplied input data is saved as <code>inputs.joblib</code> in the component 
 
 <span class="w">        </span><span class="c1"># Only return the first item if the input was a single item, or None if there are no valid results.</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">output_payload</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">output_payload</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">None</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">result_is_list</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">output_payload</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">output_payload</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">None</span>
 </code></pre></div>
 
 </details>
 <h4 id="run_pipeline">run_pipeline</h4>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">run_pipeline</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">payload</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">payload</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">data_stream</span><span class="o">.</span><span class="n">DataStream</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span>
 </code></pre></div>
 
@@ -3315,7 +3550,7 @@ and the output is saved as <code>output.joblib</code>.</p>
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">DataStream</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]]:</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 

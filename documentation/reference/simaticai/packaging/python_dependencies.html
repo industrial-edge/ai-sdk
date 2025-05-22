@@ -519,6 +519,20 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="../helpers/reporter.html" class="md-nav__link">
+        Reporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/tempfiles.html" class="md-nav__link">
         Tempfiles
       </a>
@@ -801,6 +815,34 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="../testing/component_runner.html" class="md-nav__link">
+        Component Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/data_stream.html" class="md-nav__link">
+        Data Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../testing/index.html" class="md-nav__link">
         Index
       </a>
@@ -859,6 +901,34 @@ SPDX-License-Identifier: MIT
     <li class="md-nav__item">
       <a href="../testing/run_gpuruntime_component.html" class="md-nav__link">
         Run Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/timeseries_stream.html" class="md-nav__link">
+        Timeseries Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/vca_stream.html" class="md-nav__link">
+        Vca Stream
       </a>
     </li>
   
@@ -1049,6 +1119,10 @@ SPDX-License-Identifier: MIT
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib</span>
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">Path</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">Union</span>
@@ -1129,8 +1203,6 @@ SPDX-License-Identifier: MIT
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">extra_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
 
-<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
-
 <span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
 <span class="w">        </span><span class="s2">&quot;&quot;&quot;</span>
@@ -1168,8 +1240,6 @@ SPDX-License-Identifier: MIT
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
@@ -1221,8 +1291,6 @@ SPDX-License-Identifier: MIT
 
 <span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">add_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">packages</span><span class="p">:</span><span class="w"> </span><span class="nb">list</span><span class="p">):</span>
 
-<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
-
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">packages</span><span class="p">:</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">package</span><span class="p">,</span><span class="w"> </span><span class="nb">tuple</span><span class="p">):</span>
@@ -1248,8 +1316,6 @@ SPDX-License-Identifier: MIT
 <span class="w">                </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dependency already exists: </span><span class="si">{</span><span class="n">spec</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">add_python_packages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kc">None</span><span class="p">:</span>
-
-<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">False</span>
 
 <span class="w">        </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
@@ -1335,25 +1401,75 @@ SPDX-License-Identifier: MIT
 
 <span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
+<span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">_download_or_copy_dependency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">dependency_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="w">  </span><span class="c1"># raises ValueError if the url is invalid</span>
+
+<span class="w">        </span><span class="n">dependency_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">unquote</span><span class="p">(</span><span class="n">dependency_url</span><span class="o">.</span><span class="n">path</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dependency_path</span><span class="o">.</span><span class="n">name</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">dependency_url</span><span class="o">.</span><span class="n">scheme</span><span class="p">:</span>
+
+<span class="w">            </span><span class="c1"># Possible Exceptions here: FileNotFoundError, PermissionError, OSError, IsADirectoryError, SameFileError</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">dependency_path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+
+<span class="w">                </span><span class="k">raise</span><span class="w"> </span><span class="n">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The dependency &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; can not be found on path &#39;</span><span class="si">{</span><span class="n">dependency_path</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">python_packages</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+
+<span class="w">                </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dependency &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; will not be copied because it already exists in &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">python_packages</span><span class="si">}</span><span class="s2">&#39; folder.&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dependency &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; will be copied to &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">python_packages</span><span class="si">}</span><span class="s2">&#39; folder.&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">dependency_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">(),</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">python_packages</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="c1"># Possible Exceptions here: requests.exceptions.RequestException</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dependency &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2">&#39; will be downloaded from the repository.&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">python_packages</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;wb&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">python_packages</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">filename</span>
+
 <span class="w">    </span><span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">folder_path</span><span class="p">):</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_req_txt_saved</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Downloads dependencies specified with url from remote repositories or copies them from local file system</span>
 
-<span class="w">            </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">temp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span>
+<span class="w">        </span><span class="c1"># Does not work with source distributed packages</span>
 
-<span class="w">            </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">dependency</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 
-<span class="w">                </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">dependency</span><span class="o">.</span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">):</span>
 
-<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">True</span>
+<span class="w">                </span><span class="k">try</span><span class="p">:</span>
 
-<span class="w">            </span><span class="c1"># Dependency validation deferred until Edge Package creation.</span>
+<span class="w">                    </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_download_or_copy_dependency</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">dependency</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 
-<span class="w">            </span><span class="c1"># if 0 != len(self.dependencies):</span>
+<span class="w">                    </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_wheel_name_version</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-<span class="w">            </span><span class="c1">#     create_wheelhouse(requirements_file_path, self.python_version, self.python_packages)</span>
+<span class="w">                    </span><span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pep508</span><span class="o">.</span><span class="n">parse_line</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">==</span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span><span class="p">,</span><span class="w"> </span><span class="n">folder_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span><span class="p">)</span>
+<span class="w">                </span><span class="k">except</span><span class="w"> </span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">request_error</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="k">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to download dependency &#39;</span><span class="si">{</span><span class="n">dependency</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">==</span><span class="si">{</span><span class="n">dependency</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">&#39; from the repository.&quot;</span><span class="p">)</span><span class="w"> </span><span class="kn">from</span><span class="w"> </span><span class="nn">request_error</span>
+
+<span class="w">        </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">folder_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 
 <span class="w">        </span><span class="n">shutil</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span>
 
@@ -1507,8 +1623,6 @@ SPDX-License-Identifier: MIT
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">extra_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">False</span>
-
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__str__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span>
 
 <span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
@@ -1546,8 +1660,6 @@ SPDX-License-Identifier: MIT
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">__str__</span><span class="p">()</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">clear</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span>
-
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">False</span>
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">dependencies</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
 
@@ -1599,8 +1711,6 @@ SPDX-License-Identifier: MIT
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_dependencies</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">packages</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">False</span>
-
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">packages</span><span class="p">:</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">package</span><span class="p">,</span><span class="w"> </span><span class="n">tuple</span><span class="p">)</span><span class="err">:</span>
@@ -1626,8 +1736,6 @@ SPDX-License-Identifier: MIT
 <span class="w">                </span><span class="n">_logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Dependency already exists: {spec}&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_python_packages</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">path</span><span class="err">:</span><span class="w"> </span><span class="ow">Union</span><span class="o">[</span><span class="n">str, os.PathLike</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">None</span><span class="err">:</span>
-
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">False</span>
 
 <span class="w">        </span><span class="k">path</span><span class="err">:</span><span class="w"> </span><span class="k">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Path</span><span class="p">(</span><span class="k">path</span><span class="p">)</span>
 
@@ -1713,25 +1821,75 @@ SPDX-License-Identifier: MIT
 
 <span class="w">            </span><span class="n">shutil</span><span class="p">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_errors</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
 
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_download_or_copy_dependency</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">dependency_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">urllib</span><span class="p">.</span><span class="nf">parse</span><span class="p">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">raises</span><span class="w"> </span><span class="n">ValueError</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">invalid</span>
+
+<span class="w">        </span><span class="n">dependency_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Path</span><span class="p">(</span><span class="n">urllib</span><span class="p">.</span><span class="nf">parse</span><span class="p">.</span><span class="n">unquote</span><span class="p">(</span><span class="n">dependency_url</span><span class="p">.</span><span class="k">path</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dependency_path</span><span class="p">.</span><span class="n">name</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ss">&quot;file&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">dependency_url</span><span class="p">.</span><span class="nl">scheme</span><span class="p">:</span>
+
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">Possible</span><span class="w"> </span><span class="n">Exceptions</span><span class="w"> </span><span class="nl">here</span><span class="p">:</span><span class="w"> </span><span class="n">FileNotFoundError</span><span class="p">,</span><span class="w"> </span><span class="n">PermissionError</span><span class="p">,</span><span class="w"> </span><span class="n">OSError</span><span class="p">,</span><span class="w"> </span><span class="n">IsADirectoryError</span><span class="p">,</span><span class="w"> </span><span class="n">SameFileError</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">dependency_path</span><span class="p">.</span><span class="n">is_file</span><span class="p">()</span><span class="err">:</span>
+
+<span class="w">                </span><span class="n">raise</span><span class="w"> </span><span class="n">FileNotFoundError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;The dependency &#39;{name}&#39; can not be found on path &#39;{dependency_path}&#39;&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">python_packages</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">filename</span><span class="p">).</span><span class="n">is_file</span><span class="p">()</span><span class="err">:</span>
+
+<span class="w">                </span><span class="n">_logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Dependency &#39;{name}&#39; will not be copied because it already exists in &#39;{self.python_packages}&#39; folder.&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">else</span><span class="err">:</span>
+
+<span class="w">                </span><span class="n">_logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Dependency &#39;{name}&#39; will be copied to &#39;{self.python_packages}&#39; folder.&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">dependency_path</span><span class="p">.</span><span class="n">resolve</span><span class="p">(),</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">python_packages</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">else</span><span class="err">:</span>
+
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">Possible</span><span class="w"> </span><span class="n">Exceptions</span><span class="w"> </span><span class="nl">here</span><span class="p">:</span><span class="w"> </span><span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">RequestException</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Dependency &#39;{name}@{version}&#39; will be downloaded from the repository.&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requests</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">response</span><span class="p">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">with</span><span class="w"> </span><span class="k">open</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">python_packages</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;wb&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">f</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">f</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">python_packages</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">filename</span>
+
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">save</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">folder_path</span><span class="p">)</span><span class="err">:</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="nl">_req_txt_saved</span><span class="p">:</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Downloads</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">repositories</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">copies</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">local</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">system</span>
 
-<span class="w">            </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">temp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Does</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="k">distributed</span><span class="w"> </span><span class="n">packages</span>
 
-<span class="w">            </span><span class="k">with</span><span class="w"> </span><span class="k">open</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">f</span><span class="p">:</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">dependency</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">dependencies</span><span class="p">.</span><span class="n">copy</span><span class="p">().</span><span class="n">items</span><span class="p">()</span><span class="err">:</span>
 
-<span class="w">                </span><span class="n">f</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="n">self</span><span class="p">))</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">dependency</span><span class="p">.</span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="nf">str</span><span class="p">)</span><span class="err">:</span>
 
-<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">_req_txt_saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span>
+<span class="w">                </span><span class="k">try</span><span class="err">:</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">Dependency</span><span class="w"> </span><span class="n">validation</span><span class="w"> </span><span class="k">deferred</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="n">Edge</span><span class="w"> </span><span class="n">Package</span><span class="w"> </span><span class="n">creation</span><span class="p">.</span>
+<span class="w">                    </span><span class="k">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_download_or_copy_dependency</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">dependency</span><span class="p">.</span><span class="n">version</span><span class="p">)</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">dependencies</span><span class="p">)</span><span class="err">:</span>
+<span class="w">                    </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_wheel_name_version</span><span class="p">(</span><span class="k">path</span><span class="p">)</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w">     </span><span class="n">create_wheelhouse</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">python_packages</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">self</span><span class="p">.</span><span class="n">dependencies</span><span class="o">[</span><span class="n">name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pep508</span><span class="p">.</span><span class="n">parse_line</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;{name}=={version}&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">shutil</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">temp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span><span class="p">,</span><span class="w"> </span><span class="n">folder_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span><span class="p">)</span>
+<span class="w">                </span><span class="ow">except</span><span class="w"> </span><span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">RequestException</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">request_error</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Failed to download dependency &#39;{dependency.name}=={dependency.version}&#39; from the repository.&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">request_error</span>
+
+<span class="w">        </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">folder_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span>
+
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="k">open</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">f</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="n">self</span><span class="p">))</span>
 
 <span class="w">        </span><span class="n">shutil</span><span class="p">.</span><span class="n">make_archive</span><span class="p">(</span>
 
@@ -1836,8 +1994,6 @@ SPDX-License-Identifier: MIT
 <summary>View Source</summary>
 <div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">add_dependencies</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">packages</span><span class="p">:</span><span class="w"> </span><span class="nx">list</span><span class="p">):</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">_req_txt_saved</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">False</span>
-
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="kn">package</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">packages</span><span class="p">:</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">isinstance</span><span class="p">(</span><span class="kn">package</span><span class="p">,</span><span class="w"> </span><span class="nx">tuple</span><span class="p">):</span>
@@ -1874,8 +2030,6 @@ SPDX-License-Identifier: MIT
 <details class="example">
 <summary>View Source</summary>
 <div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">add_python_packages</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">path</span><span class="p">:</span><span class="w"> </span><span class="nx">Union</span><span class="p">[</span><span class="nx">str</span><span class="p">,</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">PathLike</span><span class="p">])</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
-
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">_req_txt_saved</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">False</span>
 
 <span class="w">        </span><span class="nx">path</span><span class="p">:</span><span class="w"> </span><span class="nx">Path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">Path</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 
@@ -1973,8 +2127,6 @@ SPDX-License-Identifier: MIT
 <summary>View Source</summary>
 <div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">clear</span><span class="p">(</span><span class="kp">self</span><span class="p">):</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">_req_txt_saved</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">False</span>
-
 <span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">dependencies</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
 
 <span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">extra_index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span>
@@ -2030,37 +2182,45 @@ SPDX-License-Identifier: MIT
 
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">save</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">folder_path</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">save</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">folder_path</span><span class="p">)</span><span class="err">:</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">_req_txt_saved</span><span class="p">:</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Downloads</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">remote</span><span class="w"> </span><span class="n">repositories</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">copies</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">local</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">system</span>
 
-<span class="w">            </span><span class="nx">requirements_file_path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">temp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">REQUIREMENTS_TXT</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Does</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">work</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="k">distributed</span><span class="w"> </span><span class="n">packages</span>
 
-<span class="w">            </span><span class="nx">with</span><span class="w"> </span><span class="nx">open</span><span class="p">(</span><span class="nx">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">f</span><span class="p">:</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">dependency</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">dependencies</span><span class="p">.</span><span class="n">copy</span><span class="p">().</span><span class="n">items</span><span class="p">()</span><span class="err">:</span>
 
-<span class="w">                </span><span class="nx">f</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="kp">self</span><span class="p">))</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">dependency</span><span class="p">.</span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="nf">str</span><span class="p">)</span><span class="err">:</span>
 
-<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">_req_txt_saved</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">True</span>
+<span class="w">                </span><span class="k">try</span><span class="err">:</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="nx">Dependency</span><span class="w"> </span><span class="nx">validation</span><span class="w"> </span><span class="nx">deferred</span><span class="w"> </span><span class="nx">until</span><span class="w"> </span><span class="nx">Edge</span><span class="w"> </span><span class="nx">Package</span><span class="w"> </span><span class="nx">creation</span><span class="p">.</span>
+<span class="w">                    </span><span class="k">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_download_or_copy_dependency</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">dependency</span><span class="p">.</span><span class="n">version</span><span class="p">)</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">len</span><span class="p">(</span><span class="kp">self</span><span class="p">.</span><span class="nx">dependencies</span><span class="p">):</span>
+<span class="w">                    </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_wheel_name_version</span><span class="p">(</span><span class="k">path</span><span class="p">)</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w">     </span><span class="nx">create_wheelhouse</span><span class="p">(</span><span class="nx">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">python_version</span><span class="p">,</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">python_packages</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">self</span><span class="p">.</span><span class="n">dependencies</span><span class="o">[</span><span class="n">name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pep508</span><span class="p">.</span><span class="n">parse_line</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;{name}=={version}&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="nx">shutil</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="kp">self</span><span class="p">.</span><span class="nx">temp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">REQUIREMENTS_TXT</span><span class="p">,</span><span class="w"> </span><span class="nx">folder_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">REQUIREMENTS_TXT</span><span class="p">)</span>
+<span class="w">                </span><span class="ow">except</span><span class="w"> </span><span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">RequestException</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">request_error</span><span class="p">:</span>
 
-<span class="w">        </span><span class="nx">shutil</span><span class="p">.</span><span class="nx">make_archive</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Failed to download dependency &#39;{dependency.name}=={dependency.version}&#39; from the repository.&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">request_error</span>
 
-<span class="w">            </span><span class="nx">base_name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">folder_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">PYTHON_PACKAGES</span><span class="p">,</span>
+<span class="w">        </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">folder_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span>
 
-<span class="w">            </span><span class="nx">root_dir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">python_packages</span><span class="p">,</span>
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="k">open</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nl">f</span><span class="p">:</span>
 
-<span class="w">            </span><span class="nx">format</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">zip</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">f</span><span class="p">.</span><span class="k">write</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="n">self</span><span class="p">))</span>
 
-<span class="w">            </span><span class="nx">verbose</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">True</span><span class="p">,</span>
+<span class="w">        </span><span class="n">shutil</span><span class="p">.</span><span class="n">make_archive</span><span class="p">(</span>
 
-<span class="w">            </span><span class="nx">logger</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">_logger</span><span class="p">)</span>
+<span class="w">            </span><span class="n">base_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">folder_path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PYTHON_PACKAGES</span><span class="p">,</span>
+
+<span class="w">            </span><span class="n">root_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">python_packages</span><span class="p">,</span>
+
+<span class="w">            </span><span class="nf">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="p">,</span>
+
+<span class="w">            </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_logger</span><span class="p">)</span>
 </code></pre></div>
 
 </details>

@@ -519,6 +519,20 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="../helpers/reporter.html" class="md-nav__link">
+        Reporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/tempfiles.html" class="md-nav__link">
         Tempfiles
       </a>
@@ -671,6 +685,34 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="component_runner.html" class="md-nav__link">
+        Component Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data_stream.html" class="md-nav__link">
+        Data Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="index.html" class="md-nav__link">
         Index
       </a>
@@ -784,6 +826,34 @@ SPDX-License-Identifier: MIT
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="timeseries_stream.html" class="md-nav__link">
+        Timeseries Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vca_stream.html" class="md-nav__link">
+        Vca Stream
+      </a>
     </li>
   
 
@@ -910,23 +980,23 @@ It consumes input data from a joblib file and produces output data into a joblib
 
 <span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">model_config_pb2</span>
 
-<span class="k">except</span><span class="w"> </span><span class="n">BaseException</span><span class="p">:</span>
+<span class="k">except</span><span class="w"> </span><span class="n">ImportError</span><span class="p">:</span>
 
-<span class="w">    </span><span class="k">pass</span>
+<span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">simaticai.model_config_pb2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">model_config_pb2</span><span class="w">  </span><span class="c1"># for documentation build</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
 
-<span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">simaticai.testing.pipeline_runner:run_gpuruntime_component.py&quot;</span><span class="p">)</span>
+<span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;simaticai.testing.pipeline_runner.run_gpuruntime_component&quot;</span><span class="p">)</span>
 
 <span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_get_proto_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">):</span>
 
-<span class="w">    </span><span class="s2">&quot;&quot;&quot;Reads model configuration from config.pbtxt into dictionary</span>
+<span class="w">    </span><span class="s2">&quot;&quot;&quot;Reads model configuration from config.pbtxt into a dictionary</span>
 
 <span class="s2">    Args:</span>
 
-<span class="s2">        config_path (os.Pathlike): path to `config.pbtxt` file, generallz model_path.parents[1] / &quot;config.pbtxt&quot;</span>
+<span class="s2">        config_path (os.PathLike): path to `config.pbtxt` file, generally model_path.parents[1] / &quot;config.pbtxt&quot;</span>
 
 <span class="s2">    &quot;&quot;&quot;</span>
 
@@ -1211,6 +1281,21 @@ The output file is a dumped joblib result list containing the input dictionary e
           </div>
         </a>
       
+      
+        
+        <a href="timeseries_stream.html" class="md-footer__link md-footer__link--next" aria-label="Next: Timeseries Stream" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Timeseries Stream
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

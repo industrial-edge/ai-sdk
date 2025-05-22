@@ -1191,6 +1191,20 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="helpers/reporter.html" class="md-nav__link">
+        Reporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="helpers/tempfiles.html" class="md-nav__link">
         Tempfiles
       </a>
@@ -1341,6 +1355,34 @@ SPDX-License-Identifier: MIT
   
   
     <li class="md-nav__item">
+      <a href="testing/component_runner.html" class="md-nav__link">
+        Component Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing/data_stream.html" class="md-nav__link">
+        Data Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="testing/index.html" class="md-nav__link">
         Index
       </a>
@@ -1399,6 +1441,34 @@ SPDX-License-Identifier: MIT
     <li class="md-nav__item">
       <a href="testing/run_gpuruntime_component.html" class="md-nav__link">
         Run Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing/timeseries_stream.html" class="md-nav__link">
+        Timeseries Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing/vca_stream.html" class="md-nav__link">
+        Vca Stream
       </a>
     </li>
   
@@ -2245,6 +2315,12 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="n">from</span><span class="w"> </span><span class="n">simaticai</span><span class="o">.</span><span class="n">packaging</span><span class="o">.</span><span class="n">wheelhouse</span><span class="w"> </span><span class="n">import</span><span class="w"> </span><span class="n">create_wheelhouse</span>
 
+<span class="n">from</span><span class="w"> </span><span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">reporter</span><span class="w"> </span><span class="n">import</span><span class="w"> </span><span class="n">PipelineReportWriter</span><span class="p">,</span><span class="w"> </span><span class="n">ReportWriterHandler</span>
+
+<span class="n">from</span><span class="w"> </span><span class="n">simaticai</span><span class="o">.</span><span class="n">packaging</span><span class="o">.</span><span class="n">python_dependencies</span><span class="w"> </span><span class="n">import</span><span class="w"> </span><span class="n">_logger</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">_python_dependencies_logger</span>
+
+<span class="n">from</span><span class="w"> </span><span class="n">simaticai</span><span class="o">.</span><span class="n">packaging</span><span class="o">.</span><span class="n">wheelhouse</span><span class="w"> </span><span class="n">import</span><span class="w"> </span><span class="n">_logger</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">_wheelhouse_logger</span>
+
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span><span class="o">.</span><span class="n">handlers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)]</span>
@@ -2285,7 +2361,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd_line</span><span class="p">,</span><span class="w"> </span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
 
 <span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Dependency {name} is not found and cannot be added.&quot;</span><span class="p">)</span>
 
@@ -2713,6 +2789,10 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; already exists&quot;</span><span class="p">)</span>
 
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">reserved_names</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; is a reserved keyword.&quot;</span><span class="p">)</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">_type</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">supported_types</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! Unknown type &#39;{_type}&#39; for input variable &#39;{name}&#39;. Please check if the target Inference Server supports this type.&quot;</span><span class="p">)</span>
@@ -2800,6 +2880,8 @@ saved trained models are organized into a given folder structure.</p>
 <span class="w">            </span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">],</span>
+
+<span class="w">            </span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">False</span><span class="p">,</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">]</span>
 
@@ -3001,7 +3083,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">entrypoint</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">resources</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">list</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">resources</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -3015,7 +3097,9 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="sd">        When saving the package they will be copied from {base_dir}/{resources} into the package.</span>
 
-<span class="sd">        Files in &#39;__pycache__&#39; folders or any other hidden folders (folder name starting with &#39;.&#39; character) will be excluded.</span>
+<span class="sd">        Files in &#39;__pycache__&#39; folders will be excluded.</span>
+
+<span class="sd">        Until version 2.3.0 of AI SDK hidden files and folders (starting with &#39;.&#39;) are also excluded.</span>
 
 <span class="sd">        Args:</span>
 
@@ -3073,7 +3157,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">resource_path</span><span class="o">.</span><span class="n">parents</span><span class="p">:</span>
 
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;__pycache__&#39;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;__pycache__&#39;</span><span class="p">:</span>
 
 <span class="w">                </span><span class="k">return</span>
 
@@ -3259,7 +3343,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-<span class="w">        </span><span class="n">dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">component_dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">            </span><span class="o">**</span><span class="n">super</span><span class="p">()</span><span class="o">.</span><span class="n">_to_dict</span><span class="p">(),</span>
 
@@ -3281,15 +3365,17 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="n">dict</span><span class="p">[</span><span class="s2">&quot;outputType&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="n">component_dict</span><span class="p">[</span><span class="s2">&quot;outputType&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[{</span>
 
 <span class="w">            </span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span><span class="p">,</span>
 
+<span class="w">            </span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">True</span><span class="p">,</span>
+
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dict</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">component_dict</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">enable_dependency_optimization</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -3498,6 +3584,16 @@ saved trained models are organized into a given folder structure.</p>
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">log_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PipelineReportWriter</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">report_writer_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ReportWriterHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">report_writer_handler</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_python_dependencies_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">report_writer_handler</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_wheelhouse_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">report_writer_handler</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_set_log_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">log_level</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">):</span>
 
@@ -4093,6 +4189,8 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component_name</span><span class="p">]</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">],</span>
 
+<span class="w">            </span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">False</span><span class="p">,</span>
+
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">component_name</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">]</span>
 
 <span class="w">        </span><span class="n">pipeline_outputs</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[{</span>
@@ -4100,6 +4198,8 @@ saved trained models are organized into a given folder structure.</p>
 <span class="w">            </span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">True</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s1">&#39;topic&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;/siemens/edge/aiinference/{self.name}/{self.save_version}/metrics/{component_name}/{name}&quot;</span><span class="p">,</span>
 
@@ -4369,11 +4469,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">DistributionNotFound</span><span class="p">:</span>
 
-<span class="w">            </span><span class="k">pass</span>
-
-<span class="w">        </span><span class="n">finally</span><span class="p">:</span>
-
-<span class="w">            </span><span class="k">pass</span>
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;simaticai package not found&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
@@ -4381,11 +4477,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">DistributionNotFound</span><span class="p">:</span>
 
-<span class="w">            </span><span class="k">pass</span>
-
-<span class="w">        </span><span class="n">finally</span><span class="p">:</span>
-
-<span class="w">            </span><span class="k">pass</span>
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;vep-template-sdk package not found&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
@@ -4454,6 +4546,16 @@ saved trained models are organized into a given folder structure.</p>
 <span class="w">            </span><span class="n">wire</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">wiring</span><span class="p">[</span><span class="n">wire_hash</span><span class="p">]</span>
 
 <span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_wiring</span><span class="p">(</span><span class="n">wire</span><span class="p">,</span><span class="w"> </span><span class="n">wire_hash</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">pipeline_inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">variable</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">pipeline_outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">variable</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">any</span><span class="p">(</span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline_outputs</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline_inputs</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="n">pipeline_inputs</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set</span><span class="p">(</span><span class="n">pipeline_outputs</span><span class="p">))</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Pipeline input and output variables must be unique. Conflicting variables: {conflicts}&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_timeshifting</span><span class="p">()</span>
 
@@ -4649,6 +4751,10 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="n">False</span><span class="p">)</span>
 
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">],</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">):</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">add_direct_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">]</span><span class="o">.</span><span class="n">python_dependencies</span><span class="o">.</span><span class="n">dependencies</span><span class="p">)</span>
+
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">save_datalink_metadata</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">save_pipeline_config</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
@@ -4685,7 +4791,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">zip_destination</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1"># TODO: reduce Cognitive complexity if possible</span>
+<span class="w">    </span><span class="c1"># TODO: refactor the business logic in PBI 1662648</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_find_previous</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">destination</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb nb-Type">int</span><span class="p">],</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]]]:</span>
 
@@ -4693,35 +4799,63 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">        </span><span class="n">latest_with_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">destination</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">False</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">package_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">destination</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">destination</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{self.name.replace(&#39; &#39;, &#39;-&#39;)}*.zip&quot;</span><span class="p">):</span>
 
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+<span class="w">            </span><span class="n">zip_version</span><span class="p">,</span><span class="w"> </span><span class="n">zip_package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_extract_package_info</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">zip_version</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">():</span>
+
+<span class="w">                </span><span class="k">continue</span>
+
+<span class="w">            </span><span class="n">zip_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">(</span><span class="n">zip_version</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">zip_package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span><span class="w">  </span><span class="c1"># package id in the zip package not present</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">latest_version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">zip_version</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">latest_version</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">latest_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zip_version</span>
+
+<span class="w">            </span><span class="k">elif</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">latest_with_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">zip_version</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">latest_with_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+
+<span class="w">                    </span><span class="n">latest_with_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">zip_version</span><span class="p">,</span><span class="w"> </span><span class="n">zip_package_id</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">zip_package_id</span><span class="p">:</span>
 
 <span class="w">                    </span><span class="k">continue</span>
 
-<span class="w">                </span><span class="k">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{package_name}(-edge)?_([1-9][0-9]*).zip&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">latest_with_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">zip_version</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">latest_with_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
 
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
-
-<span class="w">                    </span><span class="k">continue</span>
-
-<span class="w">                </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">(</span><span class="k">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-
-<span class="w">                </span><span class="n">pack_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_extract_package_id</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="k">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">)</span>
-
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">pack_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">pack_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">package_id</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">latest_with_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">latest_with_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">version</span><span class="p">):</span>
-
-<span class="w">                    </span><span class="n">latest_with_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="n">pack_id</span>
-
-<span class="w">                </span><span class="k">elif</span><span class="w"> </span><span class="n">pack_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">latest_version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">latest_version</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">version</span><span class="p">):</span>
-
-<span class="w">                    </span><span class="n">latest_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span>
+<span class="w">                    </span><span class="n">latest_with_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">zip_version</span><span class="p">,</span><span class="w"> </span><span class="n">zip_package_id</span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">latest_version</span><span class="p">,</span><span class="w"> </span><span class="n">latest_with_id</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_extract_package_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">zip_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Tuple</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">with</span><span class="w"> </span><span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">zip_file</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">config_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">zip_file</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;pipeline_config.yml&quot;</span><span class="p">))</span>
+
+<span class="w">            </span><span class="n">with</span><span class="w"> </span><span class="n">zip_file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">config_file</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span><span class="w"> </span><span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">SafeLoader</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">pipeline_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dataFlowPipelineInfo&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span>
+
+<span class="w">                </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pipeline_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dataFlowPipelineVersion&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">None</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pipeline_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;packageId&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">None</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="n">package_id</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">None</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_extract_package_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">package_file</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">is_edge_package</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]:</span>
 
@@ -4737,9 +4871,11 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span><span class="w"> </span><span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">SafeLoader</span><span class="p">)[</span><span class="s2">&quot;dataFlowPipelineInfo&quot;</span><span class="p">][</span><span class="s2">&quot;packageId&quot;</span><span class="p">])</span>
 
-<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="p">:</span>
+<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">Exception</span><span class="p">:</span>
 
-<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Could not extract Package ID from &#39;{package_file}&#39;: {e}&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Could not extract Package ID from &#39;{package_file}&#39;&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">None</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Path</span><span class="p">:</span>
 
@@ -4763,7 +4899,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">            </span><span class="n">config_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">)</span>
 
-<span class="w">            </span><span class="n">runtime_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">config_package</span><span class="p">)</span>
+<span class="w">            </span><span class="n">runtime_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">config_package</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="p">)</span>
 
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">runtime_package</span>
 
@@ -4855,7 +4991,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">desc</span>
 
-<span class="n">def</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">zip_path</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Path</span><span class="p">:</span>
+<span class="n">def</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">zip_path</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">report_writer</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">PipelineReportWriter</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Path</span><span class="p">:</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -4901,6 +5037,8 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="sd">        zip_path (path-like): path to the pipeline configuration package zip file.</span>
 
+<span class="sd">        report_writer (ReportWriter, optional): a ReportWriter object to write the report for a pipeline. Defaults to None.</span>
+
 <span class="sd">    Returns:</span>
 
 <span class="sd">        os.PathLike: The path of the created zip file.</span>
@@ -4937,6 +5075,14 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">        </span><span class="n">runtime_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_generate_runtime_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">report_writer</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="c1"># TODO: consider moving zip_path to the parameter of report_writer.write_report()</span>
+
+<span class="w">            </span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_path</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">zip_path</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{zip_path.stem}_package_report.md&quot;</span><span class="p">))</span>
+
+<span class="w">            </span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_pipeline_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;dataFlowPipeline&#39;</span><span class="p">][</span><span class="s1">&#39;components&#39;</span><span class="p">]:</span>
 
 <span class="w">            </span><span class="n">source_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">package_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
@@ -4953,7 +5099,11 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
 
-<span class="w">                </span><span class="n">_package_component_dependencies</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">)</span>
+<span class="w">                </span><span class="n">dependency_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_package_component_dependencies</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">report_writer</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">report_writer</span><span class="o">.</span><span class="n">add_full_dependency_set</span><span class="p">(</span><span class="n">component_name</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">dependency_set</span><span class="o">=</span><span class="n">dependency_set</span><span class="p">)</span>
 
 <span class="w">                </span><span class="n">runtime_config</span><span class="p">[</span><span class="s2">&quot;runtimeConfiguration&quot;</span><span class="p">][</span><span class="s2">&quot;components&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
 
@@ -4978,6 +5128,12 @@ saved trained models are organized into a given folder structure.</p>
 <span class="w">                </span><span class="p">})</span>
 
 <span class="w">            </span><span class="n">_package_component</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span><span class="w"> </span><span class="n">runtime_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;components&#39;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{component[&#39;name&#39;]}_{component[&#39;version&#39;]}&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">report_writer</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">report_writer</span><span class="o">.</span><span class="n">write_report</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Report on {zip_path.stem} is saved to {zip_path.parent}.&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">package_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PIPELINE_CONFIG</span><span class="p">),</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">runtime_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PIPELINE_CONFIG</span><span class="p">))</span>
 
@@ -5041,13 +5197,15 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">        </span><span class="n">logger</span><span class="o">=</span><span class="n">_logger</span><span class="p">)</span>
 
-<span class="n">def</span><span class="w"> </span><span class="n">_package_component_dependencies</span><span class="p">(</span><span class="n">component_dir</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">):</span>
+<span class="n">def</span><span class="w"> </span><span class="n">_package_component_dependencies</span><span class="p">(</span><span class="n">component_dir</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">set</span><span class="p">:</span>
 
 <span class="w">    </span><span class="n">python_packages_folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;packages&#39;</span>
 
 <span class="w">    </span><span class="n">requirements_file_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">REQUIREMENTS_TXT</span>
 
 <span class="w">    </span><span class="n">packages_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PYTHON_PACKAGES_ZIP</span>
+
+<span class="w">    </span><span class="n">dependency_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set</span><span class="p">()</span>
 
 <span class="w">    </span><span class="n">python_packages_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
 
@@ -5063,7 +5221,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">    </span><span class="n">try</span><span class="p">:</span>
 
-<span class="w">        </span><span class="n">create_wheelhouse</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">)</span>
+<span class="w">        </span><span class="n">dependency_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_wheelhouse</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">any</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">python_packages_folder</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
 
@@ -5098,6 +5256,8 @@ saved trained models are organized into a given folder structure.</p>
 <span class="w">    </span><span class="n">with</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
 
 <span class="w">        </span><span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">filtered_lines</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dependency_set</span>
 
 <span class="n">def</span><span class="w"> </span><span class="n">_generate_runtime_config</span><span class="p">(</span><span class="n">pipeline_config</span><span class="p">:</span><span class="w"> </span><span class="n">dict</span><span class="p">):</span>
 
@@ -5968,7 +6128,8 @@ saved trained models are organized into a given folder structure.</p>
 <h2 id="functions">Functions</h2>
 <h3 id="convert_package">convert_package</h3>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">convert_package</span><span class="p">(</span>
-    <span class="n">zip_path</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">zip_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">report_writer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">reporter</span><span class="o">.</span><span class="n">PipelineReportWriter</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span>
 </code></pre></div>
 
@@ -6008,6 +6169,12 @@ Example usage:</p>
 <td>path to the pipeline configuration package zip file.</td>
 <td>None</td>
 </tr>
+<tr>
+<td>report_writer</td>
+<td>ReportWriter</td>
+<td>a ReportWriter object to write the report for a pipeline. Defaults to None.</td>
+<td>None</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Returns:</strong></p>
@@ -6042,7 +6209,7 @@ Example usage:</p>
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">zip_path</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Path</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">zip_path</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">report_writer</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">PipelineReportWriter</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Path</span><span class="p">:</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -6088,6 +6255,8 @@ Example usage:</p>
 
 <span class="sd">        zip_path (path-like): path to the pipeline configuration package zip file.</span>
 
+<span class="sd">        report_writer (ReportWriter, optional): a ReportWriter object to write the report for a pipeline. Defaults to None.</span>
+
 <span class="sd">    Returns:</span>
 
 <span class="sd">        os.PathLike: The path of the created zip file.</span>
@@ -6124,6 +6293,14 @@ Example usage:</p>
 
 <span class="w">        </span><span class="n">runtime_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_generate_runtime_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">report_writer</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="c1"># TODO: consider moving zip_path to the parameter of report_writer.write_report()</span>
+
+<span class="w">            </span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_path</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">zip_path</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{zip_path.stem}_package_report.md&quot;</span><span class="p">))</span>
+
+<span class="w">            </span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_pipeline_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;dataFlowPipeline&#39;</span><span class="p">][</span><span class="s1">&#39;components&#39;</span><span class="p">]:</span>
 
 <span class="w">            </span><span class="n">source_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">package_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
@@ -6140,7 +6317,11 @@ Example usage:</p>
 
 <span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
 
-<span class="w">                </span><span class="n">_package_component_dependencies</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">)</span>
+<span class="w">                </span><span class="n">dependency_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_package_component_dependencies</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">)</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">report_writer</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">report_writer</span><span class="o">.</span><span class="n">add_full_dependency_set</span><span class="p">(</span><span class="n">component_name</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">dependency_set</span><span class="o">=</span><span class="n">dependency_set</span><span class="p">)</span>
 
 <span class="w">                </span><span class="n">runtime_config</span><span class="p">[</span><span class="s2">&quot;runtimeConfiguration&quot;</span><span class="p">][</span><span class="s2">&quot;components&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
 
@@ -6165,6 +6346,12 @@ Example usage:</p>
 <span class="w">                </span><span class="p">})</span>
 
 <span class="w">            </span><span class="n">_package_component</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span><span class="w"> </span><span class="n">runtime_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;components&#39;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{component[&#39;name&#39;]}_{component[&#39;version&#39;]}&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">report_writer</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">report_writer</span><span class="o">.</span><span class="n">write_report</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Report on {zip_path.stem} is saved to {zip_path.parent}.&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">package_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PIPELINE_CONFIG</span><span class="p">),</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">runtime_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">PIPELINE_CONFIG</span><span class="p">))</span>
 
@@ -6528,7 +6715,7 @@ The method executes an OS command like <code>python -m pip show scikit-learn</co
 
 <span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd_line</span><span class="p">,</span><span class="w"> </span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="p">.</span><span class="n">PIPE</span><span class="p">,</span><span class="w"> </span><span class="kt">text</span><span class="o">=</span><span class="no">True</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span>
 
 <span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Dependency {name} is not found and cannot be added.&quot;</span><span class="p">)</span>
 
@@ -7058,6 +7245,10 @@ The method executes an OS command like <code>python -m pip show scikit-learn</co
 
 <span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; already exists&quot;</span><span class="p">)</span>
 
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">reserved_names</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; is a reserved keyword.&quot;</span><span class="p">)</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">_type</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">supported_types</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! Unknown type &#39;{_type}&#39; for input variable &#39;{name}&#39;. Please check if the target Inference Server supports this type.&quot;</span><span class="p">)</span>
@@ -7145,6 +7336,8 @@ The method executes an OS command like <code>python -m pip show scikit-learn</co
 <span class="w">            </span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">],</span>
+
+<span class="w">            </span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">False</span><span class="p">,</span>
 
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">]</span>
 
@@ -7519,6 +7712,10 @@ The example below shows the required format, assuming that 'image' is a PIL Imag
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; already exists&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">reserved_names</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; is a reserved keyword.&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">_type</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">supported_types</span><span class="p">:</span>
 
@@ -8472,6 +8669,10 @@ The example below shows the required format, assuming that 'image' is a PIL Imag
 
 <span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; already exists&quot;</span><span class="p">)</span>
 
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">reserved_names</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; is a reserved keyword.&quot;</span><span class="p">)</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">_type</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">supported_types</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! Unknown type &#39;{_type}&#39; for input variable &#39;{name}&#39;. Please check if the target Inference Server supports this type.&quot;</span><span class="p">)</span>
@@ -9195,6 +9396,16 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">log_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
 
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PipelineReportWriter</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">report_writer_handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ReportWriterHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">report_writer_handler</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_python_dependencies_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">report_writer_handler</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_wheelhouse_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">report_writer_handler</span><span class="p">)</span>
+
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_set_log_level</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">log_level</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">):</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">log_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log_level</span>
@@ -9789,6 +10000,8 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component_name</span><span class="p">]</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">],</span>
 
+<span class="w">            </span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">False</span><span class="p">,</span>
+
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">component_name</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">]</span>
 
 <span class="w">        </span><span class="n">pipeline_outputs</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[{</span>
@@ -9796,6 +10009,8 @@ The name and version together will define the name of the zip file when the pack
 <span class="w">            </span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">True</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s1">&#39;topic&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;/siemens/edge/aiinference/{self.name}/{self.save_version}/metrics/{component_name}/{name}&quot;</span><span class="p">,</span>
 
@@ -10065,11 +10280,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">DistributionNotFound</span><span class="p">:</span>
 
-<span class="w">            </span><span class="k">pass</span>
-
-<span class="w">        </span><span class="n">finally</span><span class="p">:</span>
-
-<span class="w">            </span><span class="k">pass</span>
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;simaticai package not found&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
@@ -10077,11 +10288,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">DistributionNotFound</span><span class="p">:</span>
 
-<span class="w">            </span><span class="k">pass</span>
-
-<span class="w">        </span><span class="n">finally</span><span class="p">:</span>
-
-<span class="w">            </span><span class="k">pass</span>
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;vep-template-sdk package not found&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
@@ -10150,6 +10357,16 @@ The name and version together will define the name of the zip file when the pack
 <span class="w">            </span><span class="n">wire</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">wiring</span><span class="p">[</span><span class="n">wire_hash</span><span class="p">]</span>
 
 <span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_wiring</span><span class="p">(</span><span class="n">wire</span><span class="p">,</span><span class="w"> </span><span class="n">wire_hash</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">pipeline_inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">variable</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">pipeline_outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">variable</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">any</span><span class="p">(</span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline_outputs</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline_inputs</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="n">pipeline_inputs</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set</span><span class="p">(</span><span class="n">pipeline_outputs</span><span class="p">))</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Pipeline input and output variables must be unique. Conflicting variables: {conflicts}&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_check_timeshifting</span><span class="p">()</span>
 
@@ -10345,6 +10562,10 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="n">False</span><span class="p">)</span>
 
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">],</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">):</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">add_direct_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">]</span><span class="o">.</span><span class="n">python_dependencies</span><span class="o">.</span><span class="n">dependencies</span><span class="p">)</span>
+
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">save_datalink_metadata</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">save_pipeline_config</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
@@ -10381,7 +10602,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">zip_destination</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1"># TODO: reduce Cognitive complexity if possible</span>
+<span class="w">    </span><span class="c1"># TODO: refactor the business logic in PBI 1662648</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_find_previous</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">destination</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb nb-Type">int</span><span class="p">],</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]]]:</span>
 
@@ -10389,35 +10610,63 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">        </span><span class="n">latest_with_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">destination</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">False</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">package_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">destination</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">destination</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{self.name.replace(&#39; &#39;, &#39;-&#39;)}*.zip&quot;</span><span class="p">):</span>
 
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">file</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+<span class="w">            </span><span class="n">zip_version</span><span class="p">,</span><span class="w"> </span><span class="n">zip_package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_extract_package_info</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">zip_version</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">():</span>
+
+<span class="w">                </span><span class="k">continue</span>
+
+<span class="w">            </span><span class="n">zip_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">(</span><span class="n">zip_version</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">zip_package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span><span class="w">  </span><span class="c1"># package id in the zip package not present</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">latest_version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">zip_version</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">latest_version</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="n">latest_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zip_version</span>
+
+<span class="w">            </span><span class="k">elif</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">latest_with_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">zip_version</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">latest_with_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+
+<span class="w">                    </span><span class="n">latest_with_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">zip_version</span><span class="p">,</span><span class="w"> </span><span class="n">zip_package_id</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">zip_package_id</span><span class="p">:</span>
 
 <span class="w">                    </span><span class="k">continue</span>
 
-<span class="w">                </span><span class="k">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{package_name}(-edge)?_([1-9][0-9]*).zip&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">latest_with_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">zip_version</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">latest_with_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
 
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
-
-<span class="w">                    </span><span class="k">continue</span>
-
-<span class="w">                </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">(</span><span class="k">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-
-<span class="w">                </span><span class="n">pack_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_extract_package_id</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="k">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">)</span>
-
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">pack_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">pack_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">package_id</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">latest_with_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">latest_with_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">version</span><span class="p">):</span>
-
-<span class="w">                    </span><span class="n">latest_with_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="n">pack_id</span>
-
-<span class="w">                </span><span class="k">elif</span><span class="w"> </span><span class="n">pack_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">latest_version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">latest_version</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">version</span><span class="p">):</span>
-
-<span class="w">                    </span><span class="n">latest_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span>
+<span class="w">                    </span><span class="n">latest_with_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">zip_version</span><span class="p">,</span><span class="w"> </span><span class="n">zip_package_id</span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">latest_version</span><span class="p">,</span><span class="w"> </span><span class="n">latest_with_id</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_extract_package_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">zip_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Tuple</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">with</span><span class="w"> </span><span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">zip_file</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">config_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">zip_file</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;pipeline_config.yml&quot;</span><span class="p">))</span>
+
+<span class="w">            </span><span class="n">with</span><span class="w"> </span><span class="n">zip_file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">config_file</span><span class="p">:</span>
+
+<span class="w">                </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span><span class="w"> </span><span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">SafeLoader</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">pipeline_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dataFlowPipelineInfo&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span>
+
+<span class="w">                </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pipeline_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dataFlowPipelineVersion&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">None</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pipeline_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;packageId&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">None</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="n">package_id</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">None</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_extract_package_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">package_file</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">is_edge_package</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]:</span>
 
@@ -10433,9 +10682,11 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span><span class="w"> </span><span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">SafeLoader</span><span class="p">)[</span><span class="s2">&quot;dataFlowPipelineInfo&quot;</span><span class="p">][</span><span class="s2">&quot;packageId&quot;</span><span class="p">])</span>
 
-<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="p">:</span>
+<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">Exception</span><span class="p">:</span>
 
-<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Could not extract Package ID from &#39;{package_file}&#39;: {e}&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Could not extract Package ID from &#39;{package_file}&#39;&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">None</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">export</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Path</span><span class="p">:</span>
 
@@ -10459,7 +10710,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">            </span><span class="n">config_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">)</span>
 
-<span class="w">            </span><span class="n">runtime_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">config_package</span><span class="p">)</span>
+<span class="w">            </span><span class="n">runtime_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">config_package</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="p">)</span>
 
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">runtime_package</span>
 
@@ -11569,7 +11820,7 @@ By default, the input variable will be also deleted.</p>
 
 <span class="w">            </span><span class="n">config_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="k">save</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">)</span>
 
-<span class="w">            </span><span class="n">runtime_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">config_package</span><span class="p">)</span>
+<span class="w">            </span><span class="n">runtime_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">convert_package</span><span class="p">(</span><span class="n">config_package</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">report_writer</span><span class="p">)</span>
 
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">runtime_package</span>
 
@@ -11724,6 +11975,8 @@ The file is created in the <code>destination</code> folder with name <code>pipel
 
 <span class="n">            &#39;type&#39;: self.components[component_name</span><span class="o">]</span><span class="p">.</span><span class="n">outputs</span><span class="o">[</span><span class="n">name</span><span class="o">][</span><span class="n">&#39;type&#39;</span><span class="o">]</span><span class="p">,</span>
 
+<span class="w">            </span><span class="s1">&#39;metric&#39;</span><span class="err">:</span><span class="w"> </span><span class="k">False</span><span class="p">,</span>
+
 <span class="w">        </span><span class="err">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">component_name</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">outputs</span><span class="err">]</span>
 
 <span class="w">        </span><span class="n">pipeline_outputs</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="o">[</span><span class="n">{</span>
@@ -11731,6 +11984,8 @@ The file is created in the <code>destination</code> folder with name <code>pipel
 <span class="n">            &#39;name&#39;: name,</span>
 
 <span class="n">            &#39;type&#39;: &#39;String&#39;,</span>
+
+<span class="n">            &#39;metric&#39;: True,</span>
 
 <span class="n">            &#39;topic&#39;: f&quot;/siemens/edge/aiinference/{self.name}/{self.save_version}/metrics/{component_name}/{name}&quot;,</span>
 
@@ -12100,61 +12355,61 @@ an error is raised.</p>
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">save</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span><span class="o">:</span><span class="w"> </span><span class="k">Optional</span><span class="err">[</span><span class="n">uuid</span><span class="p">.</span><span class="n">UUID</span><span class="err">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="k">Optional</span><span class="err">[</span><span class="n">str</span><span class="err">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">Path</span><span class="o">:</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="k">save</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="nl">package_id</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">uuid.UUID</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span><span class="nl">version</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">Path</span><span class="err">:</span>
 
-<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span>
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
 
-<span class="s2">        @Deprecated, reason: only edge package generation will be supported in the future. Use export instead.</span>
+<span class="ss">        @Deprecated, reason: only edge package generation will be supported in the future. Use export instead.</span>
 
-<span class="s2">        Saves the assembled package in a zip format.</span>
+<span class="ss">        Saves the assembled package in a zip format.</span>
 
-<span class="s2">        The name of the file is defined as `{package_name}_{package_version}.zip`.</span>
+<span class="ss">        The name of the file is defined as `{package_name}_{package_version}.zip`.</span>
 
-<span class="s2">        If a file with such a name already exists in the `destination` folder, it gets overwritten and a warning message appears.</span>
+<span class="ss">        If a file with such a name already exists in the `destination` folder, it gets overwritten and a warning message appears.</span>
 
-<span class="s2">        The package is also available as a subfolder on the destination path with the name `{package_name}_{package_version}`.</span>
+<span class="ss">        The package is also available as a subfolder on the destination path with the name `{package_name}_{package_version}`.</span>
 
-<span class="s2">        If the assembled content does not meet the expected one, this content can be changed and simply packed into a zip file.</span>
+<span class="ss">        If the assembled content does not meet the expected one, this content can be changed and simply packed into a zip file.</span>
 
-<span class="s2">        The package contains files and folders in the following structure:</span>
+<span class="ss">        The package contains files and folders in the following structure:</span>
 
-<span class="s2">        - Package folder with name `{package_name}_{package_version}`</span>
+<span class="ss">        - Package folder with name `{package_name}_{package_version}`</span>
 
-<span class="s2">            - `datalink-metadata.yml`</span>
+<span class="ss">            - `datalink-metadata.yml`</span>
 
-<span class="s2">            - `pipeline-config.yml`</span>
+<span class="ss">            - `pipeline-config.yml`</span>
 
-<span class="s2">            - Component folder with name `{component_name}`</span>
+<span class="ss">            - Component folder with name `{component_name}`</span>
 
-<span class="s2">            When the component is a `PythonComponent`, this folder contains:</span>
+<span class="ss">            When the component is a `PythonComponent`, this folder contains:</span>
 
-<span class="s2">            - `requirements.txt`</span>
+<span class="ss">            - `requirements.txt`</span>
 
-<span class="s2">            - Entrypoint script defined by the entrypoint of the component</span>
+<span class="ss">            - Entrypoint script defined by the entrypoint of the component</span>
 
-<span class="s2">            - Extra files as added to the specified folders</span>
+<span class="ss">            - Extra files as added to the specified folders</span>
 
-<span class="s2">            - Source folder with name `src` with necessary python scripts</span>
+<span class="ss">            - Source folder with name `src` with necessary python scripts</span>
 
-<span class="s2">        If a package ID is specified, and a package with the same ID and version is already present in the `destination` folder,</span>
+<span class="ss">        If a package ID is specified, and a package with the same ID and version is already present in the `destination` folder,</span>
 
-<span class="s2">        an error is raised.</span>
+<span class="ss">        an error is raised.</span>
 
-<span class="s2">        Args:</span>
+<span class="ss">        Args:</span>
 
-<span class="s2">            destination (str, optional): Target directory for saving the package. Defaults to &quot;</span><span class="p">.</span><span class="s2">&quot;.</span>
+<span class="ss">            destination (str, optional): Target directory for saving the package. Defaults to &quot;</span><span class="p">.</span><span class="ss">&quot;.</span>
 
-<span class="s2">            package_id (UUID): The optional package ID. If None, a new UUID is generated.</span>
+<span class="ss">            package_id (UUID): The optional package ID. If None, a new UUID is generated.</span>
 
-<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+<span class="ss">        &quot;&quot;&quot;</span>
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">validate</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Path</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">package_id</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="p">.</span><span class="n">UUID</span><span class="p">)</span><span class="o">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">package_id</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="p">.</span><span class="n">UUID</span><span class="p">)</span><span class="err">:</span>
 
-<span class="w">            </span><span class="n">package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uuid</span><span class="p">.</span><span class="nf">UUID</span><span class="p">(</span><span class="n">package_id</span><span class="p">)</span>
+<span class="w">            </span><span class="n">package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uuid</span><span class="p">.</span><span class="n">UUID</span><span class="p">(</span><span class="n">package_id</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">prev_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span>
 
@@ -12162,69 +12417,73 @@ an error is raised.</p>
 
 <span class="w">        </span><span class="n">prev_version</span><span class="p">,</span><span class="w"> </span><span class="n">prev_with_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_find_previous</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="n">package_id</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">prev_with_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="o">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">prev_with_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="err">:</span>
 
 <span class="w">            </span><span class="n">prev_id_version</span><span class="p">,</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev_with_id</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="n">version</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">str</span><span class="p">(</span><span class="n">prev_id_version</span><span class="p">)</span><span class="o">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="n">version</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">prev_id_version</span><span class="p">)</span><span class="err">:</span>
 
-<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;package with version &#39;{version or self.version}&#39; and id &#39;{package_id}&#39; already exists&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;package with version &#39;{version or self.version}&#39; and id &#39;{package_id}&#39; already exists&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">save_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">save_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
 
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
 
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="err">\</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="ss">&quot;1&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="err">\</span>
 
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="n">str</span><span class="p">(</span><span class="n">prev_id_version</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">prev_id_version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">prev_id_version</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">prev_id_version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
 
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="n">str</span><span class="p">(</span><span class="n">prev_version</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">prev_version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">prev_version</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">prev_version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
 
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="ss">&quot;1&quot;</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">save_package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">save_package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">package_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
 
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">prev_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="err">\</span>
 
 <span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="n">uuid</span><span class="p">.</span><span class="n">uuid4</span><span class="p">()</span>
 
-<span class="w">        </span><span class="k">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="k">name</span><span class="p">.</span><span class="k">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="ss">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;-&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">package_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{name}_{self.save_version}&quot;</span>
+<span class="w">        </span><span class="n">package_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="ss">&quot;{name}_{self.save_version}&quot;</span>
 
-<span class="w">        </span><span class="n">package_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{package_name}.zip&quot;</span>
+<span class="w">        </span><span class="n">package_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">f</span><span class="ss">&quot;{package_name}.zip&quot;</span>
 
-<span class="w">        </span><span class="n">specified_version_is_decimal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">version</span><span class="p">.</span><span class="n">isdecimal</span><span class="p">()</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">isdecimal</span><span class="p">()</span>
+<span class="w">        </span><span class="n">specified_version_is_decimal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">version</span><span class="p">.</span><span class="n">isdecimal</span><span class="p">()</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="p">.</span><span class="n">isdecimal</span><span class="p">()</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">specified_version_is_decimal</span><span class="o">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nl">specified_version_is_decimal</span><span class="p">:</span>
 
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">package_file</span><span class="p">.</span><span class="k">exists</span><span class="p">()</span><span class="o">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">package_file</span><span class="p">.</span><span class="ow">exists</span><span class="p">()</span><span class="err">:</span>
 
-<span class="w">                </span><span class="n">p_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_extract_package_id</span><span class="p">(</span><span class="n">package_file</span><span class="p">,</span><span class="w"> </span><span class="no">False</span><span class="p">)</span>
+<span class="w">                </span><span class="n">p_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_extract_package_id</span><span class="p">(</span><span class="n">package_file</span><span class="p">,</span><span class="w"> </span><span class="k">False</span><span class="p">)</span>
 
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">p_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">p_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">package_id</span><span class="o">:</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">p_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">p_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nl">package_id</span><span class="p">:</span>
 
-<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;package with version &#39;{self.save_version}&#39; and id &#39;{self.save_package_id}&#39; already exists: &#39;{package_file}&#39;&quot;</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;package with version &#39;{self.save_version}&#39; and id &#39;{self.save_package_id}&#39; already exists: &#39;{package_file}&#39;&quot;</span><span class="p">)</span>
 
-<span class="w">            </span><span class="n">edge_package_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{name}-edge_{self.save_version}.zip&quot;</span>
+<span class="w">            </span><span class="n">edge_package_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">f</span><span class="ss">&quot;{name}-edge_{self.save_version}.zip&quot;</span>
 
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">edge_package_file</span><span class="p">.</span><span class="k">exists</span><span class="p">()</span><span class="o">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">edge_package_file</span><span class="p">.</span><span class="ow">exists</span><span class="p">()</span><span class="err">:</span>
 
-<span class="w">                </span><span class="n">p_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_extract_package_id</span><span class="p">(</span><span class="n">edge_package_file</span><span class="p">,</span><span class="w"> </span><span class="no">True</span><span class="p">)</span>
+<span class="w">                </span><span class="n">p_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_extract_package_id</span><span class="p">(</span><span class="n">edge_package_file</span><span class="p">,</span><span class="w"> </span><span class="k">True</span><span class="p">)</span>
 
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">p_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">p_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">package_id</span><span class="o">:</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">p_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">p_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nl">package_id</span><span class="p">:</span>
 
-<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;package with version &#39;{self.save_version}&#39; and id &#39;{self.save_package_id}&#39; already exists: &#39;{edge_package_file}&#39;&quot;</span><span class="p">)</span>
+<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;package with version &#39;{self.save_version}&#39; and id &#39;{self.save_package_id}&#39; already exists: &#39;{edge_package_file}&#39;&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">package_name</span>
 
-<span class="w">        </span><span class="n">destination</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="no">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="no">True</span><span class="p">)</span>
+<span class="w">        </span><span class="n">destination</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="k">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
 
-<span class="w">        </span><span class="c1"># Save</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">Save</span>
 
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="k">component</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="o">:</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="nl">components</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="err">[</span><span class="k">component</span><span class="err">]</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="no">False</span><span class="p">)</span>
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">]</span><span class="p">.</span><span class="k">save</span><span class="p">(</span><span class="n">destination</span><span class="p">,</span><span class="w"> </span><span class="k">False</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">report_writer</span><span class="p">.</span><span class="n">add_direct_dependencies</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">]</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">]</span><span class="p">.</span><span class="n">python_dependencies</span><span class="p">.</span><span class="n">dependencies</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">save_datalink_metadata</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
 
@@ -12236,27 +12495,27 @@ an error is raised.</p>
 
 <span class="w">        </span><span class="n">zip_destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shutil</span><span class="p">.</span><span class="n">make_archive</span><span class="p">(</span>
 
-<span class="w">            </span><span class="n">base_name</span><span class="o">=</span><span class="n">str</span><span class="p">(</span><span class="n">destination</span><span class="p">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">package_name</span><span class="p">),</span><span class="w"> </span><span class="k">format</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">base_name</span><span class="o">=</span><span class="nf">str</span><span class="p">(</span><span class="n">destination</span><span class="p">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">package_name</span><span class="p">),</span><span class="w"> </span><span class="nf">format</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="n">root_dir</span><span class="o">=</span><span class="n">destination</span><span class="p">.</span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">base_dir</span><span class="o">=</span><span class="n">package_name</span><span class="p">,</span>
 
-<span class="w">            </span><span class="n">verbose</span><span class="o">=</span><span class="no">True</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="o">=</span><span class="n">_logger</span><span class="p">)</span>
+<span class="w">            </span><span class="n">verbose</span><span class="o">=</span><span class="k">True</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="o">=</span><span class="n">_logger</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">pipeline_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="k">path</span><span class="p">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">zip_destination</span><span class="p">)</span><span class="w">  </span><span class="c1"># zipped package size in bytes</span>
+<span class="w">        </span><span class="n">pipeline_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="k">path</span><span class="p">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">zip_destination</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">zipped</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="k">size</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">bytes</span>
 
-<span class="w">        </span><span class="n">pipeline_size_GB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;{:.2f}&quot;</span><span class="p">.</span><span class="k">format</span><span class="p">(</span><span class="n">pipeline_size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+<span class="w">        </span><span class="n">pipeline_size_GB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;{:.2f}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">pipeline_size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">pipeline_size_limit_GB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;{:.2f}&quot;</span><span class="p">.</span><span class="k">format</span><span class="p">(</span><span class="n">PIPELINE_SIZE_LIMIT</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+<span class="w">        </span><span class="n">pipeline_size_limit_GB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;{:.2f}&quot;</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">PIPELINE_SIZE_LIMIT</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">pipeline_size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">PIPELINE_SIZE_LIMIT</span><span class="o">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">pipeline_size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nl">PIPELINE_SIZE_LIMIT</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">error_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;Pipeline size {pipeline_size} bytes ({pipeline_size_GB} GB) exceeds the limit of &quot;</span><span class="w"> </span><span class="err">\</span>
+<span class="w">            </span><span class="n">error_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="ss">&quot;Pipeline size {pipeline_size} bytes ({pipeline_size_GB} GB) exceeds the limit of &quot;</span><span class="w"> </span><span class="err">\</span>
 
-<span class="w">                        </span><span class="n">f</span><span class="s2">&quot;{PIPELINE_SIZE_LIMIT} bytes ({pipeline_size_limit_GB} GB). &quot;</span><span class="w"> </span><span class="err">\</span>
+<span class="w">                        </span><span class="n">f</span><span class="ss">&quot;{PIPELINE_SIZE_LIMIT} bytes ({pipeline_size_limit_GB} GB). &quot;</span><span class="w"> </span><span class="err">\</span>
 
-<span class="w">                        </span><span class="s2">&quot;Please remove unnecessary files and dependencies and try again.&quot;</span>
+<span class="w">                        </span><span class="ss">&quot;Please remove unnecessary files and dependencies and try again.&quot;</span>
 
-<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="k">error</span><span class="p">(</span><span class="n">error_msg</span><span class="p">)</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">error_msg</span><span class="p">)</span>
 
 <span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="n">error_msg</span><span class="p">)</span>
 
@@ -12494,11 +12753,7 @@ The file will be created in the <code>destination</code> folder with name <code>
 
 <span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="p">.</span><span class="nl">DistributionNotFound</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">pass</span>
-
-<span class="w">        </span><span class="nl">finally</span><span class="p">:</span>
-
-<span class="w">            </span><span class="n">pass</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;simaticai package not found&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">try</span><span class="err">:</span>
 
@@ -12506,11 +12761,7 @@ The file will be created in the <code>destination</code> folder with name <code>
 
 <span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="p">.</span><span class="nl">DistributionNotFound</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">pass</span>
-
-<span class="w">        </span><span class="nl">finally</span><span class="p">:</span>
-
-<span class="w">            </span><span class="n">pass</span>
+<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="ss">&quot;vep-template-sdk package not found&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;pipeline&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
 
@@ -12671,6 +12922,16 @@ for the defined input variables.</p>
 <span class="w">            </span><span class="n">wire</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">wiring</span><span class="o">[</span><span class="n">wire_hash</span><span class="o">]</span>
 
 <span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">_check_wiring</span><span class="p">(</span><span class="n">wire</span><span class="p">,</span><span class="w"> </span><span class="n">wire_hash</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">pipeline_inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">variable for _, variable in self.inputs</span><span class="o">]</span>
+
+<span class="w">        </span><span class="n">pipeline_outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">variable for _, variable in self.outputs</span><span class="o">]</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">any</span><span class="p">(</span><span class="k">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline_outputs</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">variable</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline_inputs</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">set</span><span class="p">(</span><span class="n">pipeline_inputs</span><span class="p">).</span><span class="k">intersection</span><span class="p">(</span><span class="k">set</span><span class="p">(</span><span class="n">pipeline_outputs</span><span class="p">))</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Pipeline input and output variables must be unique. Conflicting variables: {conflicts}&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_check_timeshifting</span><span class="p">()</span>
 
@@ -12917,7 +13178,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">entrypoint</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">resources</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">list</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">resources</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -12931,7 +13192,9 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="sd">        When saving the package they will be copied from {base_dir}/{resources} into the package.</span>
 
-<span class="sd">        Files in &#39;__pycache__&#39; folders or any other hidden folders (folder name starting with &#39;.&#39; character) will be excluded.</span>
+<span class="sd">        Files in &#39;__pycache__&#39; folders will be excluded.</span>
+
+<span class="sd">        Until version 2.3.0 of AI SDK hidden files and folders (starting with &#39;.&#39;) are also excluded.</span>
 
 <span class="sd">        Args:</span>
 
@@ -12989,7 +13252,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">resource_path</span><span class="o">.</span><span class="n">parents</span><span class="p">:</span>
 
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;__pycache__&#39;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;__pycache__&#39;</span><span class="p">:</span>
 
 <span class="w">                </span><span class="k">return</span>
 
@@ -13175,7 +13438,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-<span class="w">        </span><span class="n">dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">component_dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">            </span><span class="o">**</span><span class="n">super</span><span class="p">()</span><span class="o">.</span><span class="n">_to_dict</span><span class="p">(),</span>
 
@@ -13197,15 +13460,17 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="n">dict</span><span class="p">[</span><span class="s2">&quot;outputType&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="n">component_dict</span><span class="p">[</span><span class="s2">&quot;outputType&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[{</span>
 
 <span class="w">            </span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span><span class="p">,</span>
 
+<span class="w">            </span><span class="s1">&#39;metric&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">True</span><span class="p">,</span>
+
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dict</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">component_dict</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">enable_dependency_optimization</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -13806,6 +14071,10 @@ The example below shows the required format, assuming that 'image' is a PIL Imag
 
 <span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; already exists&quot;</span><span class="p">)</span>
 
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">reserved_names</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Output &#39;{name}&#39; is a reserved keyword.&quot;</span><span class="p">)</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">_type</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">supported_types</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! Unknown type &#39;{_type}&#39; for input variable &#39;{name}&#39;. Please check if the target Inference Server supports this type.&quot;</span><span class="p">)</span>
@@ -13901,7 +14170,7 @@ The method uses the <code>tempfile.tempdir</code> folder, so make sure that the 
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">add_resources</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">base_dir</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span>
-    <span class="n">resources</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span>
+    <span class="n">resources</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -13910,7 +14179,8 @@ The method uses the <code>tempfile.tempdir</code> folder, so make sure that the 
 These resources can be Python or config files, serialized ML models or reference data.
 They are then available on path {component_root}/{resources} in the runtime environment.
 When saving the package they will be copied from {base_dir}/{resources} into the package.
-Files in '<strong>pycache</strong>' folders or any other hidden folders (folder name starting with '.' character) will be excluded.</p>
+Files in '<strong>pycache</strong>' folders will be excluded.<br />
+Until version 2.3.0 of AI SDK hidden files and folders (starting with '.') are also excluded.</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -13938,7 +14208,7 @@ Files in '<strong>pycache</strong>' folders or any other hidden folders (folder 
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="nl">resources</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="nl">resources</span><span class="p">:</span><span class="w"> </span><span class="ow">Union</span><span class="o">[</span><span class="n">os.PathLike, list</span><span class="o">]</span><span class="p">)</span><span class="err">:</span>
 
 <span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
 
@@ -13952,7 +14222,9 @@ Files in '<strong>pycache</strong>' folders or any other hidden folders (folder 
 
 <span class="ss">        When saving the package they will be copied from {base_dir}/{resources} into the package.</span>
 
-<span class="ss">        Files in &#39;__pycache__&#39; folders or any other hidden folders (folder name starting with &#39;.&#39; character) will be excluded.</span>
+<span class="ss">        Files in &#39;__pycache__&#39; folders will be excluded.</span>
+
+<span class="ss">        Until version 2.3.0 of AI SDK hidden files and folders (starting with &#39;.&#39;) are also excluded.</span>
 
 <span class="ss">        Args:</span>
 
