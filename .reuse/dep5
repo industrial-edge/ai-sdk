@@ -1,0 +1,48 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: reference-architecture-for-industrial-ai-on-azure
+Source: https://github.com/industrial-edge/reference-architecture-for-industrial-ai-on-azure
+
+Files: **/*.whl, *.whl
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.png
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.json
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.css.map
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.js.map
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.svg
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.ico
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.xz
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.gz
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.zip
+Copyright: 2025 Siemens AG
+License: MIT
+
+
+Files: infrastructure/main/test/go.sum
+Copyright: 2025 Siemens AG
+License: MIT

@@ -460,12 +460,143 @@ SPDX-License-Identifier: MIT
       
       
         <label class="md-nav__link" for="__nav_4_2_5">
+          Deploy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Deploy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Deploy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/component.html" class="md-nav__link">
+        Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/gpuruntime_component.html" class="md-nav__link">
+        Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/pipeline.html" class="md-nav__link">
+        Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/pipeline_data.html" class="md-nav__link">
+        Pipeline Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/pipeline_page.html" class="md-nav__link">
+        Pipeline Page
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy/python_component.html" class="md-nav__link">
+        Python Component
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
           Helpers
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Helpers" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_5">
+        <label class="md-nav__title" for="__nav_4_2_6">
           <span class="md-nav__icon md-icon"></span>
           Helpers
         </label>
@@ -571,18 +702,18 @@ SPDX-License-Identifier: MIT
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_2_6">
+        <label class="md-nav__link" for="__nav_4_2_7">
           Packaging
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Packaging" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_6">
+        <label class="md-nav__title" for="__nav_4_2_7">
           <span class="md-nav__icon md-icon"></span>
           Packaging
         </label>
@@ -662,18 +793,18 @@ SPDX-License-Identifier: MIT
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_8" type="checkbox" id="__nav_4_2_8" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_2_7">
+        <label class="md-nav__link" for="__nav_4_2_8">
           Testing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Testing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_7">
+        <label class="md-nav__title" for="__nav_4_2_8">
           <span class="md-nav__icon md-icon"></span>
           Testing
         </label>
@@ -701,6 +832,20 @@ SPDX-License-Identifier: MIT
     <li class="md-nav__item">
       <a href="data_stream.html" class="md-nav__link">
         Data Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docker_venv.html" class="md-nav__link">
+        Docker Venv
       </a>
     </li>
   
@@ -826,6 +971,20 @@ SPDX-License-Identifier: MIT
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="runner_config.html" class="md-nav__link">
+        Runner Config
+      </a>
     </li>
   
 
@@ -970,169 +1129,173 @@ It consumes input data from a joblib file and produces output data into a joblib
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">onnxruntime</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">InferenceSession</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">onnxruntime</span><span class="w"> </span><span class="kn">import</span> <span class="n">InferenceSession</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">google.protobuf</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">text_format</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.protobuf</span><span class="w"> </span><span class="kn">import</span> <span class="n">text_format</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">google.protobuf</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="n">json_format</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.protobuf</span><span class="w"> </span><span class="kn">import</span> <span class="n">json_format</span>
 
 <span class="k">try</span><span class="p">:</span>
 
-<span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">model_config_pb2</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">model_config_pb2</span>
 
-<span class="k">except</span><span class="w"> </span><span class="n">ImportError</span><span class="p">:</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
 
-<span class="w">    </span><span class="kn">import</span><span class="w"> </span><span class="nn">simaticai.model_config_pb2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">model_config_pb2</span><span class="w">  </span><span class="c1"># for documentation build</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">simaticai.model_config_pb2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">model_config_pb2</span>  <span class="c1"># for documentation build</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
 
-<span class="n">_logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;simaticai.testing.pipeline_runner.run_gpuruntime_component&quot;</span><span class="p">)</span>
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;simaticai.testing.pipeline_runner.run_gpuruntime_component&quot;</span><span class="p">)</span>
 
 <span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_get_proto_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">):</span>
 
-<span class="w">    </span><span class="s2">&quot;&quot;&quot;Reads model configuration from config.pbtxt into a dictionary</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads model configuration from config.pbtxt into a dictionary</span>
 
-<span class="s2">    Args:</span>
+<span class="sd">    Args:</span>
 
-<span class="s2">        config_path (os.PathLike): path to `config.pbtxt` file, generally model_path.parents[1] / &quot;config.pbtxt&quot;</span>
+<span class="sd">        config_path (os.PathLike): path to `config.pbtxt` file, generally model_path.parents[1] / &quot;config.pbtxt&quot;</span>
 
-<span class="s2">    &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">file</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
 
-<span class="w">        </span><span class="n">config_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span><span class="w"> </span><span class="n">model_config_pb2</span><span class="o">.</span><span class="n">ModelConfig</span><span class="p">())</span>
+        <span class="n">config_msg</span> <span class="o">=</span> <span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">model_config_pb2</span><span class="o">.</span><span class="n">ModelConfig</span><span class="p">())</span>
 
-<span class="w">        </span><span class="n">config_dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json_format</span><span class="o">.</span><span class="n">MessageToDict</span><span class="p">(</span><span class="n">config_msg</span><span class="p">)</span>
+        <span class="n">config_dict</span> <span class="o">=</span> <span class="n">json_format</span><span class="o">.</span><span class="n">MessageToDict</span><span class="p">(</span><span class="n">config_msg</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">config_dict</span>
+    <span class="k">return</span> <span class="n">config_dict</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_new_shape</span><span class="p">(</span><span class="n">config_input</span><span class="p">,</span><span class="w"> </span><span class="n">model_input</span><span class="p">,</span><span class="w"> </span><span class="n">input_name</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_new_shape</span><span class="p">(</span><span class="n">config_input</span><span class="p">,</span> <span class="n">model_input</span><span class="p">,</span> <span class="n">input_name</span><span class="p">):</span>
 
-<span class="w">    </span><span class="s2">&quot;&quot;&quot;Calculates the input shape if it is a batch of data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the input shape if it is a batch of data.</span>
 
-<span class="s2">    In case of batched input, the number of input arrays must be max_batch_size or less.</span>
+<span class="sd">    In case of batched input, the number of input arrays must be max_batch_size or less.</span>
 
-<span class="s2">    The input shape is a flat array and must be reshaped based on one input shape, and the size of batch can be calculated.</span>
+<span class="sd">    The input shape is a flat array and must be reshaped based on one input shape, and the size of batch can be calculated.</span>
 
-<span class="s2">    Args:</span>
+<span class="sd">    Args:</span>
 
-<span class="s2">        config_input (dict): dictionary with information of the input type and shape from configuration file</span>
+<span class="sd">        config_input (dict): dictionary with information of the input type and shape from configuration file</span>
 
-<span class="s2">        model_input (dict): standard input format for GPU Runtime, the input tensor is flattened into numpy array</span>
+<span class="sd">        model_input (dict): standard input format for GPU Runtime, the input tensor is flattened into numpy array</span>
 
-<span class="s2">        input_name (str): name of the actual model_input to search in config_input</span>
+<span class="sd">        input_name (str): name of the actual model_input to search in config_input</span>
 
-<span class="s2">    &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="w">    </span><span class="n">config_shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;dims&quot;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">config_input</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">input_name</span><span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">config_shape</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="kp">array</span><span class="p">([</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;dims&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">config_input</span> <span class="k">if</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">input_name</span><span class="p">])</span><span class="o">.</span><span class="kp">flatten</span><span class="p">()</span><span class="o">.</span><span class="kp">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">img_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config_shape</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span>
+    <span class="n">img_size</span> <span class="o">=</span> <span class="n">config_shape</span><span class="o">.</span><span class="kp">prod</span><span class="p">()</span>
 
-<span class="w">    </span><span class="n">input_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numpy</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">model_input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">input_size</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="kp">prod</span><span class="p">(</span><span class="n">model_input</span><span class="o">.</span><span class="kp">shape</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">batch_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_size</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">img_size</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="n">input_size</span> <span class="o">//</span> <span class="n">img_size</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="n">batch_size</span><span class="p">],</span><span class="w"> </span><span class="n">config_shape</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="kp">concatenate</span><span class="p">(([</span><span class="n">batch_size</span><span class="p">],</span> <span class="n">config_shape</span><span class="p">))</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span><span class="w"> </span><span class="n">config_path</span><span class="p">,</span><span class="w"> </span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="n">output_file</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">config_path</span><span class="p">,</span> <span class="n">input_file</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
 
-<span class="w">    </span><span class="s2">&quot;&quot;&quot;Feeds input to the ML Model saved in ONNX format and captures output.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Feeds input to the ML Model saved in ONNX format and captures output.</span>
 
-<span class="s2">    Reads the given model and creates an onnxruntime Session to</span>
+<span class="sd">    Reads the given model and creates an onnxruntime Session to</span>
 
-<span class="s2">    The input file must be a joblib dump, and the joblib must be a dictionary or list of dictionaries.</span>
+<span class="sd">    The input file must be a joblib dump, and the joblib must be a dictionary or list of dictionaries.</span>
 
-<span class="s2">    The output file is a dumped joblib result list containing the input dictionary extended with the generated predictions.</span>
+<span class="sd">    The output file is a dumped joblib result list containing the input dictionary extended with the generated predictions.</span>
 
-<span class="s2">    Args:</span>
+<span class="sd">    Args:</span>
 
-<span class="s2">        model_path (str): File path for the stored ML Model in ONNX format</span>
+<span class="sd">        model_path (str): File path for the stored ML Model in ONNX format</span>
 
-<span class="s2">        input_file (os.Pathlike): Path of the joblib file containing the input payloads</span>
+<span class="sd">        input_file (os.Pathlike): Path of the joblib file containing the input payloads</span>
 
-<span class="s2">        output_file (os.Pathlike): Path of the joblib file where the outputs will be stored</span>
+<span class="sd">        output_file (os.Pathlike): Path of the joblib file where the outputs will be stored</span>
 
-<span class="s2">    &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="w">    </span><span class="n">input_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+    <span class="n">input_list</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="kp">load</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">input_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_list</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">type</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="nb">list</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="n">input_list</span><span class="p">]</span>
+    <span class="n">input_list</span> <span class="o">=</span> <span class="n">input_list</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span> <span class="k">else</span> <span class="p">[</span><span class="n">input_list</span><span class="p">]</span>
 
-<span class="w">    </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_list</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">output_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="w">    </span><span class="n">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">model_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_get_proto_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">_get_proto_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">max_batch_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;maxBatchSize&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">max_batch_size</span> <span class="o">=</span> <span class="n">model_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;maxBatchSize&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">input</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">session</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()]</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()]</span>
 
-<span class="w">    </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">output</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">session</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()]</span>
+    <span class="n">input_names</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
 
-<span class="w">    </span><span class="n">predictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">output</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">outputs</span><span class="p">]</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">output</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">get_outputs</span><span class="p">()]</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">_output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">output_list</span><span class="p">:</span>
+    <span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">output</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">]</span>
 
-<span class="w">        </span><span class="n">_input_tensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+    <span class="k">for</span> <span class="n">_input</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
 
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">_input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">inputs</span><span class="p">:</span>
+        <span class="n">_input_tensor</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">max_batch_size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">_input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">_input</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">input_names</span><span class="p">}</span>
 
-<span class="w">                </span><span class="n">input_shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_get_new_shape</span><span class="p">(</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">_output</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">],</span><span class="w"> </span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_input_info</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
 
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max_batch_size</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">max_batch_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
 
-<span class="w">                    </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received input batch size (</span><span class="si">{</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) is greater than max_batch_size (</span><span class="si">{</span><span class="n">max_batch_size</span><span class="si">}</span><span class="s2">)!&quot;</span><span class="p">)</span>
+                <span class="n">input_shape</span> <span class="o">=</span> <span class="n">_get_new_shape</span><span class="p">(</span><span class="n">model_config</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">],</span> <span class="n">_input</span><span class="p">[</span><span class="n">_input_info</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="n">_input_info</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-<span class="w">                </span><span class="n">_input_tensor</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_output</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_batch_size</span><span class="p">:</span>
 
-<span class="w">            </span><span class="k">else</span><span class="p">:</span>
+                    <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received input batch size (</span><span class="si">{</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">) is greater than max_batch_size (</span><span class="si">{</span><span class="n">max_batch_size</span><span class="si">}</span><span class="s2">)!&quot;</span><span class="p">)</span>
 
-<span class="w">                </span><span class="n">_input_tensor</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_output</span><span class="p">[</span><span class="n">_input</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">_input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                <span class="n">_input_tensor</span><span class="p">[</span><span class="n">_input_info</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">_input</span><span class="p">[</span><span class="n">_input_info</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="kp">reshape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">_predictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">_input_tensor</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
 
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">_predictions</span><span class="p">)):</span>
+                <span class="n">_input_tensor</span><span class="p">[</span><span class="n">_input_info</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">_input</span><span class="p">[</span><span class="n">_input_info</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="kp">reshape</span><span class="p">(</span><span class="n">_input_info</span><span class="o">.</span><span class="kp">shape</span><span class="p">)</span>
 
-<span class="w">            </span><span class="n">_output</span><span class="p">[</span><span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">model_outputs</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">output_names</span><span class="p">,</span> <span class="n">_input_tensor</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">output_list</span><span class="p">,</span><span class="w"> </span><span class="n">output_file</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">|=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">output_names</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">))</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span>
+        <span class="n">output_list</span><span class="o">.</span><span class="kp">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 
-<span class="k">if</span><span class="w"> </span><span class="vm">__name__</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">joblib</span><span class="o">.</span><span class="kp">dump</span><span class="p">(</span><span class="n">output_list</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">_parser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="k">return</span> <span class="mi">0</span>
 
-<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--model-path&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;The path of ONNX file.&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 
-<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--config-path&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;The path of config.pbtxt&quot;</span><span class="p">)</span>
+    <span class="n">_parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 
-<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--input-file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;The file which contains input data to test with component.&quot;</span><span class="p">)</span>
+    <span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;--model-path&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The path of ONNX file.&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--output-file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;The file which contains calculated output data.&quot;</span><span class="p">)</span>
+    <span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;--config-path&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The path of config.pbtxt&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-ll&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--log-level&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Log Level using `logging` class&#39; enum values.&quot;</span><span class="p">)</span>
+    <span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">,</span> <span class="s2">&quot;--input-file&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The file which contains input data to test with component.&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The file which contains calculated output data.&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="n">_args</span><span class="o">.</span><span class="n">log_level</span><span class="p">))</span>
+    <span class="n">_parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-ll&quot;</span><span class="p">,</span> <span class="s2">&quot;--log-level&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Log Level using `logging` class&#39; enum values.&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;arguments: </span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">_args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">_args</span> <span class="o">=</span> <span class="n">_parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
-<span class="w">    </span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;workdir: </span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="n">_args</span><span class="o">.</span><span class="n">log_level</span><span class="p">))</span>
 
-<span class="w">    </span><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">_args</span><span class="o">.</span><span class="n">model_path</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="o">.</span><span class="n">config_path</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="o">.</span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="n">_args</span><span class="o">.</span><span class="n">output_file</span><span class="p">))</span>
+    <span class="n">_logger</span><span class="o">.</span><span class="kp">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;arguments: </span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">_args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">_logger</span><span class="o">.</span><span class="kp">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;workdir: </span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">(</span><span class="n">_args</span><span class="o">.</span><span class="n">model_path</span><span class="p">,</span> <span class="n">_args</span><span class="o">.</span><span class="n">config_path</span><span class="p">,</span> <span class="n">_args</span><span class="o">.</span><span class="n">input_file</span><span class="p">,</span> <span class="n">_args</span><span class="o">.</span><span class="n">output_file</span><span class="p">))</span>
 </code></pre></div>
 
 </details>
 <h2 id="functions">Functions</h2>
 <h3 id="main">main</h3>
-<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span>
     <span class="n">model_path</span><span class="p">,</span>
     <span class="n">config_path</span><span class="p">,</span>
     <span class="n">input_file</span><span class="p">,</span>
@@ -1201,7 +1364,7 @@ The output file is a dumped joblib result list containing the input dictionary e
 
 <span class="w">    </span><span class="n">input_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_list</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">type</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">[</span><span class="n">input_list</span><span class="o">]</span>
 
-<span class="w">    </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_list</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="w">    </span><span class="n">output_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
 
 <span class="w">    </span><span class="k">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
 
@@ -1211,35 +1374,39 @@ The output file is a dumped joblib result list containing the input dictionary e
 
 <span class="w">    </span><span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">input for input in session.get_inputs()</span><span class="o">]</span>
 
+<span class="w">    </span><span class="n">input_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">input.name for input in inputs</span><span class="o">]</span>
+
 <span class="w">    </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">output for output in session.get_outputs()</span><span class="o">]</span>
 
-<span class="w">    </span><span class="n">predictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">output.name for output in outputs</span><span class="o">]</span>
+<span class="w">    </span><span class="n">output_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">output.name for output in outputs</span><span class="o">]</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">_output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">output_list</span><span class="p">:</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">_input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">input_list</span><span class="p">:</span>
 
 <span class="w">        </span><span class="n">_input_tensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
 
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">_input</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">inputs</span><span class="p">:</span>
+<span class="w">        </span><span class="k">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="nl">k</span><span class="p">:</span><span class="w"> </span><span class="n">_input</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">_input</span><span class="p">.</span><span class="n">keys</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">input_names</span><span class="err">}</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">_input_info</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">inputs</span><span class="p">:</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">max_batch_size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="err">:</span>
 
-<span class="w">                </span><span class="n">input_shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_get_new_shape</span><span class="p">(</span><span class="n">model_config</span><span class="o">[</span><span class="n">&quot;input&quot;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">_output</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">_input</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+<span class="w">                </span><span class="n">input_shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_get_new_shape</span><span class="p">(</span><span class="n">model_config</span><span class="o">[</span><span class="n">&quot;input&quot;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">_input</span><span class="o">[</span><span class="n">_input_info.name</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">_input_info</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
 
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">input_shape</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nl">max_batch_size</span><span class="p">:</span>
 
 <span class="w">                    </span><span class="n">_logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;Received input batch size ({input_shape[0]}) is greater than max_batch_size ({max_batch_size})!&quot;</span><span class="p">)</span>
 
-<span class="w">                </span><span class="n">_input_tensor</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_output</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+<span class="w">                </span><span class="n">_input_tensor</span><span class="o">[</span><span class="n">_input_info.name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_input</span><span class="o">[</span><span class="n">_input_info.name</span><span class="o">]</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
 
 <span class="w">            </span><span class="k">else</span><span class="err">:</span>
 
-<span class="w">                </span><span class="n">_input_tensor</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_output</span><span class="o">[</span><span class="n">_input.name</span><span class="o">]</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">_input</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="w">                </span><span class="n">_input_tensor</span><span class="o">[</span><span class="n">_input_info.name</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_input</span><span class="o">[</span><span class="n">_input_info.name</span><span class="o">]</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">_input_info</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">_predictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="w"> </span><span class="n">_input_tensor</span><span class="p">)</span>
+<span class="w">        </span><span class="n">model_outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">session</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">output_names</span><span class="p">,</span><span class="w"> </span><span class="n">_input_tensor</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">_predictions</span><span class="p">))</span><span class="err">:</span>
+<span class="w">        </span><span class="k">output</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">dict</span><span class="p">(</span><span class="n">zip</span><span class="p">(</span><span class="n">output_names</span><span class="p">,</span><span class="w"> </span><span class="n">model_outputs</span><span class="p">))</span>
 
-<span class="w">            </span><span class="n">_output</span><span class="o">[</span><span class="n">predictions[i</span><span class="o">]</span><span class="err">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_predictions</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<span class="w">        </span><span class="n">output_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="k">output</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">joblib</span><span class="p">.</span><span class="k">dump</span><span class="p">(</span><span class="n">output_list</span><span class="p">,</span><span class="w"> </span><span class="n">output_file</span><span class="p">)</span>
 
@@ -1283,13 +1450,13 @@ The output file is a dumped joblib result list containing the input dictionary e
       
       
         
-        <a href="timeseries_stream.html" class="md-footer__link md-footer__link--next" aria-label="Next: Timeseries Stream" rel="next">
+        <a href="runner_config.html" class="md-footer__link md-footer__link--next" aria-label="Next: Runner Config" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Timeseries Stream
+              Runner Config
             </div>
           </div>
           <div class="md-footer__button md-icon">
