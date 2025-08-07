@@ -17,6 +17,31 @@ Known issues:
 -   Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.
 -   Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected
 
+## 2.5.0
+
+New features:
+
+-   Command line Pipeline execution is enabled.
+-   Component name is restricted to [-a-zA-Z0-9_] characters.
+-   The VCAStream class now supports additional image formats when converting a folder of images into an ImageSet input for LocalPipelineRunner.
+-   The list of image formats VCAStream class can convert a folder of images into ImageSet input for LocalPipelineRunner is extended. The supported image formats are `Mono8`, `RGB8` (same as `RGB`), `BGR8` (same as `BGR`), `BayerRG8`, `BayerBG8`, `BayerGB8`, `BayerGR8`, `YUV422Packed`, and `YUV422_YUYV_Packed`.
+-   ImageSet output can be enabled from a component for previewing on AIIS
+-   Dependencies can be added from a `pyproject.toml` file's project.dependencies section
+
+Fixed issues:
+-   The execution report lists installed packages related to CPU Python components only.
+-   The execution report contains the list of installed packages on every run.
+-   `Pipeline.export(...)` creates a package with the same package id regardless of pipeline versioning.
+-   Python 3.10.x ≤ 3.10.16 - Multiple Vulnerabilities - 3.10.17
+-   Python 3.11.x ≤ 3.11.11 - Multiple Vulnerabilities - 3.11.12
+-   Python Package: onnx < 1.17.0 - Remote Path Traversal Vulnerability
+-   Python Package: Google Protocol Buffers (protobuf) - End of Life Notification (EOL)
+-   Character encoding incompatibility on Windows.
+
+Removed features:
+
+-   Running pipelines and components in local execution no longer generates a warning when sqlite3 is imported.
+
 ## 2.4.0
 
 New features:

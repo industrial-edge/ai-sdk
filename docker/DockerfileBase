@@ -1,0 +1,152 @@
+# Copyright Siemens AG 2023
+# SPDX-License-Identifier: MIT
+
+FROM debian:bullseye-20221219-slim
+
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+# for pip update
+RUN echo "Acquire::http::Proxy \""${HTTP_PROXY}"\";">/etc/apt/apt.conf
+
+WORKDIR /usr/sail/
+
+COPY ./133557_OpenSSL_3_4_1_sourcecode_clean.zip \
+     ./sqlite-autoconf-3490100.tar.gz \
+     ./Python-3.8.20_clean.tar.xz \
+     ./Python-3.10.17_clean.tar.xz \
+     ./Python-3.11.12_clean.tar.xz \
+     ./setuptools-69.2.0_clean.tar.gz \
+     ./pip-24.2_clean.tar.gz \
+     ./lzma_9.22-2.2_cleared.tar.gz \
+     ./unzip_6.0-23+deb10u3.debian_cleared.tar.xz \
+     ./bzip2-latest-1.0.8_Clean.tar.gz \
+     ./xz-5.8.1_clean.tar.gz \
+     ./libffi-3.4.2.tar.gz /usr/sail/
+
+# Beware: openssl not allowing multithread builds
+# bzip and lzma are required for some Python packages (pandas)
+RUN mkdir -p /usr/sail/build && \
+     apt-get update && \
+     apt-get -y install --no-install-recommends build-essential=12.9 && \
+     tar xf unzip_6.0-23+deb10u3.debian_cleared.tar.xz -C /usr/sail/build && \
+     rm unzip_6.0-23+deb10u3.debian_cleared.tar.xz && \
+     cd /usr/sail/build/unzip60/ && \
+     make -j "$(nproc)" -f unix/Makefile generic && \
+     mv unzip funzip unzipsfx /usr/bin/ && \
+     unzip /usr/sail/133557_OpenSSL_3_4_1_sourcecode_clean.zip -d /usr/sail/build/openssl-3.4.1 && \
+     rm /usr/sail/133557_OpenSSL_3_4_1_sourcecode_clean.zip && \
+     chmod -R 755 /usr/sail/build/openssl-3.4.1/ && \
+     cd /usr/sail/build/openssl-3.4.1/ && \
+     ./config && \
+     make install && \
+     ldconfig /usr/local/lib64/ && \
+     tar xzf /usr/sail/libffi-3.4.2.tar.gz -C /usr/sail/build && \
+     rm /usr/sail/libffi-3.4.2.tar.gz && \
+     cd /usr/sail/build/libffi-3.4.2/ && \
+     ./configure --disable-static && \
+     make -j "$(nproc)" install && \
+     ldconfig && \
+     tar xzf /usr/sail/lzma_9.22-2.2_cleared.tar.gz -C /usr/sail/build && \
+     rm /usr/sail/lzma_9.22-2.2_cleared.tar.gz && \
+     cd /usr/sail/build/lzma-9.22/CPP/7zip/Bundles/LzmaCon && \
+     make -j "$(nproc)" -f makefile.gcc clean all && \
+     mv lzmp /usr/bin/ && \
+     apt-get -y install --no-install-recommends zlib1g-dev=1:1.2.11.dfsg-2+deb11u2 && \
+     tar xzf /usr/sail/xz-5.8.1_clean.tar.gz -C /usr/sail/build && \
+     rm /usr/sail/xz-5.8.1_clean.tar.gz && \
+     cd /usr/sail/build/xz-5.8.1/ && \
+     ./configure --disable-xz \
+     --disable-xzdec \
+     --disable-lzmadec \
+     --disable-lzmainfo \
+     --disable-scripts \
+     --disable-doc \
+     --disable-static && \
+     make install && \
+     ldconfig && \
+     tar xvfz /usr/sail/bzip2-latest-1.0.8_Clean.tar.gz -C /usr/sail/build && rm /usr/sail/bzip2-latest-1.0.8_Clean.tar.gz && \
+     cd /usr/sail/build/bzip2-1.0.8/ && make -j "$(nproc)" install PREFIX=/usr/local/bzip2/1_0_8 && \
+     rm -rf /usr/local/bzip2/1_0_8/bin && \
+     rm /usr/local/bzip2/1_0_8/lib/libbz2.a && \
+     ln -s /usr/local/bzip2/1_0_8/include/bzlib.h /usr/local/include/ && \
+     ln -s /usr/local/bzip2/1_0_8/lib/libbz2.so.1.0.8 /usr/local/bzip2/1_0_8/lib/libbz2.so.1.0 && \
+     ln -s /usr/local/bzip2/1_0_8/lib/libbz2.so.1.0 /usr/local/lib/ && \
+     ln -s /usr/local/bzip2/1_0_8/lib/libbz2.so.1.0 /usr/local/lib/libbz2.so && \
+     ldconfig && \
+     make -j "$(nproc)" clean && make -j "$(nproc)" -f Makefile-libbz2_so && \
+     mv libbz2.so.1.0.8 /usr/local/bzip2/1_0_8/lib/ && \
+     export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64 && \
+     tar xf /usr/sail/sqlite-autoconf-3490100.tar.gz -C /usr/sail/build && \
+     rm -rf /usr/sail/sqlite-autoconf-3490100.tar.gz && \
+     cd /usr/sail/build/sqlite-autoconf-3490100 && \
+     ./configure --disable-static && make -j "$(nproc)" install && \
+     ldconfig && \
+     rm -f /usr/local/bin/sqlite3 && \
+  echo "installing python 3.8" >&2 && \
+     tar xf /usr/sail/Python-3.8.20_clean.tar.xz -C /usr/sail/build && \
+     rm -rf /usr/sail/Python-3.8.20_clean.tar.xz && \
+     cd /usr/sail/build/Python-3.8.20 && \
+     sed -i -e '206 s/#//g' -e '210 s/#//g' -e '211 s/#//g' -e '212 s/#//g' -e '213 s/#//g' Modules/Setup && \
+     ./configure --enable-optimizations --enable-shared --with-openssl=/usr/local && make -j "$(nproc)" LDFLAGS="-Wl,--strip-all" altinstall && \
+     ldconfig && \
+  echo "installing python 3.10" >&2 && \
+     tar xf /usr/sail/Python-3.10.17_clean.tar.xz -C /usr/sail/build && \
+     rm -rf /usr/sail/Python-3.10.17_clean.tar.xz && \
+     cd /usr/sail/build/Python-3.10.17 && \
+     sed -i -e '207 s/#//g' -e '211 s/ OPENSSL=.*/ OPENSSL=\/usr\/local\/ssl/g' -e '211 s/#//g' -e '212 s/#//g' -e '213 s/#//g' -e '214 s/#//g' Modules/Setup && \
+     ./configure --enable-optimizations --enable-shared --with-openssl=/usr/local && make -j "$(nproc)" LDFLAGS="-Wl,--strip-all" altinstall && \
+     ldconfig && \
+  echo "installing python 3.11" >&2 && \
+     tar xf /usr/sail/Python-3.11.12_clean.tar.xz -C /usr/sail/build && \
+     rm -rf /usr/sail/Python-3.11.12_clean.tar.xz && \
+     cd /usr/sail/build/Python-3.11.12 && \
+     sed -i -e '215 s/#//g' -e '216 s/#//g' Modules/Setup && \
+     ./configure --enable-optimizations --enable-shared --with-openssl=/usr/local && \
+     make -j "$(nproc)" LDFLAGS="-Wl,--strip-all" && make -j "$(nproc)" LDFLAGS="-Wl,--strip-all" altinstall && \
+     ldconfig && \
+  echo "installing setuptools" >&2 && \
+     tar xvzf /usr/sail/setuptools-69.2.0_clean.tar.gz -C /usr/sail/build && rm /usr/sail/setuptools-69.2.0_clean.tar.gz && \
+     cd /usr/sail/build/setuptools-69.2.0/ && \
+     python3.8 -m pip install . && \
+     python3.10 -m pip install . && \
+     python3.11 -m pip install . && \
+  echo "installing pip" >&2 && \
+     tar xvzf /usr/sail/pip-24.2_clean.tar.gz -C /usr/sail/build && rm /usr/sail/pip-24.2_clean.tar.gz && \
+     cd /usr/sail/build/pip-24.2/ && \
+     python3.8 -m pip install . && \
+     python3.10 -m pip install . && \
+     python3.11 -m pip install . && \
+  echo "cleaning up" >&2 && \
+     rm -rf /usr/local/bzip2/1_0_8/include && \
+     rm -rf /usr/local/lib/gcc && \
+     rm -rf /usr/local/include && \
+     find /usr/local/ -name "*.la" -delete && \
+     rm -rf /usr/sail/build && \
+     find /usr/local -depth \
+     \( \
+     \( -type d -a \( -name test -o -name tests -o -name idle_test \) \) \
+     -o \
+     \( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
+     \) -exec rm -rf '{}' +  && \
+     apt-get -y remove --purge build-essential zlib1g-dev && apt -y autoremove && \
+     rm -rf /usr/local/share/doc && \
+     rm -rf /usr/local/share/man && \
+     find / -name "*.html" -delete && \
+     rm -rf /var/lib/apt/lists/* && \
+     rm -rf /etc/apt/apt.conf && \
+     find /usr/local/lib/python3* -type d -a \( \
+     -name __pycache__ -o \
+     -name test -o \
+     -name tests -o \
+     -name idlelib -o \
+     -name idle_test -o \
+     -name turtledemo -o \
+     -name pydoc_data -o \
+     -name tkinter \) \
+     -exec rm -rf '{}' + && \
+     find /usr/local/lib/python3* -type f -a \( \
+     -name '*.a' -o \
+     -name '*.pyc' -o \
+     -name '*.pyo' -o \
+     -name '*.exe' \) \
+     -exec rm '{}' +
