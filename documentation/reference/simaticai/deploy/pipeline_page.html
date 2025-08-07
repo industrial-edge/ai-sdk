@@ -1,0 +1,3035 @@
+<!--
+  SPDX-FileCopyrightText: 2025 (C) 2025 Siemens AG
+  SPDX-License-Identifier: MIT
+-->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.5.0">
+    
+    
+      
+        <title>Pipeline Page - AI Software Development Kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-simaticaideploypipeline_page" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-header__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Software Development Kit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pipeline Page
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="AI Software Development Kit" class="md-nav__button md-logo" aria-label="AI Software Development Kit" data-md-component="logo">
+      
+  <img src="../../../Sie_logo_white.svg" alt="logo">
+
+    </a>
+    AI Software Development Kit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CHANGELOG.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user_manual.html" class="md-nav__link">
+        User Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Log Module
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Log Module" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Log Module
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../log_module/mock_logger.html" class="md-nav__link">
+        Mock Logger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Simaticai
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Simaticai" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Simaticai
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment.html" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_config_pb2.html" class="md-nav__link">
+        Model Config Pb2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_4">
+          Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/schemas.html" class="md-nav__link">
+        Schemas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          Deploy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Deploy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Deploy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="component.html" class="md-nav__link">
+        Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="gpuruntime_component.html" class="md-nav__link">
+        Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pipeline.html" class="md-nav__link">
+        Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pipeline_data.html" class="md-nav__link">
+        Pipeline Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pipeline Page
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="pipeline_page.html" class="md-nav__link md-nav__link--active">
+        Pipeline Page
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#save_readme_html" class="md-nav__link">
+    save_readme_html
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_pipelinepage" class="md-nav__link">
+    _PipelinePage
+  </a>
+  
+    <nav class="md-nav" aria-label="_PipelinePage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    add
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_raw" class="md-nav__link">
+    add_raw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addcontent" class="md-nav__link">
+    addcontent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addfooter" class="md-nav__link">
+    addfooter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addheader" class="md-nav__link">
+    addheader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css" class="md-nav__link">
+    css
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_component_inputs" class="md-nav__link">
+    html_generate_component_inputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_component_outputs" class="md-nav__link">
+    html_generate_component_outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_components" class="md-nav__link">
+    html_generate_components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_entrypoints" class="md-nav__link">
+    html_generate_entrypoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_io_wiring" class="md-nav__link">
+    html_generate_io_wiring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_metrics" class="md-nav__link">
+    html_generate_metrics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_parameters" class="md-nav__link">
+    html_generate_parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_pipeline_inputs" class="md-nav__link">
+    html_generate_pipeline_inputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_pipeline_outputs" class="md-nav__link">
+    html_generate_pipeline_outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_resources" class="md-nav__link">
+    html_generate_resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_timeshifting" class="md-nav__link">
+    html_generate_timeshifting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    init
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metainfo" class="md-nav__link">
+    metainfo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts" class="md-nav__link">
+    scripts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="python_component.html" class="md-nav__link">
+        Python Component
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_6" type="checkbox" id="__nav_4_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_6">
+          Helpers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Helpers" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Helpers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/model_config.html" class="md-nav__link">
+        Model Config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/pep508.html" class="md-nav__link">
+        Pep508
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/reporter.html" class="md-nav__link">
+        Reporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/tempfiles.html" class="md-nav__link">
+        Tempfiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helpers/yaml_helper.html" class="md-nav__link">
+        Yaml Helper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_7" type="checkbox" id="__nav_4_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_7">
+          Packaging
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Packaging" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Packaging
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/constants.html" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/python_dependencies.html" class="md-nav__link">
+        Python Dependencies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../packaging/wheelhouse.html" class="md-nav__link">
+        Wheelhouse
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_8" type="checkbox" id="__nav_4_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_8">
+          Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Testing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/component_runner.html" class="md-nav__link">
+        Component Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/data_stream.html" class="md-nav__link">
+        Data Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/docker_venv.html" class="md-nav__link">
+        Docker Venv
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/pipeline_runner.html" class="md-nav__link">
+        Pipeline Runner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/pipeline_validator.html" class="md-nav__link">
+        Pipeline Validator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/run_component.html" class="md-nav__link">
+        Run Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/run_gpuruntime_component.html" class="md-nav__link">
+        Run Gpuruntime Component
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/runner_config.html" class="md-nav__link">
+        Runner Config
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/timeseries_stream.html" class="md-nav__link">
+        Timeseries Stream
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/vca_stream.html" class="md-nav__link">
+        Vca Stream
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#save_readme_html" class="md-nav__link">
+    save_readme_html
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_pipelinepage" class="md-nav__link">
+    _PipelinePage
+  </a>
+  
+    <nav class="md-nav" aria-label="_PipelinePage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    add
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_raw" class="md-nav__link">
+    add_raw
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addcontent" class="md-nav__link">
+    addcontent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addfooter" class="md-nav__link">
+    addfooter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addheader" class="md-nav__link">
+    addheader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#css" class="md-nav__link">
+    css
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_component_inputs" class="md-nav__link">
+    html_generate_component_inputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_component_outputs" class="md-nav__link">
+    html_generate_component_outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_components" class="md-nav__link">
+    html_generate_components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_entrypoints" class="md-nav__link">
+    html_generate_entrypoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_io_wiring" class="md-nav__link">
+    html_generate_io_wiring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_metrics" class="md-nav__link">
+    html_generate_metrics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_parameters" class="md-nav__link">
+    html_generate_parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_pipeline_inputs" class="md-nav__link">
+    html_generate_pipeline_inputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_pipeline_outputs" class="md-nav__link">
+    html_generate_pipeline_outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_resources" class="md-nav__link">
+    html_generate_resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_generate_timeshifting" class="md-nav__link">
+    html_generate_timeshifting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    init
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metainfo" class="md-nav__link">
+    metainfo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts" class="md-nav__link">
+    scripts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="module-simaticaideploypipeline_page">Module simaticai.deploy.pipeline_page</h1>
+<p>None</p>
+<p>None</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Copyright (C) Siemens AG 2021. All Rights Reserved. Confidential.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">MarkupPy</span><span class="w"> </span><span class="kn">import</span> <span class="n">markup</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.packaging.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">README_HTML</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.deploy.component</span><span class="w"> </span><span class="kn">import</span> <span class="n">Component</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.deploy.python_component</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonComponent</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.deploy.pipeline_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineData</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[</span><span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)]</span>
+
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_PipelinePage&#39;</span><span class="p">,</span> <span class="s1">&#39;save_readme_html&#39;</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_PipelinePage</span><span class="p">(</span><span class="n">markup</span><span class="o">.</span><span class="n">page</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="n">PipelineData</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;strict_html&#39;</span><span class="p">,</span> <span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">twotags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;section&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+
+            <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pipeline</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">pipeline</span><span class="o">.</span><span class="n">save_version</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+
+            <span class="n">doctype</span><span class="o">=</span><span class="s2">&quot;&lt;!DOCTYPE html&gt;&quot;</span><span class="p">,</span>
+
+            <span class="n">charset</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
+
+            <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">h1</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pipeline </span><span class="si">{</span><span class="n">pipeline</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">pipeline</span><span class="o">.</span><span class="n">save_version</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">desc</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">desc</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_parameters</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_pipeline_inputs</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_pipeline_outputs</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_io_wiring</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_timeshifting</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_components</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Component</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hr</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">h1</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">component</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">component</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">component</span><span class="o">.</span><span class="n">desc</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">desc</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_component_inputs</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_component_outputs</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_metrics</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="n">PythonComponent</span><span class="p">):</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_resources</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">html_generate_entrypoints</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="n">PipelineData</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;Parameters&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">()</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">parameter</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, default: &#39;</span><span class="si">{</span><span class="n">parameter</span><span class="p">[</span><span class="s1">&#39;defaultValue&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;)&quot;</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">br</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="n">parameter</span><span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">])</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_pipeline_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="n">PipelineData</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;Inputs&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">component</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+
+                <span class="nb">input</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">]</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">()</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">input</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">br</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">])</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_pipeline_outputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="n">PipelineData</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">outputs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;Outputs&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">component</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+
+                <span class="n">output</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">]</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">()</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">br</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">])</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_component_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Component</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;Inputs&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">component</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">input</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">br</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">])</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_component_outputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Component</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;Outputs&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">component</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">br</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">output</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">])</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_io_wiring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="n">PipelineData</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">wiring</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;I/O Wiring&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">component</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> &amp;#8594; </span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">wire_hash</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">wiring</span><span class="p">:</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">(</span><span class="n">wire_hash</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;#8594;&quot;</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">component</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> &amp;#8594; </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_timeshifting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="n">PipelineData</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">periodicity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;Timeshifting&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Periodicity: </span><span class="si">{</span><span class="n">pipeline</span><span class="o">.</span><span class="n">periodicity</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">timeshift_reference</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;References&quot;</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+                <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">timeshift_reference</span><span class="p">:</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Component</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">PythonComponent</span><span class="p">)</span> <span class="ow">and</span> <span class="n">component</span><span class="o">.</span><span class="n">resources</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">resources</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;Resources&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">component</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_entrypoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Component</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">PythonComponent</span><span class="p">)</span> <span class="ow">and</span> <span class="n">component</span><span class="o">.</span><span class="n">entrypoint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;Entrypoint&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">entrypoint</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">html_generate_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Component</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">component</span><span class="p">,</span> <span class="n">PythonComponent</span><span class="p">)</span> <span class="ow">and</span> <span class="n">component</span><span class="o">.</span><span class="n">metrics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">metrics</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">strong</span><span class="p">(</span><span class="s2">&quot;Metrics&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">component</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="p">()</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">i</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">metric</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">br</span><span class="p">()</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="n">metric</span><span class="p">[</span><span class="s1">&#39;desc&#39;</span><span class="p">])</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">li</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">ul</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">save_readme_html</span><span class="p">(</span><span class="n">pipeline</span><span class="p">:</span> <span class="n">PipelineData</span><span class="p">,</span> <span class="n">destination</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Saves a `README.html` in the `destination` folder that describes the pipeline.</span>
+
+<span class="sd">    Args:</span>
+
+<span class="sd">        destination (path-like): Path of the destination folder.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">pipelinePage</span> <span class="o">=</span> <span class="n">_PipelinePage</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+
+    <span class="n">readme_html_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span> <span class="o">/</span> <span class="n">README_HTML</span>
+
+    <span class="n">readme_html_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">pipelinePage</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
+</code></pre></div>
+
+</details>
+<h2 id="functions">Functions</h2>
+<h3 id="save_readme_html">save_readme_html</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_readme_html</span><span class="p">(</span>
+    <span class="n">pipeline</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">pipeline_data</span><span class="o">.</span><span class="n">PipelineData</span><span class="p">,</span>
+    <span class="n">destination</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Saves a <code>README.html</code> in the <code>destination</code> folder that describes the pipeline.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destination</td>
+<td>path-like</td>
+<td>Path of the destination folder.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">save_readme_html</span><span class="p">(</span><span class="n">pipeline</span><span class="o">:</span><span class="w"> </span><span class="n">PipelineData</span><span class="p">,</span><span class="w"> </span><span class="n">destination</span><span class="o">:</span><span class="w"> </span><span class="k">Union</span><span class="err">[</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="err">]</span><span class="p">)</span><span class="o">:</span>
+
+<span class="w">    </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span>
+
+<span class="s2">    Saves a `README.html` in the `destination` folder that describes the pipeline.</span>
+
+<span class="s2">    Args:</span>
+
+<span class="s2">        destination (path-like): Path of the destination folder.</span>
+
+<span class="s2">    </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+
+<span class="w">    </span><span class="n">pipelinePage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_PipelinePage</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">readme_html_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Path</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">README_HTML</span>
+
+<span class="w">    </span><span class="n">readme_html_path</span><span class="p">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">pipelinePage</span><span class="p">.</span><span class="n">__str__</span><span class="p">())</span>
+</code></pre></div>
+
+</details>
+<h2 id="classes">Classes</h2>
+<h3 id="_pipelinepage">_PipelinePage</h3>
+<p>This is our main class representing a document. Elements are added</p>
+<p>as attributes of an instance of this class.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">_PipelinePage</span><span class="p">(</span>
+    <span class="n">pipeline</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">pipeline_data</span><span class="o">.</span><span class="n">PipelineData</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>class _PipelinePage(markup.page):
+
+    def __init__(self, pipeline: PipelineData):
+
+        super().__init__(&#39;strict_html&#39;, &#39;lower&#39;)
+
+        self.twotags.append(&quot;section&quot;)
+
+        self.init(
+
+            title=f&quot;{pipeline.name} ({pipeline.save_version})&quot;,
+
+            doctype=&quot;<span class="cp">&lt;!DOCTYPE html&gt;</span>&quot;,
+
+            charset=&quot;utf-8&quot;,
+
+            lang=&quot;en&quot;)
+
+        self.section()
+
+        self.h1(f&quot;Pipeline {pipeline.name} ({pipeline.save_version})&quot;)
+
+        if pipeline.desc:
+
+            self.p(pipeline.desc)
+
+        self.html_generate_parameters(pipeline)
+
+        self.html_generate_pipeline_inputs(pipeline)
+
+        self.html_generate_pipeline_outputs(pipeline)
+
+        self.html_generate_io_wiring(pipeline)
+
+        self.html_generate_timeshifting(pipeline)
+
+        for component in pipeline.components.values():
+
+            self.html_generate_components(component)
+
+        self.section.close()
+
+    def html_generate_components(self, component: Component):
+
+        self.hr()
+
+        self.section()
+
+        self.h1(f&quot;{component.__class__.__name__} {component.name}&quot;)
+
+        if component.desc:
+
+            self.p(component.desc)
+
+        self.html_generate_component_inputs(component)
+
+        self.html_generate_component_outputs(component)
+
+        self.html_generate_metrics(component)
+
+        if issubclass(component.__class__, PythonComponent):
+
+            self.html_generate_resources(component)
+
+            self.html_generate_entrypoints(component)
+
+        self.section.close()
+
+    def html_generate_parameters(self, pipeline: PipelineData):
+
+        if len(pipeline.parameters) &gt; 0:
+
+            self.strong(&quot;Parameters&quot;)
+
+            self.ul()
+
+            for name, parameter in pipeline.parameters.items():
+
+                self.li()
+
+                self.i(f&quot;{name} ({parameter[&#39;type&#39;]}, default: &#39;{parameter[&#39;defaultValue&#39;]}&#39;)&quot;)
+
+                self.br()
+
+                if parameter.get(&#39;desc&#39;) is not None:
+
+                    self.span(parameter[&#39;desc&#39;])
+
+                self.li.close()
+
+            self.ul.close()
+
+    def html_generate_pipeline_inputs(self, pipeline: PipelineData):
+
+        if len(pipeline.inputs) &gt; 0:
+
+            self.strong(&quot;Inputs&quot;)
+
+            self.ul()
+
+            for component, name in pipeline.inputs:
+
+                input = pipeline.components[component].inputs[name]
+
+                self.li()
+
+                self.i(f&quot;{name} ({input[&#39;type&#39;]})&quot;)
+
+                self.br()
+
+                if input.get(&#39;desc&#39;) is not None:
+
+                    self.span(input[&#39;desc&#39;])
+
+                self.li.close()
+
+            self.ul.close()
+
+    def html_generate_pipeline_outputs(self, pipeline: PipelineData):
+
+        if len(pipeline.outputs) &gt; 0:
+
+            self.strong(&quot;Outputs&quot;)
+
+            self.ul()
+
+            for component, name in pipeline.outputs:
+
+                output = pipeline.components[component].outputs[name]
+
+                self.li()
+
+                self.i(f&quot;{name} ({output[&#39;type&#39;]})&quot;)
+
+                self.br()
+
+                if output.get(&#39;desc&#39;) is not None:
+
+                    self.span(output[&#39;desc&#39;])
+
+                self.li.close()
+
+            self.ul.close()
+
+    def html_generate_component_inputs(self, component: Component):
+
+        self.strong(&quot;Inputs&quot;)
+
+        self.ul()
+
+        for name, input in component.inputs.items():
+
+            self.li()
+
+            self.i(f&quot;{name} ({input[&#39;type&#39;]})&quot;)
+
+            self.br()
+
+            if input.get(&#39;desc&#39;) is not None:
+
+                self.span(input[&#39;desc&#39;])
+
+            self.li.close()
+
+        self.ul.close()
+
+    def html_generate_component_outputs(self, component: Component):
+
+        self.strong(&quot;Outputs&quot;)
+
+        self.ul()
+
+        for name, output in component.outputs.items():
+
+            self.li()
+
+            self.i(f&quot;{name} ({output[&#39;type&#39;]})&quot;)
+
+            self.br()
+
+            if output.get(&#39;desc&#39;) is not None:
+
+                self.span(output[&#39;desc&#39;])
+
+            self.li.close()
+
+        self.ul.close()
+
+    def html_generate_io_wiring(self, pipeline: PipelineData):
+
+        if len(pipeline.wiring) &gt; 0:
+
+            self.strong(&quot;I/O Wiring&quot;)
+
+            self.ul()
+
+            for component, name in pipeline.inputs:
+
+                self.li(f&quot;{name} <span class="ni">&amp;#8594;</span> {component}.{name}&quot;)
+
+            for wire_hash in pipeline.wiring:
+
+                self.li(wire_hash.replace(&quot;-&gt;&quot;, &quot;<span class="ni">&amp;#8594;</span>&quot;))
+
+            for component, name in pipeline.outputs:
+
+                self.li(f&quot;{component}.{name} <span class="ni">&amp;#8594;</span> {name}&quot;)
+
+            self.ul.close()
+
+    def html_generate_timeshifting(self, pipeline: PipelineData):
+
+        if pipeline.periodicity is not None:
+
+            self.strong(&quot;Timeshifting&quot;)
+
+            self.ul()
+
+            self.li(f&quot;Periodicity: {pipeline.periodicity} ms&quot;)
+
+            self.ul.close()
+
+            if len(pipeline.timeshift_reference) &gt; 0:
+
+                self.strong(&quot;References&quot;)
+
+                self.ul()
+
+                for ref in pipeline.timeshift_reference:
+
+                    self.li(ref)
+
+                self.ul.close()
+
+    def html_generate_resources(self, component: Component):
+
+        if isinstance(component, PythonComponent) and component.resources is not None and len(component.resources) &gt; 0:
+
+            self.strong(&quot;Resources&quot;)
+
+            self.ul()
+
+            for path, base in component.resources.items():
+
+                self.li(f&quot;{base}/{path.name}&quot;.replace(&#39;./&#39;, &#39;&#39;))
+
+            self.ul.close()
+
+    def html_generate_entrypoints(self, component: Component):
+
+        if isinstance(component, PythonComponent) and component.entrypoint is not None:
+
+            self.strong(&quot;Entrypoint&quot;)
+
+            self.ul()
+
+            self.li(component.entrypoint.name)
+
+            self.ul.close()
+
+    def html_generate_metrics(self, component: Component):
+
+        if isinstance(component, PythonComponent) and component.metrics is not None and len(component.metrics) &gt; 0:
+
+            self.strong(&quot;Metrics&quot;)
+
+            self.ul()
+
+            for name, metric in component.metrics.items():
+
+                self.li()
+
+                self.i(name)
+
+                if metric.get(&#39;desc&#39;) is not None:
+
+                    self.br()
+
+                    self.span(metric[&#39;desc&#39;])
+
+                self.li.close()
+
+            self.ul.close()
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="ancestors-in-mro">Ancestors (in MRO)</h4>
+<ul>
+<li>MarkupPy.markup.page</li>
+</ul>
+<h4 id="methods">Methods</h4>
+<h4 id="add">add</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">text</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>This is an alias to addcontent.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def add( self, text ):
+
+        &quot;&quot;&quot;This is an alias to addcontent.&quot;&quot;&quot;
+
+        self.addcontent( text )
+</code></pre></div>
+
+</details>
+<h4 id="add_raw">add_raw</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_raw</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">text</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Add text directly to the document without using the separator when rendering.</p>
+<p>This is useful for pre tags and other elements where you don't want extra newlines.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def add_raw( self, text ):
+
+        &quot;&quot;&quot;Add text directly to the document without using the separator when rendering.
+
+        This is useful for pre tags and other elements where you don&#39;t want extra newlines.&quot;&quot;&quot;
+
+        if self.content and isinstance(self.content[-1], basestring):
+
+            # Append to the last content item to avoid separator insertion
+
+            self.content[-1] += text
+
+        else:
+
+            # Start a new content item
+
+            self.content.append(text)
+</code></pre></div>
+
+</details>
+<h4 id="addcontent">addcontent</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">addcontent</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">text</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Add some text to the main part of the document</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def addcontent( self, text ):
+
+        &quot;&quot;&quot;Add some text to the main part of the document&quot;&quot;&quot;
+
+        self.content.append( text )
+</code></pre></div>
+
+</details>
+<h4 id="addfooter">addfooter</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">addfooter</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">text</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Add some text to the bottom of the document</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def addfooter( self, text ):
+
+        &quot;&quot;&quot;Add some text to the bottom of the document&quot;&quot;&quot;
+
+        self.footer.append( text )
+</code></pre></div>
+
+</details>
+<h4 id="addheader">addheader</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">addheader</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">text</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Add some text to the top of the document</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def addheader( self, text ):
+
+        &quot;&quot;&quot;Add some text to the top of the document&quot;&quot;&quot;
+
+        self.header.append( text )
+</code></pre></div>
+
+</details>
+<h4 id="css">css</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">css</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">filelist</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>This convenience function is only useful for html.</p>
+<p>It adds css stylesheet(s) to the document via the <link> element.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">css</span><span class="p">(</span><span class="w"> </span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">filelist</span><span class="w"> </span><span class="p">):</span>
+
+<span class="w">        </span><span class="s">&quot;&quot;&quot;This convenience function is only useful for html.</span>
+
+<span class="s">        It adds css stylesheet(s) to the document via the &lt;link&gt; element.&quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">isinstance</span><span class="p">(</span><span class="w"> </span><span class="nx">filelist</span><span class="p">,</span><span class="w"> </span><span class="nx">basestring</span><span class="w"> </span><span class="p">):</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">link</span><span class="p">(</span><span class="w"> </span><span class="nx">href</span><span class="p">=</span><span class="nx">filelist</span><span class="p">,</span><span class="w"> </span><span class="nx">rel</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">stylesheet</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">type</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">text</span><span class="o">/</span><span class="nx">css</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">media</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">all</span><span class="err">&#39;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">filelist</span><span class="p">:</span>
+
+<span class="w">                </span><span class="kp">self</span><span class="p">.</span><span class="nx">link</span><span class="p">(</span><span class="w"> </span><span class="nx">href</span><span class="p">=</span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">rel</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">stylesheet</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">type</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">text</span><span class="o">/</span><span class="nx">css</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">media</span><span class="p">=</span><span class="err">&#39;</span><span class="nx">all</span><span class="err">&#39;</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_component_inputs">html_generate_component_inputs</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_component_inputs</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">component</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">Component</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">html_generate_component_inputs</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">component</span><span class="p">:</span><span class="w"> </span><span class="nx">Component</span><span class="p">):</span>
+
+<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">strong</span><span class="p">(</span><span class="s">&quot;Inputs&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">ul</span><span class="p">()</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">component</span><span class="p">.</span><span class="nx">inputs</span><span class="p">.</span><span class="nx">items</span><span class="p">():</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">li</span><span class="p">()</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="nx">f</span><span class="s">&quot;{name} ({input[&#39;type&#39;]})&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">br</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">desc</span><span class="err">&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
+
+<span class="w">                </span><span class="kp">self</span><span class="p">.</span><span class="nx">span</span><span class="p">(</span><span class="nx">input</span><span class="p">[</span><span class="err">&#39;</span><span class="nx">desc</span><span class="err">&#39;</span><span class="p">])</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">li</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+
+<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">ul</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_component_outputs">html_generate_component_outputs</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_component_outputs</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">component</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">Component</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">html_generate_component_outputs</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">component</span><span class="p">:</span><span class="w"> </span><span class="nx">Component</span><span class="p">):</span>
+
+<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">strong</span><span class="p">(</span><span class="s">&quot;Outputs&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">ul</span><span class="p">()</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">output</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">component</span><span class="p">.</span><span class="nx">outputs</span><span class="p">.</span><span class="nx">items</span><span class="p">():</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">li</span><span class="p">()</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="nx">f</span><span class="s">&quot;{name} ({output[&#39;type&#39;]})&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">br</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">output</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">desc</span><span class="err">&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
+
+<span class="w">                </span><span class="kp">self</span><span class="p">.</span><span class="nx">span</span><span class="p">(</span><span class="nx">output</span><span class="p">[</span><span class="err">&#39;</span><span class="nx">desc</span><span class="err">&#39;</span><span class="p">])</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">li</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+
+<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">ul</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_components">html_generate_components</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_components</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">component</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">Component</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def html_generate_components(self, component: Component):
+
+        self.hr()
+
+        self.section()
+
+        self.h1(f&quot;{component.__class__.__name__} {component.name}&quot;)
+
+        if component.desc:
+
+            self.p(component.desc)
+
+        self.html_generate_component_inputs(component)
+
+        self.html_generate_component_outputs(component)
+
+        self.html_generate_metrics(component)
+
+        if issubclass(component.__class__, PythonComponent):
+
+            self.html_generate_resources(component)
+
+            self.html_generate_entrypoints(component)
+
+        self.section.close()
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_entrypoints">html_generate_entrypoints</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_entrypoints</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">component</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">Component</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def html_generate_entrypoints(self, component: Component):
+
+        if isinstance(component, PythonComponent) and component.entrypoint is not None:
+
+            self.strong(&quot;Entrypoint&quot;)
+
+            self.ul()
+
+            self.li(component.entrypoint.name)
+
+            self.ul.close()
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_io_wiring">html_generate_io_wiring</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_io_wiring</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">pipeline</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">pipeline_data</span><span class="o">.</span><span class="n">PipelineData</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">html_generate_io_wiring</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">pipeline:</span><span class="w"> </span><span class="n">PipelineData</span><span class="p">)</span><span class="o">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">pipeline</span><span class="p">.</span><span class="n">wiring</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mh">0</span><span class="o">:</span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">strong</span><span class="p">(</span><span class="s">&quot;I/O Wiring&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">ul</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">pipeline</span><span class="p">.</span><span class="nl">inputs:</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">li</span><span class="p">(</span><span class="n">f</span><span class="s">&quot;{name} &amp;#8594; {component}.{name}&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">wire_hash</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">pipeline</span><span class="p">.</span><span class="nl">wiring:</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">li</span><span class="p">(</span><span class="n">wire_hash</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;-&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&amp;#8594;&quot;</span><span class="p">))</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">pipeline</span><span class="p">.</span><span class="nl">outputs:</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">li</span><span class="p">(</span><span class="n">f</span><span class="s">&quot;{component}.{name} &amp;#8594; {name}&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">ul</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_metrics">html_generate_metrics</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_metrics</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">component</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">Component</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def html_generate_metrics(self, component: Component):
+
+        if isinstance(component, PythonComponent) and component.metrics is not None and len(component.metrics) &gt; 0:
+
+            self.strong(&quot;Metrics&quot;)
+
+            self.ul()
+
+            for name, metric in component.metrics.items():
+
+                self.li()
+
+                self.i(name)
+
+                if metric.get(&#39;desc&#39;) is not None:
+
+                    self.br()
+
+                    self.span(metric[&#39;desc&#39;])
+
+                self.li.close()
+
+            self.ul.close()
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_parameters">html_generate_parameters</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_parameters</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">pipeline</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">pipeline_data</span><span class="o">.</span><span class="n">PipelineData</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">html_generate_parameters</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">pipeline</span><span class="p">:</span><span class="w"> </span><span class="nx">PipelineData</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">len</span><span class="p">(</span><span class="nx">pipeline</span><span class="p">.</span><span class="nx">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">strong</span><span class="p">(</span><span class="s">&quot;Parameters&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">ul</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">parameter</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">pipeline</span><span class="p">.</span><span class="nx">parameters</span><span class="p">.</span><span class="nx">items</span><span class="p">():</span>
+
+<span class="w">                </span><span class="kp">self</span><span class="p">.</span><span class="nx">li</span><span class="p">()</span>
+
+<span class="w">                </span><span class="kp">self</span><span class="p">.</span><span class="nx">i</span><span class="p">(</span><span class="nx">f</span><span class="s">&quot;{name} ({parameter[&#39;type&#39;]}, default: &#39;{parameter[&#39;defaultValue&#39;]}&#39;)&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="kp">self</span><span class="p">.</span><span class="nx">br</span><span class="p">()</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="nx">parameter</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">desc</span><span class="err">&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
+
+<span class="w">                    </span><span class="kp">self</span><span class="p">.</span><span class="nx">span</span><span class="p">(</span><span class="nx">parameter</span><span class="p">[</span><span class="err">&#39;</span><span class="nx">desc</span><span class="err">&#39;</span><span class="p">])</span>
+
+<span class="w">                </span><span class="kp">self</span><span class="p">.</span><span class="nx">li</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+
+<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">ul</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_pipeline_inputs">html_generate_pipeline_inputs</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_pipeline_inputs</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">pipeline</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">pipeline_data</span><span class="o">.</span><span class="n">PipelineData</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">html_generate_pipeline_inputs</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">pipeline</span><span class="p">:</span><span class="w"> </span><span class="n">PipelineData</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="n">pipeline</span><span class="p">.</span><span class="n">inputs</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">strong</span><span class="p">(</span><span class="ss">&quot;Inputs&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">ul</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline</span><span class="p">.</span><span class="nl">inputs</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pipeline</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">]</span><span class="p">.</span><span class="n">inputs</span><span class="o">[</span><span class="n">name</span><span class="o">]</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">li</span><span class="p">()</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">i</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;{name} ({input[&#39;type&#39;]})&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">br</span><span class="p">()</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="k">input</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="err">:</span>
+
+<span class="w">                    </span><span class="n">self</span><span class="p">.</span><span class="n">span</span><span class="p">(</span><span class="k">input</span><span class="o">[</span><span class="n">&#39;desc&#39;</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">li</span><span class="p">.</span><span class="k">close</span><span class="p">()</span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">ul</span><span class="p">.</span><span class="k">close</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_pipeline_outputs">html_generate_pipeline_outputs</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_pipeline_outputs</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">pipeline</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">pipeline_data</span><span class="o">.</span><span class="n">PipelineData</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">html_generate_pipeline_outputs</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">pipeline</span><span class="p">:</span><span class="w"> </span><span class="n">PipelineData</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="n">pipeline</span><span class="p">.</span><span class="n">outputs</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="err">:</span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">strong</span><span class="p">(</span><span class="ss">&quot;Outputs&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">ul</span><span class="p">()</span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline</span><span class="p">.</span><span class="nl">outputs</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pipeline</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">]</span><span class="p">.</span><span class="n">outputs</span><span class="o">[</span><span class="n">name</span><span class="o">]</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">li</span><span class="p">()</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">i</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;{name} ({output[&#39;type&#39;]})&quot;</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">br</span><span class="p">()</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="k">output</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s1">&#39;desc&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="err">:</span>
+
+<span class="w">                    </span><span class="n">self</span><span class="p">.</span><span class="n">span</span><span class="p">(</span><span class="k">output</span><span class="o">[</span><span class="n">&#39;desc&#39;</span><span class="o">]</span><span class="p">)</span>
+
+<span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">li</span><span class="p">.</span><span class="k">close</span><span class="p">()</span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">ul</span><span class="p">.</span><span class="k">close</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_resources">html_generate_resources</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_resources</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">component</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">Component</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def html_generate_resources(self, component: Component):
+
+        if isinstance(component, PythonComponent) and component.resources is not None and len(component.resources) &gt; 0:
+
+            self.strong(&quot;Resources&quot;)
+
+            self.ul()
+
+            for path, base in component.resources.items():
+
+                self.li(f&quot;{base}/{path.name}&quot;.replace(&#39;./&#39;, &#39;&#39;))
+
+            self.ul.close()
+</code></pre></div>
+
+</details>
+<h4 id="html_generate_timeshifting">html_generate_timeshifting</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">html_generate_timeshifting</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">pipeline</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">pipeline_data</span><span class="o">.</span><span class="n">PipelineData</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def html_generate_timeshifting(self, pipeline: PipelineData):
+
+        if pipeline.periodicity is not None:
+
+            self.strong(&quot;Timeshifting&quot;)
+
+            self.ul()
+
+            self.li(f&quot;Periodicity: {pipeline.periodicity} ms&quot;)
+
+            self.ul.close()
+
+            if len(pipeline.timeshift_reference) &gt; 0:
+
+                self.strong(&quot;References&quot;)
+
+                self.ul()
+
+                for ref in pipeline.timeshift_reference:
+
+                    self.li(ref)
+
+                self.ul.close()
+</code></pre></div>
+
+</details>
+<h4 id="init">init</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">lang</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span>
+    <span class="n">css</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">metainfo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">footer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">charset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">doctype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">bodyattrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">script</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">base</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">style_content</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">script_content</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>This method is used for complete documents with appropriate</p>
+<p>doctype, encoding, title, etc information. For an HTML/XML snippet
+omit this method.</p>
+<p>lang --     language, usually a two character string, will appear
+            as <html lang='en'> in html mode (ignored in xml mode)</p>
+<p>css --      Cascading Style Sheet filename as a string or a list of
+            strings for multiple css files (ignored in xml mode)</p>
+<p>metainfo -- a dictionary in the form { 'name':'content' } to be inserted
+            into meta element(s) as <meta name='name' content='content'>
+            (ignored in xml mode)</p>
+<p>base     -- set the <base href="..."> tag in <head></p>
+<p>bodyattrs --a dictionary in the form { 'key':'value', ... } which will be added
+            as attributes of the <body> element as <body key='value' ... >
+            (ignored in xml mode)</p>
+<p>script --   dictionary containing src:type pairs, <script type='text/type' src=src></script>
+            or a list of [ 'src1', 'src2', ... ] in which case 'javascript' is assumed for all</p>
+<p>title --    the title of the document as a string to be inserted into
+            a title element as <title>my title</title> (ignored in xml mode)</p>
+<p>header --   some text to be inserted right after the <body> element
+            (ignored in xml mode)</p>
+<p>footer --   some text to be inserted right before the </body> element
+            (ignored in xml mode)</p>
+<p>charset --  a string defining the character set, will be inserted into a
+            <meta http-equiv='Content-Type' content='text/html; charset=myset'>
+            element (ignored in xml mode)</p>
+<p>encoding -- a string defining the encoding, will be put into to first line of
+            the document as <?xml version='1.0' encoding='myencoding' ?> in
+            xml mode (ignored in html mode)</p>
+<p>doctype --  the document type string, defaults to
+            &lt;!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'&gt;
+            in html mode (ignored in xml mode)</p>
+<p>style_content -- CSS style content as a string or a list of strings to be inserted
+            into <style> element(s) (ignored in xml mode)</p>
+<p>script_content -- JavaScript code as a string or a list of strings to be inserted
+            into <script> element(s) (ignored in xml mode)</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def init( self, lang=&#39;en&#39;, css=None, metainfo=None, title=None, header=None,
+
+              footer=None, charset=None, encoding=None, doctype=None, bodyattrs=None, script=None, base=None,
+
+              style_content=None, script_content=None ):
+
+        &quot;&quot;&quot;This method is used for complete documents with appropriate
+
+        doctype, encoding, title, etc information. For an HTML/XML snippet
+
+        omit this method.
+
+        lang --     language, usually a two character string, will appear
+
+                    as <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#39;en&#39;</span><span class="p">&gt;</span> in html mode (ignored in xml mode)
+
+        css --      Cascading Style Sheet filename as a string or a list of
+
+                    strings for multiple css files (ignored in xml mode)
+
+        metainfo -- a dictionary in the form { &#39;name&#39;:&#39;content&#39; } to be inserted
+
+                    into meta element(s) as <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#39;name&#39;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#39;content&#39;</span><span class="p">&gt;</span>
+
+                    (ignored in xml mode)
+
+        base     -- set the <span class="p">&lt;</span><span class="nt">base</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;...&quot;</span><span class="p">&gt;</span> tag in <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+
+        bodyattrs --a dictionary in the form { &#39;key&#39;:&#39;value&#39;, ... } which will be added
+
+                    as attributes of the <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span> element as <span class="p">&lt;</span><span class="nt">body</span> <span class="na">key</span><span class="o">=</span><span class="s">&#39;value&#39;</span> <span class="err">...</span> <span class="p">&gt;</span>
+
+                    (ignored in xml mode)
+
+        script --   dictionary containing src:type pairs, <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#39;text/type&#39;</span> <span class="na">src</span><span class="o">=</span><span class="s">src</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+                    or a list of [ &#39;src1&#39;, &#39;src2&#39;, ... ] in which case &#39;javascript&#39; is assumed for all
+
+        title --    the title of the document as a string to be inserted into
+
+                    a title element as <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>my title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span> (ignored in xml mode)
+
+        header --   some text to be inserted right after the <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span> element
+
+                    (ignored in xml mode)
+
+        footer --   some text to be inserted right before the <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span> element
+
+                    (ignored in xml mode)
+
+        charset --  a string defining the character set, will be inserted into a
+
+                    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#39;Content-Type&#39;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#39;text/html; charset=myset&#39;</span><span class="p">&gt;</span>
+
+                    element (ignored in xml mode)
+
+        encoding -- a string defining the encoding, will be put into to first line of
+
+                    the document as <span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;myencoding&#39; ?&gt;</span> in
+
+                    xml mode (ignored in html mode)
+
+        doctype --  the document type string, defaults to
+
+                    <span class="cp">&lt;!DOCTYPE HTML PUBLIC &#39;-//W3C//DTD HTML 4.01 Transitional//EN&#39;&gt;</span>
+
+                    in html mode (ignored in xml mode)
+
+        style_content -- CSS style content as a string or a list of strings to be inserted
+
+                    into <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span><span class="w"> </span><span class="nt">element</span><span class="o">(</span><span class="nt">s</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="nt">ignored</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">xml</span><span class="w"> </span><span class="nt">mode</span><span class="o">)</span>
+
+        script_content -- JavaScript code as a string or a list of strings to be inserted
+
+                    into <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">element</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">ignored</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">xml</span><span class="w"> </span><span class="nx">mode</span><span class="p">)</span><span class="s2">&quot;&quot;</span><span class="err">&quot;</span>
+
+        self._full = True
+
+        if self.mode == &#39;strict_html&#39; or self.mode == &#39;loose_html&#39;:
+
+            if doctype is None:
+
+                doctype = &quot;<span class="cp">&lt;!DOCTYPE HTML PUBLIC &#39;-//W3C//DTD HTML 4.01 Transitional//EN&#39;&gt;</span>&quot;
+
+            self.header.append( doctype )
+
+            self.html( lang=lang )
+
+            self.head( )
+
+            if charset is not None:
+
+                self.meta( http_equiv=&#39;Content-Type&#39;, content=&quot;text/html; charset=%s&quot; % charset )
+
+            if metainfo is not None:
+
+                self.metainfo( metainfo )
+
+            if css is not None:
+
+                self.css( css )
+
+            if style_content is not None:
+
+                if isinstance( style_content, basestring ):
+
+                    self.style( style_content )
+
+                elif isinstance( style_content, list ):
+
+                    for style in style_content:
+
+                        self.style( style )
+
+            if title is not None:
+
+                self.title( title )
+
+            if script is not None:
+
+                self.scripts( script )
+
+            if script_content is not None:
+
+                if isinstance( script_content, basestring ):
+
+                    self.script( script_content, type=&#39;text/javascript&#39; )
+
+                elif isinstance( script_content, list ):
+
+                    for script_str in script_content:
+
+                        self.script( script_str, type=&#39;text/javascript&#39; )
+
+            if base is not None:
+
+                self.base( href=&#39;%s&#39; % base )
+
+            self.head.close()
+
+            if bodyattrs is not None:
+
+                self.body( **bodyattrs )
+
+            else:
+
+                self.body( )
+
+            if header is not None:
+
+                self.content.append( header )
+
+            if footer is not None:
+
+                self.footer.append( footer )
+
+        elif self.mode == &#39;xml&#39;:
+
+            if doctype is None:
+
+                if encoding is not None:
+
+                    doctype = &quot;<span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;%s&#39; ?&gt;</span>&quot; % encoding
+
+                else:
+
+                    doctype = &quot;<span class="cp">&lt;?xml version=&#39;1.0&#39; ?&gt;</span>&quot;
+
+            self.header.append( doctype )
+</code></pre></div>
+
+</details>
+<h4 id="metainfo">metainfo</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">metainfo</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">mydict</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>This convenience function is only useful for html.</p>
+<p>It adds meta information via the <meta> element, the argument is
+a dictionary of the form { 'name':'content' }.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">def</span><span class="w"> </span><span class="nv">metainfo</span><span class="ss">(</span><span class="w"> </span><span class="nv">self</span>,<span class="w"> </span><span class="nv">mydict</span><span class="w"> </span><span class="ss">)</span>:
+
+<span class="w">        </span><span class="s2">&quot;&quot;</span><span class="err">&quot;This convenience function is only useful for html.</span>
+
+<span class="err">        It adds meta information via the &lt;meta&gt; element, the argument is</span>
+
+<span class="w">        </span><span class="nv">a</span><span class="w"> </span><span class="nv">dictionary</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">form</span><span class="w"> </span>{<span class="w"> </span><span class="s1">&#39;name&#39;</span>:<span class="s1">&#39;content&#39;</span><span class="w"> </span>}.<span class="s2">&quot;&quot;</span><span class="err">&quot;</span>
+
+<span class="err">        if isinstance( mydict, dict ):</span>
+
+<span class="err">            for name, content in list( mydict.items( ) ):</span>
+
+<span class="err">                self.meta( name=name, content=content )</span>
+
+<span class="err">        else:</span>
+
+<span class="w">            </span><span class="nv">raise</span><span class="w"> </span><span class="nv">TypeError</span><span class="ss">(</span><span class="w"> </span><span class="s2">&quot;Metainfo should be called with a dictionary argument of name:content pairs.&quot;</span><span class="w"> </span><span class="ss">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="scripts">scripts</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">scripts</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">mydict</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Only useful in html, mydict is dictionary of src:type pairs or a list</p>
+<p>of script sources [ 'src1', 'src2', ... ] in which case 'javascript' is assumed for type.
+Will be rendered as <script type='text/type' src=src></script></p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span>def<span class="w"> </span>scripts(<span class="w"> </span>self,<span class="w"> </span>mydict<span class="w"> </span>):
+
+<span class="w">        </span>&quot;&quot;&quot;Only<span class="w"> </span>useful<span class="w"> </span>in<span class="w"> </span>html,<span class="w"> </span>mydict<span class="w"> </span>is<span class="w"> </span>dictionary<span class="w"> </span>of<span class="w"> </span>src:type<span class="w"> </span>pairs<span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span>list
+
+<span class="w">        </span>of<span class="w"> </span>script<span class="w"> </span>sources<span class="w"> </span>[<span class="w"> </span>&#39;src1&#39;,<span class="w"> </span>&#39;src2&#39;,<span class="w"> </span>...<span class="w"> </span>]<span class="w"> </span>in<span class="w"> </span>which<span class="w"> </span>case<span class="w"> </span>&#39;javascript&#39;<span class="w"> </span>is<span class="w"> </span>assumed<span class="w"> </span>for<span class="w"> </span>type.
+
+<span class="w">        </span>Will<span class="w"> </span>be<span class="w"> </span>rendered<span class="w"> </span>as<span class="w"> </span><span class="nt">&lt;script</span><span class="w"> </span><span class="na">type=</span><span class="s">&#39;text/type&#39;</span><span class="w"> </span><span class="na">src=</span><span class="s">src</span><span class="nt">&gt;&lt;/script&gt;</span>&quot;&quot;&quot;
+
+<span class="w">        </span>if<span class="w"> </span>isinstance(<span class="w"> </span>mydict,<span class="w"> </span>dict<span class="w"> </span>):
+
+<span class="w">            </span>for<span class="w"> </span>src,<span class="w"> </span>type<span class="w"> </span>in<span class="w"> </span>list(<span class="w"> </span>mydict.items(<span class="w"> </span>)<span class="w"> </span>):
+
+<span class="w">                </span>self.script(<span class="w"> </span>&#39;&#39;,<span class="w"> </span>src=src,<span class="w"> </span>type=&#39;text/%s&#39;<span class="w"> </span>%<span class="w"> </span>type<span class="w"> </span>)
+
+<span class="w">        </span>else:
+
+<span class="w">            </span>try:
+
+<span class="w">                </span>for<span class="w"> </span>src<span class="w"> </span>in<span class="w"> </span>mydict:
+
+<span class="w">                    </span>self.script(<span class="w"> </span>&#39;&#39;,<span class="w"> </span>src=src,<span class="w"> </span>type=&#39;text/javascript&#39;<span class="w"> </span>)
+
+<span class="w">            </span>except:
+
+<span class="w">                </span>raise<span class="w"> </span>TypeError(<span class="w"> </span>&quot;Script<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>given<span class="w"> </span>a<span class="w"> </span>dictionary<span class="w"> </span>of<span class="w"> </span>src:type<span class="w"> </span>pairs<span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>javascript<span class="w"> </span>src&#39;s.&quot;<span class="w"> </span>)
+</code></pre></div>
+
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="pipeline_data.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pipeline Data" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Pipeline Data
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="python_component.html" class="md-footer__link md-footer__link--next" aria-label="Next: Python Component" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Python Component
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (C) Siemens AG 2021. All Rights Reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      
+    
+  </body>
+</html>
