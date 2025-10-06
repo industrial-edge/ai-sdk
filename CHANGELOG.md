@@ -17,6 +17,12 @@ Known issues:
 -   Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.
 -   Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected
 
+## 2.5.1
+
+Fixed issues:
+
+-   Invalid schema $id in pipeline.schema.json caused validation error during pipeline.export() when the rfc3986 package (or JupyterLab) is installed.
+
 ## 2.5.0
 
 New features:
