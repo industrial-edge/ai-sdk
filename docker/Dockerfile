@@ -1,6 +1,5 @@
 # Copyright Siemens AG 2023
 # SPDX-License-Identifier: MIT
-
 # This Dockerfile is used to create a development container for the SAIL Vessel Python SDK.
 
 # FROM cr.siemens.com/siemens-ai-launcher-sail/ai-on-edge/sail-vessel/sail-vessel-python-base/python-vessel-base:1.7.0

@@ -876,12 +876,87 @@
       
       
         <label class="md-nav__link" for="__nav_5_2_8">
+          Payloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Payloads" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Payloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/connection.html" class="md-nav__link">
+        Connection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/pipeline_variable.html" class="md-nav__link">
+        Pipeline Variable
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_9" type="checkbox" id="__nav_5_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2_9">
           Testing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Testing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_5_2_8">
+        <label class="md-nav__title" for="__nav_5_2_9">
           <span class="md-nav__icon md-icon"></span>
           Testing
         </label>
@@ -1152,6 +1227,8 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.payloads</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineVariable</span><span class="p">,</span> <span class="n">PipelineParameter</span>
+
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[</span><span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)]</span>
@@ -1184,6 +1261,8 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">desc</span> <span class="o">=</span> <span class="n">desc</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">init_version</span> <span class="o">=</span> <span class="n">version</span>  <span class="c1"># initial version; used when version is not set in Pipeline.export() and save()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">save_version</span> <span class="o">=</span> <span class="n">version</span>  <span class="c1"># contains the version determined at exporting/saving</span>
@@ -1196,17 +1275,59 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">wiring</span> <span class="o">=</span> <span class="p">{}</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineParameter</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">timeshift_reference</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+
+    <span class="c1"># Helper method returns index or None if the pipeline inputs/outputs contain the given variable</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_io_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">io_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">],</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">io</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">io_list</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">io</span><span class="o">.</span><span class="n">variableName</span> <span class="o">==</span> <span class="n">variable</span><span class="p">:</span>
+
+                <span class="k">return</span> <span class="n">i</span>
+
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_io_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]:</span>
+
+        <span class="k">for</span> <span class="n">io</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">io</span><span class="o">.</span><span class="n">variableName</span> <span class="o">==</span> <span class="n">variable_name</span><span class="p">:</span>
+
+                <span class="k">return</span> <span class="n">io</span>
+
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PipelineParameter</span><span class="p">]:</span>
+
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">parameter_name</span><span class="p">:</span>
+
+                <span class="k">return</span> <span class="n">param</span>
+
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_parameter_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">parameter_name</span><span class="p">:</span>
+
+                <span class="k">return</span> <span class="n">i</span>
+
+        <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div>
 
 </details>
@@ -1221,35 +1342,37 @@
 
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="n">class</span><span class="w"> </span><span class="n">PipelineData</span><span class="o">:</span>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nl">PipelineData</span><span class="p">:</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">name</span><span class="o">:</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="o">:</span><span class="w"> </span><span class="k">Optional</span><span class="err">[</span><span class="n">str</span><span class="err">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span><span class="k">desc</span><span class="o">:</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span><span class="p">,</span><span class="w"> </span><span class="nl">version</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">,</span><span class="w"> </span><span class="k">desc</span><span class="err">:</span><span class="w"> </span><span class="nf">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;&quot;</span><span class="p">)</span><span class="err">:</span>
 
-<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span>
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
 
-<span class="s2">        A newly initialized `Pipeline` will contain no `Component` or wire, just its name and version will be set.</span>
+<span class="ss">        A newly initialized `Pipeline` will contain no `Component` or wire, just its name and version will be set.</span>
 
-<span class="s2">        The name and version will define together the name of the zip file when the package is saved.</span>
+<span class="ss">        The name and version will define together the name of the zip file when the package is saved.</span>
 
-<span class="s2">        Args:</span>
+<span class="ss">        Args:</span>
 
-<span class="s2">            name (str): Name of the package</span>
+<span class="ss">            name (str): Name of the package</span>
 
-<span class="s2">            desc (str): Package description (optional)</span>
+<span class="ss">            desc (str): Package description (optional)</span>
 
-<span class="s2">            version (str): Version of the package</span>
+<span class="ss">            version (str): Version of the package</span>
 
-<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+<span class="ss">        &quot;&quot;&quot;</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="k">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">name</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span>
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="k">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">desc</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">init_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w">  </span><span class="c1"># initial version; used when version is not set in Pipeline.export() and save()</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">save_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w">  </span><span class="c1"># contains the version determined at exporting/saving</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">init_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">initial</span><span class="w"> </span><span class="n">version</span><span class="p">;</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Pipeline</span><span class="p">.</span><span class="n">export</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">save</span><span class="p">()</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">package_id</span><span class="o">:</span><span class="w"> </span><span class="k">Optional</span><span class="err">[</span><span class="n">uuid</span><span class="p">.</span><span class="n">UUID</span><span class="err">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">save_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="k">contains</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">determined</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">exporting</span><span class="o">/</span><span class="n">saving</span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="nl">package_id</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">uuid.UUID</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span>
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;AI SDK&#39;</span>
 
@@ -1257,17 +1380,59 @@
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">wiring</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="k">parameters</span><span class="err">:</span><span class="w"> </span><span class="n">list</span><span class="o">[</span><span class="n">PipelineParameter</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">periodicity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span>
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">timeshift_reference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="nl">inputs</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="o">[</span><span class="n">PipelineVariable</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
 
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="nl">outputs</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="o">[</span><span class="n">PipelineVariable</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
 
 <span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">log_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span>
+
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">Helper</span><span class="w"> </span><span class="k">method</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">pipeline</span><span class="w"> </span><span class="n">inputs</span><span class="o">/</span><span class="n">outputs</span><span class="w"> </span><span class="n">contain</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="k">variable</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_get_io_index</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">io_list</span><span class="p">:</span><span class="w"> </span><span class="n">list</span><span class="o">[</span><span class="n">PipelineVariable</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="k">variable</span><span class="err">:</span><span class="w"> </span><span class="nf">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">int</span><span class="o">]</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">io</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">io_list</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">variableName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">variable</span><span class="err">:</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">i</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">None</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_get_io_variable</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">variable_name</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">PipelineVariable</span><span class="o">]</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">io</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">inputs</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="nl">outputs</span><span class="p">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">io</span><span class="p">.</span><span class="n">variableName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nl">variable_name</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">io</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">None</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_get_parameter</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">parameter_name</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">PipelineParameter</span><span class="o">]</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="k">parameters</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">param</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nl">parameter_name</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">param</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">None</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_get_parameter_index</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">parameter_name</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">int</span><span class="o">]</span><span class="err">:</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="k">parameters</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">param</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nl">parameter_name</span><span class="p">:</span>
+
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">i</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">None</span>
 </code></pre></div>
 
 </details>

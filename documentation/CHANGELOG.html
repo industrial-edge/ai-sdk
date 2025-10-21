@@ -230,6 +230,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#260" class="md-nav__link">
+    2.6.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#251" class="md-nav__link">
     2.5.1
   </a>
@@ -935,12 +942,87 @@
       
       
         <label class="md-nav__link" for="__nav_5_2_8">
+          Payloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Payloads" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Payloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/payloads/connection.html" class="md-nav__link">
+        Connection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/payloads/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/simaticai/payloads/pipeline_variable.html" class="md-nav__link">
+        Pipeline Variable
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_9" type="checkbox" id="__nav_5_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2_9">
           Testing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Testing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_5_2_8">
+        <label class="md-nav__title" for="__nav_5_2_9">
           <span class="md-nav__icon md-icon"></span>
           Testing
         </label>
@@ -1147,6 +1229,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#260" class="md-nav__link">
+    2.6.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#251" class="md-nav__link">
     2.5.1
   </a>
@@ -1263,12 +1352,26 @@
 <p>AI Software Development Kit</p>
 <p>Known issues:</p>
 <ul>
+<li>Docker image for tests does not contain Python 3.12 yet, so that only can be used for testing GPURuntime component or PythonComponent with Python 3.11.</li>
+<li>The setuptools package which was part of a standard Python installation was removed in Python 3.12, it needs to be manually added to the project's requirements if still needed.</li>
 <li>Python 3.8.10 is the final regular bugfix release of Python 3.8 with binary installers. We recommend you to use the most recent bugfix release of Python 3.8 for productive use. For non-productive use, you can attempt using AI SDK with Python 3.8.10.</li>
 <li>AI SDK has only been tested on 64-bit platforms. We do not recommend using AI SDK on 32-bit platforms.</li>
 <li>The local pipeline runner might exceed the maximum path length allowed on Windows by default. To resolve this, please see the following article: https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry</li>
 <li>As no TensorFlow Lite 2.7.0 installer was published for Windows systems, you cannot use the local pipeline runner on Windows to execute the TensorFlow Lite based pipeline packages, like the one provided in the Image Classification project template.</li>
 <li>Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.</li>
 <li>Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected</li>
+</ul>
+<h2 id="260">2.6.0</h2>
+<p>New features:
+-   Enabled Python versions for a <code>PythonComponent</code> is <strong>3.11</strong> and <strong>3.12</strong>.
+-   <code>deployment.Component.set_requirements()</code> has an additional optional parameter <code>no_deps</code> (default false), to give the option to download / install Python packages without their dependencies. A warning message appears in the pipeline report file.
+-   LocalPipelineRunner do not download / install Python package dependencies in components with <code>no_deps</code> parameter. A warning message appears in the execution report file.
+-   Pipeline variables and parameters can be mapped during packaging, either with tag name or Databus topic.
+-   Connector name, connector type and connector payload format can be mapped during packaging.
+-   AI SDK requires the user's consent for collecting telemetry data.</p>
+<p>Fixed issues:</p>
+<ul>
+<li>Pipeline.export() checks the final size of the pipeline package correctly.</li>
 </ul>
 <h2 id="251">2.5.1</h2>
 <p>Fixed issues:</p>
@@ -1282,8 +1385,8 @@
 <li>Component name is restricted to [-a-zA-Z0-9_] characters.</li>
 <li>The VCAStream class now supports additional image formats when converting a folder of images into an ImageSet input for LocalPipelineRunner.</li>
 <li>The list of image formats VCAStream class can convert a folder of images into ImageSet input for LocalPipelineRunner is extended. The supported image formats are <code>Mono8</code>, <code>RGB8</code> (same as <code>RGB</code>), <code>BGR8</code> (same as <code>BGR</code>), <code>BayerRG8</code>, <code>BayerBG8</code>, <code>BayerGB8</code>, <code>BayerGR8</code>, <code>YUV422Packed</code>, and <code>YUV422_YUYV_Packed</code>.</li>
-<li>ImageSet output can be enabled from a component for previewing on AIIS</li>
-<li>Dependencies can be added from a <code>pyproject.toml</code> file's project.dependencies section</li>
+<li>ImageSet output can be enabled from a component for previewing on AIIS.</li>
+<li>Dependencies can be added from a <code>pyproject.toml</code> file's project.dependencies section.</li>
 </ul>
 <p>Fixed issues:
 -   The execution report lists installed packages related to CPU Python components only.

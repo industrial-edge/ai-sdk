@@ -1050,12 +1050,87 @@
       
       
         <label class="md-nav__link" for="__nav_5_2_8">
+          Payloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Payloads" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Payloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/connection.html" class="md-nav__link">
+        Connection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/pipeline_variable.html" class="md-nav__link">
+        Pipeline Variable
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_9" type="checkbox" id="__nav_5_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2_9">
           Testing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Testing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_5_2_8">
+        <label class="md-nav__title" for="__nav_5_2_9">
           <span class="md-nav__icon md-icon"></span>
           Testing
         </label>
@@ -1500,8 +1575,6 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
-
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
@@ -1526,7 +1599,7 @@
 
 <span class="sd">    Checks if Python version string is valid and describes supported version.</span>
 
-<span class="sd">    Only version 3.10 and 3.11 is supported. A patch version is optional and accepted but logs a warning.</span>
+<span class="sd">    Only version 3.11 and 3.12 is supported. A patch version is optional and accepted but logs a warning.</span>
 
 <span class="sd">    Accepted syntaxes are:</span>
 
@@ -1544,9 +1617,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">supported_versions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;3.10&quot;</span><span class="p">,</span> <span class="s2">&quot;3.11&quot;</span><span class="p">]</span>
-
-    <span class="n">error_message</span> <span class="o">=</span> <span class="s2">&quot;The defined python version is not supported. Currently supported Python versions are 3.10 and 3.11. Python version must be specified only with major and minor version, e.g. &#39;3.10&#39;.&quot;</span>
+    <span class="n">error_message</span> <span class="o">=</span> <span class="s2">&quot;The defined python version is not supported. Currently supported Python versions are 3.11 and 3.12. Python version must be specified only with major and minor version, e.g. &#39;3.11&#39;.&quot;</span>
 
     <span class="n">warning_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Required Python version was specified with patch version.</span>
 
@@ -1554,25 +1625,19 @@
 
 <span class="s2">                so there is no guarantee it has the desired effect.&quot;&quot;&quot;</span>
 
-    <span class="n">python_version_matcher</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(3)\.(0|[1-9][0-9]*)\.?(0|[1-9][0-9]*)?$&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">version</span><span class="p">))</span>
+    <span class="k">match</span> <span class="nb">str</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
 
-    <span class="n">major_minor_version</span> <span class="o">=</span> <span class="s2">&quot;0.0&quot;</span>
+        <span class="k">case</span> <span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span> <span class="o">|</span> <span class="s1">&#39;12&#39;</span><span class="p">):</span>
 
-    <span class="n">has_patch_version</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">return</span>  <span class="c1"># no patch version, so no warning</span>
 
-    <span class="k">if</span> <span class="n">python_version_matcher</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span> <span class="o">|</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="k">_</span><span class="p">):</span>
 
-        <span class="n">major_minor_version</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">python_version_matcher</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">python_version_matcher</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">warning_message</span><span class="p">)</span>
 
-        <span class="n">has_patch_version</span> <span class="o">=</span> <span class="n">python_version_matcher</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
 
-    <span class="k">if</span> <span class="n">major_minor_version</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">supported_versions</span><span class="p">:</span>
-
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">has_patch_version</span><span class="p">:</span>
-
-        <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">warning_message</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">PythonComponent</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 
@@ -1602,11 +1667,11 @@
 
 <span class="sd">        python_version (str): Python version on the target AI Inference Server.</span>
 
-<span class="sd">            At the moment of writing, the current version supports Python 3.10 and 3.11.</span>
+<span class="sd">            At the moment of writing, the current version supports Python 3.11 and 3.12.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;0.0.1&quot;</span><span class="p">,</span> <span class="n">python_version</span><span class="o">=</span><span class="s1">&#39;3.10&#39;</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;inference&quot;</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;0.0.1&quot;</span><span class="p">,</span> <span class="n">python_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;3.12&#39;</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -1620,7 +1685,7 @@
 
 <span class="sd">            version (str): Component version. (default: 0.0.1)</span>
 
-<span class="sd">            python_version (str): Python version on the target AI Inference Server. At the moment of writing, AI Inference Server supports Python 3.10 and 3.11.</span>
+<span class="sd">            python_version (str): Python version on the target AI Inference Server. At the moment of writing, AI Inference Server supports Python 3.11 and 3.12.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -1634,7 +1699,7 @@
 
             <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">python_version</span> <span class="o">=</span> <span class="n">python_version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">python_version</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">python_version</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
 
@@ -1649,6 +1714,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_replicas</span> <span class="o">=</span> <span class="mi">1</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">no_deps</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 
@@ -1846,7 +1913,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">python_dependencies</span><span class="o">.</span><span class="n">add_dependencies</span><span class="p">(</span><span class="n">packages</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requirements_path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requirements_path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="n">no_deps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -1860,11 +1927,21 @@
 
 <span class="sd">            requirements_path (str): Path of the given `requirements.txt` file</span>
 
+<span class="sd">            no_deps (bool): If set to True, dependencies will be downloaded/installed without dependencies. Default False.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">python_dependencies</span><span class="o">.</span><span class="n">set_requirements</span><span class="p">(</span><span class="n">requirements_path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">no_deps</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">no_deps</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WARNING! Requiring packages without their transitive dependencies is only supported on AI Inference Server version &gt;=2.6.0&quot;</span><span class="p">)</span>
+
+            <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WARNING! Requiring packages without their transitive dependencies may lead to missing dependencies and runtime errors. Use with caution!&quot;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">set_pyproject_toml</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pyproject_path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">):</span>
 
@@ -2016,6 +2093,18 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
+        <span class="n">runtime</span> <span class="o">=</span> <span class="p">{</span>
+
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;python&#39;</span><span class="p">,</span>
+
+            <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">python_version</span><span class="p">,</span>
+
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_deps</span><span class="p">:</span>
+
+            <span class="n">runtime</span><span class="p">[</span><span class="s1">&#39;installTransitiveDependencies&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
         <span class="n">component_dict</span> <span class="o">=</span> <span class="p">{</span>
 
             <span class="o">**</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_to_dict</span><span class="p">(),</span>
@@ -2026,13 +2115,7 @@
 
             <span class="s1">&#39;hwType&#39;</span><span class="p">:</span> <span class="s1">&#39;CPU&#39;</span><span class="p">,</span>
 
-            <span class="s1">&#39;runtime&#39;</span><span class="p">:</span> <span class="p">{</span>
-
-                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;python&#39;</span><span class="p">,</span>
-
-                <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">python_version</span>
-
-            <span class="p">},</span>
+            <span class="s1">&#39;runtime&#39;</span><span class="p">:</span> <span class="n">runtime</span><span class="p">,</span>
 
             <span class="s1">&#39;replicas&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_replicas</span>
 
@@ -2196,7 +2279,7 @@
 </code></pre></div>
 
 <p>Checks if Python version string is valid and describes supported version.</p>
-<p>Only version 3.10 and 3.11 is supported. A patch version is optional and accepted but logs a warning.</p>
+<p>Only version 3.11 and 3.12 is supported. A patch version is optional and accepted but logs a warning.</p>
 <p>Accepted syntaxes are:</p>
 <div class="codehilite"><pre><span></span><code>- {major}.{minor}
 - {major}.{minor}.{patch}
@@ -2244,7 +2327,7 @@
 
     Checks if Python version string is valid and describes supported version.
 
-    Only version 3.10 and 3.11 is supported. A patch version is optional and accepted but logs a warning.
+    Only version 3.11 and 3.12 is supported. A patch version is optional and accepted but logs a warning.
 
     Accepted syntaxes are:
 
@@ -2262,9 +2345,7 @@
 
     &quot;&quot;&quot;
 
-    supported_versions = [&quot;3.10&quot;, &quot;3.11&quot;]
-
-    error_message = &quot;The defined python version is not supported. Currently supported Python versions are 3.10 and 3.11. Python version must be specified only with major and minor version, e.g. &#39;3.10&#39;.&quot;
+    error_message = &quot;The defined python version is not supported. Currently supported Python versions are 3.11 and 3.12. Python version must be specified only with major and minor version, e.g. &#39;3.11&#39;.&quot;
 
     warning_message = &quot;&quot;&quot;Required Python version was specified with patch version.
 
@@ -2272,25 +2353,19 @@
 
                 so there is no guarantee it has the desired effect.&quot;&quot;&quot;
 
-    python_version_matcher = re.match(r&#39;^(3)\.(0|[1-9][0-9]*)\.?(0|[1-9][0-9]*)?$&#39;, str(version))
+    match str(version).split(&#39;.&#39;):
 
-    major_minor_version = &quot;0.0&quot;
+        case (&#39;3&#39;, &#39;11&#39; | &#39;12&#39;):
 
-    has_patch_version = False
+            return  # no patch version, so no warning
 
-    if python_version_matcher is not None:
+        case (&#39;3&#39;, &#39;11&#39; | &#39;12&#39;, _):
 
-        major_minor_version = f&quot;{python_version_matcher.group(1)}.{python_version_matcher.group(2)}&quot;
+            _logger.warning(warning_message)
 
-        has_patch_version = python_version_matcher.group(3) is not None
+        case _:
 
-    if major_minor_version not in supported_versions:
-
-        raise ValueError(error_message)
-
-    if has_patch_version:
-
-        _logger.warning(warning_message)
+            raise ValueError(error_message)
 </code></pre></div>
 
 </details>
@@ -2304,9 +2379,9 @@ the AI SDK User Manual, especially the guideline for writing pipeline components
 study the example Python components in the E2E Tutorials for the AI SDK.</p>
 <p>A new <code>PythonComponent</code> is empty.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PythonComponent</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;inference&#39;</span><span class="p">,</span>
-    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.0.1&#39;</span><span class="p">,</span>
-    <span class="n">python_version</span><span class="o">=</span><span class="s1">&#39;3.10&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;inference&#39;</span><span class="p">,</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;0.0.1&#39;</span><span class="p">,</span>
+    <span class="n">python_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;3.12&#39;</span><span class="p">,</span>
     <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2343,7 +2418,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 <tr>
 <td>python_version</td>
 <td>str</td>
-<td>Python version on the target AI Inference Server. At the moment of writing, the current version supports Python 3.10 and 3.11.</td>
+<td>Python version on the target AI Inference Server. At the moment of writing, the current version supports Python 3.11 and 3.12.</td>
 <td>None</td>
 </tr>
 </tbody>
@@ -2378,11 +2453,11 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="sd">        python_version (str): Python version on the target AI Inference Server.</span>
 
-<span class="sd">            At the moment of writing, the current version supports Python 3.10 and 3.11.</span>
+<span class="sd">            At the moment of writing, the current version supports Python 3.11 and 3.12.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="o">=</span><span class="s1">&#39;3.10&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;inference&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;3.12&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -2396,7 +2471,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="sd">            version (str): Component version. (default: 0.0.1)</span>
 
-<span class="sd">            python_version (str): Python version on the target AI Inference Server. At the moment of writing, AI Inference Server supports Python 3.10 and 3.11.</span>
+<span class="sd">            python_version (str): Python version on the target AI Inference Server. At the moment of writing, AI Inference Server supports Python 3.11 and 3.12.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -2410,7 +2485,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
 
-<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">python_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">python_version</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">python_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">python_version</span><span class="p">)</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span>
 
@@ -2425,6 +2500,8 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_replicas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">no_deps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb">str</span><span class="p">:</span>
 
@@ -2622,7 +2699,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">python_dependencies</span><span class="o">.</span><span class="n">add_dependencies</span><span class="p">(</span><span class="n">packages</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">set_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">requirements_path</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">set_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">requirements_path</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">no_deps</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -2636,11 +2713,21 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="sd">            requirements_path (str): Path of the given `requirements.txt` file</span>
 
+<span class="sd">            no_deps (bool): If set to True, dependencies will be downloaded/installed without dependencies. Default False.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">python_dependencies</span><span class="o">.</span><span class="n">set_requirements</span><span class="p">(</span><span class="n">requirements_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">no_deps</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">no_deps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WARNING! Requiring packages without their transitive dependencies is only supported on AI Inference Server version &gt;=2.6.0&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WARNING! Requiring packages without their transitive dependencies may lead to missing dependencies and runtime errors. Use with caution!&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">set_pyproject_toml</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">pyproject_path</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">):</span>
 
@@ -2792,6 +2879,18 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
+<span class="w">        </span><span class="n">runtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s1">&#39;version&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">python_version</span><span class="p">,</span>
+
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">no_deps</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">runtime</span><span class="p">[</span><span class="s1">&#39;installTransitiveDependencies&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
 <span class="w">        </span><span class="n">component_dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">            </span><span class="o">**</span><span class="n">super</span><span class="p">()</span><span class="o">.</span><span class="n">_to_dict</span><span class="p">(),</span>
@@ -2802,13 +2901,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">            </span><span class="s1">&#39;hwType&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;CPU&#39;</span><span class="p">,</span>
 
-<span class="w">            </span><span class="s1">&#39;runtime&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">                </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">,</span>
-
-<span class="w">                </span><span class="s1">&#39;version&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">python_version</span>
-
-<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s1">&#39;runtime&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">runtime</span><span class="p">,</span>
 
 <span class="w">            </span><span class="s1">&#39;replicas&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_replicas</span>
 
@@ -4384,7 +4477,8 @@ AI Inference Server supports at most 8 parallel instances.```</p>
 <h4 id="set_requirements">set_requirements</h4>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_requirements</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">requirements_path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span>
+    <span class="n">requirements_path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span>
+    <span class="n">no_deps</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -4408,29 +4502,45 @@ It can contain URLs to additional repositories in the form of <code>--extra-inde
 <td>Path of the given <code>requirements.txt</code> file</td>
 <td>None</td>
 </tr>
+<tr>
+<td>no_deps</td>
+<td>bool</td>
+<td>If set to True, dependencies will be downloaded/installed without dependencies. Default False.</td>
+<td>None</td>
+</tr>
 </tbody>
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code>    def set_requirements(self, requirements_path: os.PathLike):
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">set_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">requirements_path</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">no_deps</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span><span class="p">):</span>
 
-        &quot;&quot;&quot;
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-        Reads the defined dependencies from the given <span class="sb">`requirements.txt`</span> file and creates a new dependency list. Previously added dependencies will be cleared.
+<span class="sd">        Reads the defined dependencies from the given `requirements.txt` file and creates a new dependency list. Previously added dependencies will be cleared.</span>
 
-        The file format must follow Python&#39;s requirements file format defined in PEP 508.
+<span class="sd">        The file format must follow Python&#39;s requirements file format defined in PEP 508.</span>
 
-        It can contain URLs to additional repositories in the form of <span class="sb">`--extra-index-url=my.repo.example.com`</span>.
+<span class="sd">        It can contain URLs to additional repositories in the form of `--extra-index-url=my.repo.example.com`.</span>
 
-        Args:
+<span class="sd">        Args:</span>
 
-            requirements_path (str): Path of the given <span class="sb">`requirements.txt`</span> file
+<span class="sd">            requirements_path (str): Path of the given `requirements.txt` file</span>
 
-        &quot;&quot;&quot;
+<span class="sd">            no_deps (bool): If set to True, dependencies will be downloaded/installed without dependencies. Default False.</span>
 
-        self.is_valid = False
+<span class="sd">        &quot;&quot;&quot;</span>
 
-        self.python_dependencies.set_requirements(requirements_path)
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">python_dependencies</span><span class="o">.</span><span class="n">set_requirements</span><span class="p">(</span><span class="n">requirements_path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">no_deps</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">no_deps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WARNING! Requiring packages without their transitive dependencies is only supported on AI Inference Server version &gt;=2.6.0&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WARNING! Requiring packages without their transitive dependencies may lead to missing dependencies and runtime errors. Use with caution!&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
