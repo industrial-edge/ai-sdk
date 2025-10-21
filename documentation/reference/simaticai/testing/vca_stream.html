@@ -1,10 +1,5 @@
+
 <!doctype html>
-<!--
-SPDX-FileCopyrightText: 2025 (C) 2025 Siemens AG
-
-SPDX-License-Identifier: MIT
--->
-
 <html lang="en" class="no-js">
   <head>
     
@@ -801,6 +796,81 @@ SPDX-License-Identifier: MIT
               
   
   
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_8" type="checkbox" id="__nav_5_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2_8">
+          Payloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Payloads" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Payloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/connection.html" class="md-nav__link">
+        Connection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/pipeline_variable.html" class="md-nav__link">
+        Pipeline Variable
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -808,18 +878,18 @@ SPDX-License-Identifier: MIT
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_8" type="checkbox" id="__nav_5_2_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_9" type="checkbox" id="__nav_5_2_9" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_5_2_8">
+        <label class="md-nav__link" for="__nav_5_2_9">
           Testing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Testing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_5_2_8">
+        <label class="md-nav__title" for="__nav_5_2_9">
           <span class="md-nav__icon md-icon"></span>
           Testing
         </label>
@@ -1177,13 +1247,13 @@ SPDX-License-Identifier: MIT
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
@@ -1379,7 +1449,7 @@ SPDX-License-Identifier: MIT
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_create_imageset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_path</span><span class="p">):</span>
 
-        <span class="n">timestamp</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%S.</span><span class="si">%f</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">Z&quot;</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%S.</span><span class="si">%f</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">Z&quot;</span>
 
         <span class="n">bgr_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">image_path</span><span class="p">))</span>
 
@@ -1627,7 +1697,7 @@ ImageSet format, as if it were received from AI Inference Server.</p>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_create_imageset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">image_path</span><span class="p">):</span>
 
-<span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{datetime.datetime.now(datetime.timezone.utc).strftime(&#39;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">&#39;)[:-3]}Z&quot;</span>
+<span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{datetime.now(timezone.utc).strftime(&#39;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">&#39;)[:-3]}Z&quot;</span>
 
 <span class="w">        </span><span class="n">bgr_image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">image_path</span><span class="p">))</span>
 

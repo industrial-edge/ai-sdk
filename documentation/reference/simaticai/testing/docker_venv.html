@@ -1,10 +1,5 @@
+
 <!doctype html>
-<!--
-SPDX-FileCopyrightText: 2025 (C) 2025 Siemens AG
-
-SPDX-License-Identifier: MIT
--->
-
 <html lang="en" class="no-js">
   <head>
     
@@ -801,6 +796,81 @@ SPDX-License-Identifier: MIT
               
   
   
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_8" type="checkbox" id="__nav_5_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2_8">
+          Payloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Payloads" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Payloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/connection.html" class="md-nav__link">
+        Connection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/pipeline_variable.html" class="md-nav__link">
+        Pipeline Variable
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -808,18 +878,18 @@ SPDX-License-Identifier: MIT
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_8" type="checkbox" id="__nav_5_2_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_9" type="checkbox" id="__nav_5_2_9" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_5_2_8">
+        <label class="md-nav__link" for="__nav_5_2_9">
           Testing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Testing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_5_2_8">
+        <label class="md-nav__title" for="__nav_5_2_9">
           <span class="md-nav__icon md-icon"></span>
           Testing
         </label>
@@ -1177,9 +1247,9 @@ manage containers.</p>
 
     <span class="n">is_vessel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 
-    <span class="n">python_3_10</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
-
     <span class="n">python_3_11</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+
+    <span class="n">python_3_12</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -1187,9 +1257,11 @@ manage containers.</p>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">is_vessel</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Check if running in a Docker container</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">python_3_10</span> <span class="o">=</span> <span class="s1">&#39;python3.10&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">python</span> <span class="o">=</span> <span class="s1">&#39;python3.11&#39;</span>  <span class="c1"># Default to Python 3.11</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">python_3_11</span> <span class="o">=</span> <span class="s1">&#39;python3.11&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">python_3_12</span> <span class="o">=</span> <span class="s1">&#39;python3.12&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_create_venv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 
@@ -1211,13 +1283,13 @@ manage containers.</p>
 
         <span class="k">match</span> <span class="n">version</span><span class="p">:</span>
 
-            <span class="k">case</span> <span class="s2">&quot;3.10&quot;</span><span class="p">:</span>
-
-                <span class="n">python</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">python_3_10</span>
-
             <span class="k">case</span> <span class="s2">&quot;3.11&quot;</span><span class="p">:</span>
 
                 <span class="n">python</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">python_3_11</span>
+
+            <span class="k">case</span> <span class="s2">&quot;3.12&quot;</span><span class="p">:</span>
+
+                <span class="n">python</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">python_3_12</span>
 
             <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
 
@@ -1260,9 +1332,9 @@ manage containers.</p>
 
     <span class="n">is_vessel:</span> <span class="n">bool</span> = <span class="nb">False</span>
 
-    <span class="n">python_3_10:</span> <span class="n">str</span> = <span class="s">&#39;python&#39;</span>
-
     <span class="n">python_3_11:</span> <span class="n">str</span> = <span class="s">&#39;python&#39;</span>
+
+    <span class="n">python_3_12:</span> <span class="n">str</span> = <span class="s">&#39;python&#39;</span>
 
     <span class="n">def</span> <span class="n">__init__</span>(<span class="nb">self</span>):
 
@@ -1270,9 +1342,11 @@ manage containers.</p>
 
             <span class="nb">self</span>.<span class="n">is_vessel</span> = <span class="nb">True</span>  <span class="c1"># Check if running in a Docker container</span>
 
-            <span class="nb">self</span>.<span class="n">python_3_10</span> = <span class="s">&#39;python3.10&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
+            <span class="nb">self</span>.<span class="n">python</span> = <span class="s">&#39;python3.11&#39;</span>  <span class="c1"># Default to Python 3.11</span>
 
             <span class="nb">self</span>.<span class="n">python_3_11</span> = <span class="s">&#39;python3.11&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
+
+            <span class="nb">self</span>.<span class="n">python_3_12</span> = <span class="s">&#39;python3.12&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
 
     <span class="n">def</span> <span class="n">_create_venv</span>(<span class="nb">self</span>, <span class="n">path:</span> <span class="n">str</span>, <span class="n">version:</span> <span class="n">str</span>):
 
@@ -1294,13 +1368,13 @@ manage containers.</p>
 
         <span class="nb">match</span> <span class="n">version:</span>
 
-            <span class="n">case</span> <span class="s">&quot;3.10&quot;</span>:
-
-                <span class="n">python</span> = <span class="nb">self</span>.<span class="n">python_3_10</span>
-
             <span class="n">case</span> <span class="s">&quot;3.11&quot;</span>:
 
                 <span class="n">python</span> = <span class="nb">self</span>.<span class="n">python_3_11</span>
+
+            <span class="n">case</span> <span class="s">&quot;3.12&quot;</span>:
+
+                <span class="n">python</span> = <span class="nb">self</span>.<span class="n">python_3_12</span>
 
             <span class="n">case</span> <span class="n">_:</span>
 
@@ -1335,10 +1409,10 @@ manage containers.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">is_vessel</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="n">python_3_10</span>
+<div class="codehilite"><pre><span></span><code><span class="n">python_3_11</span>
 </code></pre></div>
 
-<div class="codehilite"><pre><span></span><code><span class="n">python_3_11</span>
+<div class="codehilite"><pre><span></span><code><span class="n">python_3_12</span>
 </code></pre></div>
 
 

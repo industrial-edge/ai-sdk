@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: Copyright (C) 2023 Siemens AG
+SPDX-FileCopyrightText: 2025 Siemens AG
 
 SPDX-License-Identifier: MIT
 -->
@@ -10,12 +10,29 @@ AI Software Development Kit
 
 Known issues:
 
+-   Docker image for tests does not contain Python 3.12 yet, so that only can be used for testing GPURuntime component or PythonComponent with Python 3.11.
+-   The setuptools package which was part of a standard Python installation was removed in Python 3.12, it needs to be manually added to the project's requirements if still needed.
 -   Python 3.8.10 is the final regular bugfix release of Python 3.8 with binary installers. We recommend you to use the most recent bugfix release of Python 3.8 for productive use. For non-productive use, you can attempt using AI SDK with Python 3.8.10.
 -   AI SDK has only been tested on 64-bit platforms. We do not recommend using AI SDK on 32-bit platforms.
 -   The local pipeline runner might exceed the maximum path length allowed on Windows by default. To resolve this, please see the following article: https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry
 -   As no TensorFlow Lite 2.7.0 installer was published for Windows systems, you cannot use the local pipeline runner on Windows to execute the TensorFlow Lite based pipeline packages, like the one provided in the Image Classification project template.
 -   Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.
 -   Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected
+
+## 2.6.0
+
+New features:
+-   Enabled Python versions for a `PythonComponent` is **3.11** and **3.12**.
+-   `deployment.Component.set_requirements()` has an additional optional parameter `no_deps` (default false), to give the option to download / install Python packages without their dependencies. A warning message appears in the pipeline report file.
+-   LocalPipelineRunner do not download / install Python package dependencies in components with `no_deps` parameter. A warning message appears in the execution report file.
+-   Pipeline variables and parameters can be mapped during packaging, either with tag name or Databus topic.
+-   Connector name, connector type and connector payload format can be mapped during packaging.
+-   AI SDK requires the user's consent for collecting telemetry data.
+
+Fixed issues:
+
+-   Pipeline.export() checks the final size of the pipeline package correctly.
+
 
 ## 2.5.1
 
@@ -31,8 +48,8 @@ New features:
 -   Component name is restricted to [-a-zA-Z0-9_] characters.
 -   The VCAStream class now supports additional image formats when converting a folder of images into an ImageSet input for LocalPipelineRunner.
 -   The list of image formats VCAStream class can convert a folder of images into ImageSet input for LocalPipelineRunner is extended. The supported image formats are `Mono8`, `RGB8` (same as `RGB`), `BGR8` (same as `BGR`), `BayerRG8`, `BayerBG8`, `BayerGB8`, `BayerGR8`, `YUV422Packed`, and `YUV422_YUYV_Packed`.
--   ImageSet output can be enabled from a component for previewing on AIIS
--   Dependencies can be added from a `pyproject.toml` file's project.dependencies section
+-   ImageSet output can be enabled from a component for previewing on AIIS.
+-   Dependencies can be added from a `pyproject.toml` file's project.dependencies section.
 
 Fixed issues:
 -   The execution report lists installed packages related to CPU Python components only.

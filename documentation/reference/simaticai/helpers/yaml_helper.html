@@ -1,10 +1,5 @@
+
 <!doctype html>
-<!--
-SPDX-FileCopyrightText: 2025 (C) 2025 Siemens AG
-
-SPDX-License-Identifier: MIT
--->
-
 <html lang="en" class="no-js">
   <head>
     
@@ -868,12 +863,87 @@ SPDX-License-Identifier: MIT
       
       
         <label class="md-nav__link" for="__nav_5_2_8">
+          Payloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Payloads" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Payloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/connection.html" class="md-nav__link">
+        Connection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/pipeline_variable.html" class="md-nav__link">
+        Pipeline Variable
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_9" type="checkbox" id="__nav_5_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2_9">
           Testing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Testing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_5_2_8">
+        <label class="md-nav__title" for="__nav_5_2_9">
           <span class="md-nav__icon md-icon"></span>
           Testing
         </label>
@@ -1133,7 +1203,9 @@ SPDX-License-Identifier: MIT
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">read_yaml</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">):</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">read_yaml</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -1154,6 +1226,8 @@ SPDX-License-Identifier: MIT
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_remove_implicit_resolver</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">SafeLoader</span><span class="p">)</span>
+
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
 
@@ -1196,8 +1270,8 @@ SPDX-License-Identifier: MIT
 <h2 id="functions">Functions</h2>
 <h3 id="read_yaml">read_yaml</h3>
 <div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">read_yaml</span><span class="p">(</span>
-    <span class="n">path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span>
-<span class="p">)</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">|</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
 </code></pre></div>
 
 <p>Read a YAML file into a dictionary.</p>
@@ -1239,7 +1313,7 @@ to read datetime objects as strings, for simplifying validation with a JSON sche
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">read_yaml</span><span class="p">(</span><span class="k">path</span><span class="o">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="p">)</span><span class="o">:</span>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">read_yaml</span><span class="p">(</span><span class="k">path</span><span class="o">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">dict</span><span class="o">:</span>
 
 <span class="w">    </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span>
 
@@ -1260,6 +1334,8 @@ to read datetime objects as strings, for simplifying validation with a JSON sche
 <span class="s2">    </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
 
 <span class="w">    </span><span class="n">_remove_implicit_resolver</span><span class="p">(</span><span class="n">yaml</span><span class="p">.</span><span class="n">SafeLoader</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">Path</span><span class="p">(</span><span class="k">path</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="k">open</span><span class="p">(</span><span class="k">path</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">file</span><span class="o">:</span>
 

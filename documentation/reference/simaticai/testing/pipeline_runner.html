@@ -1,10 +1,5 @@
+
 <!doctype html>
-<!--
-SPDX-FileCopyrightText: 2025 (C) 2025 Siemens AG
-
-SPDX-License-Identifier: MIT
--->
-
 <html lang="en" class="no-js">
   <head>
     
@@ -801,6 +796,81 @@ SPDX-License-Identifier: MIT
               
   
   
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_8" type="checkbox" id="__nav_5_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2_8">
+          Payloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Payloads" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Payloads
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/connection.html" class="md-nav__link">
+        Connection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/index.html" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../payloads/pipeline_variable.html" class="md-nav__link">
+        Pipeline Variable
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -808,18 +878,18 @@ SPDX-License-Identifier: MIT
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_8" type="checkbox" id="__nav_5_2_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_9" type="checkbox" id="__nav_5_2_9" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_5_2_8">
+        <label class="md-nav__link" for="__nav_5_2_9">
           Testing
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Testing" data-md-level="3">
-        <label class="md-nav__title" for="__nav_5_2_8">
+        <label class="md-nav__title" for="__nav_5_2_9">
           <span class="md-nav__icon md-icon"></span>
           Testing
         </label>
@@ -1322,8 +1392,6 @@ single components with inputs and verify the output produced.</p>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">pkg_resources</span>
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
@@ -1336,8 +1404,6 @@ single components with inputs and verify the output produced.</p>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -1345,6 +1411,8 @@ single components with inputs and verify the output produced.</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
@@ -1466,7 +1534,7 @@ single components with inputs and verify the output produced.</p>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">package_zip</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">packageZip</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span> <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -1490,7 +1558,7 @@ single components with inputs and verify the output produced.</p>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_package_zip_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_zip</span><span class="p">)</span>
 
-        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[-:]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">timespec</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">))</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[-:]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">timespec</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
@@ -1602,35 +1670,31 @@ single components with inputs and verify the output produced.</p>
 
         <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
-        <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;jupyter&quot;</span><span class="p">]</span>        <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;__IPYTHON__&quot;</span><span class="p">,</span> <span class="s2">&quot;get_ipython&quot;</span><span class="p">])</span>
+        <span class="n">env_info</span> <span class="o">=</span> <span class="s2">&quot;Jupyter&quot;</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;__IPYTHON__&quot;</span><span class="p">,</span> <span class="s2">&quot;get_ipython&quot;</span><span class="p">])</span> <span class="k">else</span> <span class="n">MSG_NOT_FOUND</span>
 
-        <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;gitlab_ci&quot;</span><span class="p">]</span>      <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s2">&quot;GITLAB_CI&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="k">else</span> <span class="n">MSG_NOT_FOUND</span>
+        <span class="n">env_info</span> <span class="o">=</span> <span class="s2">&quot;GitLab CI/CD&quot;</span> <span class="k">if</span> <span class="s2">&quot;GITLAB_CI&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="k">else</span> <span class="n">env_info</span>
 
-        <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;azure_devops&quot;</span><span class="p">]</span>   <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s2">&quot;TF_BUILD&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="k">else</span> <span class="n">MSG_NOT_FOUND</span>
+        <span class="n">env_info</span> <span class="o">=</span> <span class="s2">&quot;Azure DevOps Pipelines&quot;</span> <span class="k">if</span> <span class="s2">&quot;TF_BUILD&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="k">else</span> <span class="n">env_info</span>
 
-        <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;github_actions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="s2">&quot;GITHUB_ACTIONS&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="k">else</span> <span class="n">MSG_NOT_FOUND</span>
+        <span class="n">env_info</span> <span class="o">=</span> <span class="s2">&quot;GitHub Actions&quot;</span> <span class="k">if</span> <span class="s2">&quot;GITHUB_ACTIONS&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="k">else</span> <span class="n">env_info</span>
+
+        <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;info&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">env_info</span>
 
         <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">try</span><span class="p">:</span>
 
-            <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;simaticai&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">get_distribution</span><span class="p">(</span><span class="s2">&quot;simaticai&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">version</span>
+            <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;simaticai&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">importlib_metadata</span><span class="o">.</span><span class="n">version</span><span class="p">(</span><span class="s2">&quot;simaticai&quot;</span><span class="p">)</span>
 
-        <span class="k">except</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">DistributionNotFound</span><span class="p">:</span>
+        <span class="k">except</span> <span class="n">importlib_metadata</span><span class="o">.</span><span class="n">PackageNotFoundError</span><span class="p">:</span>
 
             <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;simaticai&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MSG_NOT_FOUND</span>
 
-        <span class="k">try</span><span class="p">:</span>
-
-            <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;vep-template-sdk&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">get_distribution</span><span class="p">(</span><span class="s2">&quot;vep-template-sdk&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">version</span>
-
-        <span class="k">except</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">DistributionNotFound</span><span class="p">:</span>
-
-            <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;vep-template-sdk&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MSG_NOT_FOUND</span>
-
         <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
-        <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;python_versions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">][</span><span class="s1">&#39;runtime&#39;</span><span class="p">][</span><span class="s1">&#39;version&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">][</span><span class="s1">&#39;runtime&#39;</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;python&#39;</span><span class="p">))</span>
+        <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;python_versions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">][</span><span class="s1">&#39;runtime&#39;</span><span class="p">][</span><span class="s1">&#39;version&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span>
+
+                                                                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">][</span><span class="s1">&#39;runtime&#39;</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;python&#39;</span><span class="p">))</span>
 
         <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;file_extensions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -1638,7 +1702,9 @@ single components with inputs and verify the output produced.</p>
 
             <span class="n">excluded_dirs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">component_dir</span> <span class="o">/</span> <span class="s1">&#39;.venv&#39;</span><span class="p">,</span> <span class="n">component_dir</span> <span class="o">/</span> <span class="s1">&#39;__pyache__&#39;</span><span class="p">])</span>
 
-            <span class="n">suffixes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">component_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">excluded_dirs</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">parents</span><span class="p">))</span> <span class="ow">or</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.yaml&quot;</span><span class="p">,</span> <span class="s2">&quot;.html&quot;</span><span class="p">])))</span>
+            <span class="n">suffixes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">component_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+
+                                <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">excluded_dirs</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">parents</span><span class="p">))</span> <span class="ow">or</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;.yml&quot;</span><span class="p">,</span> <span class="s2">&quot;.yaml&quot;</span><span class="p">,</span> <span class="s2">&quot;.html&quot;</span><span class="p">])))</span>
 
             <span class="k">for</span> <span class="n">suffix</span> <span class="ow">in</span> <span class="n">suffixes</span><span class="p">:</span>
 
@@ -1658,7 +1724,7 @@ single components with inputs and verify the output produced.</p>
 
 <span class="sd">        or collecting new telemetry data if the file doesn&#39;t exist. It then updates the</span>
 
-<span class="sd">        &quot;last_run&quot; field of the telemetry data with the current timestamp. The updated</span>
+<span class="sd">        &quot;last_test_run&quot; field of the telemetry data with the current timestamp. The updated</span>
 
 <span class="sd">        telemetry data is then written back to the YAML file.</span>
 
@@ -1686,7 +1752,7 @@ single components with inputs and verify the output produced.</p>
 
             <span class="n">telemetry_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collect_telemetry_data</span><span class="p">()</span>
 
-        <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;last_run&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+        <span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;last_test_run&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
 
         <span class="n">telemetry_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">telemetry_data</span><span class="p">))</span>
 
@@ -1758,7 +1824,19 @@ single components with inputs and verify the output produced.</p>
 
             <span class="n">cmd</span> <span class="o">+=</span> <span class="p">[</span> <span class="s2">&quot;--no-index&quot;</span> <span class="p">]</span>
 
+        <span class="n">use_no_deps</span> <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;runtime&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;installTransitiveDependencies&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">use_no_deps</span><span class="p">:</span>
+
+            <span class="n">cmd</span> <span class="o">+=</span> <span class="p">[</span> <span class="s2">&quot;--no-deps&quot;</span> <span class="p">]</span>
+
         <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">==</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="ow">and</span> <span class="n">use_no_deps</span><span class="p">:</span>
+
+            <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Component `</span><span class="si">{</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">` is requested to be installed without transitive dependencies. &quot;</span>
+
+                            <span class="s2">&quot;This may lead to runtime errors if the dependencies are not handled manually.&quot;</span><span class="p">)</span>
 
         <span class="c1"># generate pip report with a dry run to get the list of installed packages (in case of CPU Python packages)</span>
 
@@ -1832,6 +1910,16 @@ single components with inputs and verify the output produced.</p>
 
             <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error upgrading pip:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
+        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;python_path&#39;</span><span class="p">]),</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;pip&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;--upgrade&quot;</span><span class="p">,</span> <span class="s2">&quot;setuptools&quot;</span><span class="p">]</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error installing setuptools:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
         <span class="k">try</span><span class="p">:</span>
 
             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_install_logmodule</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;python_path&quot;</span><span class="p">],</span> <span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
@@ -1898,7 +1986,7 @@ single components with inputs and verify the output produced.</p>
 
             <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">is_vessel</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">is_vessel</span> <span class="ow">and</span> <span class="n">component</span><span class="p">[</span><span class="s2">&quot;runtime&quot;</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
 
                 <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The component is running in a docker container. The installation of dependencies from pypi.org is not supported.&quot;</span><span class="p">)</span>
 
@@ -2244,6 +2332,8 @@ single components with inputs and verify the output produced.</p>
 
         <span class="k">return</span> <span class="n">payload</span>
 
+<span class="n">extra_variables_to_log</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
 <span class="k">def</span><span class="w"> </span><span class="nf">validate_payload</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">variables</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">_logger</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2255,6 +2345,10 @@ single components with inputs and verify the output produced.</p>
 <span class="sd">    Batch indicates if the payload items are themselves batches of items or not.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">global</span> <span class="n">extra_variables_to_log</span>
+
+    <span class="n">extra_variables_to_log</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span> <span class="s2">&quot;payload data must be a &#39;list&#39;&quot;</span>
 
@@ -2271,6 +2365,10 @@ single components with inputs and verify the output produced.</p>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
 
             <span class="n">validate_payload_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extra_variables_to_log</span><span class="p">):</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: </span><span class="si">{</span><span class="n">extra_variables_to_log</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">validate_payload_item</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">variables</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
 
@@ -2328,9 +2426,7 @@ single components with inputs and verify the output produced.</p>
 
     <span class="n">extra_variables</span> <span class="o">=</span> <span class="n">payload_names</span> <span class="o">-</span> <span class="n">variable_names</span>
 
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">extra_variables</span><span class="p">):</span>
-
-        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: </span><span class="si">{</span><span class="n">extra_variables</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">extra_variables_to_log</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extra_variables</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
@@ -2357,6 +2453,9 @@ single components with inputs and verify the output produced.</p>
 </code></pre></div>
 
 <div class="codehilite"><pre><span></span><code><span class="n">TELEMETRY_YAML</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">extra_variables_to_log</span>
 </code></pre></div>
 
 <div class="codehilite"><pre><span></span><code><span class="n">type_map</span>
@@ -2389,6 +2488,10 @@ Batch indicates if the payload items are themselves batches of items or not.</p>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
+<span class="w">    </span><span class="n">global</span><span class="w"> </span><span class="n">extra_variables_to_log</span>
+
+<span class="w">    </span><span class="n">extra_variables_to_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set</span><span class="p">()</span>
+
 <span class="w">    </span><span class="nb">assert</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;payload data must be a &#39;list&#39;&quot;</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">data</span><span class="p">:</span>
@@ -2404,6 +2507,10 @@ Batch indicates if the payload items are themselves batches of items or not.</p>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">i</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">validate_payload_item</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">variables</span><span class="p">,</span><span class="w"> </span><span class="n">logger</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">extra_variables_to_log</span><span class="p">):</span>
+
+<span class="w">        </span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: {extra_variables_to_log}&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
@@ -2476,9 +2583,7 @@ The types of the values must match their declared type.</p>
 
 <span class="w">    </span><span class="n">extra_variables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payload_names</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">variable_names</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">extra_variables</span><span class="p">):</span>
-
-<span class="w">        </span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;WARNING! These variables are not declared but are part of the payload: {extra_variables}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">extra_variables_to_log</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extra_variables</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
@@ -2594,7 +2699,7 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">package_zip</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">packageZip</span><span class="p">)</span>
 
-<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">None</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
@@ -2618,7 +2723,7 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">report_writer</span><span class="o">.</span><span class="n">set_package_zip_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">package_zip</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[-:]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">timespec</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[-:]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">timespec</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">))</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
@@ -2730,35 +2835,31 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;jupyter&quot;</span><span class="p">]</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">any</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">locals</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;__IPYTHON__&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;get_ipython&quot;</span><span class="p">])</span>
+<span class="w">        </span><span class="n">env_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Jupyter&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">any</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">locals</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;__IPYTHON__&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;get_ipython&quot;</span><span class="p">])</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;gitlab_ci&quot;</span><span class="p">]</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;GITLAB_CI&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
+<span class="w">        </span><span class="n">env_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GitLab CI/CD&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;GITLAB_CI&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">env_info</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;azure_devops&quot;</span><span class="p">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;TF_BUILD&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
+<span class="w">        </span><span class="n">env_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Azure DevOps Pipelines&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;TF_BUILD&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">env_info</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;github_actions&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;GITHUB_ACTIONS&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
+<span class="w">        </span><span class="n">env_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GitHub Actions&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="s2">&quot;GITHUB_ACTIONS&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">env_info</span>
+
+<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;environment&quot;</span><span class="p">][</span><span class="s2">&quot;info&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env_info</span>
 
 <span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
-<span class="w">            </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;simaticai&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">get_distribution</span><span class="p">(</span><span class="s2">&quot;simaticai&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">version</span>
+<span class="w">            </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;simaticai&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">importlib_metadata</span><span class="o">.</span><span class="n">version</span><span class="p">(</span><span class="s2">&quot;simaticai&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">DistributionNotFound</span><span class="p">:</span>
+<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">importlib_metadata</span><span class="o">.</span><span class="n">PackageNotFoundError</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;simaticai&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
 
-<span class="w">        </span><span class="n">try</span><span class="p">:</span>
-
-<span class="w">            </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;vep-template-sdk&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">get_distribution</span><span class="p">(</span><span class="s2">&quot;vep-template-sdk&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">version</span>
-
-<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">DistributionNotFound</span><span class="p">:</span>
-
-<span class="w">            </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;industrial_ai&quot;</span><span class="p">][</span><span class="s2">&quot;vep-template-sdk&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
-
 <span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;python_versions&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="n">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">][</span><span class="s1">&#39;runtime&#39;</span><span class="p">][</span><span class="s1">&#39;version&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">][</span><span class="s1">&#39;runtime&#39;</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">))</span>
+<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;python_versions&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="n">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">][</span><span class="s1">&#39;runtime&#39;</span><span class="p">][</span><span class="s1">&#39;version&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span>
+
+<span class="w">                                                                 </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="n">component</span><span class="p">][</span><span class="s1">&#39;runtime&#39;</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">))</span>
 
 <span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;file_extensions&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
 
@@ -2766,7 +2867,9 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">            </span><span class="n">excluded_dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set</span><span class="p">([</span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;.venv&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s1">&#39;__pyache__&#39;</span><span class="p">])</span>
 
-<span class="w">            </span><span class="n">suffixes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="n">set</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">suffix</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">component_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">excluded_dirs</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">parents</span><span class="p">))</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">suffix</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;.zip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;.yaml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;.html&quot;</span><span class="p">])))</span>
+<span class="w">            </span><span class="n">suffixes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="n">set</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">suffix</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">component_dir</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+
+<span class="w">                                </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">excluded_dirs</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">parents</span><span class="p">))</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="n">suffix</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;.zip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;.yml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;.yaml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;.html&quot;</span><span class="p">])))</span>
 
 <span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">suffix</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">suffixes</span><span class="p">:</span>
 
@@ -2786,7 +2889,7 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="sd">        or collecting new telemetry data if the file doesn&#39;t exist. It then updates the</span>
 
-<span class="sd">        &quot;last_run&quot; field of the telemetry data with the current timestamp. The updated</span>
+<span class="sd">        &quot;last_test_run&quot; field of the telemetry data with the current timestamp. The updated</span>
 
 <span class="sd">        telemetry data is then written back to the YAML file.</span>
 
@@ -2814,7 +2917,7 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">            </span><span class="n">telemetry_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">collect_telemetry_data</span><span class="p">()</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;last_run&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;last_test_run&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
 
 <span class="w">        </span><span class="n">telemetry_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">telemetry_data</span><span class="p">))</span>
 
@@ -2886,7 +2989,19 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">            </span><span class="n">cmd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;--no-index&quot;</span><span class="w"> </span><span class="p">]</span>
 
+<span class="w">        </span><span class="n">use_no_deps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">component</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;runtime&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;installTransitiveDependencies&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">True</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">use_no_deps</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">cmd</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;--no-deps&quot;</span><span class="w"> </span><span class="p">]</span>
+
 <span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">use_no_deps</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Component `{component[&#39;name&#39;]}` is requested to be installed without transitive dependencies. &quot;</span>
+
+<span class="w">                            </span><span class="s2">&quot;This may lead to runtime errors if the dependencies are not handled manually.&quot;</span><span class="p">)</span>
 
 <span class="w">        </span><span class="c1"># generate pip report with a dry run to get the list of installed packages (in case of CPU Python packages)</span>
 
@@ -2960,6 +3075,16 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Error upgrading pip:</span><span class="se">\n</span><span class="s2">{result.stderr}&quot;</span><span class="p">)</span>
 
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s1">&#39;python_path&#39;</span><span class="p">]),</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--upgrade&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;setuptools&quot;</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="n">cwd</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">text</span><span class="o">=</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">cleanup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Error installing setuptools:</span><span class="se">\n</span><span class="s2">{result.stderr}&quot;</span><span class="p">)</span>
+
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_install_logmodule</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;python_path&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;env_dir&quot;</span><span class="p">])</span>
@@ -3026,7 +3151,7 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">is_vessel</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">is_vessel</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">component</span><span class="p">[</span><span class="s2">&quot;runtime&quot;</span><span class="p">][</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">:</span>
 
 <span class="w">                </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The component is running in a docker container. The installation of dependencies from pypi.org is not supported.&quot;</span><span class="p">)</span>
 
@@ -3426,35 +3551,31 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;environment&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;environment&quot;</span><span class="o">][</span><span class="n">&quot;jupyter&quot;</span><span class="o">]</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="ow">any</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">locals</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;__IPYTHON__&quot;, &quot;get_ipython&quot;</span><span class="o">]</span><span class="p">)</span>
+<span class="w">        </span><span class="n">env_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Jupyter&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ow">any</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">locals</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;__IPYTHON__&quot;, &quot;get_ipython&quot;</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;environment&quot;</span><span class="o">][</span><span class="n">&quot;gitlab_ci&quot;</span><span class="o">]</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">&quot;GITLAB_CI&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
+<span class="w">        </span><span class="n">env_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;GitLab CI/CD&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">&quot;GITLAB_CI&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">env_info</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;environment&quot;</span><span class="o">][</span><span class="n">&quot;azure_devops&quot;</span><span class="o">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">&quot;TF_BUILD&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
+<span class="w">        </span><span class="n">env_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Azure DevOps Pipelines&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">&quot;TF_BUILD&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">env_info</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;environment&quot;</span><span class="o">][</span><span class="n">&quot;github_actions&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">True</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">&quot;GITHUB_ACTIONS&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
+<span class="w">        </span><span class="n">env_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;GitHub Actions&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ss">&quot;GITHUB_ACTIONS&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">env_info</span>
+
+<span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;environment&quot;</span><span class="o">][</span><span class="n">&quot;info&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env_info</span>
 
 <span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;industrial_ai&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
 
 <span class="w">        </span><span class="k">try</span><span class="err">:</span>
 
-<span class="w">            </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;industrial_ai&quot;</span><span class="o">][</span><span class="n">&quot;simaticai&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg_resources</span><span class="p">.</span><span class="n">get_distribution</span><span class="p">(</span><span class="ss">&quot;simaticai&quot;</span><span class="p">).</span><span class="n">version</span>
+<span class="w">            </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;industrial_ai&quot;</span><span class="o">][</span><span class="n">&quot;simaticai&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">importlib_metadata</span><span class="p">.</span><span class="n">version</span><span class="p">(</span><span class="ss">&quot;simaticai&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="p">.</span><span class="nl">DistributionNotFound</span><span class="p">:</span>
+<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">importlib_metadata</span><span class="p">.</span><span class="nl">PackageNotFoundError</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;industrial_ai&quot;</span><span class="o">][</span><span class="n">&quot;simaticai&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
 
-<span class="w">        </span><span class="k">try</span><span class="err">:</span>
-
-<span class="w">            </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;industrial_ai&quot;</span><span class="o">][</span><span class="n">&quot;vep-template-sdk&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg_resources</span><span class="p">.</span><span class="n">get_distribution</span><span class="p">(</span><span class="ss">&quot;vep-template-sdk&quot;</span><span class="p">).</span><span class="n">version</span>
-
-<span class="w">        </span><span class="ow">except</span><span class="w"> </span><span class="n">pkg_resources</span><span class="p">.</span><span class="nl">DistributionNotFound</span><span class="p">:</span>
-
-<span class="w">            </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;industrial_ai&quot;</span><span class="o">][</span><span class="n">&quot;vep-template-sdk&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MSG_NOT_FOUND</span>
-
 <span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;pipeline&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;pipeline&quot;</span><span class="o">][</span><span class="n">&quot;python_versions&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="k">set</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">][</span><span class="n">&#39;runtime&#39;</span><span class="o">][</span><span class="n">&#39;version&#39;</span><span class="o">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">][</span><span class="n">&#39;runtime&#39;</span><span class="o">][</span><span class="n">&#39;type&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">))</span>
+<span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;pipeline&quot;</span><span class="o">][</span><span class="n">&quot;python_versions&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="k">set</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">][</span><span class="n">&#39;runtime&#39;</span><span class="o">][</span><span class="n">&#39;version&#39;</span><span class="o">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">components</span>
+
+<span class="w">                                                                 </span><span class="k">if</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">components</span><span class="o">[</span><span class="n">component</span><span class="o">][</span><span class="n">&#39;runtime&#39;</span><span class="o">][</span><span class="n">&#39;type&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;python&#39;</span><span class="p">))</span>
 
 <span class="w">        </span><span class="n">telemetry_data</span><span class="o">[</span><span class="n">&quot;pipeline&quot;</span><span class="o">][</span><span class="n">&quot;file_extensions&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[]</span>
 
@@ -3462,7 +3583,9 @@ This behavior can be overridden using boolean parameter <code>cleanup</code>.</p
 
 <span class="w">            </span><span class="n">excluded_dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">set</span><span class="p">(</span><span class="o">[</span><span class="n">component_dir / &#39;.venv&#39;, component_dir / &#39;__pyache__&#39;</span><span class="o">]</span><span class="p">)</span>
 
-<span class="w">            </span><span class="n">suffixes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="k">set</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">suffix</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">component_dir</span><span class="p">.</span><span class="n">rglob</span><span class="p">(</span><span class="ss">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="p">(</span><span class="ow">any</span><span class="p">(</span><span class="n">excluded_dirs</span><span class="p">.</span><span class="k">intersection</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">parents</span><span class="p">))</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">suffix</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;&quot;, &quot;.zip&quot;, &quot;.yml&quot;, &quot;.yaml&quot;, &quot;.html&quot;</span><span class="o">]</span><span class="p">)))</span>
+<span class="w">            </span><span class="n">suffixes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="k">set</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">suffix</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">component_dir</span><span class="p">.</span><span class="n">rglob</span><span class="p">(</span><span class="ss">&quot;*&quot;</span><span class="p">)</span>
+
+<span class="w">                                </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="p">(</span><span class="ow">any</span><span class="p">(</span><span class="n">excluded_dirs</span><span class="p">.</span><span class="k">intersection</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">parents</span><span class="p">))</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="n">suffix</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">[</span><span class="n">&quot;&quot;, &quot;.zip&quot;, &quot;.yml&quot;, &quot;.yaml&quot;, &quot;.html&quot;</span><span class="o">]</span><span class="p">)))</span>
 
 <span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">suffix</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">suffixes</span><span class="p">:</span>
 
@@ -3926,7 +4049,7 @@ If any of the names or types does not match, all parameters will remain untouche
 <p>Update the telemetry data and the package.</p>
 <p>This method updates the telemetry data by loading the existing data from a YAML file,
 or collecting new telemetry data if the file doesn't exist. It then updates the
-"last_run" field of the telemetry data with the current timestamp. The updated
+"last_test_run" field of the telemetry data with the current timestamp. The updated
 telemetry data is then written back to the YAML file.</p>
 <p>If the package contains a different version of the telemetry data file, a new package
 is created with the updated telemetry data. Otherwise, the existing package is
@@ -3958,7 +4081,7 @@ overwritten with the new package containing the updated telemetry data.</p>
 
 <span class="sd">        or collecting new telemetry data if the file doesn&#39;t exist. It then updates the</span>
 
-<span class="sd">        &quot;last_run&quot; field of the telemetry data with the current timestamp. The updated</span>
+<span class="sd">        &quot;last_test_run&quot; field of the telemetry data with the current timestamp. The updated</span>
 
 <span class="sd">        telemetry data is then written back to the YAML file.</span>
 
@@ -3986,7 +4109,7 @@ overwritten with the new package containing the updated telemetry data.</p>
 
 <span class="w">            </span><span class="n">telemetry_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">collect_telemetry_data</span><span class="p">()</span>
 
-<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;last_run&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="w">        </span><span class="n">telemetry_data</span><span class="p">[</span><span class="s2">&quot;pipeline&quot;</span><span class="p">][</span><span class="s2">&quot;last_test_run&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
 
 <span class="w">        </span><span class="n">telemetry_path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">telemetry_data</span><span class="p">))</span>
 

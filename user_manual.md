@@ -1,6 +1,7 @@
 <!--
-SPDX-FileCopyrightText: Copyright (C) 2023 Siemens AG
+SPDX-FileCopyrightText: 2025 Siemens AG
 
 SPDX-License-Identifier: MIT
 -->
-The AI SDK user manual is available at [Docs for Industrial Operations X](https://docs.industrial-operations-x.siemens.cloud/r/en-us/ai-sdk-operation-manual).
+
+The AI SDK user manual is available at [Docs for Industrial Operations X](https://docs.industrial-operations-x.siemens.cloud/search/all?query=AI+SDK+Tutorials).

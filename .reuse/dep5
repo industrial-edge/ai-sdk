@@ -14,7 +14,19 @@ Files: **/*.json
 Copyright: 2025 Siemens AG
 License: MIT
 
+Files: **/*.js
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.css
+Copyright: 2025 Siemens AG
+License: MIT
+
 Files: **/*.css.map
+Copyright: 2025 Siemens AG
+License: MIT
+
+Files: **/*.html
 Copyright: 2025 Siemens AG
 License: MIT
 
