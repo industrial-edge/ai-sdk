@@ -3,7 +3,6 @@ SPDX-FileCopyrightText: 2025 Siemens AG
 
 SPDX-License-Identifier: MIT
 -->
-
 # Using LocalpipelineRunner in docker environment
 
 This document explains how to create a Docker image that closely matches the environment used by the Pipeline in the AI Inference Server.
@@ -49,21 +48,21 @@ stop
 
 ## Building the Docker Image
 
-This workflow outlines the steps to prepare and build Docker images for a Python-based vessel application:
+This workflow outlines the steps to prepare and build Docker images for a Python-based vessel application. To create the Docker image, you must use the actual version of the `simaticai` package (represented as x.y.z in these examples). As a best practice, create Docker images with the same tag as the AI SDK version, as this enables the creation of distinct images for testing purposes.
 
 
 ```commandline
-cp simaticai-2.5.0-py3-none-any.whl docker
+cp simaticai-x.z.y-py3-none-any.whl docker
 
 cd docker
-docker build -t python-vessel-base -f DockerfileBase .
-docker build -t iai-sdk-python-runner .
+docker build -t python-vessel-base:x.z.y -f DockerfileBase .
+docker build -t iai-sdk-python-runner:x.z.y .
 ```
 
-1. Copy the required Python wheel file (`simaticai-2.5.0-py3-none-any.whl`) into the `docker` directory. This file contains the necessary Python package for the application.
+1. Copy the required Python wheel file (`simaticai-x.y.z-py3-none-any.whl`) into the `docker` directory. This file contains the necessary Python package for the application.
 2. Change the working directory to `docker` to access the Docker build context and Dockerfiles.
-3. Build the base Docker image using the `DockerfileBase` file and tag it as `python-vessel-base`. This image serves as the foundational environment for subsequent images.
-4. Build the main application Docker image using the default `Dockerfile` in the current directory and tag it as `iai-sdk-python-runner`. This image includes the application and its dependencies, ready for deployment or further use.
+3. Build the base Docker image using the `DockerfileBase` file and tag it as `python-vessel-base:x.z.y`. This image serves as the foundational environment for subsequent images.
+4. Build the main application Docker image using the default `Dockerfile` in the current directory and tag it as `iai-sdk-python-runner:x.y.z`. This image includes the application and its dependencies, ready for deployment or further use.
 
 
 ## Running the Pipeline
@@ -72,7 +71,7 @@ This workflow demonstrates how to run a pipeline using the `iai-sdk-python-runne
 
 ```commandline
 cd [your-test-folder]
-docker run -v $(pwd):/workspace iai-sdk-python-runner simaticai run_pipeline SimplePipeline-edge_1.zip --data data.csv
+docker run -v $(pwd):/workspace iai-sdk-python-runner:x.y.z simaticai run_pipeline SimplePipeline-edge_1.zip --data data.csv
 ```
 
 It mounts the current working directory into the container at `/workspace`, allowing the container to access local files. 
