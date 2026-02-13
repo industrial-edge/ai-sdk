@@ -2,8 +2,7 @@
 # SPDX-License-Identifier: MIT
 # This Dockerfile is used to create a development container for the SAIL Vessel Python SDK.
 
-# FROM cr.siemens.com/siemens-ai-launcher-sail/ai-on-edge/sail-vessel/sail-vessel-python-base/python-vessel-base:1.7.0
-FROM python-vessel-base
+FROM cr.siemens.com/siemens-ai-launcher-sail/ai-on-edge/sail-vessel/sail-vessel-python-base/python-vessel-base:3.4.0
 
 ENV LD_LIBRARY_PATH=/usr/local/lib64
 

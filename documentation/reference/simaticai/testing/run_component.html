@@ -838,6 +838,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1199,16 +1213,18 @@
 
 
 <h1 id="module-simaticaitestingrun_component">Module simaticai.testing.run_component</h1>
-<p>Utility script for running an <code>entrypoint</code> Python script in a given virtual Python environment.</p>
-<p>It is designed to be executed from <code>simaticai.testing.PipelineRunner</code> class.
+<p>SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</p>
+<p>SPDX-License-Identifier: MIT</p>
+<p>Utility script for running an <code>entrypoint</code> Python script in a given virtual Python environment.
+It is designed to be executed from <code>simaticai.testing.PipelineRunner</code> class.
 It consumes input data from a joblib file and produces output data into a joblib file.</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021-2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1"># SPDX-License-Identifier: MIT</span>
+<span class="sd">SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SPDX-License-Identifier: MIT</span>
 
 <span class="sd">Utility script for running an `entrypoint` Python script in a given virtual Python environment.</span>
 
@@ -1262,13 +1278,9 @@ It consumes input data from a joblib file and produces output data into a joblib
 
     <span class="n">packages</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">packages_distributions</span><span class="p">()</span>
 
-    <span class="c1"># Alternative approach for better cross-version compatibility</span>
-
     <span class="k">for</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
 
         <span class="k">try</span><span class="p">:</span>
-
-            <span class="c1"># Try to get distribution for each imported module</span>
 
             <span class="k">if</span> <span class="n">module_name</span> <span class="ow">and</span> <span class="s1">&#39;.&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">module_name</span><span class="p">:</span>  <span class="c1"># Only check top-level modules</span>
 
@@ -1277,8 +1289,6 @@ It consumes input data from a joblib file and produces output data into a joblib
                 <span class="n">imported_packages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-
-            <span class="c1"># Fallback to original method for this module</span>
 
             <span class="k">if</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="n">packages</span><span class="p">:</span>
 
@@ -1326,8 +1336,6 @@ It consumes input data from a joblib file and produces output data into a joblib
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># TODO: check if the relative and absolute import is working in the imported script</span>
-
     <span class="n">entrypoint</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">module_name</span><span class="p">)</span>
 
     <span class="n">trigger_method</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1353,8 +1361,6 @@ It consumes input data from a joblib file and produces output data into a joblib
     <span class="k">if</span> <span class="n">trigger_method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Neither &#39;run(data: str)&#39; nor &#39;process_input(data: dict)&#39; entrypoint method can be found.&quot;</span><span class="p">)</span>
-
-    <span class="c1"># configure Pipeline parameters</span>
 
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">pipeline_parameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">pipeline_parameters</span> <span class="o">!=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">:</span>
 
@@ -1416,7 +1422,7 @@ It consumes input data from a joblib file and produces output data into a joblib
 
         <span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Trigger method `run(data: str)` is deprecated and will be removed in the future. Please refer the user manual.&quot;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="mb">0b10001</span>  <span class="c1"># binary return code means deprecated run method was triggered</span>
+        <span class="k">return</span> <span class="mb">0b10001</span>  <span class="c1"># return code 0b10001 means deprecated `run` method was triggered</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 
@@ -1526,8 +1532,6 @@ The output file is a dumped joblib result which is a list containing outputs of 
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="w">    </span><span class="c1"># TODO: check if the relative and absolute import is working in the imported script</span>
-
 <span class="w">    </span><span class="n">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">module_name</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">trigger_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
@@ -1553,8 +1557,6 @@ The output file is a dumped joblib result which is a list containing outputs of 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">trigger_method</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
 <span class="w">        </span><span class="n">raise</span><span class="w"> </span><span class="n">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Neither &#39;run(data: str)&#39; nor &#39;process_input(data: dict)&#39; entrypoint method can be found.&quot;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="c1"># configure Pipeline parameters</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">pipeline_parameters</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">args</span><span class="o">.</span><span class="n">pipeline_parameters</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="p">:</span>
 
@@ -1616,7 +1618,7 @@ The output file is a dumped joblib result which is a list containing outputs of 
 
 <span class="w">        </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Trigger method `run(data: str)` is deprecated and will be removed in the future. Please refer the user manual.&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="n">b10001</span><span class="w">  </span><span class="c1"># binary return code means deprecated run method was triggered</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="n">b10001</span><span class="w">  </span><span class="c1"># return code 0b10001 means deprecated `run` method was triggered</span>
 </code></pre></div>
 
 </details>
@@ -1650,13 +1652,9 @@ contains more than what is required for execution, it raises a warning.</p>
 
 <span class="w">    </span><span class="nx">packages</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">importlib</span><span class="p">.</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">packages_distributions</span><span class="p">()</span>
 
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">Alternative</span><span class="w"> </span><span class="nx">approach</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">better</span><span class="w"> </span><span class="nx">cross</span><span class="o">-</span><span class="nx">version</span><span class="w"> </span><span class="nx">compatibility</span>
-
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">module_name</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">sys</span><span class="p">.</span><span class="nx">modules</span><span class="p">:</span>
 
 <span class="w">        </span><span class="nx">try</span><span class="p">:</span>
-
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="nx">Try</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">distribution</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">each</span><span class="w"> </span><span class="nx">imported</span><span class="w"> </span><span class="nx">module</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">module_name</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="sc">&#39;.&#39;</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">module_name</span><span class="p">:</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Only</span><span class="w"> </span><span class="nx">check</span><span class="w"> </span><span class="nx">top</span><span class="o">-</span><span class="nx">level</span><span class="w"> </span><span class="nx">modules</span>
 
@@ -1665,8 +1663,6 @@ contains more than what is required for execution, it raises a warning.</p>
 <span class="w">                </span><span class="nx">imported_packages</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">dist</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
 
 <span class="w">        </span><span class="nx">except</span><span class="w"> </span><span class="nx">Exception</span><span class="p">:</span>
-
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="nx">Fallback</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">original</span><span class="w"> </span><span class="nx">method</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">this</span><span class="w"> </span><span class="nx">module</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">module_name</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">packages</span><span class="p">:</span>
 
@@ -1745,7 +1741,7 @@ contains more than what is required for execution, it raises a warning.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   

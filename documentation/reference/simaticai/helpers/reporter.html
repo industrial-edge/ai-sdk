@@ -1268,6 +1268,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1933,15 +1947,16 @@
 
 
 <h1 id="module-simaticaihelpersreporter">Module simaticai.helpers.reporter</h1>
+<p>SPDX-FileCopyrightText: Copyright (C) 2025 Siemens AG</p>
+<p>SPDX-License-Identifier: MIT</p>
 <p>Classes to generate a report for a dataflow pipeline and local pipeline runner.</p>
-<p>None</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021-2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1"># SPDX-License-Identifier: MIT</span>
+<span class="sd">SPDX-FileCopyrightText: Copyright (C) 2025 Siemens AG</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SPDX-License-Identifier: MIT</span>
 
 <span class="sd">Classes to generate a report for a dataflow pipeline and local pipeline runner.</span>
 
@@ -2048,8 +2063,6 @@
 <span class="s2">Description: </span><span class="si">{description}</span>
 
 <span class="s2">&quot;&quot;&quot;</span>
-
-<span class="c1"># TODO: check other type of PlantUML diagrams if they look better or generating images into the markdown file</span>
 
 <span class="n">PL_STRUCTURE_HEADLINE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;## Pipeline structure</span>
 
@@ -2741,8 +2754,6 @@
 
             <span class="c1"># create a new tree where items start with the same folder name; but cut out the folder name</span>
 
-            <span class="c1"># (going deeper in the recursion)</span>
-
             <span class="n">new_zip_tree_from_folder</span> <span class="o">=</span> <span class="p">{}</span>
 
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">zip_tree</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -2780,8 +2791,6 @@
             <span class="c1"># zip files are handled similarly to folders:</span>
 
             <span class="c1"># create a new tree where items start with the same folder name; but cut out the folder name</span>
-
-            <span class="c1"># (going deeper in the recursion)</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">file_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.zip&#39;</span><span class="p">):</span>
 
@@ -2843,7 +2852,7 @@
 
         <span class="n">pip_report</span> <span class="o">=</span> <span class="p">{}</span>
 
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pip_report_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pip_report_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
 
             <span class="n">pip_report</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 
@@ -3876,8 +3885,6 @@
 
 <span class="w">            </span><span class="c1"># create a new tree where items start with the same folder name; but cut out the folder name</span>
 
-<span class="w">            </span><span class="c1"># (going deeper in the recursion)</span>
-
 <span class="w">            </span><span class="n">new_zip_tree_from_folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
 <span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">zip_tree</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -3915,8 +3922,6 @@
 <span class="w">            </span><span class="c1"># zip files are handled similarly to folders:</span>
 
 <span class="w">            </span><span class="c1"># create a new tree where items start with the same folder name; but cut out the folder name</span>
-
-<span class="w">            </span><span class="c1"># (going deeper in the recursion)</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">file_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.zip&#39;</span><span class="p">):</span>
 
@@ -3978,7 +3983,7 @@
 
 <span class="w">        </span><span class="n">pip_report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="w">        </span><span class="n">with</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">pip_report_file</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">file</span><span class="p">:</span>
+<span class="w">        </span><span class="n">with</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">pip_report_file</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">file</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">pip_report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 
@@ -4168,7 +4173,7 @@
 
 <span class="w">        </span><span class="n">pip_report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{}</span>
 
-<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="k">open</span><span class="p">(</span><span class="n">pip_report_file</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">file</span><span class="err">:</span>
+<span class="w">        </span><span class="k">with</span><span class="w"> </span><span class="k">open</span><span class="p">(</span><span class="n">pip_report_file</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">encoding</span><span class="o">=</span><span class="ss">&quot;utf-8&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">file</span><span class="err">:</span>
 
 <span class="w">            </span><span class="n">pip_report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="p">.</span><span class="k">load</span><span class="p">(</span><span class="k">file</span><span class="p">)</span>
 
@@ -5146,7 +5151,7 @@ The record which was being processed is passed in to this method.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   

@@ -320,115 +320,9 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Mock Logger
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="mock_logger.html" class="md-nav__link md-nav__link--active">
         Mock Logger
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#classes" class="md-nav__link">
-    Classes
-  </a>
-  
-    <nav class="md-nav" aria-label="Classes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logmodule" class="md-nav__link">
-    LogModule
-  </a>
-  
-    <nav class="md-nav" aria-label="LogModule">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    Methods
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#critical" class="md-nav__link">
-    critical
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug" class="md-nav__link">
-    debug
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error" class="md-nav__link">
-    error
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#info" class="md-nav__link">
-    info
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trace" class="md-nav__link">
-    trace
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#warn" class="md-nav__link">
-    warn
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#warning" class="md-nav__link">
-    warning
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -954,6 +848,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../simaticai/payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../simaticai/payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1203,96 +1111,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#classes" class="md-nav__link">
-    Classes
-  </a>
-  
-    <nav class="md-nav" aria-label="Classes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#logmodule" class="md-nav__link">
-    LogModule
-  </a>
-  
-    <nav class="md-nav" aria-label="LogModule">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    Methods
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#critical" class="md-nav__link">
-    critical
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug" class="md-nav__link">
-    debug
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error" class="md-nav__link">
-    error
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#info" class="md-nav__link">
-    info
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trace" class="md-nav__link">
-    trace
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#warn" class="md-nav__link">
-    warn
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#warning" class="md-nav__link">
-    warning
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1307,7 +1125,9 @@
 
 
 <h1 id="module-log_modulemock_logger">Module log_module.mock_logger</h1>
-<p>A logger facade for testing.</p>
+<p>SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</p>
+<p>SPDX-License-Identifier: MIT</p>
+<h1 id="a-logger-facade-for-testing">A logger facade for testing.</h1>
 <p>This module can substitute the AI Inference Server's
 logger in development and testing environments.
 Each method prefixes the message with '[PY] ' and delegates to
@@ -1317,13 +1137,13 @@ argument. As composition from multiple arguments is not
 supported on the Edge runtime, it is not supported in this module either.</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021-2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1"># SPDX-License-Identifier: MIT</span>
+<span class="sd">SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SPDX-License-Identifier: MIT</span>
 
-<span class="sd">A logger facade for testing.</span>
+<span class="sd"># A logger facade for testing.</span>
 
 <span class="sd">This module can substitute the AI Inference Server&#39;s</span>
 
@@ -2059,7 +1879,7 @@ supported on the Edge runtime, it is not supported in this module either.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   

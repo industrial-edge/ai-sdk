@@ -699,6 +699,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#add_secret_parameter" class="md-nav__link">
+    add_secret_parameter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#add_timeshifting_reference" class="md-nav__link">
     add_timeshifting_reference
   </a>
@@ -1144,6 +1151,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1534,6 +1555,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#add_secret_parameter" class="md-nav__link">
+    add_secret_parameter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#add_timeshifting_reference" class="md-nav__link">
     add_timeshifting_reference
   </a>
@@ -1689,7 +1717,7 @@
 <p>None</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021-2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</span>
 
 <span class="c1"># SPDX-License-Identifier: MIT</span>
 
@@ -1733,7 +1761,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.deploy.python_component</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonComponent</span><span class="p">,</span> <span class="n">python_version_validator</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.payloads</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineVariable</span><span class="p">,</span> <span class="n">PipelineParameter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.payloads</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineVariable</span><span class="p">,</span> <span class="n">PipelineParameter</span><span class="p">,</span> <span class="n">SecretPipelineParameter</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.deploy.pipeline_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineData</span>
 
@@ -1763,9 +1791,7 @@
 
     <span class="n">REQUIREMENTS_TXT</span><span class="p">,</span> <span class="n">PYTHON_PACKAGES_ZIP</span><span class="p">,</span>  <span class="c1"># component dependency configuration</span>
 
-    <span class="n">PYTHON_PACKAGES</span><span class="p">,</span> <span class="n">MSG_NOT_FOUND</span><span class="p">,</span>  <span class="c1"># additional constants</span>
-
-    <span class="n">PACKAGE_SIZE_LIMIT</span>
+    <span class="n">PYTHON_PACKAGES</span><span class="p">,</span> <span class="n">MSG_NOT_FOUND</span><span class="p">,</span> <span class="n">PACKAGE_SIZE_LIMIT</span>  <span class="c1"># additional constants</span>
 
 <span class="p">)</span>
 
@@ -1915,7 +1941,7 @@
 
             <span class="n">pipeline</span><span class="o">.</span><span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">PipelineVariable</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">component</span><span class="o">.</span><span class="n">outputs</span><span class="p">]</span>
 
-        <span class="c1"># Remove ImageSet outputs from pipeline outputs</span>
+        <span class="c1"># ImageSet is not allowed in pipeline outputs</span>
 
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">outputs</span><span class="p">):</span>
 
@@ -2655,7 +2681,7 @@
 
             <span class="n">Path</span><span class="p">(</span><span class="n">destination</span> <span class="o">/</span> <span class="n">TELEMETRY_YAML</span><span class="p">)</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-            <span class="c1"># check whether data collection is accepted or declined</span>
+            <span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
             <span class="k">if</span> <span class="n">is_telemetry_allowed</span><span class="p">():</span>
 
@@ -2935,7 +2961,7 @@
 
         <span class="k">try</span><span class="p">:</span>
 
-            <span class="c1"># check whether data collection is accepted or declined</span>
+            <span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
             <span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -2956,8 +2982,6 @@
         <span class="n">destination</span> <span class="o">=</span> <span class="n">destination</span> <span class="o">/</span> <span class="n">package_name</span>
 
         <span class="n">destination</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-        <span class="c1"># Save</span>
 
         <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">:</span>
 
@@ -2997,7 +3021,7 @@
 
             <span class="bp">self</span><span class="o">.</span><span class="n">package_id</span> <span class="o">=</span> <span class="n">package_id</span>
 
-        <span class="c1"># auto-generate package id if not provided</span>
+        <span class="c1"># if not, we auto-generate a package id</span>
 
         <span class="k">else</span><span class="p">:</span>
 
@@ -3047,7 +3071,7 @@
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">save_version</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">previous_decimal_versions_set</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
-        <span class="c1"># check if the package zip already exists</span>
+        <span class="c1"># checking if the package zip already exists</span>
 
         <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
 
@@ -3117,7 +3141,7 @@
 
         <span class="k">try</span><span class="p">:</span>
 
-            <span class="c1"># check whether data collection is accepted or declined</span>
+            <span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
             <span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -3142,6 +3166,36 @@
             <span class="k">if</span> <span class="n">config_package</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
                 <span class="n">Path</span><span class="p">(</span><span class="n">config_package</span><span class="p">)</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="p">:</span> <span class="n">PipelineParameter</span> <span class="o">|</span> <span class="n">SecretPipelineParameter</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">parameter</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">):</span>
+
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter with name &#39;</span><span class="si">{</span><span class="n">parameter</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; already exists in the pipeline.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">parameter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Parameter cannot be None.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_secret_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Adds a secret parameter to the pipeline configuration.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            name (str): Name of the secret parameter. Must contain only letters, digits, underscores, and hyphens. Cannot start with `__AI_IS_` prefix.</span>
+
+<span class="sd">            desc (str, optional): Description of the secret parameter. Must be a string between 3 and 60 characters if provided.</span>
+
+<span class="sd">        Raises ValueError if the conditions for name or description are not met.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">SecretPipelineParameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default_value</span><span class="p">,</span> <span class="n">type_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;String&quot;</span><span class="p">,</span> <span class="n">topic_based</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 
@@ -3183,25 +3237,17 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">try</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
 
-                <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
 
-                <span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
 
-                <span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
+            <span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
 
-                <span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
-
-                <span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">))</span>
-
-        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-            <span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error adding parameter &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-            <span class="k">raise</span> <span class="n">e</span>
+            <span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">))</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">convert_package</span><span class="p">(</span><span class="n">zip_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span> <span class="n">report_writer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PipelineReportWriter</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 
@@ -3263,7 +3309,7 @@
 
     <span class="k">try</span><span class="p">:</span>
 
-        <span class="c1"># check whether data collection is accepted or declined</span>
+        <span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
         <span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -3391,7 +3437,7 @@
 
         <span class="n">edge_package_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span>
 
-            <span class="c1"># One Pythonic Way to replace the last occurrence of &quot;_&quot; with &quot;-edge&quot;.</span>
+            <span class="c1"># replacing the last occurrence of &quot;_&quot; with &quot;-edge_&quot;.</span>
 
             <span class="n">base_name</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">PurePath</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;-edge_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zip_path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))),</span>
 
@@ -3517,7 +3563,7 @@
 
     <span class="c1"># This filtering needs to happen here, not in PythonDependencies,</span>
 
-    <span class="c1"># because create_wheelhouse still needs the original requirements.txt</span>
+    <span class="c1"># because create_wheelhouse() still needs the original requirements.txt</span>
 
     <span class="c1"># with the extra index urls.</span>
 
@@ -3559,7 +3605,7 @@
 
                 <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>  <span class="c1"># Optional</span>
 
-                <span class="s2">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>  <span class="c1"># Optional, TODO: validate target keys</span>
+                <span class="s2">&quot;arch&quot;</span><span class="p">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>  <span class="c1"># Optional</span>
 
             <span class="p">}],</span>
 
@@ -3606,7 +3652,7 @@
 
 <span class="w">                </span><span class="s">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Optional</span>
 
-<span class="w">                </span><span class="s">&quot;arch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x86_64&quot;</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Optional</span><span class="p">,</span><span class="w"> </span><span class="nx">TODO</span><span class="p">:</span><span class="w"> </span><span class="nx">validate</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="nx">keys</span>
+<span class="w">                </span><span class="s">&quot;arch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x86_64&quot;</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Optional</span>
 
 <span class="w">            </span><span class="p">}],</span>
 
@@ -3699,7 +3745,7 @@
 
 <span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">filtering</span><span class="w"> </span><span class="nx">needs</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">happen</span><span class="w"> </span><span class="nx">here</span><span class="p">,</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">PythonDependencies</span><span class="p">,</span>
 
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">because</span><span class="w"> </span><span class="nx">create_wheelhouse</span><span class="w"> </span><span class="nx">still</span><span class="w"> </span><span class="nx">needs</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">original</span><span class="w"> </span><span class="nx">requirements</span><span class="p">.</span><span class="nx">txt</span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">because</span><span class="w"> </span><span class="nx">create_wheelhouse</span><span class="p">()</span><span class="w"> </span><span class="nx">still</span><span class="w"> </span><span class="nx">needs</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">original</span><span class="w"> </span><span class="nx">requirements</span><span class="p">.</span><span class="nx">txt</span>
 
 <span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">extra</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="nx">urls</span><span class="p">.</span>
 
@@ -3900,7 +3946,7 @@ Example usage:</p>
 
 <span class="w">    </span><span class="n">try</span><span class="p">:</span>
 
-<span class="w">        </span><span class="c1"># check whether data collection is accepted or declined</span>
+<span class="w">        </span><span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
 <span class="w">        </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -4028,7 +4074,7 @@ Example usage:</p>
 
 <span class="w">        </span><span class="n">edge_package_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span>
 
-<span class="w">            </span><span class="c1"># One Pythonic Way to replace the last occurrence of &quot;_&quot; with &quot;-edge&quot;.</span>
+<span class="w">            </span><span class="c1"># replacing the last occurrence of &quot;_&quot; with &quot;-edge_&quot;.</span>
 
 <span class="w">            </span><span class="n">base_name</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">PurePath</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;-edge_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zip_path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))),</span>
 
@@ -4231,7 +4277,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">            </span><span class="n">pipeline</span><span class="o">.</span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">component</span><span class="o">.</span><span class="n">outputs</span><span class="p">]</span>
 
-<span class="w">        </span><span class="c1"># Remove ImageSet outputs from pipeline outputs</span>
+<span class="w">        </span><span class="c1"># ImageSet is not allowed in pipeline outputs</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">outputs</span><span class="p">):</span>
 
@@ -4971,7 +5017,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">            </span><span class="n">Path</span><span class="p">(</span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TELEMETRY_YAML</span><span class="p">)</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
 
-<span class="w">            </span><span class="c1"># check whether data collection is accepted or declined</span>
+<span class="w">            </span><span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">is_telemetry_allowed</span><span class="p">():</span>
 
@@ -5251,7 +5297,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
-<span class="w">            </span><span class="c1"># check whether data collection is accepted or declined</span>
+<span class="w">            </span><span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
 <span class="w">            </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -5272,8 +5318,6 @@ The name and version together will define the name of the zip file when the pack
 <span class="w">        </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">package_name</span>
 
 <span class="w">        </span><span class="n">destination</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
-
-<span class="w">        </span><span class="c1"># Save</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">:</span>
 
@@ -5313,7 +5357,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">package_id</span>
 
-<span class="w">        </span><span class="c1"># auto-generate package id if not provided</span>
+<span class="w">        </span><span class="c1"># if not, we auto-generate a package id</span>
 
 <span class="w">        </span><span class="k">else</span><span class="p">:</span>
 
@@ -5363,7 +5407,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">save_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">previous_decimal_versions_set</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 
-<span class="w">        </span><span class="c1"># check if the package zip already exists</span>
+<span class="w">        </span><span class="c1"># checking if the package zip already exists</span>
 
 <span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
 
@@ -5433,7 +5477,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
-<span class="w">            </span><span class="c1"># check whether data collection is accepted or declined</span>
+<span class="w">            </span><span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
 <span class="w">            </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -5458,6 +5502,36 @@ The name and version together will define the name of the zip file when the pack
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">config_package</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
 <span class="w">                </span><span class="n">Path</span><span class="p">(</span><span class="n">config_package</span><span class="p">)</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">parameter</span><span class="p">:</span><span class="w"> </span><span class="n">PipelineParameter</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">SecretPipelineParameter</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">any</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">parameter</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Parameter with name &#39;{parameter.name}&#39; already exists in the pipeline.&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;Parameter cannot be None.&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_secret_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Adds a secret parameter to the pipeline configuration.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            name (str): Name of the secret parameter. Must contain only letters, digits, underscores, and hyphens. Cannot start with `__AI_IS_` prefix.</span>
+
+<span class="sd">            desc (str, optional): Description of the secret parameter. Must be a string between 3 and 60 characters if provided.</span>
+
+<span class="sd">        Raises ValueError if the conditions for name or description are not met.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">SecretPipelineParameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">))</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">default_value</span><span class="p">,</span><span class="w"> </span><span class="n">type_name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;String&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">topic_based</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
 
@@ -5499,25 +5573,17 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-<span class="w">        </span><span class="n">try</span><span class="p">:</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
 
-<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
+<span class="w">            </span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
-
-<span class="w">                </span><span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">))</span>
-
-<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">ValueError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="p">:</span>
-
-<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Error adding parameter &#39;{name}&#39;: {e}&quot;</span><span class="p">)</span>
-
-<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">e</span>
+<span class="w">            </span><span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">))</span>
 </code></pre></div>
 
 </details>
@@ -5650,7 +5716,7 @@ The components must have unique names. Two or more versions of the same componen
 
 <span class="w">            </span><span class="n">pipeline</span><span class="p">.</span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">PipelineVariable(component.name, output) for output in component.outputs</span><span class="o">]</span>
 
-<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Remove</span><span class="w"> </span><span class="n">ImageSet</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">pipeline</span><span class="w"> </span><span class="n">outputs</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">ImageSet</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">allowed</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline</span><span class="w"> </span><span class="n">outputs</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">pipeline</span><span class="p">.</span><span class="n">outputs</span><span class="p">)</span><span class="err">:</span>
 
@@ -6036,25 +6102,73 @@ and the value of the parameter can later be changed on AI Inference Server.</p>
 
 <span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
 
-<span class="w">        </span><span class="n">try</span><span class="o">:</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
 
-<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">parameters</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
+<span class="w">            </span><span class="k">name</span><span class="o">=</span><span class="k">name</span><span class="p">,</span>
 
-<span class="w">                </span><span class="k">name</span><span class="o">=</span><span class="k">name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
+<span class="w">            </span><span class="k">description</span><span class="o">=</span><span class="k">desc</span><span class="p">))</span>
+</code></pre></div>
 
-<span class="w">                </span><span class="k">description</span><span class="o">=</span><span class="k">desc</span><span class="p">))</span>
+</details>
+<h4 id="add_secret_parameter">add_secret_parameter</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_secret_parameter</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
 
-<span class="w">        </span><span class="k">except</span><span class="w"> </span><span class="n">ValueError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="o">:</span>
+<p>Adds a secret parameter to the pipeline configuration.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>Name of the secret parameter. Must contain only letters, digits, underscores, and hyphens. Cannot start with <code>__AI_IS_</code> prefix.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>str</td>
+<td>Description of the secret parameter. Must be a string between 3 and 60 characters if provided.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_secret_parameter</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">name</span><span class="o">:</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="k">desc</span><span class="o">:</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">)</span><span class="o">:</span>
 
-<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="k">error</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Error adding parameter &#39;{name}&#39;: {e}&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span>
 
-<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">e</span>
+<span class="s2">        Adds a secret parameter to the pipeline configuration.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            name (str): Name of the secret parameter. Must contain only letters, digits, underscores, and hyphens. Cannot start with `__AI_IS_` prefix.</span>
+
+<span class="s2">            desc (str, optional): Description of the secret parameter. Must be a string between 3 and 60 characters if provided.</span>
+
+<span class="s2">        Raises ValueError if the conditions for name or description are not met.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">SecretPipelineParameter</span><span class="p">(</span><span class="k">name</span><span class="o">=</span><span class="k">name</span><span class="p">,</span><span class="w"> </span><span class="k">description</span><span class="o">=</span><span class="k">desc</span><span class="p">))</span>
 </code></pre></div>
 
 </details>
@@ -6523,7 +6637,7 @@ By default, the input variable will be also deleted.</p>
 
 <span class="w">        </span><span class="k">try</span><span class="err">:</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="n">collection</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">accepted</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">declined</span>
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">checking</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">made</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">statement</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">telemetry</span><span class="w"> </span><span class="n">collection</span>
 
 <span class="w">            </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -7096,7 +7210,7 @@ an error is raised.</p>
 
 <span class="w">        </span><span class="k">try</span><span class="err">:</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="n">collection</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">accepted</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">declined</span>
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">checking</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">made</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">statement</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">telemetry</span><span class="w"> </span><span class="n">collection</span>
 
 <span class="w">            </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -7117,8 +7231,6 @@ an error is raised.</p>
 <span class="w">        </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">package_name</span>
 
 <span class="w">        </span><span class="n">destination</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="k">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
-
-<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">Save</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="nl">components</span><span class="p">:</span>
 
@@ -7388,7 +7500,7 @@ The file will be created in the <code>destination</code> folder with name <code>
 
             Path(destination / TELEMETRY_YAML).unlink(missing_ok=True)
 
-            # check whether data collection is accepted or declined
+            # checking whether the user has made a statement about telemetry collection
 
             if is_telemetry_allowed():
 
@@ -7645,7 +7757,7 @@ for the defined input variables.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   
