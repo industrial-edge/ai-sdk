@@ -838,6 +838,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1211,17 +1225,19 @@
 
 
 <h1 id="module-simaticaitestingdocker_venv">Module simaticai.testing.docker_venv</h1>
-<p>This module provides a base class for creating and managing Docker containers</p>
-<p>with Python virtual environments. It is designed to be used in a context where
+<p>SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</p>
+<p>SPDX-License-Identifier: MIT</p>
+<p>This module provides a base class for creating and managing Docker containers
+with Python virtual environments. It is designed to be used in a context where
 Docker is available and the user has the necessary permissions to create and
 manage containers.</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021-2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1"># SPDX-License-Identifier: MIT</span>
+<span class="sd">SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SPDX-License-Identifier: MIT</span>
 
 <span class="sd">This module provides a base class for creating and managing Docker containers</span>
 
@@ -1247,7 +1263,7 @@ manage containers.</p>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">VesselBaseDocker</span><span class="p">:</span>
 
-    <span class="n">is_vessel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">is_vessel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># True when running in a Docker container</span>
 
     <span class="n">python_3_11</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
 
@@ -1257,13 +1273,13 @@ manage containers.</p>
 
         <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/.ai_sdk_docker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">is_vessel</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Check if running in a Docker container</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">is_vessel</span> <span class="o">=</span> <span class="kc">True</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">python</span> <span class="o">=</span> <span class="s1">&#39;python3.11&#39;</span>  <span class="c1"># Default to Python 3.11</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">python_default</span> <span class="o">=</span> <span class="s1">&#39;python3.11&#39;</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">python_3_11</span> <span class="o">=</span> <span class="s1">&#39;python3.11&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">python_3_11</span> <span class="o">=</span> <span class="s1">&#39;python3.11&#39;</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">python_3_12</span> <span class="o">=</span> <span class="s1">&#39;python3.12&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">python_3_12</span> <span class="o">=</span> <span class="s1">&#39;python3.12&#39;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_create_venv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 
@@ -1295,7 +1311,7 @@ manage containers.</p>
 
             <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
 
-                <span class="n">python</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">python</span>
+                <span class="n">python</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">python_default</span>
 
         <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating virtual environment for Python &#39;</span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2">&#39; in &#39;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">/.venv&#39; with Python </span><span class="si">{</span><span class="n">python</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 
@@ -1332,7 +1348,7 @@ manage containers.</p>
 <summary>View Source</summary>
 <div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">VesselBaseDocker:</span>
 
-    <span class="n">is_vessel:</span> <span class="n">bool</span> = <span class="nb">False</span>
+    <span class="n">is_vessel:</span> <span class="n">bool</span> = <span class="nb">False</span>  <span class="c1"># True when running in a Docker container</span>
 
     <span class="n">python_3_11:</span> <span class="n">str</span> = <span class="s">&#39;python&#39;</span>
 
@@ -1342,13 +1358,13 @@ manage containers.</p>
 
         <span class="k">if</span> <span class="n">Path</span>(<span class="s">&quot;/.ai_sdk_docker&quot;</span>).<span class="n">is_file</span>():
 
-            <span class="nb">self</span>.<span class="n">is_vessel</span> = <span class="nb">True</span>  <span class="c1"># Check if running in a Docker container</span>
+            <span class="nb">self</span>.<span class="n">is_vessel</span> = <span class="nb">True</span>
 
-            <span class="nb">self</span>.<span class="n">python</span> = <span class="s">&#39;python3.11&#39;</span>  <span class="c1"># Default to Python 3.11</span>
+            <span class="nb">self</span>.<span class="n">python_default</span> = <span class="s">&#39;python3.11&#39;</span>
 
-            <span class="nb">self</span>.<span class="n">python_3_11</span> = <span class="s">&#39;python3.11&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
+            <span class="nb">self</span>.<span class="n">python_3_11</span> = <span class="s">&#39;python3.11&#39;</span>
 
-            <span class="nb">self</span>.<span class="n">python_3_12</span> = <span class="s">&#39;python3.12&#39;</span>  <span class="c1"># Set the Python executable for the container</span>
+            <span class="nb">self</span>.<span class="n">python_3_12</span> = <span class="s">&#39;python3.12&#39;</span>
 
     <span class="n">def</span> <span class="n">_create_venv</span>(<span class="nb">self</span>, <span class="n">path:</span> <span class="n">str</span>, <span class="n">version:</span> <span class="n">str</span>):
 
@@ -1380,7 +1396,7 @@ manage containers.</p>
 
             <span class="n">case</span> <span class="n">_:</span>
 
-                <span class="n">python</span> = <span class="nb">self</span>.<span class="n">python</span>
+                <span class="n">python</span> = <span class="nb">self</span>.<span class="n">python_default</span>
 
         <span class="n">_logger</span>.<span class="n">info</span>(<span class="nb">f</span><span class="s">&quot;Creating virtual environment for Python &#39;{version}&#39; in &#39;{path}/.venv&#39; with Python {python}...&quot;</span>)
 
@@ -1473,7 +1489,7 @@ manage containers.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   

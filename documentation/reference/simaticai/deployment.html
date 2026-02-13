@@ -456,15 +456,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_validate_delta_package_inputs" class="md-nav__link">
-    _validate_delta_package_inputs
+  <a href="#_validate_and_load_gpuruntime_config" class="md-nav__link">
+    _validate_and_load_gpuruntime_config
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_validate_gpuruntime_config" class="md-nav__link">
-    _validate_gpuruntime_config
+  <a href="#_validate_delta_package_inputs" class="md-nav__link">
+    _validate_delta_package_inputs
   </a>
   
 </li>
@@ -806,6 +806,13 @@
           <li class="md-nav__item">
   <a href="#add_parameter" class="md-nav__link">
     add_parameter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_secret_parameter" class="md-nav__link">
+    add_secret_parameter
   </a>
   
 </li>
@@ -1601,6 +1608,20 @@
   
   
     <li class="md-nav__item">
+      <a href="payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1921,15 +1942,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_validate_delta_package_inputs" class="md-nav__link">
-    _validate_delta_package_inputs
+  <a href="#_validate_and_load_gpuruntime_config" class="md-nav__link">
+    _validate_and_load_gpuruntime_config
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_validate_gpuruntime_config" class="md-nav__link">
-    _validate_gpuruntime_config
+  <a href="#_validate_delta_package_inputs" class="md-nav__link">
+    _validate_delta_package_inputs
   </a>
   
 </li>
@@ -2276,6 +2297,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#add_secret_parameter" class="md-nav__link">
+    add_secret_parameter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#add_timeshifting_reference" class="md-nav__link">
     add_timeshifting_reference
   </a>
@@ -2601,6 +2629,8 @@
 
 
 <h1 id="module-simaticaideployment">Module simaticai.deployment</h1>
+<p>SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</p>
+<p>SPDX-License-Identifier: MIT</p>
 <p>Packaging ML models for deployment on the AI Inference Server.</p>
 <p>The AI SDK offers the functionality to create a pipeline configuration package and wrap trained models, which can be converted to an
 edge configuration package and then uploaded and run on an AI Inference Server on an Industrial Edge device.</p>
@@ -2625,11 +2655,11 @@ follow the project templates for the AI SDK, which provide packaging notebooks a
 saved trained models are organized into a given folder structure.</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021-2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1"># SPDX-License-Identifier: MIT</span>
+<span class="sd">SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SPDX-License-Identifier: MIT</span>
 
 <span class="sd">Packaging ML models for deployment on the AI Inference Server.</span>
 
@@ -2697,7 +2727,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="n">from</span><span class="w"> </span><span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">python_component</span><span class="w"> </span><span class="n">import</span><span class="w"> </span><span class="n">PythonComponent</span><span class="p">,</span><span class="w"> </span><span class="n">python_version_validator</span>
 
-<span class="n">from</span><span class="w"> </span><span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">gpuruntime_component</span><span class="w"> </span><span class="n">import</span><span class="w"> </span><span class="n">GPURuntimeComponent</span><span class="p">,</span><span class="w"> </span><span class="n">_validate_gpuruntime_config</span>
+<span class="n">from</span><span class="w"> </span><span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">gpuruntime_component</span><span class="w"> </span><span class="n">import</span><span class="w"> </span><span class="n">GPURuntimeComponent</span><span class="p">,</span><span class="w"> </span><span class="n">_validate_and_load_gpuruntime_config</span>
 
 <span class="n">from</span><span class="w"> </span><span class="n">simaticai</span><span class="o">.</span><span class="n">deploy</span><span class="o">.</span><span class="n">pipeline</span><span class="w"> </span><span class="n">import</span><span class="w"> </span><span class="p">(</span>
 
@@ -2765,7 +2795,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">    </span><span class="s1">&#39;_zip_delta_package&#39;</span><span class="p">,</span>
 
-<span class="w">    </span><span class="s1">&#39;_validate_gpuruntime_config&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;_validate_and_load_gpuruntime_config&#39;</span><span class="p">,</span>
 
 <span class="w">    </span><span class="s1">&#39;find_dependencies&#39;</span><span class="p">,</span>
 
@@ -2993,7 +3023,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">    </span><span class="n">try</span><span class="p">:</span>
 
-<span class="w">        </span><span class="c1"># check whether data collection is accepted or declined</span>
+<span class="w">        </span><span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
 <span class="w">        </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -3192,7 +3222,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">                </span><span class="s">&quot;address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Optional</span>
 
-<span class="w">                </span><span class="s">&quot;arch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x86_64&quot;</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Optional</span><span class="p">,</span><span class="w"> </span><span class="nx">TODO</span><span class="p">:</span><span class="w"> </span><span class="nx">validate</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="nx">keys</span>
+<span class="w">                </span><span class="s">&quot;arch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x86_64&quot;</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Optional</span>
 
 <span class="w">            </span><span class="p">}],</span>
 
@@ -3307,7 +3337,7 @@ saved trained models are organized into a given folder structure.</p>
 
 <span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">filtering</span><span class="w"> </span><span class="nx">needs</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">happen</span><span class="w"> </span><span class="nx">here</span><span class="p">,</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">PythonDependencies</span><span class="p">,</span>
 
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">because</span><span class="w"> </span><span class="nx">create_wheelhouse</span><span class="w"> </span><span class="nx">still</span><span class="w"> </span><span class="nx">needs</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">original</span><span class="w"> </span><span class="nx">requirements</span><span class="p">.</span><span class="nx">txt</span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">because</span><span class="w"> </span><span class="nx">create_wheelhouse</span><span class="p">()</span><span class="w"> </span><span class="nx">still</span><span class="w"> </span><span class="nx">needs</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">original</span><span class="w"> </span><span class="nx">requirements</span><span class="p">.</span><span class="nx">txt</span>
 
 <span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">extra</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="nx">urls</span><span class="p">.</span>
 
@@ -3322,6 +3352,22 @@ saved trained models are organized into a given folder structure.</p>
 <span class="w">        </span><span class="nx">f</span><span class="p">.</span><span class="nx">writelines</span><span class="p">(</span><span class="nx">filtered_lines</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">dependency_set</span>
+</code></pre></div>
+
+</details>
+<h3 id="_validate_and_load_gpuruntime_config">_validate_and_load_gpuruntime_config</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_validate_and_load_gpuruntime_config</span><span class="p">(</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">def</span><span class="w"> </span><span class="n">_validate_and_load_gpuruntime_config</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">str</span><span class="p">):</span>
+
+<span class="w">    </span><span class="n">with</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">file</span><span class="p">:</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">text_format</span><span class="o">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span><span class="w"> </span><span class="n">model_config_pb2</span><span class="o">.</span><span class="n">ModelConfig</span><span class="p">())</span>
 </code></pre></div>
 
 </details>
@@ -3347,22 +3393,6 @@ saved trained models are organized into a given folder structure.</p>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">origin_package_info</span><span class="p">[</span><span class="s">&quot;dataFlowPipelineVersion&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">new_package_info</span><span class="p">[</span><span class="s">&quot;dataFlowPipelineVersion&quot;</span><span class="p">]:</span>
 
 <span class="w">        </span><span class="nx">raise</span><span class="w"> </span><span class="nx">AssertionError</span><span class="p">(</span><span class="s">&quot;The new edge package can not have the same version as the origin edge package!&quot;</span><span class="p">)</span>
-</code></pre></div>
-
-</details>
-<h3 id="_validate_gpuruntime_config">_validate_gpuruntime_config</h3>
-<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_validate_gpuruntime_config</span><span class="p">(</span>
-    <span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span>
-<span class="p">)</span>
-</code></pre></div>
-
-<details class="example">
-<summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code>def _validate_gpuruntime_config(path: Path | str):
-
-    with open(path, &#39;r&#39;) as file:
-
-        text_format.Parse(file.read(), model_config_pb2.ModelConfig())
 </code></pre></div>
 
 </details>
@@ -3584,7 +3614,7 @@ Example usage:</p>
 
 <span class="w">    </span><span class="n">try</span><span class="p">:</span>
 
-<span class="w">        </span><span class="c1"># check whether data collection is accepted or declined</span>
+<span class="w">        </span><span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
 <span class="w">        </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -3712,7 +3742,7 @@ Example usage:</p>
 
 <span class="w">        </span><span class="n">edge_package_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">shutil</span><span class="o">.</span><span class="n">make_archive</span><span class="p">(</span>
 
-<span class="w">            </span><span class="c1"># One Pythonic Way to replace the last occurrence of &quot;_&quot; with &quot;-edge&quot;.</span>
+<span class="w">            </span><span class="c1"># replacing the last occurrence of &quot;_&quot; with &quot;-edge_&quot;.</span>
 
 <span class="w">            </span><span class="n">base_name</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">PurePath</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;-edge_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zip_path</span><span class="o">.</span><span class="n">stem</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))),</span>
 
@@ -3933,7 +3963,7 @@ a component with a different version as a different component!</em></p>
 
     <span class="k">try</span><span class="p">:</span>
 
-        <span class="c1"># check whether data collection is accepted or declined</span>
+        <span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
         <span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -5441,251 +5471,283 @@ Deleting an output which is represented in any wire will cause package inconsist
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">GPURuntimeComponent</span><span class="p">(</span><span class="nx">Component</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">GPURuntimeComponent</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 
-<span class="w">    </span><span class="s">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="s">    The GPURuntimeComponent is used to define a component that runs on a GPU device.</span>
+<span class="sd">    The GPURuntimeComponent is used to define a component that runs on a GPU device.</span>
 
-<span class="s">    The component works only with ONNX models and can be used in an Inference Pipeline.</span>
+<span class="sd">    The component works only with ONNX models and can be used in an Inference Pipeline.</span>
 
-<span class="s">    Attributes:</span>
+<span class="sd">    Attributes:</span>
 
-<span class="s">        name (str): Component name.</span>
+<span class="sd">        name (str): Component name.</span>
 
-<span class="s">        version (str): Component version.</span>
+<span class="sd">        version (str): Component version.</span>
 
-<span class="s">        desc (str): Component description.</span>
+<span class="sd">        desc (str): Component description.</span>
 
-<span class="s">    Methods:</span>
+<span class="sd">    Methods:</span>
 
-<span class="s">        use_model(self,</span>
+<span class="sd">        use_model(self,</span>
 
-<span class="s">                    path: Path | str, max_batch_size: int,</span>
+<span class="sd">                    path: Path | str, max_batch_size: int,</span>
 
-<span class="s">                    optimization: Optional[model_config.TensorRTOptimization] = None,</span>
+<span class="sd">                    optimization: Optional[model_config.TensorRTOptimization] = None,</span>
 
-<span class="s">                    warmup: model_config.Warmup = None)</span>
+<span class="sd">                    warmup: model_config.Warmup = None)</span>
 
-<span class="s">            Add an ONNX model file for the component.</span>
+<span class="sd">            Add an ONNX model file for the component.</span>
 
-<span class="s">        use_config(self, path: Path | str)</span>
+<span class="sd">        use_config(self, path: Path | str)</span>
 
-<span class="s">            Use a custom config.pbtxt file instead of the autogenerated one.</span>
+<span class="sd">            Use a custom config.pbtxt file instead of the autogenerated one.</span>
 
-<span class="s">        save(self, destination: Path | str, validate = False)</span>
+<span class="sd">        save(self, destination: Path | str, validate = False)</span>
 
-<span class="s">            Saves the component to a folder structure, so it can be used as part of a pipeline configuration package.</span>
+<span class="sd">            Saves the component to a folder structure, so it can be used as part of a pipeline configuration package.</span>
 
-<span class="s">    &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">__init__</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;inference&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="p">:</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">:</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;inference&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">):</span>
 
-<span class="w">        </span><span class="s">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="s">        Creates a new, empty GPU Runtime component.</span>
+<span class="sd">        Creates a new, empty GPU Runtime component.</span>
 
-<span class="s">        Args:</span>
+<span class="sd">        Args:</span>
 
-<span class="s">            name (str): Component name. (default: inference)</span>
+<span class="sd">            name (str): Component name. (default: inference)</span>
 
-<span class="s">            version (str): Component version. (default: 1)</span>
+<span class="sd">            version (str): Component version. (default: 1)</span>
 
-<span class="s">            desc (str): Component description (optional)</span>
+<span class="sd">            desc (str): Component description (optional)</span>
 
-<span class="s">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
-<span class="w">        </span><span class="nx">super</span><span class="p">().</span><span class="nx">__init__</span><span class="p">(</span><span class="nx">name</span><span class="p">=</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">=</span><span class="nx">desc</span><span class="p">)</span>
+<span class="w">        </span><span class="n">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="o">=</span><span class="n">desc</span><span class="p">)</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">version</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">version</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="nx">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">None</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">None</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">model_path</span><span class="p">:</span><span class="w"> </span><span class="nx">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">None</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">None</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">model_path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">model_version</span><span class="p">:</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">model_version</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">config</span><span class="p">:</span><span class="w"> </span><span class="nx">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">None</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">None</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">auto_config</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">None</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">auto_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">_to_dict</span><span class="p">(</span><span class="kp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">optimization</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">            </span><span class="o">**</span><span class="nx">super</span><span class="p">().</span><span class="nx">_to_dict</span><span class="p">(),</span>
+<span class="w">            </span><span class="o">**</span><span class="n">super</span><span class="p">()</span><span class="o">.</span><span class="n">_to_dict</span><span class="p">(),</span>
 
-<span class="w">            </span><span class="err">&#39;</span><span class="nx">version</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">version</span><span class="p">,</span>
+<span class="w">            </span><span class="s1">&#39;version&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
 
-<span class="w">            </span><span class="err">&#39;</span><span class="nx">entrypoint</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="nx">f</span><span class="s">&quot;{self.model_version}/{self.entrypoint.name}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s1">&#39;entrypoint&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="s2">&quot;{self.model_version}/{self.entrypoint.name}&quot;</span><span class="p">,</span>
 
-<span class="w">            </span><span class="err">&#39;</span><span class="nx">hwType</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">GPU</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="s1">&#39;hwType&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;GPU&#39;</span><span class="p">,</span>
 
-<span class="w">            </span><span class="err">&#39;</span><span class="nx">runtime</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s1">&#39;warmup&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="p">,</span>
 
-<span class="w">                </span><span class="err">&#39;</span><span class="k">type</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">gpuruntime</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="s1">&#39;optimization&#39;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">optimization</span><span class="p">,</span>
 
-<span class="w">                </span><span class="err">&#39;</span><span class="nx">version</span><span class="err">&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;</span><span class="m m-Double">0.1.0</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="s1">&#39;runtime&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">                </span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;gpuruntime&#39;</span><span class="p">,</span>
+
+<span class="w">                </span><span class="s1">&#39;version&#39;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span>
 
 <span class="w">            </span><span class="p">}</span>
 
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">use_model</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">path</span><span class="p">:</span><span class="w"> </span><span class="nx">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">str</span><span class="p">,</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">use_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span>
 
-<span class="w">                  </span><span class="nx">max_batch_size</span><span class="p">:</span><span class="w"> </span><span class="nx">int</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">max_batch_size</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span>
 
-<span class="w">                  </span><span class="nx">optimization</span><span class="p">:</span><span class="w"> </span><span class="nx">Optional</span><span class="p">[</span><span class="nx">model_config</span><span class="p">.</span><span class="nx">TensorRTOptimization</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">None</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">optimization</span><span class="p">:</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">TensorRTOptimization</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">,</span>
 
-<span class="w">                  </span><span class="nx">warmup</span><span class="p">:</span><span class="w"> </span><span class="nx">model_config</span><span class="p">.</span><span class="nx">Warmup</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">None</span><span class="p">):</span>
+<span class="w">                  </span><span class="n">warmup</span><span class="p">:</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
 
-<span class="w">        </span><span class="s">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="s">        Add the ONNX model file for the component.</span>
+<span class="sd">        Add the ONNX model file for the component.</span>
 
-<span class="s">        Args:</span>
+<span class="sd">        Args:</span>
 
-<span class="s">            path (Path | str): The path to the ONNX model file.</span>
+<span class="sd">            path (Path | str): The path to the ONNX model file.</span>
 
-<span class="s">            max_batch_size (int): The maximum batch size for the model.</span>
+<span class="sd">            max_batch_size (int): The maximum batch size for the model.</span>
 
-<span class="s">            optimization (model_config.TensorRTOptimization, optional): The optimization configuration for the model. Defaults to None.</span>
+<span class="sd">            optimization (model_config.TensorRTOptimization, optional): The optimization configuration for the model. Defaults to None.</span>
 
-<span class="s">            warmup (model_config.Warmup, optional): The warmup configuration for the model. Defaults to None.</span>
+<span class="sd">            warmup (model_config.Warmup, optional): The warmup configuration for the model. Defaults to None.</span>
 
-<span class="s">        Raises:</span>
+<span class="sd">        Raises:</span>
 
-<span class="s">            AssertionError: If the specified model file is not found, has an invalid extension, or if max_batch_size is less than 0.</span>
+<span class="sd">            AssertionError: If the specified model file is not found, has an invalid extension, or if max_batch_size is less than 0.</span>
 
-<span class="s">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
-<span class="w">        </span><span class="nx">path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">Path</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+<span class="w">        </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">is_file</span><span class="p">():</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
 
-<span class="w">            </span><span class="nx">raise</span><span class="w"> </span><span class="nx">AssertionError</span><span class="p">(</span><span class="nx">f</span><span class="s">&quot;specified model file not found: &#39;{path}&#39;&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;specified model file not found: &#39;{path}&#39;&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">suffix</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;.onnx&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;.onnx&quot;</span><span class="p">:</span>
 
-<span class="w">            </span><span class="nx">raise</span><span class="w"> </span><span class="nx">AssertionError</span><span class="p">(</span><span class="nx">f</span><span class="s">&quot;model file extension is not &#39;.onnx&#39;: &#39;{path}&#39;&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;model file extension is not &#39;.onnx&#39;: &#39;{path}&#39;&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">max_batch_size</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">max_batch_size</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
 
-<span class="w">            </span><span class="nx">raise</span><span class="w"> </span><span class="nx">AssertionError</span><span class="p">(</span><span class="s">&quot;max_batch_size must be greater or equal to 0&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;max_batch_size must be greater or equal to 0&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">entrypoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">Path</span><span class="p">(</span><span class="s">&quot;model.onnx&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;model.onnx&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">model_path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">path</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">model_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">config</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
-<span class="w">            </span><span class="nx">_logger</span><span class="p">.</span><span class="nx">warning</span><span class="p">(</span><span class="s">&quot;Previously added configuration was removed. Component will use the default configuration unless you specify your own.&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Previously added configuration was removed. Component will use the default configuration unless you specify your own.&quot;</span><span class="p">)</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">config</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">None</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="nx">Remove</span><span class="w"> </span><span class="nx">old</span><span class="w"> </span><span class="nx">automatic</span><span class="w"> </span><span class="nx">variables</span>
+<span class="w">        </span><span class="c1"># Removing old automatic variables</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">auto_config</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">auto_config</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">auto_config</span><span class="p">.</span><span class="nx">inputs</span><span class="p">:</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">auto_config</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
 
-<span class="w">                </span><span class="kp">self</span><span class="p">.</span><span class="nx">delete_input</span><span class="p">(</span><span class="kd">var</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">])</span>
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">delete_input</span><span class="p">(</span><span class="k">var</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">auto_config</span><span class="p">.</span><span class="nx">outputs</span><span class="p">:</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">auto_config</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
 
-<span class="w">                </span><span class="kp">self</span><span class="p">.</span><span class="nx">delete_output</span><span class="p">(</span><span class="kd">var</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">])</span>
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">delete_output</span><span class="p">(</span><span class="k">var</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">auto_config</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">model_config</span><span class="p">.</span><span class="nx">ModelConfig</span><span class="p">(</span><span class="nx">onnx_path</span><span class="p">=</span><span class="nx">path</span><span class="p">,</span>
+<span class="w">        </span><span class="n">model_warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warmup</span>
 
-<span class="w">                                                    </span><span class="nx">max_batch_size</span><span class="p">=</span><span class="nx">max_batch_size</span><span class="p">,</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">warmup</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">):</span>
 
-<span class="w">                                                    </span><span class="nx">warmup</span><span class="p">=</span><span class="nx">warmup</span><span class="p">,</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warmup</span>
 
-<span class="w">                                                    </span><span class="nx">optimization</span><span class="p">=</span><span class="nx">optimization</span><span class="p">)</span>
+<span class="w">            </span><span class="n">model_warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">warmup</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="o">.</span><span class="n">DISABLED</span>
 
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">auto_config</span><span class="p">.</span><span class="nx">inputs</span><span class="p">:</span>
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">warmup</span><span class="p">,</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="p">):</span>
 
-<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">add_input</span><span class="p">(</span><span class="kd">var</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">var</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">])</span>
-
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">auto_config</span><span class="p">.</span><span class="nx">outputs</span><span class="p">:</span>
-
-<span class="w">            </span><span class="kp">self</span><span class="p">.</span><span class="nx">add_output</span><span class="p">(</span><span class="kd">var</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">var</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">])</span>
-
-<span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">use_config</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">path</span><span class="p">:</span><span class="w"> </span><span class="nx">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">str</span><span class="p">):</span>
-
-<span class="w">        </span><span class="s">&quot;&quot;&quot;</span>
-
-<span class="s">        Sets the configuration file to be used for inference.</span>
-
-<span class="s">        Intended usage is to use a custom configuration file instead of the autogenerated one.</span>
-
-<span class="s">        This way extra configurations can be added to the component, such as the execution accelerator.</span>
-
-<span class="s">        Args:</span>
-
-<span class="s">            path (Path | str): The path to the configuration file.</span>
-
-<span class="s">        Raises:</span>
-
-<span class="s">            AssertionError: If the specified config file is not found or has an invalid extension.</span>
-
-<span class="s">        &quot;&quot;&quot;</span>
-
-<span class="w">        </span><span class="nx">path</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">Path</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">is_file</span><span class="p">():</span>
-
-<span class="w">            </span><span class="nx">raise</span><span class="w"> </span><span class="nx">AssertionError</span><span class="p">(</span><span class="nx">f</span><span class="s">&quot;specified config file not found: &#39;{path}&#39;&quot;</span><span class="p">)</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">suffix</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;.pbtxt&quot;</span><span class="p">:</span>
-
-<span class="w">            </span><span class="nx">raise</span><span class="w"> </span><span class="nx">AssertionError</span><span class="p">(</span><span class="nx">f</span><span class="s">&quot;config file extension is not &#39;.pbtxt&#39;: &#39;{path}&#39;&quot;</span><span class="p">)</span>
-
-<span class="w">        </span><span class="nx">_validate_gpuruntime_config</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
-
-<span class="w">        </span><span class="kp">self</span><span class="p">.</span><span class="nx">config</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">path</span>
-
-<span class="w">    </span><span class="nx">def</span><span class="w"> </span><span class="nx">save</span><span class="p">(</span><span class="kp">self</span><span class="p">,</span><span class="w"> </span><span class="nx">destination</span><span class="p">:</span><span class="w"> </span><span class="nx">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">str</span><span class="p">,</span><span class="w"> </span><span class="nx">validate</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">False</span><span class="p">):</span>
-
-<span class="w">        </span><span class="s">&quot;&quot;&quot;</span>
-
-<span class="s">        Saves the component to a folder structure, so it can be used as part of a pipeline configuration package.</span>
-
-<span class="s">        The component folder contains the following:</span>
-
-<span class="s">        - An `.onnx` model file</span>
-
-<span class="s">        - A `.pbtxt` configuration file</span>
-
-<span class="s">        Args:</span>
-
-<span class="s">            destination (path-like): Target directory to which the component will be saved.</span>
-
-<span class="s">        &quot;&quot;&quot;</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">entrypoint</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
-
-<span class="w">            </span><span class="nx">raise</span><span class="w"> </span><span class="nx">AssertionError</span><span class="p">(</span><span class="s">&quot;An ONNX model file must be specified before the component can be saved.&quot;</span><span class="p">)</span>
-
-<span class="w">        </span><span class="nx">component_dir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">Path</span><span class="p">(</span><span class="nx">destination</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">name</span>
-
-<span class="w">        </span><span class="nx">component_dir</span><span class="p">.</span><span class="nx">mkdir</span><span class="p">(</span><span class="nx">parents</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">True</span><span class="p">,</span><span class="w"> </span><span class="nx">exist_ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">True</span><span class="p">)</span>
-
-<span class="w">        </span><span class="nx">model_dir</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">model_version</span>
-
-<span class="w">        </span><span class="nx">model_dir</span><span class="p">.</span><span class="nx">mkdir</span><span class="p">(</span><span class="nx">exist_ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">True</span><span class="p">)</span>
-
-<span class="w">        </span><span class="nx">shutil</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="kp">self</span><span class="p">.</span><span class="nx">model_path</span><span class="p">,</span><span class="w"> </span><span class="nx">model_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;model.onnx&quot;</span><span class="p">)</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">config</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
-
-<span class="w">            </span><span class="nx">_logger</span><span class="p">.</span><span class="nx">warning</span><span class="p">(</span><span class="s">&quot;Configuration was not specified. Model will be saved with default configuration.&quot;</span><span class="p">)</span>
-
-<span class="w">            </span><span class="p">(</span><span class="nx">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;config.pbtxt&quot;</span><span class="p">).</span><span class="nx">write_text</span><span class="p">(</span><span class="nx">f</span><span class="s">&quot;{self.auto_config}&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warmup</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="o">.</span><span class="n">DISABLED</span>
 
 <span class="w">        </span><span class="k">else</span><span class="p">:</span>
 
-<span class="w">            </span><span class="nx">shutil</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="kp">self</span><span class="p">.</span><span class="nx">config</span><span class="p">,</span><span class="w"> </span><span class="nx">component_dir</span><span class="p">)</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">            </span><span class="n">model_warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="o">.</span><span class="n">DISABLED</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">optimization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">optimization</span><span class="p">,</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">TensorRTOptimization</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">auto_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">ModelConfig</span><span class="p">(</span><span class="n">onnx_path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+
+<span class="w">                                                    </span><span class="n">max_batch_size</span><span class="o">=</span><span class="n">max_batch_size</span><span class="p">,</span>
+
+<span class="w">                                                    </span><span class="n">warmup</span><span class="o">=</span><span class="n">model_warmup</span><span class="p">,</span>
+
+<span class="w">                                                    </span><span class="n">optimization</span><span class="o">=</span><span class="n">optimization</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">auto_config</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">add_input</span><span class="p">(</span><span class="k">var</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="k">var</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">auto_config</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="k">var</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="k">var</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">use_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">str</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Sets the configuration file to be used for inference.</span>
+
+<span class="sd">        Intended usage is to use a custom configuration file instead of the autogenerated one.</span>
+
+<span class="sd">        This way extra configurations can be added to the component, such as the execution accelerator.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            path (Path | str): The path to the configuration file.</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">            AssertionError: If the specified config file is not found or has an invalid extension.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;specified config file not found: &#39;{path}&#39;&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;.pbtxt&quot;</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;config file extension is not &#39;.pbtxt&#39;: &#39;{path}&#39;&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">config_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_validate_and_load_gpuruntime_config</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">config_data</span><span class="o">.</span><span class="n">model_warmup</span><span class="p">))</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">optimization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{config_data.optimization}&quot;</span><span class="p">))</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">destination</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Saves the component to a folder structure, so it can be used as part of a pipeline configuration package.</span>
+
+<span class="sd">        The component folder contains the following:</span>
+
+<span class="sd">        - An `.onnx` model file</span>
+
+<span class="sd">        - A `.pbtxt` configuration file</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            destination (path-like): Target directory to which the component will be saved.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">entrypoint</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;An ONNX model file must be specified before the component can be saved.&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">component_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="w">        </span><span class="n">component_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">model_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">model_version</span>
+
+<span class="w">        </span><span class="n">model_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_path</span><span class="p">),</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">model_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;model.onnx&quot;</span><span class="p">))</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Configuration was not specified. Model will be saved with default configuration.&quot;</span><span class="p">)</span>
+
+<span class="w">            </span><span class="p">(</span><span class="n">component_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s2">&quot;config.pbtxt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{self.auto_config}&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">component_dir</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
@@ -6375,7 +6437,7 @@ Deleting an output which is represented in any wire will cause package inconsist
 
 <span class="w">        </span><span class="nx">model_dir</span><span class="p">.</span><span class="nx">mkdir</span><span class="p">(</span><span class="nx">exist_ok</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">True</span><span class="p">)</span>
 
-<span class="w">        </span><span class="nx">shutil</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="kp">self</span><span class="p">.</span><span class="nx">model_path</span><span class="p">,</span><span class="w"> </span><span class="nx">model_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;model.onnx&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">shutil</span><span class="p">.</span><span class="nx">copy</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="kp">self</span><span class="p">.</span><span class="nx">model_path</span><span class="p">),</span><span class="w"> </span><span class="nx">str</span><span class="p">(</span><span class="nx">model_dir</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;model.onnx&quot;</span><span class="p">))</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kp">self</span><span class="p">.</span><span class="nx">config</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">None</span><span class="p">:</span>
 
@@ -6435,39 +6497,43 @@ This way extra configurations can be added to the component, such as the executi
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code>    def use_config(self, path: Path | str):
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">use_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">str</span><span class="p">):</span>
 
-        &quot;&quot;&quot;
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
-        Sets the configuration file to be used for inference.
+<span class="sd">        Sets the configuration file to be used for inference.</span>
 
-        Intended usage is to use a custom configuration file instead of the autogenerated one.
+<span class="sd">        Intended usage is to use a custom configuration file instead of the autogenerated one.</span>
 
-        This way extra configurations can be added to the component, such as the execution accelerator.
+<span class="sd">        This way extra configurations can be added to the component, such as the execution accelerator.</span>
 
-        Args:
+<span class="sd">        Args:</span>
 
-            path (Path | str): The path to the configuration file.
+<span class="sd">            path (Path | str): The path to the configuration file.</span>
 
-        Raises:
+<span class="sd">        Raises:</span>
 
-            AssertionError: If the specified config file is not found or has an invalid extension.
+<span class="sd">            AssertionError: If the specified config file is not found or has an invalid extension.</span>
 
-        &quot;&quot;&quot;
+<span class="sd">        &quot;&quot;&quot;</span>
 
-        path = Path(path)
+<span class="w">        </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-        if not path.is_file():
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">path</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
 
-            raise AssertionError(f&quot;specified config file not found: &#39;{path}&#39;&quot;)
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;specified config file not found: &#39;{path}&#39;&quot;</span><span class="p">)</span>
 
-        if path.suffix != &quot;.pbtxt&quot;:
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&quot;.pbtxt&quot;</span><span class="p">:</span>
 
-            raise AssertionError(f&quot;config file extension is not &#39;.pbtxt&#39;: &#39;{path}&#39;&quot;)
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;config file extension is not &#39;.pbtxt&#39;: &#39;{path}&#39;&quot;</span><span class="p">)</span>
 
-        _validate_gpuruntime_config(path)
+<span class="w">        </span><span class="n">config_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_validate_and_load_gpuruntime_config</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-        self.config = path
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">config_data</span><span class="o">.</span><span class="n">model_warmup</span><span class="p">))</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">optimization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{config_data.optimization}&quot;</span><span class="p">))</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span>
 </code></pre></div>
 
 </details>
@@ -6476,8 +6542,8 @@ This way extra configurations can be added to the component, such as the executi
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">max_batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">optimization</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">model_config</span><span class="o">.</span><span class="n">TensorRTOptimization</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">warmup</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">optimization</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">model_config</span><span class="o">.</span><span class="n">TensorRTOptimization</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">warmup</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -6540,9 +6606,9 @@ This way extra configurations can be added to the component, such as the executi
 
 <span class="w">                  </span><span class="n">max_batch_size</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span>
 
-<span class="w">                  </span><span class="n">optimization</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">model_config</span><span class="o">.</span><span class="n">TensorRTOptimization</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">optimization</span><span class="p">:</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">TensorRTOptimization</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">,</span>
 
-<span class="w">                  </span><span class="n">warmup</span><span class="p">:</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
+<span class="w">                  </span><span class="n">warmup</span><span class="p">:</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -6588,7 +6654,7 @@ This way extra configurations can be added to the component, such as the executi
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
-<span class="w">        </span><span class="c1"># Remove old automatic variables</span>
+<span class="w">        </span><span class="c1"># Removing old automatic variables</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">auto_config</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
@@ -6600,11 +6666,31 @@ This way extra configurations can be added to the component, such as the executi
 
 <span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">delete_output</span><span class="p">(</span><span class="k">var</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
+<span class="w">        </span><span class="n">model_warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warmup</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">warmup</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">):</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warmup</span>
+
+<span class="w">            </span><span class="n">model_warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">warmup</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="o">.</span><span class="n">DISABLED</span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">warmup</span><span class="p">,</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="p">):</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warmup</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="o">.</span><span class="n">DISABLED</span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span>
+
+<span class="w">            </span><span class="n">model_warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span><span class="o">.</span><span class="n">DISABLED</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">optimization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">optimization</span><span class="p">,</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">TensorRTOptimization</span><span class="p">)</span>
+
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">auto_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_config</span><span class="o">.</span><span class="n">ModelConfig</span><span class="p">(</span><span class="n">onnx_path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
 
 <span class="w">                                                    </span><span class="n">max_batch_size</span><span class="o">=</span><span class="n">max_batch_size</span><span class="p">,</span>
 
-<span class="w">                                                    </span><span class="n">warmup</span><span class="o">=</span><span class="n">warmup</span><span class="p">,</span>
+<span class="w">                                                    </span><span class="n">warmup</span><span class="o">=</span><span class="n">model_warmup</span><span class="p">,</span>
 
 <span class="w">                                                    </span><span class="n">optimization</span><span class="o">=</span><span class="n">optimization</span><span class="p">)</span>
 
@@ -6801,7 +6887,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">            </span><span class="n">pipeline</span><span class="o">.</span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">(</span><span class="n">component</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">component</span><span class="o">.</span><span class="n">outputs</span><span class="p">]</span>
 
-<span class="w">        </span><span class="c1"># Remove ImageSet outputs from pipeline outputs</span>
+<span class="w">        </span><span class="c1"># ImageSet is not allowed in pipeline outputs</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">outputs</span><span class="p">):</span>
 
@@ -7541,7 +7627,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">            </span><span class="n">Path</span><span class="p">(</span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">TELEMETRY_YAML</span><span class="p">)</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
 
-<span class="w">            </span><span class="c1"># check whether data collection is accepted or declined</span>
+<span class="w">            </span><span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">is_telemetry_allowed</span><span class="p">():</span>
 
@@ -7821,7 +7907,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
-<span class="w">            </span><span class="c1"># check whether data collection is accepted or declined</span>
+<span class="w">            </span><span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
 <span class="w">            </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -7842,8 +7928,6 @@ The name and version together will define the name of the zip file when the pack
 <span class="w">        </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">package_name</span>
 
 <span class="w">        </span><span class="n">destination</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="n">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
-
-<span class="w">        </span><span class="c1"># Save</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">:</span>
 
@@ -7883,7 +7967,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">package_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">package_id</span>
 
-<span class="w">        </span><span class="c1"># auto-generate package id if not provided</span>
+<span class="w">        </span><span class="c1"># if not, we auto-generate a package id</span>
 
 <span class="w">        </span><span class="k">else</span><span class="p">:</span>
 
@@ -7933,7 +8017,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">save_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">previous_decimal_versions_set</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 
-<span class="w">        </span><span class="c1"># check if the package zip already exists</span>
+<span class="w">        </span><span class="c1"># checking if the package zip already exists</span>
 
 <span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
 
@@ -8003,7 +8087,7 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
-<span class="w">            </span><span class="c1"># check whether data collection is accepted or declined</span>
+<span class="w">            </span><span class="c1"># checking whether the user has made a statement about telemetry collection</span>
 
 <span class="w">            </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -8028,6 +8112,36 @@ The name and version together will define the name of the zip file when the pack
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">config_package</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
 
 <span class="w">                </span><span class="n">Path</span><span class="p">(</span><span class="n">config_package</span><span class="p">)</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">parameter</span><span class="p">:</span><span class="w"> </span><span class="n">PipelineParameter</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">SecretPipelineParameter</span><span class="p">):</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">any</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">parameter</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">):</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Parameter with name &#39;{parameter.name}&#39; already exists in the pipeline.&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="p">:</span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s2">&quot;Parameter cannot be None.&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_secret_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Adds a secret parameter to the pipeline configuration.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            name (str): Name of the secret parameter. Must contain only letters, digits, underscores, and hyphens. Cannot start with `__AI_IS_` prefix.</span>
+
+<span class="sd">            desc (str, optional): Description of the secret parameter. Must be a string between 3 and 60 characters if provided.</span>
+
+<span class="sd">        Raises ValueError if the conditions for name or description are not met.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">SecretPipelineParameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">))</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">default_value</span><span class="p">,</span><span class="w"> </span><span class="n">type_name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;String&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">topic_based</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">False</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
 
@@ -8069,25 +8183,17 @@ The name and version together will define the name of the zip file when the pack
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-<span class="w">        </span><span class="n">try</span><span class="p">:</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
 
-<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
+<span class="w">            </span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
-
-<span class="w">                </span><span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">))</span>
-
-<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">ValueError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="p">:</span>
-
-<span class="w">            </span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Error adding parameter &#39;{name}&#39;: {e}&quot;</span><span class="p">)</span>
-
-<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">e</span>
+<span class="w">            </span><span class="n">description</span><span class="o">=</span><span class="n">desc</span><span class="p">))</span>
 </code></pre></div>
 
 </details>
@@ -8220,7 +8326,7 @@ The components must have unique names. Two or more versions of the same componen
 
 <span class="w">            </span><span class="n">pipeline</span><span class="p">.</span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">PipelineVariable(component.name, output) for output in component.outputs</span><span class="o">]</span>
 
-<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Remove</span><span class="w"> </span><span class="n">ImageSet</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">pipeline</span><span class="w"> </span><span class="n">outputs</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">ImageSet</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">allowed</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">pipeline</span><span class="w"> </span><span class="n">outputs</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">enumerate</span><span class="p">(</span><span class="n">pipeline</span><span class="p">.</span><span class="n">outputs</span><span class="p">)</span><span class="err">:</span>
 
@@ -8606,25 +8712,73 @@ and the value of the parameter can later be changed on AI Inference Server.</p>
 
 <span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
 
-<span class="w">        </span><span class="n">try</span><span class="o">:</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
 
-<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">parameters</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">PipelineParameter</span><span class="p">(</span>
+<span class="w">            </span><span class="k">name</span><span class="o">=</span><span class="k">name</span><span class="p">,</span>
 
-<span class="w">                </span><span class="k">name</span><span class="o">=</span><span class="k">name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">defaultValue</span><span class="o">=</span><span class="n">default_value</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">dtype</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
 
-<span class="w">                </span><span class="n">topicBased</span><span class="o">=</span><span class="n">topic_based</span><span class="p">,</span>
+<span class="w">            </span><span class="k">description</span><span class="o">=</span><span class="k">desc</span><span class="p">))</span>
+</code></pre></div>
 
-<span class="w">                </span><span class="k">description</span><span class="o">=</span><span class="k">desc</span><span class="p">))</span>
+</details>
+<h4 id="add_secret_parameter">add_secret_parameter</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_secret_parameter</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
 
-<span class="w">        </span><span class="k">except</span><span class="w"> </span><span class="n">ValueError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="o">:</span>
+<p>Adds a secret parameter to the pipeline configuration.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>Name of the secret parameter. Must contain only letters, digits, underscores, and hyphens. Cannot start with <code>__AI_IS_</code> prefix.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>str</td>
+<td>Description of the secret parameter. Must be a string between 3 and 60 characters if provided.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_secret_parameter</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="k">name</span><span class="o">:</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="k">desc</span><span class="o">:</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">)</span><span class="o">:</span>
 
-<span class="w">            </span><span class="n">_logger</span><span class="p">.</span><span class="k">error</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Error adding parameter &#39;{name}&#39;: {e}&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span>
 
-<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">e</span>
+<span class="s2">        Adds a secret parameter to the pipeline configuration.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            name (str): Name of the secret parameter. Must contain only letters, digits, underscores, and hyphens. Cannot start with `__AI_IS_` prefix.</span>
+
+<span class="s2">            desc (str, optional): Description of the secret parameter. Must be a string between 3 and 60 characters if provided.</span>
+
+<span class="s2">        Raises ValueError if the conditions for name or description are not met.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_add_parameter</span><span class="p">(</span><span class="n">SecretPipelineParameter</span><span class="p">(</span><span class="k">name</span><span class="o">=</span><span class="k">name</span><span class="p">,</span><span class="w"> </span><span class="k">description</span><span class="o">=</span><span class="k">desc</span><span class="p">))</span>
 </code></pre></div>
 
 </details>
@@ -9093,7 +9247,7 @@ By default, the input variable will be also deleted.</p>
 
 <span class="w">        </span><span class="k">try</span><span class="err">:</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="n">collection</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">accepted</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">declined</span>
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">checking</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">made</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">statement</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">telemetry</span><span class="w"> </span><span class="n">collection</span>
 
 <span class="w">            </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -9666,7 +9820,7 @@ an error is raised.</p>
 
 <span class="w">        </span><span class="k">try</span><span class="err">:</span>
 
-<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="n">collection</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">accepted</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">declined</span>
+<span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">checking</span><span class="w"> </span><span class="n">whether</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">made</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">statement</span><span class="w"> </span><span class="n">about</span><span class="w"> </span><span class="n">telemetry</span><span class="w"> </span><span class="n">collection</span>
 
 <span class="w">            </span><span class="n">is_telemetry_allowed</span><span class="p">()</span>
 
@@ -9687,8 +9841,6 @@ an error is raised.</p>
 <span class="w">        </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">package_name</span>
 
 <span class="w">        </span><span class="n">destination</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="k">True</span><span class="p">,</span><span class="w"> </span><span class="n">exist_ok</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
-
-<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">Save</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="nl">components</span><span class="p">:</span>
 
@@ -9958,7 +10110,7 @@ The file will be created in the <code>destination</code> folder with name <code>
 
             Path(destination / TELEMETRY_YAML).unlink(missing_ok=True)
 
-            # check whether data collection is accepted or declined
+            # checking whether the user has made a statement about telemetry collection
 
             if is_telemetry_allowed():
 
@@ -10279,7 +10431,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 
@@ -10379,7 +10531,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">entrypoint</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">resources</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">list</span><span class="p">]):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">resources</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">list</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -10615,7 +10767,7 @@ study the example Python components in the E2E Tutorials for the AI SDK.</p>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_replicas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">replicas</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_metric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_metric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -11110,7 +11262,7 @@ The most frequently used types are
 <div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_metric</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">desc</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -11142,7 +11294,7 @@ The most frequently used types are
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_metric</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span><span class="p">,</span><span class="w"> </span><span class="k">desc</span><span class="err">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">)</span><span class="err">:</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_metric</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span><span class="p">,</span><span class="w"> </span><span class="k">desc</span><span class="err">:</span><span class="w"> </span><span class="nf">str</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">)</span><span class="err">:</span>
 
 <span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
 
@@ -11405,7 +11557,7 @@ The method uses the <code>tempfile.tempdir</code> folder, so make sure that the 
 <div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_resources</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">base_dir</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span>
-    <span class="n">resources</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span>
+    <span class="n">resources</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">|</span> <span class="nb">list</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -11443,7 +11595,7 @@ Until version 2.3.0 of AI SDK hidden files and folders (starting with '.') are a
 </table>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="nl">resources</span><span class="p">:</span><span class="w"> </span><span class="ow">Union</span><span class="o">[</span><span class="n">os.PathLike, list</span><span class="o">]</span><span class="p">)</span><span class="err">:</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">add_resources</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">base_dir</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="nl">resources</span><span class="p">:</span><span class="w"> </span><span class="n">os</span><span class="p">.</span><span class="n">PathLike</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="err">:</span>
 
 <span class="w">        </span><span class="ss">&quot;&quot;&quot;</span>
 
@@ -12428,7 +12580,7 @@ It can contain URLs to additional repositories in the form of <code>--extra-inde
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   

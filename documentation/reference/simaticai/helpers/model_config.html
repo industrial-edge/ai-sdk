@@ -996,6 +996,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1393,7 +1407,7 @@
 <p>None</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021-2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</span>
 
 <span class="c1"># SPDX-License-Identifier: MIT</span>
 
@@ -1403,13 +1417,9 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
-
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
 
 <span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-<span class="c1"># TODO: clarify which elem_type in onnx is supported and find appropriate aiis type</span>
 
 <span class="n">tensor_type_dict</span> <span class="o">=</span> <span class="p">{</span>
 
@@ -1677,11 +1687,11 @@
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ModelConfig</span><span class="p">:</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">onnx_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span> <span class="n">max_batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">onnx_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span> <span class="n">max_batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
 
-                 <span class="n">warmup</span><span class="p">:</span> <span class="n">Warmup</span> <span class="o">=</span> <span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span><span class="p">,</span>
+                 <span class="n">warmup</span><span class="p">:</span> <span class="n">Warmup</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span><span class="p">,</span>
 
-                 <span class="n">optimization</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TensorRTOptimization</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+                 <span class="n">optimization</span><span class="p">:</span> <span class="n">TensorRTOptimization</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="n">onnx_path</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span> <span class="o">==</span> <span class="n">onnx_path</span><span class="p">:</span>
 
@@ -1695,7 +1705,13 @@
 
         <span class="k">else</span><span class="p">:</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">warmup</span> <span class="o">=</span> <span class="n">warmup</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">warmup</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">warmup</span> <span class="o">=</span> <span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span> <span class="k">if</span> <span class="n">warmup</span> <span class="k">else</span> <span class="n">Warmup</span><span class="o">.</span><span class="n">DISABLED</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">warmup</span> <span class="o">=</span> <span class="n">warmup</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">optimization</span> <span class="o">=</span> <span class="n">optimization</span>
 
@@ -1842,10 +1858,10 @@
 <h2 id="classes">Classes</h2>
 <h3 id="modelconfig">ModelConfig</h3>
 <div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ModelConfig</span><span class="p">(</span>
-    <span class="n">onnx_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span>
+    <span class="n">onnx_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span>
     <span class="n">max_batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">warmup</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span><span class="p">:</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="n">optimization</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">model_config</span><span class="o">.</span><span class="n">TensorRTOptimization</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">warmup</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">model_config</span><span class="o">.</span><span class="n">Warmup</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span><span class="p">:</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">optimization</span><span class="p">:</span> <span class="n">simaticai</span><span class="o">.</span><span class="n">helpers</span><span class="o">.</span><span class="n">model_config</span><span class="o">.</span><span class="n">TensorRTOptimization</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -1853,11 +1869,11 @@
 <summary>View Source</summary>
 <div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">ModelConfig</span><span class="p">:</span>
 
-<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">onnx_path</span><span class="p">:</span><span class="w"> </span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">],</span><span class="w"> </span><span class="n">max_batch_size</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">onnx_path</span><span class="p">:</span><span class="w"> </span><span class="nb">str</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">,</span><span class="w"> </span><span class="n">max_batch_size</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 
-<span class="w">                 </span><span class="n">warmup</span><span class="p">:</span><span class="w"> </span><span class="n">Warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span><span class="p">,</span>
+<span class="w">                 </span><span class="n">warmup</span><span class="p">:</span><span class="w"> </span><span class="n">Warmup</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span><span class="p">,</span>
 
-<span class="w">                 </span><span class="n">optimization</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="p">[</span><span class="n">TensorRTOptimization</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
+<span class="w">                 </span><span class="n">optimization</span><span class="p">:</span><span class="w"> </span><span class="n">TensorRTOptimization</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">None</span><span class="p">):</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">onnx_path</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">None</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">onnx_path</span><span class="p">:</span>
 
@@ -1871,7 +1887,13 @@
 
 <span class="w">        </span><span class="k">else</span><span class="p">:</span>
 
-<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warmup</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">warmup</span><span class="p">,</span><span class="w"> </span><span class="nb nb-Type">bool</span><span class="p">):</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Warmup</span><span class="o">.</span><span class="n">ZERO_DATA</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">warmup</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">Warmup</span><span class="o">.</span><span class="n">DISABLED</span>
+
+<span class="w">            </span><span class="k">else</span><span class="p">:</span>
+
+<span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">warmup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warmup</span>
 
 <span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">optimization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">optimization</span>
 
@@ -2353,7 +2375,7 @@ attributes -- see the documentation for details.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   

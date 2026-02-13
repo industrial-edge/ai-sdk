@@ -230,6 +230,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#270" class="md-nav__link">
+    2.7.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#260" class="md-nav__link">
     2.6.0
   </a>
@@ -973,6 +980,20 @@
   
   
     <li class="md-nav__item">
+      <a href="reference/simaticai/payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="reference/simaticai/payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1229,6 +1250,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#270" class="md-nav__link">
+    2.7.0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#260" class="md-nav__link">
     2.6.0
   </a>
@@ -1360,6 +1388,26 @@
 <li>As no TensorFlow Lite 2.7.0 installer was published for Windows systems, you cannot use the local pipeline runner on Windows to execute the TensorFlow Lite based pipeline packages, like the one provided in the Image Classification project template.</li>
 <li>Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.</li>
 <li>Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected</li>
+</ul>
+<h2 id="270">2.7.0</h2>
+<p>New features:
+-   For GPU runtime components pipeline_config.yml contains warmup and optimization flags.
+-   Pipeline parameter types are extended with a new type <code>Secret</code>, which can be added to the pipeline with the <code>add_secret_parameter()</code> method.
+-   Code that deals with ImageSet payloads can be added to a component directory</p>
+<p>Fixed issues:</p>
+<ul>
+<li>Docker Image iai-sdk-python-runner is updated with Python 3.12</li>
+<li>Python 3.10.x ≤ 3.10.18 - Multiple Vulnerabilities - 3.10.19</li>
+<li>Python 3.11.x ≤ 3.11.13 - Multiple Vulnerabilities - 3.11.14</li>
+<li>onnx ≤ 1.18.0 - Remote Path Traversal Vulnerability - CVE-2025-51480</li>
+<li>pip ≤ 25.2 - Remote Symlink Traversal Vulnerability - CVE-2025-8869</li>
+<li>protobuf ≤ 6.31.1 - Remote Path Traversal Vulnerability - 6.32.0</li>
+<li>protobuf 4.x &lt; 4.25.8, 5.x &lt; 5.29.5, 6.x &lt; 6.31.1 - Remote Denial of Service Vulnerability - GHSA-8qvm-5x2c-j2w7</li>
+<li>tensorflow ≤ 2.18.0 - Multiple Vulnerabilities - CVE-2025-55556, CVE-2025-55559</li>
+<li>OpenSSL 3.4.x ≤ 3.4.2 - Multiple Vulnerabilities - 3.4.3</li>
+<li>SQLite ≤ 3.50.1 - Remote Denial of Service Vulnerability - 3.50.2</li>
+<li>Fixed an issue with character encoding incompatibility in <code>PipelineRunnerReportWriter</code> on Windows.</li>
+<li>Fixed: Duplicated pipeline parameter names can not be added.</li>
 </ul>
 <h2 id="260">2.6.0</h2>
 <p>New features:
@@ -1666,7 +1714,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   

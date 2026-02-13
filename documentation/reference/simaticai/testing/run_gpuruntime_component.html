@@ -838,6 +838,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1185,16 +1199,18 @@
 
 
 <h1 id="module-simaticaitestingrun_gpuruntime_component">Module simaticai.testing.run_gpuruntime_component</h1>
-<p>Utility script for running an ONNX model in a given virtual Python environment.</p>
-<p>It is designed to be executed from <code>simaticai.testing.PipelineRunner</code> class.
+<p>SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</p>
+<p>SPDX-License-Identifier: MIT</p>
+<p>Utility script for running an ONNX model in a given virtual Python environment.
+It is designed to be executed from <code>simaticai.testing.PipelineRunner</code> class.
 It consumes input data from a joblib file and produces output data into a joblib file.</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021-2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1"># SPDX-License-Identifier: MIT</span>
+<span class="sd">SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SPDX-License-Identifier: MIT</span>
 
 <span class="sd">Utility script for running an ONNX model in a given virtual Python environment.</span>
 
@@ -1228,7 +1244,7 @@ It consumes input data from a joblib file and produces output data into a joblib
 
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
 
-    <span class="kn">import</span><span class="w"> </span><span class="nn">simaticai.model_config_pb2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">model_config_pb2</span>  <span class="c1"># for documentation build</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">simaticai.model_config_pb2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">model_config_pb2</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">()</span>
 
@@ -1558,7 +1574,7 @@ The output file is a dumped joblib result list containing the input dictionary e
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   

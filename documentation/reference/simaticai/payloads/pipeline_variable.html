@@ -840,6 +840,20 @@
   
   
     <li class="md-nav__item">
+      <a href="imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="index.html" class="md-nav__link">
         Index
       </a>
@@ -1065,6 +1079,33 @@
           <li class="md-nav__item">
   <a href="#add_mapping_with_connection_2" class="md-nav__link">
     add_mapping_with_connection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secretpipelineparameter" class="md-nav__link">
+    SecretPipelineParameter
+  </a>
+  
+    <nav class="md-nav" aria-label="SecretPipelineParameter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attributes_2" class="md-nav__link">
+    Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-variables_2" class="md-nav__link">
+    Class variables
   </a>
   
 </li>
@@ -1508,6 +1549,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#secretpipelineparameter" class="md-nav__link">
+    SecretPipelineParameter
+  </a>
+  
+    <nav class="md-nav" aria-label="SecretPipelineParameter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attributes_2" class="md-nav__link">
+    Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-variables_2" class="md-nav__link">
+    Class variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1529,22 +1597,27 @@
 
 
 <h1 id="module-simaticaipayloadspipeline_variable">Module simaticai.payloads.pipeline_variable</h1>
-<p>Contains classes for defining pipeline variables and parameters, including their connections and mappings.</p>
-<p>PipelineVariable links a component's variable to a connection, while PipelineParameter defines parameters that can be set runtime.
-PipelineParameter can be topic-based, allowing dynamic updates via messaging topics.</p>
+<p>SPDX-FileCopyrightText: Copyright (c) 2024 Siemens AG</p>
+<p>SPDX-License-Identifier: MIT</p>
+<p>Contains classes for defining pipeline variables and parameters, including their connections and mappings.
+PipelineVariable links a component's variable to a connection, while PipelineParameter defines parameters that can be set runtime.
+PipelineParameter can be topic-based, allowing dynamic updates via messaging topics.
+SecretPipelineParameter is a specialized parameter type for handling sensitive information.</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1">#  SPDX-FileCopyrightText: 2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1">#  SPDX-License-Identifier: MIT</span>
+<span class="sd">SPDX-FileCopyrightText: Copyright (c) 2024 Siemens AG</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SPDX-License-Identifier: MIT</span>
 
 <span class="sd">Contains classes for defining pipeline variables and parameters, including their connections and mappings.</span>
 
 <span class="sd">PipelineVariable links a component&#39;s variable to a connection, while PipelineParameter defines parameters that can be set runtime.</span>
 
 <span class="sd">PipelineParameter can be topic-based, allowing dynamic updates via messaging topics.</span>
+
+<span class="sd">SecretPipelineParameter is a specialized parameter type for handling sensitive information.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -1746,13 +1819,13 @@ PipelineParameter can be topic-based, allowing dynamic updates via messaging top
 
     <span class="c1"># Mixin fields as dataclass fields</span>
 
-    <span class="n">connection</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Connection</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># connection</span>
+    <span class="n">connection</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Connection</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
-    <span class="n">tagName</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>            <span class="c1"># tagName</span>
+    <span class="n">tagName</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
-    <span class="n">cameraName</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>         <span class="c1"># cameraName</span>
+    <span class="n">cameraName</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
-    <span class="n">mapping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>            <span class="c1"># mapping</span>
+    <span class="n">mapping</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 
@@ -1854,17 +1927,7 @@ PipelineParameter can be topic-based, allowing dynamic updates via messaging top
 
             <span class="k">case</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span>
 
-                <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;^[a-zA-Z0-9_-]+$&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR! Invalid name &#39;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&#39;. Only uppercase letters, digits, underscores, and hyphens are allowed.&quot;</span><span class="p">)</span>
-
-                <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__AI_IS_&quot;</span><span class="p">):</span>
-
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Pipeline parameters with `__AI_IS_` prefix should not be specified in the pipeline configuration. However, the entrypoint script should be able to handle them in the `update_parameters` method.&quot;</span><span class="p">)</span>
-
-                <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">reserved_names</span><span class="p">:</span>
-
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR! &#39;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&#39; is a reserved name and cannot be used as variable name.&quot;</span><span class="p">)</span>
+                <span class="n">_check_name_validity</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
             <span class="k">case</span> <span class="s2">&quot;dtype&quot;</span><span class="p">:</span>
 
@@ -1886,13 +1949,9 @@ PipelineParameter can be topic-based, allowing dynamic updates via messaging top
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span>
 
-                <span class="c1"># &#39;The given value type does not match the type of&#39;</span>
-
             <span class="k">case</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span>
 
-                <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">60</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">):</span>
-
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ERROR! &#39;description&#39; must be a string between 3 and 60 characters.&quot;</span><span class="p">)</span>
+                <span class="n">_check_description_validity</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
             <span class="k">case</span> <span class="s2">&quot;topicBased&quot;</span><span class="p">:</span>
 
@@ -1912,7 +1971,7 @@ PipelineParameter can be topic-based, allowing dynamic updates via messaging top
 
                 <span class="k">pass</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>  <span class="c1"># Call the dataclass __setattr__</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__param_dict__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 
@@ -1961,6 +2020,76 @@ PipelineParameter can be topic-based, allowing dynamic updates via messaging top
         <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
 
             <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_check_name_validity</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;^[a-zA-Z0-9_-]+$&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR! Invalid name &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;. Only letters, digits, underscores, and hyphens are allowed.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__AI_IS_&quot;</span><span class="p">):</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Pipeline parameters with `__AI_IS_` prefix should not be specified in the pipeline configuration. However, the entrypoint script should be able to handle them in the `update_parameters` method.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">reserved_names</span><span class="p">:</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ERROR! &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; is a reserved name and cannot be used as variable name.&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_check_description_validity</span><span class="p">(</span><span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">description</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">description</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">60</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">description</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">):</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ERROR! &#39;description&#39; must be a string between 3 and 60 characters.&quot;</span><span class="p">)</span>
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SecretPipelineParameter</span><span class="p">:</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Represents a secret pipeline parameter for handling sensitive information.</span>
+
+<span class="sd">    Cannot be modified after creation.</span>
+
+<span class="sd">    Attributes:</span>
+
+<span class="sd">        name (str): The name of the secret parameter.</span>
+
+<span class="sd">        description (Optional[str]): An optional description of the secret parameter.</span>
+
+<span class="sd">        defaultValue (str): Pipeline parameters must have a default value, which is an empty string for secret parameters.</span>
+
+<span class="sd">        dtype (str): The data type of the secret parameter is always &quot;Secret&quot;.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">defaultValue</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">dtype</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Secret&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">_check_name_validity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="n">_check_description_validity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__param_dict__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+
+        <span class="n">json_dict</span> <span class="o">=</span> <span class="p">{</span>
+
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+
+            <span class="s1">&#39;defaultValue&#39;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+
+            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span>
+
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">json_dict</span>
 </code></pre></div>
 
 </details>
@@ -2445,17 +2574,7 @@ In case you define both, only 'tagName' will be used and preconfigured.</p>
 
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="ss">&quot;name&quot;</span><span class="err">:</span>
 
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">re</span><span class="p">.</span><span class="k">match</span><span class="p">(</span><span class="ss">&quot;^[a-zA-Z0-9_-]+$&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">None</span><span class="err">:</span>
-
-<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;ERROR! Invalid name &#39;{value}&#39;. Only uppercase letters, digits, underscores, and hyphens are allowed.&quot;</span><span class="p">)</span>
-
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="k">value</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="ss">&quot;__AI_IS_&quot;</span><span class="p">)</span><span class="err">:</span>
-
-<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="ss">&quot;Pipeline parameters with `__AI_IS_` prefix should not be specified in the pipeline configuration. However, the entrypoint script should be able to handle them in the `update_parameters` method.&quot;</span><span class="p">)</span>
-
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nl">reserved_names</span><span class="p">:</span>
-
-<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="n">f</span><span class="ss">&quot;ERROR! &#39;{value}&#39; is a reserved name and cannot be used as variable name.&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">_check_name_validity</span><span class="p">(</span><span class="k">value</span><span class="p">)</span>
 
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="ss">&quot;dtype&quot;</span><span class="err">:</span>
 
@@ -2477,13 +2596,9 @@ In case you define both, only 'tagName' will be used and preconfigured.</p>
 
 <span class="w">                </span><span class="n">self</span><span class="p">.</span><span class="n">dtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtype</span>
 
-<span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="s1">&#39;The given value type does not match the type of&#39;</span>
-
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="ss">&quot;description&quot;</span><span class="err">:</span>
 
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="k">None</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="p">(</span><span class="ow">not</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="k">value</span><span class="p">,</span><span class="w"> </span><span class="nf">str</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="err">:</span>
-
-<span class="w">                    </span><span class="n">raise</span><span class="w"> </span><span class="n">ValueError</span><span class="p">(</span><span class="ss">&quot;ERROR! &#39;description&#39; must be a string between 3 and 60 characters.&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">_check_description_validity</span><span class="p">(</span><span class="k">value</span><span class="p">)</span>
 
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="ss">&quot;topicBased&quot;</span><span class="err">:</span>
 
@@ -2503,7 +2618,7 @@ In case you define both, only 'tagName' will be used and preconfigured.</p>
 
 <span class="w">                </span><span class="n">pass</span>
 
-<span class="w">        </span><span class="n">super</span><span class="p">().</span><span class="n">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="k">Call</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">dataclass</span><span class="w"> </span><span class="n">__setattr__</span>
+<span class="w">        </span><span class="n">super</span><span class="p">().</span><span class="n">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__param_dict__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nl">dict</span><span class="p">:</span>
 
@@ -2862,13 +2977,13 @@ In case you define both, only 'tagName' will be used and preconfigured.</p>
 
 <span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">Mixin</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">dataclass</span><span class="w"> </span><span class="n">fields</span>
 
-<span class="w">    </span><span class="k">connection</span><span class="err">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">Connection</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="k">connection</span>
+<span class="w">    </span><span class="k">connection</span><span class="err">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">Connection</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="k">None</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nl">tagName</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">tagName</span>
+<span class="w">    </span><span class="nl">tagName</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="k">None</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nl">cameraName</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="w">         </span><span class="err">#</span><span class="w"> </span><span class="n">cameraName</span>
+<span class="w">    </span><span class="nl">cameraName</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="k">None</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nl">mapping</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">mapping</span>
+<span class="w">    </span><span class="nl">mapping</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="k">default</span><span class="o">=</span><span class="k">None</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__getitem__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="err">:</span>
 
@@ -3147,6 +3262,116 @@ In case you define both, only 'tagName' will be used and preconfigured.</p>
 </code></pre></div>
 
 </details>
+<h3 id="secretpipelineparameter">SecretPipelineParameter</h3>
+<p>Represents a secret pipeline parameter for handling sensitive information.</p>
+<p>Cannot be modified after creation.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SecretPipelineParameter</span><span class="p">(</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">description</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<h4 id="attributes_2">Attributes</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>str</td>
+<td>The name of the secret parameter.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Optional[str]</td>
+<td>An optional description of the secret parameter.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>defaultValue</td>
+<td>str</td>
+<td>Pipeline parameters must have a default value, which is an empty string for secret parameters.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>dtype</td>
+<td>str</td>
+<td>The data type of the secret parameter is always "Secret".</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="nv">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="k">True</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nl">SecretPipelineParameter</span><span class="p">:</span>
+
+<span class="w">    </span><span class="ss">&quot;&quot;&quot;</span>
+
+<span class="ss">    Represents a secret pipeline parameter for handling sensitive information.</span>
+
+<span class="ss">    Cannot be modified after creation.</span>
+
+<span class="ss">    Attributes:</span>
+
+<span class="ss">        name (str): The name of the secret parameter.</span>
+
+<span class="ss">        description (Optional[str]): An optional description of the secret parameter.</span>
+
+<span class="ss">        defaultValue (str): Pipeline parameters must have a default value, which is an empty string for secret parameters.</span>
+
+<span class="ss">        dtype (str): The data type of the secret parameter is always &quot;</span><span class="n">Secret</span><span class="ss">&quot;.</span>
+
+<span class="ss">    &quot;&quot;&quot;</span>
+
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span>
+
+<span class="w">    </span><span class="nl">description</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">str</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span>
+
+<span class="w">    </span><span class="nl">defaultValue</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="w"> </span><span class="k">default</span><span class="o">=</span><span class="ss">&quot;&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nl">dtype</span><span class="p">:</span><span class="w"> </span><span class="nf">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">field</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="k">False</span><span class="p">,</span><span class="w"> </span><span class="k">default</span><span class="o">=</span><span class="ss">&quot;Secret&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__post_init__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="err">:</span>
+
+<span class="w">        </span><span class="n">_check_name_validity</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">_check_description_validity</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">description</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__param_dict__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nl">dict</span><span class="p">:</span>
+
+<span class="w">        </span><span class="n">json_dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span>
+
+<span class="w">            </span><span class="s1">&#39;name&#39;</span><span class="err">:</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s1">&#39;defaultValue&#39;</span><span class="err">:</span><span class="w"> </span><span class="ss">&quot;&quot;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="s1">&#39;type&#39;</span><span class="err">:</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">dtype</span>
+
+<span class="w">        </span><span class="err">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">json_dict</span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="class-variables_2">Class variables</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">defaultValue</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">description</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">dtype</span>
+</code></pre></div>
 
 
 
@@ -3204,7 +3429,7 @@ In case you define both, only 'tagName' will be used and preconfigured.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   

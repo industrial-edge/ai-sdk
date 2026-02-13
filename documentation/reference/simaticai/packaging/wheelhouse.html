@@ -971,6 +971,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../payloads/imageset.html" class="md-nav__link">
+        Imageset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../payloads/index.html" class="md-nav__link">
         Index
       </a>
@@ -1339,6 +1353,8 @@
 
 
 <h1 id="module-simaticaipackagingwheelhouse">Module simaticai.packaging.wheelhouse</h1>
+<p>SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</p>
+<p>SPDX-License-Identifier: MIT</p>
 <p>Methods for downloading and validating dependencies</p>
 <p>This module collects all the necessary methods for downloading
 wheel or source distributions, and validation methods for checking if
@@ -1346,11 +1362,11 @@ the whole collection could be installed in the AI Inference Server's
 Python runtime environment.</p>
 <details class="example">
 <summary>View Source</summary>
-<div class="codehilite"><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021-2025 Siemens AG</span>
+<div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1"># SPDX-License-Identifier: MIT</span>
+<span class="sd">SPDX-FileCopyrightText: Copyright (C) 2021 Siemens AG</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SPDX-License-Identifier: MIT</span>
 
 <span class="sd">Methods for downloading and validating dependencies</span>
 
@@ -2148,8 +2164,6 @@ Python runtime environment.</p>
 
     <span class="n">dependency_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
-    <span class="c1"># try the easy way</span>
-
     <span class="n">success</span> <span class="o">=</span> <span class="n">_download_only_wheels_if_possible</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span> <span class="n">python_version</span><span class="p">,</span> <span class="n">python_packages_folder</span><span class="p">,</span> <span class="n">pip_option_no_deps</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
@@ -2178,8 +2192,6 @@ Python runtime environment.</p>
 
     <span class="k">else</span><span class="p">:</span>
 
-        <span class="c1"># let&#39;s do this the hard way</span>
-
         <span class="k">try</span><span class="p">:</span>
 
             <span class="n">_compose_dependencies</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span> <span class="n">python_version</span><span class="p">,</span> <span class="n">python_packages_folder</span><span class="p">,</span>
@@ -2200,11 +2212,7 @@ Python runtime environment.</p>
 
             <span class="n">dependency_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">get_wheel_name_version</span><span class="p">(</span><span class="n">package</span><span class="p">))</span>
 
-        <span class="k">else</span><span class="p">:</span>
-
-            <span class="c1"># If the file is neither a wheel nor a source distribution, we skip it.</span>
-
-            <span class="k">pass</span>
+        <span class="c1"># If the file is neither a wheel nor a source distribution, we skip it.</span>
 
     <span class="k">return</span> <span class="n">dependency_set</span>
 </code></pre></div>
@@ -2423,8 +2431,6 @@ Python runtime environment.</p>
 
 <span class="w">    </span><span class="n">dependency_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1"># try the easy way</span>
-
 <span class="w">    </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_download_only_wheels_if_possible</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span><span class="w"> </span><span class="n">pip_option_no_deps</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">success</span><span class="p">:</span>
@@ -2453,8 +2459,6 @@ Python runtime environment.</p>
 
 <span class="w">    </span><span class="k">else</span><span class="p">:</span>
 
-<span class="w">        </span><span class="c1"># let&#39;s do this the hard way</span>
-
 <span class="w">        </span><span class="n">try</span><span class="p">:</span>
 
 <span class="w">            </span><span class="n">_compose_dependencies</span><span class="p">(</span><span class="n">requirements_file_path</span><span class="p">,</span><span class="w"> </span><span class="n">python_version</span><span class="p">,</span><span class="w"> </span><span class="n">python_packages_folder</span><span class="p">,</span>
@@ -2475,11 +2479,7 @@ Python runtime environment.</p>
 
 <span class="w">            </span><span class="n">dependency_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">get_wheel_name_version</span><span class="p">(</span><span class="n">package</span><span class="p">))</span>
 
-<span class="w">        </span><span class="k">else</span><span class="p">:</span>
-
-<span class="w">            </span><span class="c1"># If the file is neither a wheel nor a source distribution, we skip it.</span>
-
-<span class="w">            </span><span class="k">pass</span>
+<span class="w">        </span><span class="c1"># If the file is neither a wheel nor a source distribution, we skip it.</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dependency_set</span>
 </code></pre></div>
@@ -2966,7 +2966,7 @@ used in the source, and returns True if only the Python language was used.</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      MIT Licence. Siemens AG 2021-2025
+      Copyright (C) 2026 Siemens AG
     </div>
   
   
