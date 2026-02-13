@@ -4,6 +4,11 @@ SPDX-FileCopyrightText: 2025 Siemens AG
 SPDX-License-Identifier: MIT
 -->
 
+
+<img src="./documentation/assets/images/logo-siemens.png" style="width: 120px" />
+
+<br />
+
 # AI Software Development Kit
 
 AI Software Development Kit is a Python library that allows you to create, package, and test AI inference pipelines for the
