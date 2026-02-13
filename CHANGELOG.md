@@ -3,7 +3,6 @@ SPDX-FileCopyrightText: 2025 Siemens AG
 
 SPDX-License-Identifier: MIT
 -->
-
 # Version History
 
 AI Software Development Kit
@@ -18,6 +17,28 @@ Known issues:
 -   As no TensorFlow Lite 2.7.0 installer was published for Windows systems, you cannot use the local pipeline runner on Windows to execute the TensorFlow Lite based pipeline packages, like the one provided in the Image Classification project template.
 -   Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.
 -   Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected
+
+## 2.7.0
+
+New features:
+-   For GPU runtime components pipeline_config.yml contains warmup and optimization flags.
+-   Pipeline parameter types are extended with a new type `Secret`, which can be added to the pipeline with the `add_secret_parameter()` method.
+-   Code that deals with ImageSet payloads can be added to a component directory
+
+Fixed issues:
+
+-   Docker Image iai-sdk-python-runner is updated with Python 3.12
+-   Python 3.10.x ≤ 3.10.18 - Multiple Vulnerabilities - 3.10.19
+-   Python 3.11.x ≤ 3.11.13 - Multiple Vulnerabilities - 3.11.14
+-   onnx ≤ 1.18.0 - Remote Path Traversal Vulnerability - CVE-2025-51480
+-   pip ≤ 25.2 - Remote Symlink Traversal Vulnerability - CVE-2025-8869
+-   protobuf ≤ 6.31.1 - Remote Path Traversal Vulnerability - 6.32.0
+-   protobuf 4.x < 4.25.8, 5.x < 5.29.5, 6.x < 6.31.1 - Remote Denial of Service Vulnerability - GHSA-8qvm-5x2c-j2w7
+-   tensorflow ≤ 2.18.0 - Multiple Vulnerabilities - CVE-2025-55556, CVE-2025-55559
+-   OpenSSL 3.4.x ≤ 3.4.2 - Multiple Vulnerabilities - 3.4.3
+-   SQLite ≤ 3.50.1 - Remote Denial of Service Vulnerability - 3.50.2
+-   Fixed an issue with character encoding incompatibility in `PipelineRunnerReportWriter` on Windows.
+-   Fixed: Duplicated pipeline parameter names can not be added.
 
 ## 2.6.0
 
