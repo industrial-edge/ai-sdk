@@ -1,0 +1,17 @@
+  .md-annotation {
+    font-size: .6rem;
+    vertical-align: text-top;
+  }
+
+  .md-annotation__index {
+    animation: none!important;
+  }
+  
+  .md-tooltip, .md-tooltip2__inner {
+    background-color: var(--md-default-fg-color);
+    color: var(--md-default-bg-color);
+  }
+  
+  .md-tooltip--inline .md-tooltip__inner {
+    font-size: .6rem;
+  }
