@@ -1,7 +1,7 @@
 # Copyright Siemens AG 2023
 # SPDX-License-Identifier: MIT
 
-FROM cr.siemens.com/container-hardening-service/releases/detox-slim:25.08.00-bookworm
+FROM debian:bookworm-slim
 
 USER root
 

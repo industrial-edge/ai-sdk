@@ -18,6 +18,26 @@ Known issues:
 -   Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.
 -   Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected
 
+## 2.8.0
+
+New features:
+
+-   New connection type `Realtime_Information_Backbone` (RIB) is added to `ConnectionTypeAndPayloadFormat`.
+-   The `supported_types` array now contains the numpy types used by RIB connection.
+-   Types for pipeline variables now allow array size information in square brackets, such as `DoubleArray[30]`.
+-   Connections check for compatible pipeline variable types and topic-based pipeline parameter types. Creating a pipeline variable or topic-based pipeline parameter with a non-supported type throws a warning instead of an error. Pipeline packages with non-supported pipeline variables are still created.
+-   A pipeline with RIB connection logs error level messages (but still constructs the pipeline package) if the pipeline variable type is not supported. Array type pipeline variables must be provided with (non-zero) length.
+-   Pipeline report files and pipeline execution report files now contain error level log messages.
+-   RIB Cycle Time can be set for a pipeline.
+
+
+Fixed issues:
+
+-   onnx ≤ 1.18.0 - Remote Path Traversal Vulnerability - CVE-2025-51480
+-   urllib3 1.0.x < 2.6.0 - Multiple Remote Denial of Service Vulnerabilities - GHSA-gm62-xv2j-4w53, GHSA-2xpw-w6gg-jr37
+-   urllib3 1.22 < 2.6.3 - Remote Denial of Service Vulnerability - GHSA-38jv-5279-wg99
+-   pip ≤ 25.2 - Remote Symlink Traversal Vulnerability - CVE-2025-8869
+
 ## 2.7.0
 
 New features:
