@@ -1,0 +1,50 @@
+# ------------------------------------------------------------------
+# Build stage
+
+build_mkdocs_howto:
+  stage: build
+  variables:
+    EDIT_URI: edit/$CI_COMMIT_REF_NAME/docs # Edit Button on rendered sites will link to file and branch directly
+  script:
+    - poetry install --no-root
+    - poetry run mkdocs build -f tools/mkdocs/mkdocs_howto.yml --strict
+  artifacts:
+    paths:
+      - site/howto
+    expire_in: 1 week
+  tags:
+    - DOCKER
+
+review_app_howto: # Create a review environment (named after the current branch) and link to the latest job artifact
+  extends: .deploy_mkdocs_howto
+  script:
+    - env
+    - >-
+      if [ -d site/howto ]; then mkdir -p public/howto; cp -r site/howto/* public/howto/; else echo "ERROR: site/howto not found"; echo "Contents of site:"; ls -la site || true; exit 1; fi
+  dependencies:
+    - build_mkdocs_howto
+  environment:
+    name: review_howto/${CI_COMMIT_REF_NAME}
+    url: ${CI_JOB_URL}/artifacts/file/public/howto/index.html
+
+# ------------------------------------------------------------------
+# Deploy stage
+
+.deploy_mkdocs_howto: # Deploy the MkDocs site to GitLab Pages
+  variables:
+    # We only need the artifacts from the build_pages job -> no need to clone the repository
+    GIT_STRATEGY: none
+  image:
+    # We only need mv and env -> use distroless image to speed up the job
+    name: gcr.io/distroless/static-debian12:debug
+    entrypoint: [""]
+  stage: deploy
+  script:
+    - >-
+      if [ -d site/howto ]; then mkdir -p public/howto; cp -r site/howto/* public/howto/; else echo "ERROR: site/howto not found"; echo "Contents of site:"; ls -la site || true; exit 1; fi
+  dependencies:
+    - build_mkdocs_howto
+  artifacts:
+    paths:
+      - public
+    expire_in: 8h

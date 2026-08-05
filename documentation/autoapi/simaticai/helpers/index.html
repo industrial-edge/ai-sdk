@@ -12,7 +12,7 @@
         <link rel="prev" href="../deployment.html">
       
       
-        <link rel="next" href="model_config.html">
+        <link rel="next" href="check_gpu_availability.html">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -121,6 +121,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#simaticai.helpers.calc_sha" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -944,6 +949,29 @@
   
   
     <li class="md-nav__item">
+      <a href="check_gpu_availability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    check_gpu_availability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="model_config.html" class="md-nav__link">
         
   
@@ -1722,6 +1750,54 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        
+<li class="md-nav__item">
+  <a href="#simaticai.helpers.calc_sha" title="calc_sha" class="md-nav__link md-nav__link--primary">
+    calc_sha
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#simaticai.helpers.compare_versions" title="compare_versions" class="md-nav__link md-nav__link--primary">
+    compare_versions
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#simaticai.helpers.increment_version" title="increment_version" class="md-nav__link md-nav__link--primary">
+    increment_version
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#simaticai.helpers.timestamp_aiis_compatible" title="timestamp_aiis_compatible" class="md-nav__link md-nav__link--primary">
+    timestamp_aiis_compatible
+  </a>
+
+  
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1769,6 +1845,351 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="simaticai.helpers.calc_sha" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">calc_sha</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span></code>
+
+<a href="#simaticai.helpers.calc_sha" class="headerlink" title="Permanent link">#</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Calculate SHA256 hash of a file.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>file_path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="os.PathLike">PathLike</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path to the file to hash.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Hexadecimal string representation of the SHA256 hash.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>sdk/simaticai/helpers/__init__.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="16 "></span><span class="k">def</span><span class="w"> </span><span class="nf">calc_sha</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate SHA256 hash of a file.</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="20 "></span><span class="sd">        file_path: Path to the file to hash.</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="23 "></span><span class="sd">        Hexadecimal string representation of the SHA256 hash.</span>
+<span class="linenos" data-linenos="24 "></span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="25 "></span>    <span class="n">file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<span class="linenos" data-linenos="26 "></span>    <span class="n">data_buffer</span> <span class="o">=</span> <span class="nb">memoryview</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="mi">262144</span><span class="p">))</span>
+<span class="linenos" data-linenos="27 "></span>    <span class="n">sha_generator</span>  <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
+<span class="linenos" data-linenos="28 "></span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">,</span> <span class="n">buffering</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<span class="linenos" data-linenos="29 "></span>        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">file</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">data_buffer</span><span class="p">),</span> <span class="mi">0</span><span class="p">):</span>
+<span class="linenos" data-linenos="30 "></span>            <span class="n">sha_generator</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data_buffer</span><span class="p">[:</span><span class="n">n</span><span class="p">])</span>
+<span class="linenos" data-linenos="31 "></span>    <span class="k">return</span> <span class="n">sha_generator</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</code></pre></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="simaticai.helpers.compare_versions" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">compare_versions</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ignore_patch</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#simaticai.helpers.compare_versions" class="headerlink" title="Permanent link">#</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Compare two version strings.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>a</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>First version string (e.g., '1.2.3').</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>b</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Second version string (e.g., '1.2.4').</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Negative if a &lt; b, zero if a == b, positive if a &gt; b.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>sdk/simaticai/helpers/__init__.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="33 "></span><span class="k">def</span><span class="w"> </span><span class="nf">compare_versions</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ignore_patch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="linenos" data-linenos="34 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Compare two version strings.</span>
+<span class="linenos" data-linenos="35 "></span>
+<span class="linenos" data-linenos="36 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="37 "></span><span class="sd">        a: First version string (e.g., &#39;1.2.3&#39;).</span>
+<span class="linenos" data-linenos="38 "></span><span class="sd">        b: Second version string (e.g., &#39;1.2.4&#39;).</span>
+<span class="linenos" data-linenos="39 "></span>
+<span class="linenos" data-linenos="40 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="41 "></span><span class="sd">        Negative if a &lt; b, zero if a == b, positive if a &gt; b.</span>
+<span class="linenos" data-linenos="42 "></span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="43 "></span>    <span class="n">a</span> <span class="o">=</span>  <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^([0-9.]*).*$&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">1&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="44 "></span>    <span class="n">b</span> <span class="o">=</span>  <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^([0-9.]*).*$&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">1&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="45 "></span>    <span class="n">a_major</span><span class="p">,</span> <span class="n">a_minor</span><span class="p">,</span> <span class="n">a_patch</span><span class="p">,</span> <span class="o">*</span> <span class="n">_</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">...&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)]</span>
+<span class="linenos" data-linenos="46 "></span>    <span class="n">b_major</span><span class="p">,</span> <span class="n">b_minor</span><span class="p">,</span> <span class="n">b_patch</span><span class="p">,</span> <span class="o">*</span> <span class="n">_</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">...&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)]</span>
+<span class="linenos" data-linenos="47 "></span>    <span class="k">if</span> <span class="n">a_major</span> <span class="o">!=</span> <span class="n">b_major</span><span class="p">:</span>
+<span class="linenos" data-linenos="48 "></span>        <span class="k">return</span> <span class="n">a_major</span> <span class="o">-</span> <span class="n">b_major</span>
+<span class="linenos" data-linenos="49 "></span>    <span class="k">if</span> <span class="n">a_minor</span> <span class="o">!=</span> <span class="n">b_minor</span><span class="p">:</span>
+<span class="linenos" data-linenos="50 "></span>        <span class="k">return</span> <span class="n">a_minor</span> <span class="o">-</span> <span class="n">b_minor</span>
+<span class="linenos" data-linenos="51 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">ignore_patch</span><span class="p">:</span>
+<span class="linenos" data-linenos="52 "></span>        <span class="k">return</span> <span class="n">a_patch</span> <span class="o">-</span> <span class="n">b_patch</span>
+<span class="linenos" data-linenos="53 "></span>    <span class="k">return</span> <span class="mi">0</span>
+</code></pre></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="simaticai.helpers.increment_version" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">increment_version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span></code>
+
+<a href="#simaticai.helpers.increment_version" class="headerlink" title="Permanent link">#</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Increment the version number.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span> | <span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Version string (e.g., '1.2.3') or integer.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Version string with the last component incremented by 1.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>sdk/simaticai/helpers/__init__.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="55 "></span><span class="k">def</span><span class="w"> </span><span class="nf">increment_version</span><span class="p">(</span><span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos" data-linenos="56 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Increment the version number.</span>
+<span class="linenos" data-linenos="57 "></span>
+<span class="linenos" data-linenos="58 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="59 "></span><span class="sd">        version: Version string (e.g., &#39;1.2.3&#39;) or integer.</span>
+<span class="linenos" data-linenos="60 "></span>
+<span class="linenos" data-linenos="61 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="62 "></span><span class="sd">        Version string with the last component incremented by 1.</span>
+<span class="linenos" data-linenos="63 "></span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="64 "></span>    <span class="n">versions</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)]</span>
+<span class="linenos" data-linenos="65 "></span>    <span class="n">versions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="linenos" data-linenos="66 "></span>    <span class="k">return</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">versions</span><span class="p">)</span>
+</code></pre></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="simaticai.helpers.timestamp_aiis_compatible" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">timestamp_aiis_compatible</span><span class="p">()</span></code>
+
+<a href="#simaticai.helpers.timestamp_aiis_compatible" class="headerlink" title="Permanent link">#</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Generate current UTC timestamp in AIIS-compatible format.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>ISO 8601 formatted UTC timestamp string (YYYY-MM-DDTHH:MM:SSZ).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>sdk/simaticai/helpers/__init__.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="68 "></span><span class="k">def</span><span class="w"> </span><span class="nf">timestamp_aiis_compatible</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos" data-linenos="69 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate current UTC timestamp in AIIS-compatible format.</span>
+<span class="linenos" data-linenos="70 "></span>
+<span class="linenos" data-linenos="71 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="72 "></span><span class="sd">        ISO 8601 formatted UTC timestamp string (YYYY-MM-DDTHH:MM:SSZ).</span>
+<span class="linenos" data-linenos="73 "></span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="74 "></span>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%SZ&quot;</span><span class="p">))</span>
+</code></pre></div>
+            </details>
+    </div>
+
+</div>
 
 
 
@@ -1942,13 +2363,13 @@
         
         
           
-          <a href="model_config.html" class="md-footer__link md-footer__link--next" aria-label="Next: model_config">
+          <a href="check_gpu_availability.html" class="md-footer__link md-footer__link--next" aria-label="Next: check_gpu_availability">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                model_config
+                check_gpu_availability
               </div>
             </div>
             <div class="md-footer__button md-icon">

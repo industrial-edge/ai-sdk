@@ -1,0 +1,20 @@
+INHERIT: ../../mkdocs.yml
+
+site_name: AI SDK FAQ
+site_description: AI SDK FAQ
+site_author: mark.blundell.ext@siemens.com
+
+# Source repository
+repo_name: AI SDK FAQ
+repo_url: "https://code.siemens.com/siemens-ai-launcher-sail/ai-designer/aisdk-documentation"
+docs_dir: ../../FAQ/
+site_dir: ../../site/faq
+
+theme:
+  custom_dir: ../../theme
+
+nav:
+  - FAQ: topic/FAQ.md
+
+not_in_nav:
+  index.md

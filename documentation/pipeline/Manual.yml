@@ -1,0 +1,50 @@
+# ------------------------------------------------------------------
+# Build stage
+
+build_mkdocs_manual:
+  stage: build
+  variables:
+    EDIT_URI: edit/$CI_COMMIT_REF_NAME/docs # Edit Button on rendered sites will link to file and branch directly
+  script:
+    - poetry install --no-root
+    - poetry run mkdocs build -f tools/mkdocs/mkdocs_manual.yml --strict
+  artifacts:
+    paths:
+      - site/manual
+    expire_in: 1 week
+  tags:
+    - DOCKER
+
+review_app_manual: # Create a review environment (named after the current branch) and link to the latest job artifact
+  extends: .deploy_mkdocs_manual
+  script:
+    - env
+    - >-
+      if [ -d site/manual ]; then mkdir -p public/manual; cp -r site/manual/* public/manual/; else echo "ERROR: site/manual not found"; echo "Contents of site:"; ls -la site || true; exit 1; fi
+  dependencies:
+    - build_mkdocs_manual
+  environment:
+    name: review_manual/${CI_COMMIT_REF_NAME}
+    url: ${CI_JOB_URL}/artifacts/file/public/manual/index.html
+
+# ------------------------------------------------------------------
+# Deploy stage
+
+.deploy_mkdocs_manual: # Deploy the MkDocs site to GitLab Pages
+  variables:
+    # We only need the artifacts from the build_pages job -> no need to clone the repository
+    GIT_STRATEGY: none
+  image:
+    # We only need mv and env -> use distroless image to speed up the job
+    name: gcr.io/distroless/static-debian12:debug
+    entrypoint: [""]
+  stage: deploy
+  script:
+    - >-
+      if [ -d site/manual ]; then mkdir -p public/manual; cp -r site/manual/* public/manual/; else echo "ERROR: site/manual not found"; echo "Contents of site:"; ls -la site || true; exit 1; fi
+  dependencies:
+    - build_mkdocs_manual
+  artifacts:
+    paths:
+      - public/manual
+    expire_in: 8h

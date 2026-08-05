@@ -947,6 +947,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../helpers/check_gpu_availability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    check_gpu_availability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/model_config.html" class="md-nav__link">
         
   
@@ -2932,7 +2955,7 @@ SDK version, and consent method.</p>
 <span class="linenos" data-linenos="165 "></span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">consent_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="linenos" data-linenos="166 "></span>            <span class="c1"># writing YAML manually to keep the file format as intended</span>
 <span class="linenos" data-linenos="167 "></span>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CONSENT_KEY</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="s1">&#39;true&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">allow</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;false&#39;</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="linenos" data-linenos="168 "></span>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CONSENT_KEY_TS</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="168 "></span>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CONSENT_KEY_TS</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">timestamp_aiis_compatible</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="linenos" data-linenos="169 "></span>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CONSENT_KEY_SDK</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">version</span><span class="p">(</span><span class="s1">&#39;simaticai&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="linenos" data-linenos="170 "></span>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CONSENT_KEY_METHOD</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">_CONSENT_SOURCE</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="linenos" data-linenos="171 "></span>            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;information: |</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>

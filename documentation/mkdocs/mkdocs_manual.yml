@@ -1,0 +1,78 @@
+INHERIT: ../../mkdocs.yml
+
+site_name: AI SDK Manual
+site_description: AI SDK Manual
+site_author: mark.blundell.ext@siemens.com
+repo_name: AI SDK Manual
+repo_url: https://code.siemens.com/siemens-ai-launcher-sail/ai-designer/aisdk-documentation
+docs_dir: ../../Manual/
+site_dir: ../../site/manual
+
+theme:
+  custom_dir: ../../theme
+
+nav:
+- Legal information:
+  - Warning notice system: topic/legal-information/warning-notice-system.md
+  - Qualified Personnel: topic/legal-information/qualified-personnel.md
+  - Proper use of Siemens products: topic/legal-information/proper-use-of-siemens-products.md
+  - Trademarks: topic/legal-information/trademarks.md
+  - Disclaimer of Liability: topic/legal-information/disclaimer-of-liability.md
+- Version History:
+  - Version 2.7.0: topic/version-history/version-2_7_0.md
+  - Version 2.6.0: topic/version-history/version-2_6_0.md
+  - Version 2.5.0: topic/version-history/version-2_5_0.md
+  - Version 2.4.0: topic/version-history/version-2_4_0.md
+  - Version 2.2.0: topic/version-history/version-2_2_0.md
+  - Version 2.3.0: topic/version-history/version-2_3_0.md
+  - Version 2.1.0: topic/version-history/version-2_1_0.md
+  - Version 2.0.0: topic/version-history/version-2_0_0.md
+  - Version 1.6.0: topic/version-history/version-1_6_0.md
+  - Version 1.5.0: topic/version-history/version-1_5_0.md
+  - Version 1.4.0: topic/version-history/version-1_4_0.md
+  - Version 1.3.0: topic/version-history/version-1_3_0.md
+  - Version 1.2.0: topic/version-history/version-1_2_0.md
+  - Version 1.1.0: topic/version-history/version-1_1_0.md
+  - Version 1.0.0: topic/version-history/version-1_0_0.md
+- Introduction:
+  - Overview of Siemens Industrial Edge: topic/introduction/overview-of-siemens-industrial-edge.md
+  - Overview of Industrial AI@Edge: topic/introduction/overview-of-industrial-ai-at-edge.md
+  - Introduction to AI Software Development Kit: topic/introduction/introduction-to-ai-software-development-kit.md
+  - Information about the software license: topic/introduction/information-about-the-software-license.md
+  - Software and hardware restrictions: topic/introduction/software-and-hardware-restrictions.md
+- Safety notes:
+  - Security information: topic/safety-notes/security-information.md
+  - Note on use: topic/safety-notes/note-on-use.md
+  - Note regarding the general data protection regulation: topic/safety-notes/note-regarding-the-general-data-protection-regulation.md
+  - Note on Siemens Software Analytics: topic/safety-notes/note-on-siemens-software-analytics.md
+- Installing AI Software Development Kit:
+  - Installing AI Software Development Kit: topic/installing-ai-software-development-kit/installing-ai-sdk.md
+  - Using the AI SDK with End-to-End Tutorials: topic/installing-ai-software-development-kit/installing-ai-sdk-tutorials.md
+- Using the AI Software Development Kit:
+  - Training data preparation: topic/using-the-ai-software-development-kit/training-data-preparation.md
+  - Training models: topic/using-the-ai-software-development-kit/training-models.md
+  - Packaging models as an inference pipeline: topic/using-the-ai-software-development-kit/packaging-models-as-an-inference-pipeline.md
+  - SHA256 hash file: topic/using-the-ai-software-development-kit/sha256-hash-file.md
+  - Testing the pipeline configuration package locally: topic/using-the-ai-software-development-kit/testing-the-pipeline-configuration-package-locally.md
+  - Testing Your Pipeline in Docker: topic/using-the-ai-software-development-kit/testing-pipeline-in-docker.md
+  - Mocking the logger of the AI Inference Server: topic/using-the-ai-software-development-kit/mocking-the-logger-of-the-ai-inference-server.md
+  - Deploy the inference pipeline for AI Inference Server: topic/using-the-ai-software-development-kit/deploy-the-inference-pipeline-for-ai-inference-server.md
+  - Create a delta package and deploy it to AI@Edge: topic/using-the-ai-software-development-kit/create-a-delta-package-and-deploy-it-to-ai-at-edge.md
+- Guideline for writing pipeline components:
+  - Component definition: topic/guideline-for-writing-pipeline-components/component-definition.md
+  - The entrypoint: topic/guideline-for-writing-pipeline-components/the-entrypoint.md
+  - Input data: topic/guideline-for-writing-pipeline-components/input-data.md
+  - Processing data: topic/guideline-for-writing-pipeline-components/processing-data.md
+  - Garbage Collection in Python: topic/guideline-for-writing-pipeline-components/garbage-collection.md
+  - Python dependencies: topic/guideline-for-writing-pipeline-components/python-dependencies.md
+  - File resources: topic/guideline-for-writing-pipeline-components/file-resources.md
+  - Returning the result: topic/guideline-for-writing-pipeline-components/returning-the-result.md
+  - Pipeline Mapping Preconfiguration: topic/guideline-for-writing-pipeline-components/adding-custom-metrics.md
+  - Adding custom metrics: topic/guideline-for-writing-pipeline-components/mapping-preconfiguration.md
+  - Pipeline parameter handling: topic/guideline-for-writing-pipeline-components/pipeline-parameter-handling.md
+  - Use cases: topic/guideline-for-writing-pipeline-components/use-cases.md
+  - Examples: topic/guideline-for-writing-pipeline-components/examples.md
+  - Writing components for earlier versions of the AI Inference Server: topic/guideline-for-writing-pipeline-components/writing-components-for-earlier-versions-of-the-ai-inference-server.md
+
+not_in_nav:
+  index.md

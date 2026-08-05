@@ -123,7 +123,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#simaticai.packaging.constants.PACKAGE_SIZE_LIMIT" class="md-skip">
+        <a href="#simaticai.packaging.constants.MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION" class="md-skip">
           Skip to content
         </a>
       
@@ -947,6 +947,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../helpers/check_gpu_availability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    check_gpu_availability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/model_config.html" class="md-nav__link">
         
   
@@ -1183,6 +1206,26 @@
       
         
 <li class="md-nav__item">
+  <a href="#simaticai.packaging.constants.MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION" title="MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION" class="md-nav__link md-nav__link--primary">
+    MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#simaticai.packaging.constants.PACKAGE_SIZE_HARD_LIMIT" title="PACKAGE_SIZE_HARD_LIMIT" class="md-nav__link md-nav__link--primary">
+    PACKAGE_SIZE_HARD_LIMIT
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
   <a href="#simaticai.packaging.constants.PACKAGE_SIZE_LIMIT" title="PACKAGE_SIZE_LIMIT" class="md-nav__link md-nav__link--primary">
     PACKAGE_SIZE_LIMIT
   </a>
@@ -1195,6 +1238,16 @@
 <li class="md-nav__item">
   <a href="#simaticai.packaging.constants.PLATFORMS" title="PLATFORMS" class="md-nav__link md-nav__link--primary">
     PLATFORMS
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#simaticai.packaging.constants.SUPPORTED_TORCH_CUDA_DEPENDENCIES" title="SUPPORTED_TORCH_CUDA_DEPENDENCIES" class="md-nav__link md-nav__link--primary">
+    SUPPORTED_TORCH_CUDA_DEPENDENCIES
   </a>
 
   
@@ -1793,6 +1846,26 @@
       
         
 <li class="md-nav__item">
+  <a href="#simaticai.packaging.constants.MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION" title="MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION" class="md-nav__link md-nav__link--primary">
+    MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#simaticai.packaging.constants.PACKAGE_SIZE_HARD_LIMIT" title="PACKAGE_SIZE_HARD_LIMIT" class="md-nav__link md-nav__link--primary">
+    PACKAGE_SIZE_HARD_LIMIT
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
   <a href="#simaticai.packaging.constants.PACKAGE_SIZE_LIMIT" title="PACKAGE_SIZE_LIMIT" class="md-nav__link md-nav__link--primary">
     PACKAGE_SIZE_LIMIT
   </a>
@@ -1805,6 +1878,16 @@
 <li class="md-nav__item">
   <a href="#simaticai.packaging.constants.PLATFORMS" title="PLATFORMS" class="md-nav__link md-nav__link--primary">
     PLATFORMS
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#simaticai.packaging.constants.SUPPORTED_TORCH_CUDA_DEPENDENCIES" title="SUPPORTED_TORCH_CUDA_DEPENDENCIES" class="md-nav__link md-nav__link--primary">
+    SUPPORTED_TORCH_CUDA_DEPENDENCIES
   </a>
 
   
@@ -1861,6 +1944,50 @@
 
 
 
+<h2 id="simaticai.packaging.constants.MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION</span> <span class="o">=</span> <span class="s1">&#39;2.15.0&#39;</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#simaticai.packaging.constants.MINIMUM_SUPPORTED_TENSORFLOW_AND_CUDA_VERSION" class="headerlink" title="Permanent link">#</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Minimum version of TensorFlow with CUDA support that is compatible with AI Inference Server.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="simaticai.packaging.constants.PACKAGE_SIZE_HARD_LIMIT" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">PACKAGE_SIZE_HARD_LIMIT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">20.0</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#simaticai.packaging.constants.PACKAGE_SIZE_HARD_LIMIT" class="headerlink" title="Permanent link">#</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Triggers error if the zipped pipeline package size exceeds this limit (20 GB), leading to failed pipeline construction.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
 <h2 id="simaticai.packaging.constants.PACKAGE_SIZE_LIMIT" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">PACKAGE_SIZE_LIMIT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">2.2</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span></code>
 
@@ -1873,7 +2000,7 @@
 
     <div class="doc doc-contents ">
 
-        <p>Maximum size of zipped pipeline package is limited to 2.2 GB.</p>
+        <p>Triggers warning if the zipped pipeline package size exceeds this limit (2.2 GB), but the pipeline can still be constructed.</p>
 
     </div>
 
@@ -1896,6 +2023,28 @@
     <div class="doc doc-contents ">
 
         <p>List of platform tags supported by AI Inference Server.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="simaticai.packaging.constants.SUPPORTED_TORCH_CUDA_DEPENDENCIES" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">SUPPORTED_TORCH_CUDA_DEPENDENCIES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;12.x&#39;</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#simaticai.packaging.constants.SUPPORTED_TORCH_CUDA_DEPENDENCIES" class="headerlink" title="Permanent link">#</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>List of PyTorch CUDA versions supported by AI Inference Server.</p>
 
     </div>
 

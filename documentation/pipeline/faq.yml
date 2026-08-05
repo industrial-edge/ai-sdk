@@ -1,0 +1,50 @@
+# ------------------------------------------------------------------
+# Build stage
+
+build_mkdocs_faq:
+  stage: build
+  variables:
+    EDIT_URI: edit/$CI_COMMIT_REF_NAME/docs # Edit Button on rendered sites will link to file and branch directly
+  script:
+    - poetry install --no-root
+    - poetry run mkdocs build -f tools/mkdocs/mkdocs_faq.yml --strict
+  artifacts:
+    paths:
+      - site/faq
+    expire_in: 1 week
+  tags:
+    - DOCKER
+
+review_app_faq: # Create a review environment (named after the current branch) and link to the latest job artifact
+  extends: .deploy_mkdocs_faq
+  script:
+    - env
+    - >-
+      if [ -d site/faq ]; then mkdir -p public/faq; cp -r site/faq/* public/faq/; else echo "ERROR: site/faq not found"; echo "Contents of site:"; ls -la site || true; exit 1; fi
+  dependencies:
+    - build_mkdocs_faq
+  environment:
+    name: review_faq/${CI_COMMIT_REF_NAME}
+    url: ${CI_JOB_URL}/artifacts/file/public/faq/index.html
+
+# ------------------------------------------------------------------
+# Deploy stage
+
+.deploy_mkdocs_faq: # Deploy the MkDocs site to GitLab Pages
+  variables:
+    # We only need the artifacts from the build_pages job -> no need to clone the repository
+    GIT_STRATEGY: none
+  image:
+    # We only need mv and env -> use distroless image to speed up the job
+    name: gcr.io/distroless/static-debian12:debug
+    entrypoint: [""]
+  stage: deploy
+  script:
+    - >-
+      if [ -d site/faq ]; then mkdir -p public/faq; cp -r site/faq/* public/faq/; else echo "ERROR: site/faq not found"; echo "Contents of site:"; ls -la site || true; exit 1; fi
+  dependencies:
+    - build_mkdocs_faq
+  artifacts:
+    paths:
+      - public
+    expire_in: 8h

@@ -1013,6 +1013,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../helpers/check_gpu_availability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    check_gpu_availability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/model_config.html" class="md-nav__link">
         
   
@@ -1913,46 +1936,48 @@
 <span class="linenos" data-linenos="35 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">init_version</span> <span class="o">=</span> <span class="n">version</span>  <span class="c1"># initial version; used when version is not set in Pipeline.export() and save()</span>
 <span class="linenos" data-linenos="36 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">save_version</span> <span class="o">=</span> <span class="n">version</span>  <span class="c1"># contains the version determined at exporting/saving</span>
 <span class="linenos" data-linenos="37 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">package_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="38 "></span>
-<span class="linenos" data-linenos="39 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;AI SDK&#39;</span>
+<span class="linenos" data-linenos="38 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">package_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;full&quot;</span>  <span class="c1"># &quot;full&quot; or &quot;delta&quot;</span>
+<span class="linenos" data-linenos="39 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">origin_version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># version of the full package for delta packages</span>
 <span class="linenos" data-linenos="40 "></span>
-<span class="linenos" data-linenos="41 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="linenos" data-linenos="42 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">wiring</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="linenos" data-linenos="43 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineParameter</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos" data-linenos="44 "></span>
-<span class="linenos" data-linenos="45 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="46 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">timeshift_reference</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos" data-linenos="47 "></span>
-<span class="linenos" data-linenos="48 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos" data-linenos="49 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos" data-linenos="50 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
-<span class="linenos" data-linenos="51 "></span>
-<span class="linenos" data-linenos="52 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">rib_cycle_time</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># RIB cycle time in microseconds (usec)</span>
+<span class="linenos" data-linenos="41 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;AI SDK&#39;</span>
+<span class="linenos" data-linenos="42 "></span>
+<span class="linenos" data-linenos="43 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="44 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">wiring</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="45 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineParameter</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos" data-linenos="46 "></span>
+<span class="linenos" data-linenos="47 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="48 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">timeshift_reference</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos" data-linenos="49 "></span>
+<span class="linenos" data-linenos="50 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos" data-linenos="51 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos" data-linenos="52 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
 <span class="linenos" data-linenos="53 "></span>
-<span class="linenos" data-linenos="54 "></span>    <span class="c1"># Helper method returns index or None if the pipeline inputs/outputs contain the given variable</span>
-<span class="linenos" data-linenos="55 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_io_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">io_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">],</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="linenos" data-linenos="56 "></span>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">io</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">io_list</span><span class="p">):</span>
-<span class="linenos" data-linenos="57 "></span>            <span class="k">if</span> <span class="n">io</span><span class="o">.</span><span class="n">variableName</span> <span class="o">==</span> <span class="n">variable</span><span class="p">:</span>
-<span class="linenos" data-linenos="58 "></span>                <span class="k">return</span> <span class="n">i</span>
-<span class="linenos" data-linenos="59 "></span>        <span class="k">return</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="60 "></span>
-<span class="linenos" data-linenos="61 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_io_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]:</span>
-<span class="linenos" data-linenos="62 "></span>        <span class="k">for</span> <span class="n">io</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
-<span class="linenos" data-linenos="63 "></span>            <span class="k">if</span> <span class="n">io</span><span class="o">.</span><span class="n">variableName</span> <span class="o">==</span> <span class="n">variable_name</span><span class="p">:</span>
-<span class="linenos" data-linenos="64 "></span>                <span class="k">return</span> <span class="n">io</span>
-<span class="linenos" data-linenos="65 "></span>        <span class="k">return</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="66 "></span>
-<span class="linenos" data-linenos="67 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PipelineParameter</span><span class="p">]:</span>
-<span class="linenos" data-linenos="68 "></span>        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
-<span class="linenos" data-linenos="69 "></span>            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">parameter_name</span><span class="p">:</span>
-<span class="linenos" data-linenos="70 "></span>                <span class="k">return</span> <span class="n">param</span>
-<span class="linenos" data-linenos="71 "></span>        <span class="k">return</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="72 "></span>
-<span class="linenos" data-linenos="73 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_parameter_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="linenos" data-linenos="74 "></span>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">):</span>
-<span class="linenos" data-linenos="75 "></span>            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">parameter_name</span><span class="p">:</span>
-<span class="linenos" data-linenos="76 "></span>                <span class="k">return</span> <span class="n">i</span>
-<span class="linenos" data-linenos="77 "></span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="54 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">rib_cycle_time</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># RIB cycle time in microseconds (usec)</span>
+<span class="linenos" data-linenos="55 "></span>
+<span class="linenos" data-linenos="56 "></span>    <span class="c1"># Helper method returns index or None if the pipeline inputs/outputs contain the given variable</span>
+<span class="linenos" data-linenos="57 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_io_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">io_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">],</span> <span class="n">variable</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="linenos" data-linenos="58 "></span>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">io</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">io_list</span><span class="p">):</span>
+<span class="linenos" data-linenos="59 "></span>            <span class="k">if</span> <span class="n">io</span><span class="o">.</span><span class="n">variableName</span> <span class="o">==</span> <span class="n">variable</span><span class="p">:</span>
+<span class="linenos" data-linenos="60 "></span>                <span class="k">return</span> <span class="n">i</span>
+<span class="linenos" data-linenos="61 "></span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="62 "></span>
+<span class="linenos" data-linenos="63 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_io_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]:</span>
+<span class="linenos" data-linenos="64 "></span>        <span class="k">for</span> <span class="n">io</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+<span class="linenos" data-linenos="65 "></span>            <span class="k">if</span> <span class="n">io</span><span class="o">.</span><span class="n">variableName</span> <span class="o">==</span> <span class="n">variable_name</span><span class="p">:</span>
+<span class="linenos" data-linenos="66 "></span>                <span class="k">return</span> <span class="n">io</span>
+<span class="linenos" data-linenos="67 "></span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="68 "></span>
+<span class="linenos" data-linenos="69 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PipelineParameter</span><span class="p">]:</span>
+<span class="linenos" data-linenos="70 "></span>        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+<span class="linenos" data-linenos="71 "></span>            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">parameter_name</span><span class="p">:</span>
+<span class="linenos" data-linenos="72 "></span>                <span class="k">return</span> <span class="n">param</span>
+<span class="linenos" data-linenos="73 "></span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="74 "></span>
+<span class="linenos" data-linenos="75 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_parameter_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="linenos" data-linenos="76 "></span>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">):</span>
+<span class="linenos" data-linenos="77 "></span>            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">parameter_name</span><span class="p">:</span>
+<span class="linenos" data-linenos="78 "></span>                <span class="k">return</span> <span class="n">i</span>
+<span class="linenos" data-linenos="79 "></span>        <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div>
               </details>
 
@@ -2067,21 +2092,23 @@ The name and version will define together the name of the zip file when the pack
 <span class="linenos" data-linenos="35 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">init_version</span> <span class="o">=</span> <span class="n">version</span>  <span class="c1"># initial version; used when version is not set in Pipeline.export() and save()</span>
 <span class="linenos" data-linenos="36 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">save_version</span> <span class="o">=</span> <span class="n">version</span>  <span class="c1"># contains the version determined at exporting/saving</span>
 <span class="linenos" data-linenos="37 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">package_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="38 "></span>
-<span class="linenos" data-linenos="39 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;AI SDK&#39;</span>
+<span class="linenos" data-linenos="38 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">package_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;full&quot;</span>  <span class="c1"># &quot;full&quot; or &quot;delta&quot;</span>
+<span class="linenos" data-linenos="39 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">origin_version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># version of the full package for delta packages</span>
 <span class="linenos" data-linenos="40 "></span>
-<span class="linenos" data-linenos="41 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="linenos" data-linenos="42 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">wiring</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="linenos" data-linenos="43 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineParameter</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos" data-linenos="44 "></span>
-<span class="linenos" data-linenos="45 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="linenos" data-linenos="46 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">timeshift_reference</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos" data-linenos="47 "></span>
-<span class="linenos" data-linenos="48 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos" data-linenos="49 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="linenos" data-linenos="50 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
-<span class="linenos" data-linenos="51 "></span>
-<span class="linenos" data-linenos="52 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">rib_cycle_time</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># RIB cycle time in microseconds (usec)</span>
+<span class="linenos" data-linenos="41 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="s1">&#39;AI SDK&#39;</span>
+<span class="linenos" data-linenos="42 "></span>
+<span class="linenos" data-linenos="43 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="44 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">wiring</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos" data-linenos="45 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineParameter</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos" data-linenos="46 "></span>
+<span class="linenos" data-linenos="47 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="linenos" data-linenos="48 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">timeshift_reference</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos" data-linenos="49 "></span>
+<span class="linenos" data-linenos="50 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos" data-linenos="51 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PipelineVariable</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos" data-linenos="52 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">log_level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+<span class="linenos" data-linenos="53 "></span>
+<span class="linenos" data-linenos="54 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">rib_cycle_time</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># RIB cycle time in microseconds (usec)</span>
 </code></pre></div>
             </details>
     </div>
