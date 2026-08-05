@@ -1,0 +1,68 @@
+variables:
+    TARGET_LANG: 'de-DE'
+    MULTI_LANG: "false"     # Need for the unpack_pkg function as parameter, because single lang handling is default
+    SOURCE_DOCS: "Manual"
+    FT_METADATA_FILE : "tools/ft/manual/metadata.yml"
+    MKDOCS_YAML: "tools/mkdocs/mkdocs_manual.yml"
+
+include:
+  - project: "docs-as-code-hub/pipelinetools/extern_service"
+    file: "public_jobs/base.yml"
+
+build_tr_de:
+  extends: .build_tr_pkg
+  needs:
+    - job: "build_mkdocs_manual"  # Ensure mkdocs build is completed before translation package creation
+  rules:
+    - if: '$CI_COMMIT_TAG'
+
+send_tr_de:
+  extends: .send_tr_pkg
+  dependencies:
+    - "build_tr_de"
+  needs:
+    - job: "build_tr_de"
+  rules:
+    - if: '$CI_COMMIT_TAG'
+
+receive_tr_de:
+  extends: .received_tr_pkg
+  dependencies:
+    - "send_tr_de"
+  needs:
+    - job: "send_tr_de"
+  rules:
+    - if: '$CI_COMMIT_TAG'
+
+unpack_tr_de:
+  variables:
+    TARGET_LANG: 'de-DE'
+    MULTI_LANG: "false"     # Need for the unpack_pkg function as parameter, because single lang handling is default
+  extends: .unpack_tr_pkg
+  dependencies:
+    - "receive_tr_de"
+  needs:
+    - job: "receive_tr_de"
+  rules:
+    - if: '$CI_COMMIT_TAG'
+
+
+# manual_publish_fluid_staging_de:
+#   extends: .manual_01_ft-staging
+#   variables:
+#     TARGET_LANG: $TARGET_LANG
+#     FT_PUBLISH_STATE: "staging"
+#   dependencies:
+#     - "unpack_tr_de"
+#   needs:
+#     - job: "unpack_tr_de"
+
+# manual_publish_fluid_production_de:
+#   extends: .manual_02_ft-prod
+#   variables:
+#     TARGET_LANG: $TARGET_LANG
+#     FT_PUBLISH_STATE: "prod"
+#   dependencies:
+#     - "unpack_tr_de"
+#   needs:
+#     - job: "unpack_tr_de"

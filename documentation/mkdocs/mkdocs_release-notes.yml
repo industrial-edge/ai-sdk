@@ -1,0 +1,43 @@
+INHERIT: ../../mkdocs.yml
+
+site_name: AI SDK Release Notes
+site_description: AI SDK Release Notes
+site_author: mark.blundell.ext@siemens.com
+
+repo_name: AI SDK Release Notes
+repo_url: https://code.siemens.com/siemens-ai-launcher-sail/ai-designer/aisdk-documentation
+docs_dir: "../../Release Notes/"
+site_dir: ../../site/release-notes
+
+theme:
+  custom_dir: ../../theme
+  
+nav:
+- Versions:
+  - v2.7.0 - 2025.12.15: topic/versions/v2_7_0---2025_12_15.md
+  - v2.6.0 - 2025.09.18: topic/versions/v2_6_0---2025_09_18.md
+  - v2.5.1 - 2025.08.27: topic/versions/v2_5_1---2025_08_27.md
+  - v2.5.0 - 2025.06.24: topic/versions/v2_5_0---2025_06_24.md
+  - v2.4.0 - 2025.04.30: topic/versions/v2_4_0---2025_04_30.md
+  - v2.3.0 - 2025.01.31: topic/versions/v2_3_0---2025_01_31.md
+  - v2.2.0 - 2024.10.31: topic/versions/v2_2_0---2024_10_31.md
+  - v2.1.0 - 2024.09.01: topic/versions/v2_1_0---2024_09_01.md
+  - v2.0.0 - 2023.12.31: topic/versions/v2_0_0---2023_12_31.md
+  - v1.6.0 - 2023.12.31: topic/versions/v1_6_0---2023_12_31.md
+  - 1.5.0 - 2023.11.15: topic/versions/1_5_0---2023_11_15.md
+  - 1.4.1 - 2023.05.05: topic/versions/1_4_1---2023_05_05.md
+  - 1.3.0 - 2023.01.24: topic/versions/1_3_0---2023_01_24.md
+  - 1.2.0 - 2022.10.17: topic/versions/1_2_0---2022_10_17.md
+  - 1.1.0 - 2022.07: topic/versions/1_1_0---2022_07.md
+  - 1.0.0 - 2022.04.21: topic/versions/1_0_0---2022_04_21.md
+- System Requirements:
+  - System Requirements: topic/system-requirements/system-requirements.md
+- Limitations and known issues:
+  - Limitations And Known Issues: topic/limitations-and-known-issues/limitations-and-known-issues.md
+- Open-Source Components Notes:
+  - Open Source Components Notes: topic/open-source-components-notes/open-source-components-notes.md
+- Known vulnerabilities in open-source components:
+  - Known Vulnerabilities In Open Source Components: topic/known-vulnerabilities-in-open-source-components/known-vulnerabilities-in-open-source-components.md
+
+not_in_nav:
+  index.md

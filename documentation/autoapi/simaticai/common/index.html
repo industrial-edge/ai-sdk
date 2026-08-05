@@ -122,11 +122,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#simaticai.common--this-copies-imagesetpy-and-updates-requirementstxt-with-necessary-dependencies" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -949,6 +944,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../helpers/check_gpu_availability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    check_gpu_availability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/model_config.html" class="md-nav__link">
         
   
@@ -1727,24 +1745,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        
-<li class="md-nav__item">
-  <a href="#simaticai.common--this-copies-imagesetpy-and-updates-requirementstxt-with-necessary-dependencies" title="This copies imageset.py and updates requirements.txt with necessary dependencies" class="md-nav__link md-nav__link--primary">
-    This copies imageset.py and updates requirements.txt with necessary dependencies
-  </a>
-
-  
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1777,75 +1777,34 @@ dependency management, and automatic requirements.txt updates.</p>
 <p>The module maintains a registry of available resources with their file paths and
 dependencies, allowing users to easily integrate common SDK utilities into their
 pipeline components.</p>
-
-
-<details class="key-features" open>
-  <summary>Key Features</summary>
-  <ul>
+<p><strong>Key Features:</strong></p>
+<ul>
 <li>Resource registry management</li>
 <li>Automatic dependency resolution</li>
 <li>Resource file copying to target directories</li>
 <li>Automatic update of requirements.txt file</li>
 <li>Built-in support for ImageSet resource</li>
 </ul>
-</details>
-
-<details class="available-resources" open>
-  <summary>Available Resources</summary>
-  <ul>
+<p><strong>Available Resources:</strong></p>
+<ul>
 <li>ImageSet: Provides image dataset handling utilities with OpenCV dependencies</li>
 </ul>
-</details>
-
-<details class="example-usage" open>
-  <summary>Example Usage</summary>
-  <blockquote>
-<blockquote>
-<blockquote>
-<p>from simaticai.common.resources import copy_resource_to
-copy_resource_to("ImageSet", "my_component_source_dir")</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h2 id="simaticai.common--this-copies-imagesetpy-and-updates-requirementstxt-with-necessary-dependencies">This copies imageset.py and updates requirements.txt with necessary dependencies<a class="headerlink" href="#simaticai.common--this-copies-imagesetpy-and-updates-requirementstxt-with-necessary-dependencies" title="Permanent link">#</a></h2>
-</details>
-
-<p><span class="doc-section-title">Functions:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-            <tr class="doc-section-item">
-              <td><code><span title="simaticai.common.- get_resource">- get_resource</span></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Retrieves information about a specific SDK resource</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><span title="simaticai.common.- copy_resource_to">- copy_resource_to</span></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Copies a resource file to a component directory with dependencies</p>
-                </div>
-              </td>
-            </tr>
-      </tbody>
-    </table>
-
-
-<details class="constants" open>
-  <summary>Constants</summary>
-  <ul>
+<p>Example Usage:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">simaticai.common.resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy_resource_to</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">copy_resource_to</span><span class="p">(</span><span class="s2">&quot;ImageSet&quot;</span><span class="p">,</span> <span class="s2">&quot;my_component_source_dir&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># This copies imageset.py and updates requirements.txt with necessary dependencies</span>
+</code></pre></div>
+<p><strong>Functions:</strong></p>
+<ul>
+<li>get_resource: Retrieves information about a specific SDK resource</li>
+<li>copy_resource_to: Copies a resource file to a component directory with dependencies</li>
+</ul>
+<p><strong>Constants:</strong></p>
+<ul>
 <li>SIMATICAI_RESOURCE_KEYS: List of available resource names</li>
 <li>SIMATICAI_RESOURCES: Registry dictionary of all built-in resources</li>
 </ul>
-</details>
+
 
 
 

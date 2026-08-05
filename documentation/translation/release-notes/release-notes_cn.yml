@@ -1,0 +1,68 @@
+variables:
+    TARGET_LANG: 'zh-CN'
+    MULTI_LANG: "false"     # Need for the unpack_pkg function as parameter, because single lang handling is default
+    SOURCE_DOCS: "Release Notes"
+    FT_METADATA_FILE : "tools/ft/release-notes/metadata.yml"
+    MKDOCS_YAML: "tools/mkdocs/mkdocs_release-notes.yml"
+
+include:
+  - project: "docs-as-code-hub/pipelinetools/extern_service"
+    file: "public_jobs/base.yml"
+
+build_tr_cn:
+  extends: .build_tr_pkg
+  needs:
+    - job: "build_mkdocs_release-notes"  # Ensure mkdocs build is completed before translation package creation
+  rules:
+    - if: '$CI_COMMIT_TAG'
+
+send_tr_cn:
+  extends: .send_tr_pkg
+  dependencies:
+    - "build_tr_cn"
+  needs:
+    - job: "build_tr_cn"
+  rules:
+    - if: '$CI_COMMIT_TAG'
+
+receive_tr_cn:
+  extends: .received_tr_pkg
+  dependencies:
+    - "send_tr_cn"
+  needs:
+    - job: "send_tr_cn"
+  rules:
+    - if: '$CI_COMMIT_TAG'
+
+unpack_tr_cn:
+  variables:
+    TARGET_LANG: 'zh-CN'
+    MULTI_LANG: "false"     # Need for the unpack_pkg function as parameter, because single lang handling is default
+  extends: .unpack_tr_pkg
+  dependencies:
+    - "receive_tr_cn"
+  needs:
+    - job: "receive_tr_cn"
+  rules:
+    - if: '$CI_COMMIT_TAG'
+
+
+# release-notes_publish_fluid_staging_cn:
+#   extends: .release-notes_01_ft-staging
+#   variables:
+#     TARGET_LANG: $TARGET_LANG
+#     FT_PUBLISH_STATE: "staging"
+#   dependencies:
+#     - "unpack_tr_cn"
+#   needs:
+#     - job: "unpack_tr_cn"
+
+# release-notes_publish_fluid_production_cn:
+#   extends: .release-notes_02_ft-prod
+#   variables:
+#     TARGET_LANG: $TARGET_LANG
+#     FT_PUBLISH_STATE: "prod"
+#   dependencies:
+#     - "unpack_tr_cn"
+#   needs:
+#     - job: "unpack_tr_cn"

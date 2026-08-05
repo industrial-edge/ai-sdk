@@ -1,0 +1,25 @@
+# Metadata for AI Software Development Kit
+ft_metadata:
+  ft:title: "AI SDK FAQ"
+  ft:originId: AI_SDK_FAQ_0126_enUS
+  ft:clusterId: AI_SDK_FAQ
+  ft:locale: "en-US"
+  Language: "English"
+  KeyWords: ["Industrial AI", "Software Development Kit", "SDK", "AI SDK"]
+  Party: "Siemens Aktiengesellschaft"
+  RelatedDocs: "AI_SDK_0126_en-US"
+  SoftwareVersion: "v2.7"
+  iirds:DocumentType: "Manual" #Select the type of the document, delete the others
+  LifeCycleStatus: "Managed" #Select the lifecycle status of the document, delete the others.
+  platform: "IndustrialOperationsX" # Brandportal platform - do not change.
+  portfolio: "Industrial AI" #Landing page - do not change
+  ProductGroup: "Industrial Edge"
+  Product: "AI Software Development Kit" #Enter the product name
+  PublicationDate: "01/2026" #Enter the publication date (edition) in format MM/YYYY
+  PublicationState: "Public" #Select the publication status
+#  A5E: "A5E53435000-AH"  #Enter the A5E number for document versioning in Teamcenter
+  Description: "The AI Software Development Kit, or AI SDK for short, is an essential part of Siemens' Industrial Edge ecosystem. It is a set of Python libraries that provide building blocks for automating the creation, packaging, and testing of inference pipelines for the AI Inference Server."
+
+# metadata options
+ft_options:
+  nav_mapping: first_heading_as_page_on_same_title #this helps that the headers are not stated several times in FT

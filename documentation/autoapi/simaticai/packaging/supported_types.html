@@ -947,6 +947,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../helpers/check_gpu_availability.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    check_gpu_availability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../helpers/model_config.html" class="md-nav__link">
         
   
@@ -1251,6 +1274,16 @@
 <li class="md-nav__item">
   <a href="#simaticai.packaging.supported_types.type_validation_flags" title="type_validation_flags" class="md-nav__link md-nav__link--primary">
     type_validation_flags
+  </a>
+
+  
+  
+</li>
+      
+        
+<li class="md-nav__item">
+  <a href="#simaticai.packaging.supported_types.validate_types" title="validate_types" class="md-nav__link md-nav__link--primary">
+    validate_types
   </a>
 
   
@@ -1831,6 +1864,16 @@
   
 </li>
       
+        
+<li class="md-nav__item">
+  <a href="#simaticai.packaging.supported_types.validate_types" title="validate_types" class="md-nav__link md-nav__link--primary">
+    validate_types
+  </a>
+
+  
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1938,27 +1981,27 @@ Attributes:
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>sdk/simaticai/packaging/supported_types.py</code></summary>
-                <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="33 "></span><span class="k">class</span><span class="w"> </span><span class="nc">TypeValidationFlags</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<span class="linenos" data-linenos="34 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="35 "></span><span class="sd">    Enumeration of type validation flags for supported types.</span>
-<span class="linenos" data-linenos="36 "></span><span class="sd">    This enum defines various validation error conditions that can occur when</span>
-<span class="linenos" data-linenos="37 "></span><span class="sd">    validating type definitions of pipeline inputs, outputs, variables and parameters.</span>
-<span class="linenos" data-linenos="38 "></span><span class="sd">    Each flag represents a specific validation issue related to type definitions and array handling.</span>
-<span class="linenos" data-linenos="39 "></span><span class="sd">    Attributes:</span>
-<span class="linenos" data-linenos="40 "></span><span class="sd">        INVALID_TYPE (str): Indicates that the provided type has an invalid syntax.</span>
-<span class="linenos" data-linenos="41 "></span><span class="sd">        UNSUPPORTED_TYPE (str): Indicates that the type is valid in syntax but not among the list of supported types.</span>
-<span class="linenos" data-linenos="42 "></span><span class="sd">        ARRAY_WITH_MISSING_SIZE (str): Indicates that the type is defined as an array, but the size is not specified.</span>
-<span class="linenos" data-linenos="43 "></span><span class="sd">        ARRAY_WITH_INVALID_SIZE (str): Indicates that the type is defined as an array, but the size is invalid.</span>
-<span class="linenos" data-linenos="44 "></span><span class="sd">        ARRAY_WITH_MULTI_DIMENSIONS (str): Indicates that the type is defined as a multi-dimensional array.</span>
-<span class="linenos" data-linenos="45 "></span><span class="sd">        NON_ARRAY_TYPE_WITH_SIZE (str): Indicates that the type is not defined as an array, but a size is specified.</span>
-<span class="linenos" data-linenos="46 "></span><span class="sd">    &quot;&quot;&quot;</span>
-<span class="linenos" data-linenos="47 "></span>
-<span class="linenos" data-linenos="48 "></span>    <span class="n">INVALID_TYPE</span> <span class="o">=</span> <span class="s2">&quot;Invalid type&quot;</span>
-<span class="linenos" data-linenos="49 "></span>    <span class="n">UNSUPPORTED_TYPE</span> <span class="o">=</span> <span class="s2">&quot;Unsupported type&quot;</span>
-<span class="linenos" data-linenos="50 "></span>    <span class="n">ARRAY_WITH_MISSING_SIZE</span> <span class="o">=</span> <span class="s2">&quot;Array with missing size&quot;</span>
-<span class="linenos" data-linenos="51 "></span>    <span class="n">ARRAY_WITH_INVALID_SIZE</span> <span class="o">=</span> <span class="s2">&quot;Array with invalid size&quot;</span>
-<span class="linenos" data-linenos="52 "></span>    <span class="n">ARRAY_WITH_MULTI_DIMENSIONS</span> <span class="o">=</span> <span class="s2">&quot;Array with multiple dimensions&quot;</span>
-<span class="linenos" data-linenos="53 "></span>    <span class="n">NON_ARRAY_TYPE_WITH_SIZE</span> <span class="o">=</span> <span class="s2">&quot;Non-array type with size&quot;</span>
+                <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="35 "></span><span class="k">class</span><span class="w"> </span><span class="nc">TypeValidationFlags</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="linenos" data-linenos="36 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="37 "></span><span class="sd">    Enumeration of type validation flags for supported types.</span>
+<span class="linenos" data-linenos="38 "></span><span class="sd">    This enum defines various validation error conditions that can occur when</span>
+<span class="linenos" data-linenos="39 "></span><span class="sd">    validating type definitions of pipeline inputs, outputs, variables and parameters.</span>
+<span class="linenos" data-linenos="40 "></span><span class="sd">    Each flag represents a specific validation issue related to type definitions and array handling.</span>
+<span class="linenos" data-linenos="41 "></span><span class="sd">    Attributes:</span>
+<span class="linenos" data-linenos="42 "></span><span class="sd">        INVALID_TYPE (str): Indicates that the provided type has an invalid syntax.</span>
+<span class="linenos" data-linenos="43 "></span><span class="sd">        UNSUPPORTED_TYPE (str): Indicates that the type is valid in syntax but not among the list of supported types.</span>
+<span class="linenos" data-linenos="44 "></span><span class="sd">        ARRAY_WITH_MISSING_SIZE (str): Indicates that the type is defined as an array, but the size is not specified.</span>
+<span class="linenos" data-linenos="45 "></span><span class="sd">        ARRAY_WITH_INVALID_SIZE (str): Indicates that the type is defined as an array, but the size is invalid.</span>
+<span class="linenos" data-linenos="46 "></span><span class="sd">        ARRAY_WITH_MULTI_DIMENSIONS (str): Indicates that the type is defined as a multi-dimensional array.</span>
+<span class="linenos" data-linenos="47 "></span><span class="sd">        NON_ARRAY_TYPE_WITH_SIZE (str): Indicates that the type is not defined as an array, but a size is specified.</span>
+<span class="linenos" data-linenos="48 "></span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="49 "></span>
+<span class="linenos" data-linenos="50 "></span>    <span class="n">INVALID_TYPE</span> <span class="o">=</span> <span class="s2">&quot;Invalid type&quot;</span>
+<span class="linenos" data-linenos="51 "></span>    <span class="n">UNSUPPORTED_TYPE</span> <span class="o">=</span> <span class="s2">&quot;Unsupported type&quot;</span>
+<span class="linenos" data-linenos="52 "></span>    <span class="n">ARRAY_WITH_MISSING_SIZE</span> <span class="o">=</span> <span class="s2">&quot;Array with missing size&quot;</span>
+<span class="linenos" data-linenos="53 "></span>    <span class="n">ARRAY_WITH_INVALID_SIZE</span> <span class="o">=</span> <span class="s2">&quot;Array with invalid size&quot;</span>
+<span class="linenos" data-linenos="54 "></span>    <span class="n">ARRAY_WITH_MULTI_DIMENSIONS</span> <span class="o">=</span> <span class="s2">&quot;Array with multiple dimensions&quot;</span>
+<span class="linenos" data-linenos="55 "></span>    <span class="n">NON_ARRAY_TYPE_WITH_SIZE</span> <span class="o">=</span> <span class="s2">&quot;Non-array type with size&quot;</span>
 </code></pre></div>
               </details>
 
@@ -2010,57 +2053,179 @@ Returns:
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>sdk/simaticai/packaging/supported_types.py</code></summary>
-              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 55 "></span><span class="k">def</span><span class="w"> </span><span class="nf">type_validation_flags</span><span class="p">(</span><span class="n">_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">_supported_types</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">supported_types</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 56 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 57 "></span><span class="sd">    Validate a type string and return a set of validation flags indicating any issues.</span>
-<span class="linenos" data-linenos=" 58 "></span><span class="sd">    This function parses a type string to extract the base type name and optional array size</span>
-<span class="linenos" data-linenos=" 59 "></span><span class="sd">    specifiers. It then validates the type against a list of supported types and checks for</span>
-<span class="linenos" data-linenos=" 60 "></span><span class="sd">    common type specification errors.</span>
-<span class="linenos" data-linenos=" 61 "></span><span class="sd">    Args:</span>
-<span class="linenos" data-linenos=" 62 "></span><span class="sd">        _type (str): The type string to validate. Can be a simple type name (e.g., &#39;Boolean&#39;, &#39;String&#39;)</span>
-<span class="linenos" data-linenos=" 63 "></span><span class="sd">                     or an array type with size specifiers (e.g., &#39;BooleanArray[10]&#39;, &#39;StringArray[5]&#39;).</span>
-<span class="linenos" data-linenos=" 64 "></span><span class="sd">        _supported_types (list, optional): List of supported type names to validate against.</span>
-<span class="linenos" data-linenos=" 65 "></span><span class="sd">                                           Defaults to the module-level `supported_types` list.</span>
-<span class="linenos" data-linenos=" 66 "></span><span class="sd">    Returns:</span>
-<span class="linenos" data-linenos=" 67 "></span><span class="sd">        set: A set of TypeValidationFlags indicating validation results.</span>
-<span class="linenos" data-linenos=" 68 "></span><span class="sd">    &quot;&quot;&quot;</span>
-<span class="linenos" data-linenos=" 69 "></span>
-<span class="linenos" data-linenos=" 70 "></span>    <span class="n">flags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 57 "></span><span class="k">def</span><span class="w"> </span><span class="nf">type_validation_flags</span><span class="p">(</span><span class="n">_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">_supported_types</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">supported_types</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 58 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos=" 59 "></span><span class="sd">    Validate a type string and return a set of validation flags indicating any issues.</span>
+<span class="linenos" data-linenos=" 60 "></span><span class="sd">    This function parses a type string to extract the base type name and optional array size</span>
+<span class="linenos" data-linenos=" 61 "></span><span class="sd">    specifiers. It then validates the type against a list of supported types and checks for</span>
+<span class="linenos" data-linenos=" 62 "></span><span class="sd">    common type specification errors.</span>
+<span class="linenos" data-linenos=" 63 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos=" 64 "></span><span class="sd">        _type (str): The type string to validate. Can be a simple type name (e.g., &#39;Boolean&#39;, &#39;String&#39;)</span>
+<span class="linenos" data-linenos=" 65 "></span><span class="sd">                     or an array type with size specifiers (e.g., &#39;BooleanArray[10]&#39;, &#39;StringArray[5]&#39;).</span>
+<span class="linenos" data-linenos=" 66 "></span><span class="sd">        _supported_types (list, optional): List of supported type names to validate against.</span>
+<span class="linenos" data-linenos=" 67 "></span><span class="sd">                                           Defaults to the module-level `supported_types` list.</span>
+<span class="linenos" data-linenos=" 68 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos=" 69 "></span><span class="sd">        set: A set of TypeValidationFlags indicating validation results.</span>
+<span class="linenos" data-linenos=" 70 "></span><span class="sd">    &quot;&quot;&quot;</span>
 <span class="linenos" data-linenos=" 71 "></span>
-<span class="linenos" data-linenos=" 72 "></span>    <span class="n">type_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([a-zA-Z0-9]+)((\[[0-9\-]*\])*)&quot;</span><span class="p">)</span>  <span class="c1"># a type name, optionally followed by array size specifiers like [123]</span>
-<span class="linenos" data-linenos=" 73 "></span>    <span class="n">match</span> <span class="o">=</span> <span class="n">type_pattern</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">_type</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 74 "></span>
-<span class="linenos" data-linenos=" 75 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 76 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">INVALID_TYPE</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 77 "></span>        <span class="k">return</span> <span class="n">flags</span>
-<span class="linenos" data-linenos=" 78 "></span>
-<span class="linenos" data-linenos=" 79 "></span>    <span class="n">type_base</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># the part before a specified size, e.g., BooleanArray</span>
-<span class="linenos" data-linenos=" 80 "></span>    <span class="n">type_array_size</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># the part with the specified size, including brackets (e.g., &#39;[123]&#39;)</span>
-<span class="linenos" data-linenos=" 81 "></span>
-<span class="linenos" data-linenos=" 82 "></span>    <span class="k">if</span> <span class="n">type_base</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_supported_types</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 83 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">UNSUPPORTED_TYPE</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 84 "></span>
-<span class="linenos" data-linenos=" 85 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">type_array_size</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 86 "></span>        <span class="k">if</span> <span class="n">type_base</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;Array&quot;</span><span class="p">):</span>
-<span class="linenos" data-linenos=" 87 "></span>            <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">ARRAY_WITH_MISSING_SIZE</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 88 "></span>        <span class="k">return</span> <span class="n">flags</span>
-<span class="linenos" data-linenos=" 89 "></span>
-<span class="linenos" data-linenos=" 90 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">type_base</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;Array&quot;</span><span class="p">):</span>
-<span class="linenos" data-linenos=" 91 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">NON_ARRAY_TYPE_WITH_SIZE</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 92 "></span>
-<span class="linenos" data-linenos=" 93 "></span>    <span class="k">if</span> <span class="n">type_array_size</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 94 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">ARRAY_WITH_MULTI_DIMENSIONS</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 95 "></span>        <span class="k">return</span> <span class="n">flags</span>
-<span class="linenos" data-linenos=" 96 "></span>
-<span class="linenos" data-linenos=" 97 "></span>    <span class="n">size</span> <span class="o">=</span> <span class="n">type_array_size</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;[]&#39;</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 98 "></span>    <span class="k">try</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 99 "></span>        <span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
-<span class="linenos" data-linenos="100 "></span>        <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-<span class="linenos" data-linenos="101 "></span>            <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">ARRAY_WITH_INVALID_SIZE</span><span class="p">)</span>
-<span class="linenos" data-linenos="102 "></span>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-<span class="linenos" data-linenos="103 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">ARRAY_WITH_INVALID_SIZE</span><span class="p">)</span>
-<span class="linenos" data-linenos="104 "></span>
-<span class="linenos" data-linenos="105 "></span>    <span class="k">return</span> <span class="n">flags</span>
+<span class="linenos" data-linenos=" 72 "></span>    <span class="n">flags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 73 "></span>
+<span class="linenos" data-linenos=" 74 "></span>    <span class="n">type_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([a-zA-Z0-9]+)((\[[0-9\-]*\])*)&quot;</span><span class="p">)</span>  <span class="c1"># a type name, optionally followed by array size specifiers like [123]</span>
+<span class="linenos" data-linenos=" 75 "></span>    <span class="n">match</span> <span class="o">=</span> <span class="n">type_pattern</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">_type</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 76 "></span>
+<span class="linenos" data-linenos=" 77 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 78 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">INVALID_TYPE</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 79 "></span>        <span class="k">return</span> <span class="n">flags</span>
+<span class="linenos" data-linenos=" 80 "></span>
+<span class="linenos" data-linenos=" 81 "></span>    <span class="n">type_base</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># the part before a specified size, e.g., BooleanArray</span>
+<span class="linenos" data-linenos=" 82 "></span>    <span class="n">type_array_size</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># the part with the specified size, including brackets (e.g., &#39;[123]&#39;)</span>
+<span class="linenos" data-linenos=" 83 "></span>
+<span class="linenos" data-linenos=" 84 "></span>    <span class="k">if</span> <span class="n">type_base</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_supported_types</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 85 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">UNSUPPORTED_TYPE</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 86 "></span>
+<span class="linenos" data-linenos=" 87 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">type_array_size</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 88 "></span>        <span class="k">if</span> <span class="n">type_base</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;Array&quot;</span><span class="p">):</span>
+<span class="linenos" data-linenos=" 89 "></span>            <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">ARRAY_WITH_MISSING_SIZE</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 90 "></span>        <span class="k">return</span> <span class="n">flags</span>
+<span class="linenos" data-linenos=" 91 "></span>
+<span class="linenos" data-linenos=" 92 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">type_base</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;Array&quot;</span><span class="p">):</span>
+<span class="linenos" data-linenos=" 93 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">NON_ARRAY_TYPE_WITH_SIZE</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 94 "></span>
+<span class="linenos" data-linenos=" 95 "></span>    <span class="k">if</span> <span class="n">type_array_size</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 96 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">ARRAY_WITH_MULTI_DIMENSIONS</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 97 "></span>        <span class="k">return</span> <span class="n">flags</span>
+<span class="linenos" data-linenos=" 98 "></span>
+<span class="linenos" data-linenos=" 99 "></span>    <span class="n">size</span> <span class="o">=</span> <span class="n">type_array_size</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;[]&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="100 "></span>    <span class="k">try</span><span class="p">:</span>
+<span class="linenos" data-linenos="101 "></span>        <span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+<span class="linenos" data-linenos="102 "></span>        <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos" data-linenos="103 "></span>            <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">ARRAY_WITH_INVALID_SIZE</span><span class="p">)</span>
+<span class="linenos" data-linenos="104 "></span>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="linenos" data-linenos="105 "></span>        <span class="n">flags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">ARRAY_WITH_INVALID_SIZE</span><span class="p">)</span>
+<span class="linenos" data-linenos="106 "></span>
+<span class="linenos" data-linenos="107 "></span>    <span class="k">return</span> <span class="n">flags</span>
+</code></pre></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="simaticai.packaging.supported_types.validate_types" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">validate_types</span><span class="p">(</span><span class="n">_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span></code>
+
+<a href="#simaticai.packaging.supported_types.validate_types" class="headerlink" title="Permanent link">#</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Validate a type string and return a tuple of (log_level, message).</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>_type</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The type string to validate.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The name of the variable being validated (for error messages).</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="tuple">tuple</span>[<span title="int">int</span>, <span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>tuple[int, str]: A tuple containing:
+- log_level (int): logging.INFO (success), logging.WARNING, or logging.ERROR
+- message (str): Description of any validation issues (empty string if valid)</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>sdk/simaticai/packaging/supported_types.py</code></summary>
+              <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="109 "></span><span class="k">def</span><span class="w"> </span><span class="nf">validate_types</span><span class="p">(</span><span class="n">_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="linenos" data-linenos="110 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="111 "></span><span class="sd">    Validate a type string and return a tuple of (log_level, message).</span>
+<span class="linenos" data-linenos="112 "></span>
+<span class="linenos" data-linenos="113 "></span><span class="sd">    Args:</span>
+<span class="linenos" data-linenos="114 "></span><span class="sd">        _type (str): The type string to validate.</span>
+<span class="linenos" data-linenos="115 "></span><span class="sd">        name (str): The name of the variable being validated (for error messages).</span>
+<span class="linenos" data-linenos="116 "></span>
+<span class="linenos" data-linenos="117 "></span><span class="sd">    Returns:</span>
+<span class="linenos" data-linenos="118 "></span><span class="sd">        tuple[int, str]: A tuple containing:</span>
+<span class="linenos" data-linenos="119 "></span><span class="sd">            - log_level (int): logging.INFO (success), logging.WARNING, or logging.ERROR</span>
+<span class="linenos" data-linenos="120 "></span><span class="sd">            - message (str): Description of any validation issues (empty string if valid)</span>
+<span class="linenos" data-linenos="121 "></span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos" data-linenos="122 "></span>    <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="linenos" data-linenos="123 "></span>
+<span class="linenos" data-linenos="124 "></span>    <span class="n">flags</span> <span class="o">=</span> <span class="n">type_validation_flags</span><span class="p">(</span><span class="n">_type</span><span class="p">)</span>
+<span class="linenos" data-linenos="125 "></span>
+<span class="linenos" data-linenos="126 "></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">flags</span><span class="p">:</span>
+<span class="linenos" data-linenos="127 "></span>        <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># Success case - no issues</span>
+<span class="linenos" data-linenos="128 "></span>
+<span class="linenos" data-linenos="129 "></span>    <span class="n">flags_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">f</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">flags</span><span class="p">])</span>
+<span class="linenos" data-linenos="130 "></span>    <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">MSG_TYPE_MISMATCH</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_type</span><span class="o">=</span><span class="n">_type</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">flags_str</span><span class="o">=</span><span class="n">flags_str</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="131 "></span>
+<span class="linenos" data-linenos="132 "></span>    <span class="c1"># If the only flag is ARRAY_WITH_MISSING_SIZE, return as warning</span>
+<span class="linenos" data-linenos="133 "></span>    <span class="k">if</span> <span class="n">flags</span> <span class="o">==</span> <span class="p">{</span><span class="n">TypeValidationFlags</span><span class="o">.</span><span class="n">ARRAY_WITH_MISSING_SIZE</span><span class="p">}:</span>
+<span class="linenos" data-linenos="134 "></span>        <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;WARNING! </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="linenos" data-linenos="135 "></span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos" data-linenos="136 "></span>        <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span> <span class="n">message</span>
 </code></pre></div>
             </details>
     </div>

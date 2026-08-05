@@ -1,0 +1,20 @@
+# Global variables FOR ALL JOBS
+variables:
+  PROJECT_NAME: "MINDSPHERE"
+  PACKAGE_EXPORT_PATH: "export"
+  CUSTOMER_NAME: 'Romy Joppert'  
+  CUSTOMER_DEPT: 'DI FA'
+  CUSTOMER_EMAIL: 'romy.joppert@siemens.com'
+  AUDIENCE_MAIL: 'verena.barubeck@siemens.com'
+  CUSTOMER_GROUP: 'HMI COS IM'
+  CUSTOMER_DI: 'DI'
+  SAP_ORDERPOS: '1'
+  CONTROL_XTW_DUE_DATE: ''
+  TRANSLATION_SERVICE_TYPE: 'FPE-raw_mt'
+  # TRANSLATION_SERVICE_TYPE: 'FPE-LS2-translate' # machine translation with proofreading
+  SOURCE_LANG: 'en-US'
+  EDIT_ORGID: 'A4050986'
+  EDIT_ORDERNO: '9709422594'
+  TR_SERVICE_ALLOWED_LANG: 'de_DE,en_US,zh_CN,fr_FR'
+  PV_NUM : 'PV4562'
+  CHECKOUT_XTW_SUFFIX: 'edge'

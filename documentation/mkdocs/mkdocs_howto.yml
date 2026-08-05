@@ -1,0 +1,66 @@
+INHERIT: ../../mkdocs.yml
+
+site_name: AI SDK How-To
+site_description: AI SDK How-To
+site_author: mark.blundell.ext@siemens.com
+
+# Source repository
+repo_name: AI SDK How-To
+repo_url: "https://code.siemens.com/siemens-ai-launcher-sail/ai-designer/aisdk-documentation"
+docs_dir: ../../How-To/
+site_dir: ../../site/howto
+
+theme:
+  custom_dir: ../../theme
+
+nav:
+  - Prepare your environment:
+    - Setting up the work environment: PrepareEnvironment/00-prepare-environment.md
+    - Setting up an environment manager: PrepareEnvironment/00-setup-environment-manager.md
+    - Installing AI SDK: PrepareEnvironment/00-installing-ai-sdk.md
+    - Setting up a notebook editor: PrepareEnvironment/00-setup-notebook-editor.md
+    - Prepare environments for working with AI SDK tutorials: PrepareEnvironment/00-setup-environments-for-tutorials.md
+  - Create PythonComponents:
+    - How to define PythonComponents: CreatePythonComponents/01-define-components.md
+    - How to create the entrypoint: CreatePythonComponents/02-create-entrypoint.md
+    - How to use variable types: CreatePythonComponents/03-use-variable-types.md
+    - How to handle Python dependencies: CreatePythonComponents/04-handle-python-dependencies.md
+    - How to handle file resources: CreatePythonComponents/05-handle-file-resources.md
+    - How to return the processing results: CreatePythonComponents/06-return-processing-results.md
+    - How to add custom metrics: CreatePythonComponents/07-add-custom-metrics.md
+    - How to use persistent storage on AI Inference Server: CreatePythonComponents/23-use-persistent-storage.md
+    - What version of Python dependencies are supported?: CreatePythonComponents/25-supported-dependency-versions.md
+  - Process different data types:
+    - How to process time series of signals: ProcessDataTypes/10-process-timeseries-data.md
+    - How to process images: ProcessDataTypes/11-process-images.md
+    - How to use 'Binary' format for images: ProcessDataTypes/12-use-binary-format-for-images.md
+    - How to use 'Object' format for images: ProcessDataTypes/13-use-object-format-for-images.md
+    - How to use 'String' format for images: ProcessDataTypes/14-use-string-format-for-images.md
+    - How to use 'Tensorflow' instead of tflight: ProcessDataTypes/15-use-tensorflow-instead-of-tflight.md
+  - Create pipeline configuration:
+    - How to use pipeline parameters: CreatePipelineConfiguration/08-use-pipeline-parameters.md
+    - How to write components for earlier versions of the AI Inference Server: CreatePipelineConfiguration/09-old-inference-server.md
+    - How to version packages and how to use Package ID: CreatePipelineConfiguration/16-version-packages.md
+    - How to package models into an inference pipeline: CreatePipelineConfiguration/18-package-inference-pipelines.md
+  - Test pipelines:
+    - How to mock AI Inference Server logger locally: TestPipeline/17-mock-inference-server-logging.md
+    - How to test pipeline configuration package locally: TestPipeline/19-test-pipelines-locally.md
+    - How to test pipelines on an Edge Device: TestPipeline/22-test-on-edge-device.md
+  - Create pipeline packages:
+    - How to convert and deploy the packaged inference pipeline to AI@Edge: CreatePipelinePackage/20-create-edge-configuration-package.md
+    - How to create Delta packages: CreatePipelinePackage/21-create-delta-packages.md
+  - Using LocalPipelineRunner in Docker environment:
+    - Guide how to use use LocalRunner in docker: UsingLocalRunnerinDocker/UsingLocalRunnerinDocker.md
+
+not_in_nav:
+  index.md
+
+# specify patterns not included in nav to avoid strict build issues
+# https://www.mkdocs.org/user-guide/configuration/#not_in_nav
+# not_in_nav: |
+
+
+# specify excludes to remove files from processing
+# see below similar done by plugin
+# https://www.mkdocs.org/user-guide/configuration/#exclude_docs
+# exclude_docs: |

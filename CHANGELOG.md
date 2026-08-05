@@ -18,6 +18,30 @@ Known issues:
 -   Markuppy is a new dependency in AI SDK 1.4.1 which is available as a source only wheel. As a consequence, you cannot simply include AI SDK 1.4.1 in a pipeline package, like you could in previous versions of AI SDK. As a workaround, you can include earlier version of AI SDK or include a manually created wheel of Markuppy along with AI SDK 1.4.1 in the pipeline package.
 -   Python 3.7.x ≤ 3.11.2 - Remote Security Bypass Vulnerability - CVE-2023-24329 - AI SDK is not using blocklisting and hence is not affected
 
+## 2.9.0
+
+New features:
+
+-   GPU enabled Python component can be created.
+-   Python components with GPU dependency force parallel steps value to 1. A warning message appears if it was not set to 1 beforehand.
+-   Docker Image iai-sdk-python-runner is updated to be aligned with AI Inference Server 2.9.0.
+-   Components can be exported individually.
+-   Package creation fails with error message if package size is above hard limit (20 GB).
+-   LocalPipelineRunner and ComponentRunner check GPU accessibility for a `PythonComponent` if GPU was enabled. Warning messages are generated if neither PyTorch nor TensorFlow are installed with the component, or if they cannot access the GPU.
+-   GPU enabled Python component throws error if PyTorch dependency is requested with incompatible CUDA version.
+-   GPU enabled Python component throws error if TensorFlow[and-cuda] dependency is requested with incompatible CUDA version.
+-   Pipeline.export() now saves the edge package directly, without creating an intermediate pipeline configuration package.
+-   Pipeline.export() automatically creates a delta package, if a previous package exists and its size is larger than the threshold (300 MB by default)
+-   pipeline.export() compares the previous python environment and creates a lightweight delta automatically if possible.
+-   Throw an assertion error instead of warning if user intends to add unsupported data type as component input or output
+
+Security upgrades:
+
+- onnx < 1.21.0 - Remote Path Traversal Vulnerability - GHSA-3r9x-f23j-gc73 - 1.21.0
+- pip < 26.0.1 - Remote Path Traversal Vulnerability - 26.0.1
+- protobuf < 6.33.5 - Remote Denial of Service Vulnerability - GHSA-7gcm-g887-7 - 6.33.5
+- wheel < 0.46.2 - Local Arbitrary Code Execution Vulnerability - GHSA-8rrh-rw8j-w5fx - 0.46.2
+
 ## 2.8.0
 
 New features:

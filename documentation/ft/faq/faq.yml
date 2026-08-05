@@ -1,0 +1,34 @@
+faq_01_ft-staging:
+  stage: deploy_fluid-topics
+  dependencies:
+    - build_mkdocs_faq
+  script:
+    - pip install requests pyyaml
+    - chmod +x tools/ft/faq/metadata.py
+    - python3 tools/ft/faq/metadata.py
+    - chmod +x tools/ft/faq/upload.py
+    - python3 tools/ft/faq/upload.py staging  # Command to execute your script with staging environment
+  artifacts:
+    paths:
+      - '*.zip'  # Capture any ZIP file produced by your script
+  when: manual # This job will only run when manually triggered
+
+faq_02_ft-prod:
+  stage: deploy_fluid-topics
+  dependencies:
+    - build_mkdocs_faq
+  script:
+    - pip install requests pyyaml
+    - chmod +x tools/ft/faq/metadata.py
+    - python3 tools/ft/faq/metadata.py
+    - chmod +x tools/ft/faq/upload.py
+    - python3 tools/ft/faq/upload.py prod  # Command to execute your script with production environment
+  artifacts:
+    paths:
+      - '*.zip'  # Capture any ZIP file produced by your script
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+([~\-\+]+.+)?/'
+  when: manual # This job will only run when manually triggered
+  needs:
+    - job: faq_01_ft-staging  # Ensure ft-staging runs before ft-publish
+    - job: build_mkdocs_faq
